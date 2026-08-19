@@ -2,12 +2,441 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BRO — Feature Film</title>
-<meta http-equiv="refresh" content="0; url=/">
-<link rel="canonical" href="https://colibristudio.ai/">
-<script>location.replace("/")</script>
+<meta name="description" content="BRO — an AI-produced adventure drama feature film by Ara Arush. A boy, a fighter and a rooster cross Indonesia. For investors and producers.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐓</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#07080b; --ink-2:#0e1016; --ink-3:#161a22;
+    --line:#23272f;
+    --paper:#efe9dd; --mute:#93938f;
+    --red:#e5453c; --red-deep:#b5362f;
+    --gold:#c9a25e;
+    --disp:"Oswald","Arial Narrow",sans-serif;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  ::selection{background:var(--red);color:var(--ink)}
+
+  /* film grain */
+  body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    animation:grain 7s steps(10) infinite}
+  @keyframes grain{
+    0%,100%{transform:translate(0,0)}10%{transform:translate(-3%,-6%)}20%{transform:translate(-8%,3%)}
+    30%{transform:translate(5%,-9%)}40%{transform:translate(-3%,8%)}50%{transform:translate(-8%,3%)}
+    60%{transform:translate(6%,0)}70%{transform:translate(0,6%)}80%{transform:translate(-6%,0)}90%{transform:translate(3%,3%)}}
+
+  /* language toggle */
+  .ru{display:none}
+  body.lang-ru .ru{display:revert}
+  body.lang-ru .en{display:none}
+
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  .bar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
+    padding:16px 26px;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+  .bar.solid{background:rgba(7,8,11,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom-color:rgba(35,39,47,.6)}
+  .bar .brand{font-family:var(--disp);font-weight:600;letter-spacing:.34em;font-size:14px}
+  .bar .brand b{color:var(--red)}
+  .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:rgba(7,8,11,.5)}
+  .langs button{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--mute);background:none;border:0;padding:6px 13px;cursor:pointer}
+  .langs button.on{color:var(--ink);background:var(--paper)}
+  .langs button:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
+
+  /* ============ HERO ============ */
+  .hero{position:relative;height:100svh;min-height:600px;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;z-index:-2;overflow:hidden}
+  .hero .bg img{width:100%;height:100%;object-fit:cover;object-position:center 28%;transform:scale(1.08);animation:kenburns 22s ease-out forwards}
+  @keyframes kenburns{from{transform:scale(1.14)}to{transform:scale(1.03)}}
+  .hero .scrim{position:absolute;inset:0;z-index:-1;
+    background:
+      linear-gradient(180deg,rgba(7,8,11,.72) 0%,rgba(7,8,11,0) 22%),
+      linear-gradient(180deg,rgba(7,8,11,0) 42%,rgba(7,8,11,.9) 84%,var(--ink) 100%),
+      radial-gradient(120% 90% at 50% 40%, rgba(7,8,11,0) 55%, rgba(7,8,11,.5) 100%)}
+  .hero .inner{width:100%;max-width:1100px;margin:0 auto;padding:0 24px 9vh}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+  .hero h1{font-family:var(--disp);font-weight:600;font-size:clamp(96px,20vw,260px);line-height:.88;letter-spacing:.04em;margin:14px 0 4px;
+    background:linear-gradient(180deg,#fdf9f0 55%,#b9b2a2);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .byline{font-family:var(--mono);font-size:12.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-bottom:26px}
+  .hero .byline em{color:var(--paper);font-style:normal}
+  .logline{max-width:34em;font-size:clamp(17px,2.1vw,20px);color:#d9d4c8}
+  .hero .meta{margin-top:24px;font-family:var(--mono);font-size:12.5px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase}
+  .hero .meta span.sep{color:var(--red);margin:0 10px}
+  .scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:1px;height:56px;overflow:hidden;opacity:.7}
+  .scrollcue::before{content:"";position:absolute;left:0;top:-56px;width:1px;height:56px;background:linear-gradient(180deg,transparent,var(--paper));animation:cue 2.2s ease-in-out infinite}
+  @keyframes cue{to{top:56px}}
+
+  /* ============ SECTIONS ============ */
+  section{position:relative;padding:110px 0}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+  .eyebrow::before{content:"";display:inline-block;width:34px;height:1px;background:var(--red);vertical-align:middle;margin-right:14px}
+  h2{font-family:var(--disp);font-weight:500;font-size:clamp(32px,4.6vw,52px);line-height:1.05;letter-spacing:.015em;text-wrap:balance;margin-bottom:26px;text-transform:uppercase}
+  p{max-width:60ch}
+
+  /* editorial serif statement */
+  .statement{padding:130px 0;border-top:1px solid var(--line)}
+  .statement p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(30px,5vw,54px);line-height:1.25;max-width:22em;color:#e9e2d2;text-wrap:balance}
+  .statement .src{font-family:var(--mono);font-style:normal;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:26px}
+
+  /* full-bleed still with letterbox */
+  .still{position:relative;padding:0;border-top:none}
+  .still .frame{position:relative;height:82vh;min-height:440px;overflow:hidden}
+  .still .frame img{width:100%;height:100%;object-fit:cover}
+  .still .frame::before,.still .frame::after{content:"";position:absolute;left:0;right:0;height:9vh;min-height:44px;background:var(--ink);z-index:2}
+  .still .frame::before{top:0;box-shadow:0 1px 0 rgba(239,233,221,.06)}
+  .still .frame::after{bottom:0;box-shadow:0 -1px 0 rgba(239,233,221,.06)}
+  .still .cap{position:absolute;z-index:3;left:0;right:0;bottom:calc(9vh + 18px);display:flex;justify-content:center}
+  .still .cap span{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);
+    background:rgba(7,8,11,.55);backdrop-filter:blur(6px);padding:9px 18px;border:1px solid rgba(239,233,221,.14)}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .cols .text p+p{margin-top:16px}
+  .photo{position:relative}
+  .photo img{border:1px solid var(--line)}
+  .photo .pcap{font-family:var(--mono);font-size:11.5px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase;padding-top:12px}
+  .photo::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px rgba(0,0,0,.5)}
+  @media (max-width:860px){.cols{grid-template-columns:1fr;gap:40px}}
+
+  /* facts — film credit style */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .fact{padding:44px 26px;text-align:center;position:relative}
+  .fact+.fact::before{content:"";position:absolute;left:0;top:22%;bottom:22%;width:1px;background:var(--line)}
+  .fact .n{font-family:var(--disp);font-weight:600;font-size:56px;line-height:1;font-variant-numeric:tabular-nums;color:#f4eee0}
+  .fact .n small{font-size:26px;color:var(--gold)}
+  .fact .l{margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--mute);letter-spacing:.18em;text-transform:uppercase}
+  @media (max-width:860px){.facts{grid-template-columns:1fr 1fr}.fact:nth-child(3)::before{display:none}}
+
+  /* distribution */
+  ul.waves{list-style:none;max-width:none;counter-reset:wave}
+  ul.waves li{display:grid;grid-template-columns:110px 1fr 1.2fr;gap:26px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line);counter-increment:wave}
+  ul.waves li:first-child{border-top:1px solid var(--line)}
+  ul.waves li::before{content:counter(wave,decimal-leading-zero);font-family:var(--disp);font-size:30px;color:var(--red);letter-spacing:.06em}
+  ul.waves b{font-family:var(--disp);font-weight:500;font-size:21px;letter-spacing:.03em;text-transform:uppercase}
+  ul.waves .sub{color:var(--mute);font-size:15.5px}
+  @media (max-width:860px){ul.waves li{grid-template-columns:60px 1fr}ul.waves .sub{grid-column:2}}
+
+  /* team credits */
+  .credits{max-width:640px;margin:0 auto;text-align:center}
+  .credits .role{font-family:var(--mono);font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+  .credits .name{font-family:var(--disp);font-weight:500;font-size:clamp(26px,3.4vw,36px);letter-spacing:.06em;text-transform:uppercase;color:#f4eee0}
+  .credits .note{font-size:14.5px;color:var(--mute);max-width:44ch;margin:8px auto 0}
+  .credits .row{padding:34px 0;border-bottom:1px solid var(--line)}
+  .credits .row:first-child{border-top:1px solid var(--line)}
+
+  /* teaser */
+  .vidwrap{position:relative;aspect-ratio:16/9;background:var(--ink-2);border:1px solid var(--line)}
+  .vidwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vtabs{display:flex;gap:2px;margin-bottom:16px}
+  .vtabs button{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);
+    background:none;border:1px solid var(--line);padding:9px 20px;cursor:pointer}
+  .vtabs button.on{color:var(--ink);background:var(--paper);border-color:var(--paper)}
+  .vtabs button:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+  .vcard .vidwrap{aspect-ratio:16/9}
+  .vcard .vlabel{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);padding-top:12px}
+  @media (max-width:860px){.vgrid{grid-template-columns:1fr}}
+
+  /* ecosystem */
+  .eco{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:44px}
+  .eco .cell{background:var(--ink-2);padding:26px 22px;min-height:150px}
+  .eco .pname{font-family:var(--disp);font-weight:500;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#f4eee0}
+  .eco .pdesc{font-size:13.5px;color:var(--mute);margin-top:6px;line-height:1.5}
+  .eco .chip{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(201,162,94,.4);padding:5px 10px}
+  @media (max-width:1020px){.eco{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.eco{grid-template-columns:1fr}}
+
+  /* CTA */
+  .cta{padding:150px 0;text-align:center;background:
+    radial-gradient(60% 90% at 50% 110%, rgba(229,69,60,.14), transparent 70%)}
+  .cta h2{margin-left:auto;margin-right:auto}
+  .cta p{margin:0 auto}
+  .btn{display:inline-block;margin-top:38px;font-family:var(--mono);font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--ink);background:var(--paper);padding:18px 42px;text-decoration:none;border-radius:1px;transition:background .25s,color .25s}
+  .btn:hover{background:var(--red);color:var(--paper)}
+  .btn:focus-visible{outline:2px solid var(--paper);outline-offset:3px}
+
+  footer{border-top:1px solid var(--line);padding:38px 0 52px;font-size:13px;color:var(--mute)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px 44px;justify-content:space-between}
+  footer p{max-width:56ch}
+
+  /* scroll reveal */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{animation:none!important;transition:none!important}
+    .rv{opacity:1;transform:none}
+    body::after{display:none}
+  }
+</style>
 </head>
-<body style="background:#07080b;color:#efe9dd;font-family:sans-serif;padding:40px">
-<a href="/" style="color:#efe9dd">BRO — colibristudio.ai</a>
+<body>
+
+<div class="bar" id="bar">
+  <div class="brand">B<b>R</b>O</div>
+  <div class="langs" role="group" aria-label="Language">
+    <button type="button" id="btn-en" class="on" onclick="setLang('en')">EN</button>
+    <button type="button" id="btn-ru" onclick="setLang('ru')">RU</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="bg"><img src="/assets/hero_night.jpg" alt="Ahmed on a black motorbike at night in Jakarta; the rooster Bro rides in a cage behind him" fetchpriority="high"></div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="kicker"><span class="en">An AI-produced feature film</span><span class="ru">Полнометражный фильм ИИ-производства</span></div>
+    <h1>BRO</h1>
+    <div class="byline"><span class="en">A film by <em>Ara Arush</em></span><span class="ru">Фильм <em>Ары Аруша</em></span></div>
+    <p class="logline">
+      <span class="en">A ten-year-old orphan escapes a Jakarta orphanage with his pet rooster to find the mother he remembers only by her scent. A chance meeting with a young street fighter turns their run across Indonesia into a story about brotherhood beyond blood.</span>
+      <span class="ru">Десятилетний сирота сбегает из джакартского интерната с ручным петухом, чтобы найти маму, которую помнит только по запаху. Случайная встреча с молодым уличным бойцом превращает их путь через Индонезию в историю о братстве не по крови.</span>
+    </p>
+    <div class="meta">
+      <span class="en">Adventure · Drama</span><span class="ru">Приключения · Драма</span>
+      <span class="sep">/</span>13+<span class="sep">/</span>
+      <span class="en">Kazakhstan · Indonesia</span><span class="ru">Казахстан · Индонезия</span>
+    </div>
+  </div>
+  <div class="scrollcue" aria-hidden="true"></div>
+</header>
+
+<section class="statement">
+  <div class="wrap rv">
+    <p><span class="en">“Brothers are not made by blood. They are made by the road you survive together.”</span>
+    <span class="ru">«Братьями людей делает не кровь — а дорога, которую они прошли вместе».</span></p>
+    <div class="src"><span class="en">The heart of the film</span><span class="ru">Сердце фильма</span></div>
+  </div>
+</section>
+
+<section id="pipeline" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">How the film is made</span><span class="ru">Как делается фильм</span></div>
+      <h2><span class="en">Live action meets the neural studio</span><span class="ru">Живые съёмки встречают нейростудию</span></h2>
+      <p><span class="en">BRO is a hybrid: the creative studio develops and shoots live material, the neural studio scales it into a full-length feature. The teaser was shot live in Indonesia — every AI frame on this page holds that bar.</span>
+      <span class="ru">«БРО» — гибрид: креативная студия разрабатывает и снимает живой материал, нейростудия масштабирует его в полный метр. Тизер снят вживую в Индонезии — и каждый AI-кадр на этой странице держит эту планку.</span></p>
+    </div>
+    <div class="ppl rv">
+      <div class="pstep">
+        <img src="/assets/locker_wraps.jpg" alt="Live-action frame from the teaser shoot: Ahmed wrapping his fists in the locker room" loading="lazy">
+        <div class="pnum">01</div>
+        <div class="ptitle">Colibri Studio</div>
+        <div class="ptext"><span class="en">Creative development &amp; pre-production: screenplay, 346 storyboards, casting, live-action shoots.</span><span class="ru">Креативная разработка и препродакшн: сценарий, 346 раскадровок, кастинг, живые съёмки.</span></div>
+      </div>
+      <div class="pstep">
+        <img src="/assets/ahmed_sheet.jpg" alt="Character model sheet: consistent turnaround of Ahmed for the AI pipeline" loading="lazy">
+        <div class="pnum">02</div>
+        <div class="ptitle"><span class="en">Neyra neural studio</span><span class="ru">Нейростудия Neyra</span></div>
+        <div class="ptext"><span class="en">AI production: consistent characters, worlds and action at feature scale — from the live material.</span><span class="ru">AI-продакшн: консистентные персонажи, миры и экшн в масштабе полного метра — на основе живого материала.</span></div>
+      </div>
+      <div class="pstep">
+        <img src="/assets/night_ride.jpg" alt="Finished cinematic frame: night chase through neon streets" loading="lazy">
+        <div class="pnum">03</div>
+        <div class="ptitle"><span class="en">Post &amp; master</span><span class="ru">Пост и мастер</span></div>
+        <div class="ptext"><span class="en">Live orchestral score, sound design, color — a theatrical master for festivals and platforms.</span><span class="ru">Живой оркестр, звуковой дизайн, цвет — кинотеатральный мастер для фестивалей и платформ.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="still" style="padding-top:0">
+  <figure class="frame rv">
+    <img src="/assets/jakarta_day.jpg" alt="Ahmed's black motorbike with Bro's cage crossing a rainy Jakarta avenue among cars, scooters and tuk-tuks" loading="lazy">
+    <figcaption class="cap"><span><span class="en">Jakarta. The run begins.</span><span class="ru">Джакарта. Начало побега.</span></span></figcaption>
+  </figure>
+</section>
+
+<section id="story">
+  <div class="wrap cols">
+    <div class="text rv">
+      <div class="eyebrow"><span class="en">The story</span><span class="ru">История</span></div>
+      <h2><span class="en">Two orphans. One rooster. All of Indonesia against them.</span><span class="ru">Два сироты. Один петух. Против них — вся Индонезия.</span></h2>
+      <p><span class="en">Nyoman hatched the rooster Bro himself, from an egg stolen out of the orphanage canteen. Ahmed, a street fighter raised by the port, owes a mob boss a champion bird — and Bro is its spitting image. One rigged fight later, the boys are running from Jakarta to Bali with a stolen hardware wallet, hunted by the syndicate of Miss Tonako.</span>
+      <span class="ru">Ньоман сам высидел петуха Бро из яйца, украденного в интернатской столовой. Ахмед, уличный боец из порта, должен боссу мафии бойцового петуха — и Бро похож на него как две капли воды. Одна подмена на боях — и мальчики бегут из Джакарты на Бали с украденным аппаратным кошельком, а по их следу идут люди мисс Тонако.</span></p>
+      <p><span class="en">Underneath the chase — a film against cruelty. A child who refuses to accept the world of fights, and makes the adults see it.</span>
+      <span class="ru">Под погоней — фильм против жестокости. Ребёнок не принимает мир боёв — и заставляет взрослых его увидеть.</span></p>
+    </div>
+    <figure class="photo rv">
+      <img src="/assets/night_ride.jpg" alt="Night ride through neon-lit streets: Ahmed and Bro's cage on the back of the motorbike, motion blur" loading="lazy">
+      <figcaption class="pcap"><span class="en">Frame · night chase</span><span class="ru">Кадр · ночная погоня</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="still">
+  <figure class="frame rv">
+    <img src="/assets/locker_prayer.jpg" alt="Ahmed in a worn locker room, hands folded in prayer before the fight, sunlight through the windows" loading="lazy">
+    <figcaption class="cap"><span><span class="en">Scene one. A prayer before the fight.</span><span class="ru">Первая сцена. Молитва перед боем.</span></span></figcaption>
+  </figure>
+</section>
+
+<section id="why">
+  <div class="wrap cols">
+    <figure class="photo rv">
+      <img src="/assets/ahmed_sheet.jpg" alt="Character model sheet of Ahmed: consistent turnaround views with and without helmet" loading="lazy">
+      <figcaption class="pcap"><span class="en">Character model sheet · pipeline consistency</span><span class="ru">Модель-щит персонажа · консистентность пайплайна</span></figcaption>
+    </figure>
+    <div class="text rv">
+      <div class="eyebrow"><span class="en">Why now</span><span class="ru">Почему сейчас</span></div>
+      <h2><span class="en">A $6M film, produced for $2M</span><span class="ru">Фильм на $6 млн — производством за $2 млн</span></h2>
+      <p><span class="en">BRO was fully developed for conventional production: the same script, storyboards and creative team were budgeted at over $6,000,000 under a studio model. AI production brings the total project cost to $2,000,000 — with live actors for voice and reference, and an orchestral score recorded live.</span>
+      <span class="ru">«БРО» полностью разработан под классическое производство: тот же сценарий, раскадровки и творческая группа стоили бы больше $6 000 000 в студийной модели. ИИ-производство сводит полную стоимость проекта к $2 000 000 — с живыми актёрами (голос и референсы) и живой оркестровой записью музыки.</span></p>
+      <p><span class="en">Every frame on this page was produced with the film's own pipeline.</span>
+      <span class="ru">Каждый кадр на этой странице сделан собственным пайплайном фильма.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="facts" style="padding-top:0">
+  <div class="wrap">
+    <div class="facts rv">
+      <div class="fact"><div class="n">168</div><div class="l"><span class="en">pages · completed screenplay</span><span class="ru">страниц · готовый сценарий</span></div></div>
+      <div class="fact"><div class="n">346</div><div class="l"><span class="en">storyboard pages</span><span class="ru">листов раскадровок</span></div></div>
+      <div class="fact"><div class="n">$2<small>M</small></div><div class="l"><span class="en">total project cost</span><span class="ru">полная стоимость проекта</span></div></div>
+      <div class="fact"><div class="n">3×</div><div class="l"><span class="en">below the conventional budget</span><span class="ru">дешевле классической сметы</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="market" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+    <div class="eyebrow"><span class="en">Distribution</span><span class="ru">Дистрибуция</span></div>
+    <h2><span class="en">Release in waves — markets that already answered</span><span class="ru">Релиз волнами — по рынкам, которые уже ответили</span></h2>
+    </div>
+    <ul class="waves rv">
+      <li><b><span class="en">Kazakhstan &amp; Central Asia</span><span class="ru">Казахстан и Центральная Азия</span></b><div class="sub"><span class="en">Home market premiere; produced in Kazakhstan.</span><span class="ru">Домашняя премьера; производство в Казахстане.</span></div></li>
+      <li><b><span class="en">Indonesia &amp; Southeast Asia</span><span class="ru">Индонезия и ЮВА</span></b><div class="sub"><span class="en">The film's setting, cinema audience of ~150M. Content placement agreements within the Neyra ecosystem: Vision+ (MNC Group) and Vidio (Emtek) streaming platforms.</span><span class="ru">Место действия фильма, киноаудитория ~150 млн. Соглашения экосистемы Neyra о размещении контента: стриминги Vision+ (MNC Group) и Vidio (Emtek).</span></div></li>
+      <li><b><span class="en">Russia &amp; CIS</span><span class="ru">Россия и СНГ</span></b><div class="sub"><span class="en">Letter of intent from a major CIS distributor — theatrical, TV and digital rights.</span><span class="ru">Письмо о намерениях от крупного дистрибьютора СНГ — кинотеатральные, ТВ- и цифровые права.</span></div></li>
+      <li><b><span class="en">India, international, TV &amp; streaming</span><span class="ru">Индия, мир, ТВ и стриминг</span></b><div class="sub"><span class="en">Co-production and OTT distribution letter from an Indian partner; festival premiere strategy.</span><span class="ru">Письмо индийского партнёра о ко-продакшне и OTT-дистрибуции; фестивальная стратегия премьеры.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="still" style="padding-top:0">
+  <figure class="frame rv">
+    <img src="/assets/locker_wraps.jpg" alt="Ahmed kneeling in the locker room, wrapping his fists with rope before an underground fight" loading="lazy">
+    <figcaption class="cap"><span><span class="en">Rope instead of gloves. The underground ring of Jakarta.</span><span class="ru">Верёвки вместо перчаток. Подпольный ринг Джакарты.</span></span></figcaption>
+  </figure>
+</section>
+
+<section id="ecosystem" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">The studio behind the film</span><span class="ru">Студия за фильмом</span></div>
+      <h2><span class="en">NEYRA — an AI film ecosystem of Southeast Asia</span><span class="ru">NEYRA — AI-киноэкосистема Юго-Восточной Азии</span></h2>
+      <p><span class="en">Full-cycle production on a proprietary AI platform: Neyra Labs (Singapore) — technology, Neyra Vision Studio (Jakarta) — production, Colibri Studio — creative development. Two awards at Cannes AI Film Awards 2025 («Nusantara»). A feature film full cycle in 2–3 months, at a fraction of conventional cost — with in-house creative and production teams.</span>
+      <span class="ru">Полный цикл производства на собственной AI-платформе: Neyra Labs (Сингапур) — технология, Neyra Vision Studio (Джакарта) — производство, Colibri Studio — креативная разработка. Две награды Cannes AI Film Awards 2025 («Nusantara»). Полный цикл полного метра — за 2–3 месяца, в разы дешевле классики, со своими креативной и производственной командами.</span></p>
+    </div>
+    <div class="eco rv">
+      <div class="cell"><div class="pname">PFN</div><div class="pdesc"><span class="en">State film company of Indonesia · partner studio: LED stage, cameras, infrastructure</span><span class="ru">Гос. кинокомпания Индонезии · партнёрская студия: LED-экран, камеры, инфраструктура</span></div><span class="chip"><span class="en">Partner studio · signed</span><span class="ru">Студия-партнёр · подписано</span></span></div>
+      <div class="cell"><div class="pname">MNC · Vision+</div><div class="pdesc"><span class="en">The region's largest media holding · visionplus.id platform</span><span class="ru">Крупнейший медиахолдинг региона · платформа visionplus.id</span></div><span class="chip">MOU</span></div>
+      <div class="cell"><div class="pname">Emtek · Vidio</div><div class="pdesc"><span class="en">Indonesia's leading streaming service · vidio.com</span><span class="ru">Ведущий стриминг Индонезии · vidio.com</span></div><span class="chip"><span class="en">Content placement</span><span class="ru">Размещение контента</span></span></div>
+      <div class="cell"><div class="pname">Amadeus Cinemagma</div><div class="pdesc"><span class="en">Production partner · supplies for Netflix Asia · access to A-list actors</span><span class="ru">Продакшн-партнёр · поставки для Netflix Asia · доступ к актёрам класса A</span></div><span class="chip"><span class="en">MOU + contract</span><span class="ru">MOU + контракт</span></span></div>
+      <div class="cell"><div class="pname">E-Motion</div><div class="pdesc"><span class="en">Music, film, TV, digital</span><span class="ru">Музыка, кино, ТВ, digital</span></div><span class="chip">MOU</span></div>
+      <div class="cell"><div class="pname"><span class="en">Ministry of Tourism &amp; Creative Economy</span><span class="ru">Минтуризма и креативной экономики</span></div><div class="pdesc"><span class="en">Official support of Neyra initiatives (AI Film Awards Bali)</span><span class="ru">Официальная поддержка инициатив Neyra (AI Film Awards Bali)</span></div><span class="chip"><span class="en">Support</span><span class="ru">Поддержка</span></span></div>
+      <div class="cell"><div class="pname">KADIN Institute</div><div class="pdesc"><span class="en">Think tank of Indonesia's Chamber of Commerce · Kadin AI Academy</span><span class="ru">Think tank ТПП Индонезии · Kadin AI Academy</span></div><span class="chip"><span class="en">Strategic partnership</span><span class="ru">Стратегическое партнёрство</span></span></div>
+      <div class="cell"><div class="pname">LMN VFX</div><div class="pdesc"><span class="en">Post-production &amp; 3D partner studio · 120+ specialists, Jakarta</span><span class="ru">Партнёрская студия поста и 3D · 120+ специалистов, Джакарта</span></div><span class="chip"><span class="en">Partner</span><span class="ru">Партнёр</span></span></div>
+    </div>
+  </div>
+</section>
+
+<section id="team" style="padding-top:40px">
+  <div class="wrap">
+    <div class="rv" style="text-align:center">
+      <div class="eyebrow" style="display:inline-block"><span class="en">The people behind BRO</span><span class="ru">Кто делает «БРО»</span></div>
+    </div>
+    <div class="credits rv">
+      <div class="row">
+        <div class="role"><span class="en">Written &amp; directed by</span><span class="ru">Автор сценария и режиссёр</span></div>
+        <div class="name">Ara Arush</div>
+        <div class="note"><span class="en">Author of the completed 168-page screenplay and the film's visual world.</span><span class="ru">Автор готового сценария на 168 страниц и визуального мира фильма.</span></div>
+      </div>
+      <div class="row">
+        <div class="role"><span class="en">Executive producer</span><span class="ru">Исполнительный продюсер</span></div>
+        <div class="name"><span class="en">Alexander Andreianov</span><span class="ru">Александр Андреянов</span></div>
+        <div class="note"><span class="en">Almaty, Kazakhstan. Financing, partnerships and the production entity.</span><span class="ru">Алматы, Казахстан. Финансирование, партнёрства и производственная компания.</span></div>
+      </div>
+      <div class="row">
+        <div class="role"><span class="en">AI production</span><span class="ru">ИИ-производство</span></div>
+        <div class="name">Neyra Vision</div>
+        <div class="note"><span class="en">The pipeline behind every frame on this page — characters, action, environments.</span><span class="ru">Пайплайн, которым сделан каждый кадр этой страницы: персонажи, экшн, среды.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="teaser" style="padding-top:40px">
+  <div class="wrap rv">
+    <div class="eyebrow"><span class="en">Watch</span><span class="ru">Смотреть</span></div>
+    <h2><span class="en">The teaser — shot live in Indonesia</span><span class="ru">Тизер — снят вживую в Индонезии</span></h2>
+    <div class="vidwrap">
+      <iframe id="teaser-frame" src="https://www.youtube-nocookie.com/embed/n2V2EEB_0sk" title="BRO — teaser" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="vgrid">
+      <div class="vcard">
+        <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/7DbBNAX7wRo" title="RINDU — BRO original soundtrack" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="vlabel"><span class="en">«Rindu» · original soundtrack</span><span class="ru">«Rindu» · саундтрек фильма</span></div>
+      </div>
+      <div class="vcard">
+        <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/U_NjixyEhNw" title="BRO — making of the teaser" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="vlabel"><span class="en">Making of the teaser</span><span class="ru">Как снимали тизер</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact" style="padding-top:110px">
+  <div class="wrap rv">
+    <div class="eyebrow" style="display:inline-block"><span class="en">For investors &amp; producers</span><span class="ru">Инвесторам и продюсерам</span></div>
+    <h2><span class="en">The full package is ready to share</span><span class="ru">Полный пакет готов к показу</span></h2>
+    <p><span class="en">Screenplay, financial plan with three revenue scenarios, marketing plan and teaser — under NDA, on request.</span>
+    <span class="ru">Сценарий, финансовый план с тремя сценариями сборов, маркетинговый план и тизер — по запросу, под NDA.</span></p>
+    <a class="btn" href="mailto:CONTACT@REPLACE.ME?subject=BRO%20investor%20deck">
+      <span class="en">Request the investor deck</span><span class="ru">Запросить инвест-пакет</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 <span class="en">BRO Film. All rights reserved.</span><span class="ru">Фильм «БРО». Все права защищены.</span></div>
+    <p><span class="en">This page is an informational overview and does not constitute an offer of securities or an investment solicitation.</span>
+    <span class="ru">Страница носит информационный характер и не является офертой ценных бумаг или предложением инвестиций.</span></p>
+  </div>
+</footer>
+
+<script>
+function setLang(l){
+  document.body.classList.toggle('lang-ru', l==='ru');
+  document.documentElement.lang = l;
+  document.getElementById('btn-en').classList.toggle('on', l==='en');
+  document.getElementById('btn-ru').classList.toggle('on', l==='ru');
+  try{localStorage.setItem('bro-lang', l)}catch(e){}
+}
+try{
+  var saved = localStorage.getItem('bro-lang');
+  if(saved){ setLang(saved) }
+  else if((navigator.language||'').toLowerCase().startsWith('ru')){ setLang('ru') }
+}catch(e){}
+
+// solid bar after hero
+var bar=document.getElementById('bar');
+addEventListener('scroll',function(){bar.classList.toggle('solid',scrollY>innerHeight*.6)},{passive:true});
+
+// scroll reveal
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+</script>
 </body>
 </html>
