@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BRO — Feature Film</title>
 <meta name="description" content="BRO — an AI-produced adventure drama feature film by Ara Arush. A boy, a fighter and a rooster cross Indonesia. For investors and producers.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐓</text></svg>">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
   :root{
@@ -190,7 +191,7 @@
 </div>
 
 <header class="hero">
-  <div class="bg"><img src="assets/hero_night.jpg" alt="Ahmed on a black motorbike at night in Jakarta; the rooster Bro rides in a cage behind him" fetchpriority="high"></div>
+  <div class="bg"><img src="/assets/hero_night.jpg" alt="Ahmed on a black motorbike at night in Jakarta; the rooster Bro rides in a cage behind him" fetchpriority="high"></div>
   <div class="scrim"></div>
   <div class="inner">
     <div class="kicker"><span class="en">An AI-produced feature film</span><span class="ru">Полнометражный фильм ИИ-производства</span></div>
@@ -217,25 +218,32 @@
   </div>
 </section>
 
-<section id="teaser" style="padding-top:0">
-  <div class="wrap rv">
-    <div class="eyebrow"><span class="en">Watch</span><span class="ru">Смотреть</span></div>
-    <h2><span class="en">The teaser</span><span class="ru">Тизер</span></h2>
-    <div class="vtabs" role="group" aria-label="Teaser language">
-      <button type="button" id="vt-en" class="on" onclick="setTeaser('en')">English</button>
-      <button type="button" id="vt-ru" onclick="setTeaser('ru')">Русский</button>
+<section id="pipeline" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow"><span class="en">How the film is made</span><span class="ru">Как делается фильм</span></div>
+      <h2><span class="en">Live action meets the neural studio</span><span class="ru">Живые съёмки встречают нейростудию</span></h2>
+      <p><span class="en">BRO is a hybrid: the creative studio develops and shoots live material, the neural studio scales it into a full-length feature. The teaser was shot live in Indonesia — every AI frame on this page holds that bar.</span>
+      <span class="ru">«БРО» — гибрид: креативная студия разрабатывает и снимает живой материал, нейростудия масштабирует его в полный метр. Тизер снят вживую в Индонезии — и каждый AI-кадр на этой странице держит эту планку.</span></p>
     </div>
-    <div class="vidwrap">
-      <iframe id="teaser-frame" src="https://www.youtube-nocookie.com/embed/n2V2EEB_0sk" title="BRO — teaser" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <div class="vgrid">
-      <div class="vcard">
-        <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/7DbBNAX7wRo" title="RINDU — BRO original soundtrack" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vlabel"><span class="en">«Rindu» · original soundtrack</span><span class="ru">«Rindu» · саундтрек фильма</span></div>
+    <div class="ppl rv">
+      <div class="pstep">
+        <img src="/assets/locker_wraps.jpg" alt="Live-action frame from the teaser shoot: Ahmed wrapping his fists in the locker room" loading="lazy">
+        <div class="pnum">01</div>
+        <div class="ptitle">Colibri Studio</div>
+        <div class="ptext"><span class="en">Creative development &amp; pre-production: screenplay, 346 storyboards, casting, live-action shoots.</span><span class="ru">Креативная разработка и препродакшн: сценарий, 346 раскадровок, кастинг, живые съёмки.</span></div>
       </div>
-      <div class="vcard">
-        <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/U_NjixyEhNw" title="BRO — making of the teaser" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
-        <div class="vlabel"><span class="en">Making of the teaser</span><span class="ru">Как снимали тизер</span></div>
+      <div class="pstep">
+        <img src="/assets/ahmed_sheet.jpg" alt="Character model sheet: consistent turnaround of Ahmed for the AI pipeline" loading="lazy">
+        <div class="pnum">02</div>
+        <div class="ptitle"><span class="en">Neyra neural studio</span><span class="ru">Нейростудия Neyra</span></div>
+        <div class="ptext"><span class="en">AI production: consistent characters, worlds and action at feature scale — from the live material.</span><span class="ru">AI-продакшн: консистентные персонажи, миры и экшн в масштабе полного метра — на основе живого материала.</span></div>
+      </div>
+      <div class="pstep">
+        <img src="/assets/night_ride.jpg" alt="Finished cinematic frame: night chase through neon streets" loading="lazy">
+        <div class="pnum">03</div>
+        <div class="ptitle"><span class="en">Post &amp; master</span><span class="ru">Пост и мастер</span></div>
+        <div class="ptext"><span class="en">Live orchestral score, sound design, color — a theatrical master for festivals and platforms.</span><span class="ru">Живой оркестр, звуковой дизайн, цвет — кинотеатральный мастер для фестивалей и платформ.</span></div>
       </div>
     </div>
   </div>
@@ -243,7 +251,7 @@
 
 <section class="still" style="padding-top:0">
   <figure class="frame rv">
-    <img src="assets/jakarta_day.jpg" alt="Ahmed's black motorbike with Bro's cage crossing a rainy Jakarta avenue among cars, scooters and tuk-tuks" loading="lazy">
+    <img src="/assets/jakarta_day.jpg" alt="Ahmed's black motorbike with Bro's cage crossing a rainy Jakarta avenue among cars, scooters and tuk-tuks" loading="lazy">
     <figcaption class="cap"><span><span class="en">Jakarta. The run begins.</span><span class="ru">Джакарта. Начало побега.</span></span></figcaption>
   </figure>
 </section>
@@ -259,7 +267,7 @@
       <span class="ru">Под погоней — фильм против жестокости. Ребёнок не принимает мир боёв — и заставляет взрослых его увидеть.</span></p>
     </div>
     <figure class="photo rv">
-      <img src="assets/night_ride.jpg" alt="Night ride through neon-lit streets: Ahmed and Bro's cage on the back of the motorbike, motion blur" loading="lazy">
+      <img src="/assets/night_ride.jpg" alt="Night ride through neon-lit streets: Ahmed and Bro's cage on the back of the motorbike, motion blur" loading="lazy">
       <figcaption class="pcap"><span class="en">Frame · night chase</span><span class="ru">Кадр · ночная погоня</span></figcaption>
     </figure>
   </div>
@@ -267,7 +275,7 @@
 
 <section class="still">
   <figure class="frame rv">
-    <img src="assets/locker_prayer.jpg" alt="Ahmed in a worn locker room, hands folded in prayer before the fight, sunlight through the windows" loading="lazy">
+    <img src="/assets/locker_prayer.jpg" alt="Ahmed in a worn locker room, hands folded in prayer before the fight, sunlight through the windows" loading="lazy">
     <figcaption class="cap"><span><span class="en">Scene one. A prayer before the fight.</span><span class="ru">Первая сцена. Молитва перед боем.</span></span></figcaption>
   </figure>
 </section>
@@ -275,7 +283,7 @@
 <section id="why">
   <div class="wrap cols">
     <figure class="photo rv">
-      <img src="assets/ahmed_sheet.jpg" alt="Character model sheet of Ahmed: consistent turnaround views with and without helmet" loading="lazy">
+      <img src="/assets/ahmed_sheet.jpg" alt="Character model sheet of Ahmed: consistent turnaround views with and without helmet" loading="lazy">
       <figcaption class="pcap"><span class="en">Character model sheet · pipeline consistency</span><span class="ru">Модель-щит персонажа · консистентность пайплайна</span></figcaption>
     </figure>
     <div class="text rv">
@@ -317,7 +325,7 @@
 
 <section class="still" style="padding-top:0">
   <figure class="frame rv">
-    <img src="assets/locker_wraps.jpg" alt="Ahmed kneeling in the locker room, wrapping his fists with rope before an underground fight" loading="lazy">
+    <img src="/assets/locker_wraps.jpg" alt="Ahmed kneeling in the locker room, wrapping his fists with rope before an underground fight" loading="lazy">
     <figcaption class="cap"><span><span class="en">Rope instead of gloves. The underground ring of Jakarta.</span><span class="ru">Верёвки вместо перчаток. Подпольный ринг Джакарты.</span></span></figcaption>
   </figure>
 </section>
@@ -368,7 +376,27 @@
   </div>
 </section>
 
-<section class="cta" id="contact">
+<section id="teaser" style="padding-top:40px">
+  <div class="wrap rv">
+    <div class="eyebrow"><span class="en">Watch</span><span class="ru">Смотреть</span></div>
+    <h2><span class="en">The teaser — shot live in Indonesia</span><span class="ru">Тизер — снят вживую в Индонезии</span></h2>
+    <div class="vidwrap">
+      <iframe id="teaser-frame" src="https://www.youtube-nocookie.com/embed/n2V2EEB_0sk" title="BRO — teaser" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="vgrid">
+      <div class="vcard">
+        <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/7DbBNAX7wRo" title="RINDU — BRO original soundtrack" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="vlabel"><span class="en">«Rindu» · original soundtrack</span><span class="ru">«Rindu» · саундтрек фильма</span></div>
+      </div>
+      <div class="vcard">
+        <div class="vidwrap"><iframe src="https://www.youtube-nocookie.com/embed/U_NjixyEhNw" title="BRO — making of the teaser" loading="lazy" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe></div>
+        <div class="vlabel"><span class="en">Making of the teaser</span><span class="ru">Как снимали тизер</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact" style="padding-top:110px">
   <div class="wrap rv">
     <div class="eyebrow" style="display:inline-block"><span class="en">For investors &amp; producers</span><span class="ru">Инвесторам и продюсерам</span></div>
     <h2><span class="en">The full package is ready to share</span><span class="ru">Полный пакет готов к показу</span></h2>
@@ -401,15 +429,6 @@ try{
   if(saved){ setLang(saved) }
   else if((navigator.language||'').toLowerCase().startsWith('ru')){ setLang('ru') }
 }catch(e){}
-
-// teaser language
-var TEASERS={en:"https://www.youtube-nocookie.com/embed/n2V2EEB_0sk",ru:"https://www.youtube-nocookie.com/embed/rwoyjHGbBDk"};
-function setTeaser(l){
-  document.getElementById('teaser-frame').src=TEASERS[l];
-  document.getElementById('vt-en').classList.toggle('on',l==='en');
-  document.getElementById('vt-ru').classList.toggle('on',l==='ru');
-}
-if(document.body.classList.contains('lang-ru')){setTeaser('ru')}
 
 // solid bar after hero
 var bar=document.getElementById('bar');
