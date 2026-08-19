@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRO — Feature Film</title>
+<meta name="description" content="BRO — an AI-produced adventure drama feature film. A boy, a fighter and a rooster cross Indonesia. For investors and producers.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink-950:#0a0c10; --ink-900:#12151c; --ink-800:#1a1e27;
+    --line:#262b36;
+    --paper:#ede8df; --mute:#8b93a1;
+    --red:#e5453c; --red-dim:#b5362f;
+    --disp:"Oswald","Arial Narrow",sans-serif;
+    --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+  body{background:var(--ink-950);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* language toggle: body.ru shows .ru, hides .en */
+  .ru{display:none}
+  body.lang-ru .ru{display:revert}
+  body.lang-ru .en{display:none}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* top bar */
+  .bar{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;
+    padding:14px 24px;background:rgba(10,12,16,.78);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(38,43,54,.5)}
+  .bar .brand{font-family:var(--disp);font-weight:600;letter-spacing:.28em;font-size:15px}
+  .bar .brand b{color:var(--red)}
+  .langs{display:flex;gap:2px;border:1px solid var(--line);border-radius:3px;overflow:hidden;background:rgba(10,12,16,.6)}
+  .langs button{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--mute);background:none;border:0;padding:6px 12px;cursor:pointer}
+  .langs button.on{color:var(--ink-950);background:var(--paper)}
+  .langs button:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
+
+  /* hero */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:-2}
+  .hero .scrim{position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(10,12,16,.25) 0%,rgba(10,12,16,.05) 40%,rgba(10,12,16,.88) 82%,var(--ink-950) 100%)}
+  .hero .inner{width:100%;max-width:1080px;margin:0 auto;padding:0 24px 64px}
+  .kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--red)}
+  h1{font-family:var(--disp);font-weight:600;font-size:clamp(84px,17vw,210px);line-height:.92;letter-spacing:.02em;margin:6px 0 18px}
+  .logline{max-width:36em;font-size:clamp(17px,2.2vw,21px);color:var(--paper)}
+  .hero .meta{margin-top:22px;font-family:var(--mono);font-size:13px;color:var(--mute);letter-spacing:.06em}
+
+  /* sections */
+  section{padding:88px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+  h2{font-family:var(--disp);font-weight:500;font-size:clamp(30px,4.5vw,46px);line-height:1.08;letter-spacing:.015em;text-wrap:balance;margin-bottom:22px}
+  p{max-width:62ch}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .cols .text p+p{margin-top:14px}
+  .frame{border:1px solid var(--line);padding:10px;background:var(--ink-900)}
+  .frame figcaption{font-family:var(--mono);font-size:12px;color:var(--mute);padding:10px 4px 2px;letter-spacing:.05em}
+  @media (max-width:820px){.cols{grid-template-columns:1fr;gap:36px}}
+
+  /* facts strip */
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .fact{background:var(--ink-900);padding:26px 22px}
+  .fact .n{font-family:var(--disp);font-weight:600;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+  .fact .n small{font-size:22px;letter-spacing:.04em}
+  .fact .l{margin-top:8px;font-family:var(--mono);font-size:12.5px;color:var(--mute);letter-spacing:.05em}
+  @media (max-width:820px){.facts{grid-template-columns:1fr 1fr}}
+
+  ul.clean{list-style:none;max-width:62ch}
+  ul.clean li{padding:14px 0;border-bottom:1px solid var(--line)}
+  ul.clean li:first-child{border-top:1px solid var(--line)}
+  ul.clean b{font-weight:600}
+  ul.clean .sub{color:var(--mute);font-size:15px}
+
+  /* team */
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:none}
+  .member h3{font-family:var(--disp);font-weight:500;font-size:22px;letter-spacing:.02em}
+  .member .role{font-family:var(--mono);font-size:12.5px;color:var(--red);letter-spacing:.08em;text-transform:uppercase;margin:4px 0 8px}
+  .member p{font-size:15px;color:var(--mute)}
+  @media (max-width:820px){.team{grid-template-columns:1fr}}
+
+  /* CTA */
+  .cta{padding:110px 0;text-align:left}
+  .btn{display:inline-block;margin-top:26px;font-family:var(--mono);font-size:14px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-950);background:var(--red);padding:16px 30px;text-decoration:none;border-radius:2px}
+  .btn:hover{background:var(--red-dim);color:var(--paper)}
+  .btn:focus-visible{outline:2px solid var(--paper);outline-offset:3px}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 46px;font-size:13px;color:var(--mute)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:10px 40px;justify-content:space-between}
+  footer p{max-width:56ch}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="brand">B<b>R</b>O <span class="en">— FEATURE FILM</span><span class="ru">— ПОЛНЫЙ МЕТР</span></div>
+  <div class="langs" role="group" aria-label="Language">
+    <button type="button" id="btn-en" class="on" onclick="setLang('en')">EN</button>
+    <button type="button" id="btn-ru" onclick="setLang('ru')">RU</button>
+  </div>
+</div>
+
+<header class="hero">
+  <img src="assets/hero_night.jpg" alt="Ahmed on a black motorbike at night, Jakarta; the rooster Bro rides in a cage behind him">
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="kicker"><span class="en">AI-produced adventure drama · Kazakhstan / Indonesia</span><span class="ru">Приключенческая драма ИИ-производства · Казахстан / Индонезия</span></div>
+    <h1>BRO</h1>
+    <p class="logline">
+      <span class="en">A ten-year-old orphan escapes a Jakarta orphanage with his pet rooster to find the mother he remembers only by her scent. A chance meeting with a young street fighter turns their run across Indonesia into a story about brotherhood beyond blood.</span>
+      <span class="ru">Десятилетний сирота сбегает из джакартского интерната с ручным петухом, чтобы найти маму, которую помнит только по запаху. Случайная встреча с молодым уличным бойцом превращает их путь через Индонезию в историю о братстве не по крови.</span>
+    </p>
+    <div class="meta">
+      <span class="en">Written &amp; directed by Ara Arush · 13+ · 75+ min</span>
+      <span class="ru">Автор сценария и режиссёр — Ара Аруш · 13+ · от 75 мин</span>
+    </div>
+  </div>
+</header>
+
+<section id="story">
+  <div class="wrap cols">
+    <div class="text">
+      <div class="eyebrow"><span class="en">The story</span><span class="ru">История</span></div>
+      <h2><span class="en">Two orphans. One rooster. All of Indonesia against them.</span><span class="ru">Два сироты. Один петух. Против них — вся Индонезия.</span></h2>
+      <p><span class="en">Nyoman hatched the rooster Bro himself, from an egg stolen out of the orphanage canteen. Ahmed, a street fighter raised by the port, owes a mob boss a champion bird — and Bro is its spitting image. One rigged fight later, the boys are running from Jakarta to Bali with a stolen hardware wallet, hunted by the syndicate of Miss Tonako.</span>
+      <span class="ru">Ньоман сам высидел петуха Бро из яйца, украденного в интернатской столовой. Ахмед, уличный боец из порта, должен боссу мафии бойцового петуха — и Бро похож на него как две капли воды. Одна подмена на боях — и мальчики бегут из Джакарты на Бали с украденным аппаратным кошельком, а по их следу идут люди мисс Тонако.</span></p>
+      <p><span class="en">Underneath the chase: a film against cruelty. A child who refuses to accept the world of fights — and makes the adults see it.</span>
+      <span class="ru">Под погоней — фильм против жестокости. Ребёнок не принимает мир боёв — и заставляет взрослых его увидеть.</span></p>
+    </div>
+    <figure class="frame">
+      <img src="assets/jakarta_day.jpg" alt="Daytime Jakarta traffic: Ahmed's motorbike with Bro's cage weaving between cars and tuk-tuks" loading="lazy">
+      <figcaption><span class="en">Concept frame — Jakarta, day. Produced with the film's AI pipeline.</span><span class="ru">Концепт-кадр — Джакарта, день. Сделан ИИ-пайплайном фильма.</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap cols">
+    <figure class="frame">
+      <img src="assets/ahmed_sheet.jpg" alt="Character model sheet of Ahmed: consistent turnaround views with and without helmet" loading="lazy">
+      <figcaption><span class="en">Character model sheet — consistency across shots is solved at pipeline level.</span><span class="ru">Модель-щит персонажа — консистентность между кадрами решена на уровне пайплайна.</span></figcaption>
+    </figure>
+    <div class="text">
+      <div class="eyebrow"><span class="en">Why now</span><span class="ru">Почему сейчас</span></div>
+      <h2><span class="en">A $6M film, produced for $2M</span><span class="ru">Фильм на $6 млн — производством за $2 млн</span></h2>
+      <p><span class="en">BRO was fully developed for conventional production: the same script, storyboards and creative team were budgeted at over $6,000,000 under a studio model. AI production brings the total project cost to $2,000,000 — with live actors for voice and reference, and an orchestral score recorded live.</span>
+      <span class="ru">«БРО» полностью разработан под классическое производство: тот же сценарий, раскадровки и творческая группа стоили бы больше $6 000 000 в студийной модели. ИИ-производство сводит полную стоимость проекта к $2 000 000 — с живыми актёрами (голос и референсы) и живой оркестровой записью музыки.</span></p>
+      <p><span class="en">Every frame you see on this page was produced with the film's own pipeline.</span>
+      <span class="ru">Каждый кадр на этой странице сделан собственным пайплайном фильма.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="facts">
+  <div class="wrap">
+    <div class="eyebrow"><span class="en">Production-ready</span><span class="ru">Готовность к производству</span></div>
+    <h2><span class="en">Not a pitch — a package</span><span class="ru">Не идея — готовый пакет</span></h2>
+    <div class="facts">
+      <div class="fact"><div class="n">168</div><div class="l"><span class="en">pages — completed screenplay</span><span class="ru">страниц — готовый сценарий</span></div></div>
+      <div class="fact"><div class="n">346</div><div class="l"><span class="en">storyboard pages</span><span class="ru">листов раскадровок</span></div></div>
+      <div class="fact"><div class="n">$2<small>M</small></div><div class="l"><span class="en">total project cost</span><span class="ru">полная стоимость проекта</span></div></div>
+      <div class="fact"><div class="n">3×</div><div class="l"><span class="en">cheaper than the conventional budget</span><span class="ru">дешевле классической сметы</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="market">
+  <div class="wrap">
+    <div class="eyebrow"><span class="en">Distribution</span><span class="ru">Дистрибуция</span></div>
+    <h2><span class="en">Release in waves, markets that already answered</span><span class="ru">Релиз волнами — по рынкам, которые уже ответили</span></h2>
+    <ul class="clean">
+      <li><b><span class="en">Kazakhstan &amp; Central Asia</span><span class="ru">Казахстан и Центральная Азия</span></b><div class="sub"><span class="en">Home market premiere; produced in Kazakhstan.</span><span class="ru">Домашняя премьера; производство в Казахстане.</span></div></li>
+      <li><b><span class="en">Indonesia &amp; Southeast Asia</span><span class="ru">Индонезия и Юго-Восточная Азия</span></b><div class="sub"><span class="en">The film's setting; an active cinema audience of ~150M and a fast-growing OTT market.</span><span class="ru">Место действия фильма; активная киноаудитория ~150 млн и быстрорастущий OTT-рынок.</span></div></li>
+      <li><b><span class="en">Russia &amp; CIS</span><span class="ru">Россия и СНГ</span></b><div class="sub"><span class="en">Letter of intent from a major CIS distributor (theatrical, TV and digital rights).</span><span class="ru">Письмо о намерениях от крупного дистрибьютора СНГ (кинотеатральные, ТВ- и цифровые права).</span></div></li>
+      <li><b><span class="en">International, TV &amp; streaming</span><span class="ru">Международный прокат, ТВ и стриминг</span></b><div class="sub"><span class="en">Festival premiere strategy; co-production and OTT interest from India.</span><span class="ru">Фестивальная стратегия премьеры; интерес к ко-продакшну и OTT из Индии.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="eyebrow"><span class="en">Team</span><span class="ru">Команда</span></div>
+    <h2><span class="en">The people behind BRO</span><span class="ru">Кто делает «БРО»</span></h2>
+    <div class="team">
+      <div class="member">
+        <h3>Ara Arush</h3>
+        <div class="role"><span class="en">Writer · Director</span><span class="ru">Автор сценария · Режиссёр</span></div>
+        <p><span class="en">Author of the completed 168-page screenplay and the film's visual world.</span><span class="ru">Автор готового сценария на 168 страниц и визуального мира фильма.</span></p>
+      </div>
+      <div class="member">
+        <h3><span class="en">Alexander Andreianov</span><span class="ru">Александр Андреянов</span></h3>
+        <div class="role"><span class="en">Executive Producer</span><span class="ru">Исполнительный продюсер</span></div>
+        <p><span class="en">Almaty, Kazakhstan. Leads financing, partnerships and the production entity.</span><span class="ru">Алматы, Казахстан. Финансирование, партнёрства и производственная компания.</span></p>
+      </div>
+      <div class="member">
+        <h3>Neyra Vision</h3>
+        <div class="role"><span class="en">AI Production Studio</span><span class="ru">Студия ИИ-производства</span></div>
+        <p><span class="en">The pipeline behind every frame on this page — characters, action, environments.</span><span class="ru">Пайплайн, которым сделан каждый кадр этой страницы: персонажи, экшн, среды.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="eyebrow"><span class="en">For investors &amp; producers</span><span class="ru">Инвесторам и продюсерам</span></div>
+    <h2><span class="en">The full package is ready to share</span><span class="ru">Полный пакет готов к показу</span></h2>
+    <p><span class="en">Screenplay, financial plan with three revenue scenarios, marketing plan and teaser — under NDA, on request.</span>
+    <span class="ru">Сценарий, финансовый план с тремя сценариями сборов, маркетинговый план и тизер — по запросу, под NDA.</span></p>
+    <a class="btn" href="mailto:CONTACT@REPLACE.ME?subject=BRO%20investor%20deck">
+      <span class="en">Request the investor deck</span><span class="ru">Запросить инвест-пакет</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 <span class="en">BRO Film. All rights reserved.</span><span class="ru">Фильм «БРО». Все права защищены.</span></div>
+    <p><span class="en">This page is an informational overview and does not constitute an offer of securities or an investment solicitation.</span>
+    <span class="ru">Страница носит информационный характер и не является офертой ценных бумаг или предложением инвестиций.</span></p>
+  </div>
+</footer>
+
+<script>
+function setLang(l){
+  document.body.classList.toggle('lang-ru', l==='ru');
+  document.documentElement.lang = l;
+  document.getElementById('btn-en').classList.toggle('on', l==='en');
+  document.getElementById('btn-ru').classList.toggle('on', l==='ru');
+  try{localStorage.setItem('bro-lang', l)}catch(e){}
+}
+try{
+  var saved = localStorage.getItem('bro-lang');
+  if(saved){ setLang(saved) }
+  else if((navigator.language||'').toLowerCase().startsWith('ru')){ setLang('ru') }
+}catch(e){}
+</script>
+</body>
+</html>
