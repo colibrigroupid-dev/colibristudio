@@ -180,3 +180,17 @@
 .lead textarea{min-height:120px;resize:vertical}
 .lead .btn{border:0;cursor:pointer;width:100%;margin-top:6px}
 @media (max-width:640px){.lead{grid-template-columns:1fr}}
+
+/* ===== character dossier ===== */
+.char-hero{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--ink-2)}
+.char-hero img{width:100%;display:block;aspect-ratio:21/9;object-fit:cover}
+@media (max-width:700px){.char-hero img{aspect-ratio:9/16}}
+.char-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:56px;margin-top:44px;align-items:start}
+@media (max-width:860px){.char-grid{grid-template-columns:1fr;gap:32px}}
+.dossier{border-top:1px solid var(--line)}
+.dossier .drow{display:grid;grid-template-columns:130px 1fr;gap:14px;padding:13px 0;border-bottom:1px solid var(--line)}
+.dossier .dk{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding-top:3px}
+.dossier .dv{font-size:15px;color:#d9d4c8}
+.char-text h3{font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);margin:22px 0 10px}
+.char-text h3:first-child{margin-top:0}
+.char-text p{font-size:16px;color:#cfc9bd;max-width:58ch}
