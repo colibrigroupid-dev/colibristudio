@@ -193,6 +193,41 @@ export default function BroPage() {
               </div>
             </div>
           </div>
+          <div className="case rv">
+            <div className="cstep">
+              <img src="/assets/neyra_case_casting.jpg" alt="Step 1: photoreal casting portrait of Ahmed" loading="lazy" />
+              <div className="cnum">01 · CASTING</div>
+              <div className="clabel"><T en="Casting portrait" ru="Кастинг-портрет" /></div>
+              <div className="cdesc">
+                <T
+                  en="The character is born: identity, wardrobe, look — fixed in a studio-grade portrait."
+                  ru="Рождение персонажа: личность, костюм, образ — зафиксированы в студийном портрете."
+                />
+              </div>
+            </div>
+            <div className="cstep">
+              <img src="/assets/neyra_case_canon.jpg" alt="Step 2: canonical character portrait in the film's color grade" loading="lazy" />
+              <div className="cnum">02 · CANON</div>
+              <div className="clabel"><T en="Canonical image" ru="Канонический образ" /></div>
+              <div className="cdesc">
+                <T
+                  en="The same person, moved into the film's world and color grade — the reference for every future frame."
+                  ru="Тот же человек — перенесён в мир и грейд фильма. Эталон для всех будущих кадров."
+                />
+              </div>
+            </div>
+            <div className="cstep">
+              <img src="/assets/neyra_case_film.jpg" alt="Step 3: finished cinematic frame with the same character" loading="lazy" />
+              <div className="cnum">03 · FRAME</div>
+              <div className="clabel"><T en="Film frame" ru="Кадр фильма" /></div>
+              <div className="cdesc">
+                <T
+                  en="Any scene, any format — the face, wardrobe and grade stay identical. This is the Neyra pipeline at work."
+                  ru="Любая сцена, любой формат — лицо, костюм и грейд неизменны. Так работает пайплайн Нейростудии."
+                />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -620,7 +655,7 @@ export default function BroPage() {
             <iframe
               src={
                 lang === 'ru'
-                  ? 'https://www.youtube-nocookie.com/embed/rwoyjHGbBDk'
+                  ? 'https://www.youtube-nocookie.com/embed/0VcsuVsog7k'
                   : 'https://www.youtube-nocookie.com/embed/n2V2EEB_0sk'
               }
               title="BRO — teaser"
@@ -647,7 +682,7 @@ export default function BroPage() {
             <div className="vcard">
               <div className="vidwrap">
                 <iframe
-                  src="https://www.youtube-nocookie.com/embed/U_NjixyEhNw"
+                  src="https://www.youtube-nocookie.com/embed/Xo1PFNq5MDg"
                   title="BRO — making of the teaser"
                   loading="lazy"
                   allow="encrypted-media; picture-in-picture"
