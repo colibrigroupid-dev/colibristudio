@@ -160,8 +160,8 @@ export default function BroPage() {
             </div>
             <div className="pstep">
               <img
-                src="/assets/ahmed_sheet.jpg"
-                alt="Character model sheet: consistent turnaround of Ahmed for the AI pipeline"
+                src="/assets/ahmed_casting_sheet.jpg"
+                alt="Casting reference set: eight consistent views of Ahmed for the AI pipeline"
                 loading="lazy"
               />
               <div className="pnum">02</div>
@@ -363,16 +363,53 @@ export default function BroPage() {
         </div>
       </section>
 
+      <section id="cast" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="char-mini rv">
+            <figure className="char-hero">
+              <picture>
+                <source media="(max-width:700px)" srcSet="/assets/nyoman_hero_916.jpg" />
+                <img src="/assets/nyoman_hero_219.jpg" alt="Nyoman — a 10-year-old orphan holding the black rooster Bro" loading="lazy" />
+              </picture>
+            </figure>
+            <div className="mrow">
+              <div className="mname">
+                <T en="Nyoman" ru="Ньоман" />
+              </div>
+              <div className="mdrive">
+                <T en="Save Bro and find his mother" ru="Спасти Бро и найти маму" />
+              </div>
+            </div>
+          </div>
+          <div className="char-mini rv">
+            <figure className="char-hero">
+              <picture>
+                <source media="(max-width:700px)" srcSet="/assets/tonako_hero_916.jpg" />
+                <img src="/assets/tonako_hero_219.jpg" alt="Miss Tonako — crime boss of the underground casino" loading="lazy" />
+              </picture>
+            </figure>
+            <div className="mrow">
+              <div className="mname">
+                <T en="Miss Tonako" ru="Мисс Тонако" />
+              </div>
+              <div className="mdrive">
+                <T en="Power and enormous money" ru="Власть и огромные деньги" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="why">
         <div className="wrap cols">
           <figure className="photo rv">
             <img
-              src="/assets/ahmed_sheet.jpg"
-              alt="Character model sheet of Ahmed: consistent turnaround views with and without helmet"
+              src="/assets/ahmed_casting_sheet.jpg"
+              alt="Casting reference set of Ahmed: eight consistent studio views for the AI pipeline"
               loading="lazy"
             />
             <figcaption className="pcap">
-              <T en="Character model sheet · pipeline consistency" ru="Модель-щит персонажа · консистентность пайплайна" />
+              <T en="Casting reference set · pipeline consistency" ru="Кастинговая фиксация образа · консистентность пайплайна" />
             </figcaption>
           </figure>
           <div className="text rv">
