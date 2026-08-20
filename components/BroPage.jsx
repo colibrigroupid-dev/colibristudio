@@ -264,6 +264,70 @@ export default function BroPage() {
         </figure>
       </section>
 
+      <section id="ahmed" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="rv">
+            <div className="eyebrow">
+              <T en="The characters" ru="Персонажи" />
+            </div>
+            <h2>
+              <T en="Ahmed. The fighter who never strikes first" ru="Ахмед. Боец, который не бьёт первым" />
+            </h2>
+          </div>
+          <figure className="char-hero rv">
+            <picture>
+              <source media="(max-width:700px)" srcSet="/assets/ahmed_hero_916.jpg" />
+              <img src="/assets/ahmed_hero_219.jpg" alt="Ahmed — character portrait" loading="lazy" />
+            </picture>
+          </figure>
+          <div className="char-grid rv">
+            <div className="dossier">
+              <div className="drow">
+                <div className="dk"><T en="Age" ru="Возраст" /></div>
+                <div className="dv">18</div>
+              </div>
+              <div className="drow">
+                <div className="dk"><T en="From" ru="Откуда" /></div>
+                <div className="dv"><T en="Jakarta, Indonesia" ru="Джакарта, Индонезия" /></div>
+              </div>
+              <div className="drow">
+                <div className="dk"><T en="Occupation" ru="Род занятий" /></div>
+                <div className="dv">
+                  <T en="Street fighter (pencak silat). Earns his living in underground no-rules fights." ru="Уличный боец (пенчак-силат). Зарабатывает подпольными боями без правил." />
+                </div>
+              </div>
+              <div className="drow">
+                <div className="dk"><T en="Role" ru="Роль" /></div>
+                <div className="dv"><T en="Lead character, narrator of the story" ru="Главный герой, рассказчик истории" /></div>
+              </div>
+            </div>
+            <div className="char-text">
+              <h3><T en="Character" ru="Характер" /></h3>
+              <p>
+                <T
+                  en="Cocky on the outside, faithful on the inside. He combines daily prayer with street life and keeps one rule: “I never strike first.” True to his word, quick-witted, fast to decide. He lives by the law of the street — but his road leads to his mentor's words: “To serve the Almighty is to help His creations.”"
+                  ru="Дерзкий снаружи, верующий внутри. Совмещает намаз с уличной жизнью и держит своё правило: «Я никогда не бью первым». Верен слову, ироничен, быстро принимает решения. Живёт по законам улицы, но путь его — к словам наставника: «Служить Всевышнему — значит помогать его творениям»."
+                />
+              </p>
+              <h3><T en="Backstory" ru="Предыстория" /></h3>
+              <p>
+                <T
+                  en="An orphan raised by the streets of Jakarta. Shelter, food and family came from his mentor Abu — a pencak silat master. Ahmed promised Abu never to fight, but breaks the promise to earn a living. He has lost Shiva — a fighting rooster that belongs to a mob boss — and now must return it before the tournament at any cost."
+                  ru="Сирота, вырос на улицах Джакарты. Кров, еду и семью ему заменил наставник Абу — мастер пенчак-силата. Ахмед обещал Абу не драться, но нарушает обещание ради заработка. Потерял бойцового петуха Шиву, принадлежащего боссу мафии, — и теперь должен вернуть его к турниру любой ценой."
+                />
+              </p>
+              <h3><T en="Goal" ru="Цель" /></h3>
+              <p>
+                <T
+                  en="Repay the debt and survive. Reach Bali and keep the promise he gave Nyoman — to find his mother. And one dream: to become an actor and a world Asian movie star. “Just like Bruce Lee.”"
+                  ru="Вернуть долг и выжить. Добраться до Бали и сдержать обещание, данное Ньоману, — найти его маму. И мечта — стать актёром и мировой азиатской кинозвездой. «Прямо как Брюс Ли»."
+                />
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="why">
         <div className="wrap cols">
           <figure className="photo rv">
@@ -653,7 +717,16 @@ export default function BroPage() {
       <footer>
         <div className="wrap">
           <div>
-            © 2026 <T en="BRO Film. All rights reserved." ru="Фильм «БРО». Все права защищены." />
+            © 2026 <T en="BRO Film · Colibri Studio" ru="Фильм «БРО» · Colibri Studio" />
+            <div style={{ marginTop: 10, fontFamily: 'var(--mono)', fontSize: 12.5, letterSpacing: '.08em' }}>
+              <a href="https://www.instagram.com/colibristudio.ai/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'var(--paper)' }}>
+                Instagram
+              </a>
+              <span style={{ color: 'var(--red)', margin: '0 10px' }}>/</span>
+              <a href="https://www.youtube.com/@colibri_indonesia" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'var(--paper)' }}>
+                YouTube
+              </a>
+            </div>
           </div>
           <p>
             <T
