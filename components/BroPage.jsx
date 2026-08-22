@@ -228,6 +228,52 @@ export default function BroPage() {
               </div>
             </div>
           </div>
+          <div className="rv" style={{ marginTop: 84 }}>
+            <div className="eyebrow">
+              <T en="Storyboard → film" ru="Раскадровка → фильм" />
+            </div>
+            <h2>
+              <T en="From hand-drawn sketch to a finished frame" ru="Из рисованного скетча — в готовый кадр" />
+            </h2>
+            <p>
+              <T
+                en="The action scenes of BRO exist as 346 hand-drawn storyboards — the teaser shows them as animatics. The pipeline turns each sketch into a finished photoreal frame with the same characters, the same bike, the same grade."
+                ru="Экшн-сцены «БРО» отрисованы в 346 раскадровках — в тизере они показаны аниматиком. Пайплайн превращает каждый скетч в готовый фотореалистичный кадр: те же герои, тот же байк, тот же грейд."
+              />
+            </p>
+          </div>
+          <div className="s2f rv">
+            <div className="pair">
+              <div className="pframe">
+                <img src="/assets/s2f_sketch_kick.jpg" alt="Hand-drawn storyboard: Ahmed's flying split kick in the casino hall" loading="lazy" />
+                <div className="ptag">
+                  <T en="Storyboard · hand-drawn" ru="Раскадровка · рисунок" />
+                </div>
+              </div>
+              <div className="parrow" aria-hidden="true">→</div>
+              <div className="pframe film">
+                <img src="/assets/s2f_film_kick.jpg" alt="The same shot as a finished photoreal film frame" loading="lazy" />
+                <div className="ptag">
+                  <T en="Finished frame · Neyra pipeline" ru="Готовый кадр · пайплайн Нейры" />
+                </div>
+              </div>
+            </div>
+            <div className="pair">
+              <div className="pframe">
+                <img src="/assets/s2f_sketch_chase.jpg" alt="Hand-drawn storyboard: Nyoman with the rooster on the back of the bike during the night chase" loading="lazy" />
+                <div className="ptag">
+                  <T en="Storyboard · hand-drawn" ru="Раскадровка · рисунок" />
+                </div>
+              </div>
+              <div className="parrow" aria-hidden="true">→</div>
+              <div className="pframe film">
+                <img src="/assets/s2f_film_chase.jpg" alt="The same night chase shot as a finished photoreal film frame" loading="lazy" />
+                <div className="ptag">
+                  <T en="Finished frame · Neyra pipeline" ru="Готовый кадр · пайплайн Нейры" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -397,7 +443,38 @@ export default function BroPage() {
               </div>
             </div>
           </div>
+          <div className="char-mini rv">
+            <figure className="char-hero">
+              <picture>
+                <source media="(max-width:700px)" srcSet="/assets/rooster_hero_916.jpg" />
+                <img src="/assets/rooster_hero_169.jpg" alt="Bro — the black Ayam Cemani rooster, the third hero of the film" loading="lazy" />
+              </picture>
+            </figure>
+            <div className="mrow">
+              <div className="mname">
+                <T en="Bro" ru="Бро" />
+              </div>
+              <div className="mdrive">
+                <T en="Survive and become a champion" ru="Выжить и стать чемпионом" />
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section className="still" style={{ paddingTop: 0 }}>
+        <figure className="frame rv">
+          <img
+            src="/assets/station_night.jpg"
+            alt="Jakarta railway station platform at night — where Ahmed and Nyoman first meet"
+            loading="lazy"
+          />
+          <figcaption className="cap">
+            <span>
+              <T en="Jakarta station · where the story begins" ru="Вокзал Джакарты · здесь начинается история" />
+            </span>
+          </figcaption>
+        </figure>
       </section>
 
       <section id="why">
@@ -732,6 +809,21 @@ export default function BroPage() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="still" style={{ paddingTop: 0 }}>
+        <figure className="frame rv">
+          <img
+            src="/assets/sunset_ride.jpg"
+            alt="Ahmed and Nyoman ride the black maxi-scooter with Bro's cage into the sunset through Balinese rice terraces"
+            loading="lazy"
+          />
+          <figcaption className="cap">
+            <span>
+              <T en="The road to Bali" ru="Дорога на Бали" />
+            </span>
+          </figcaption>
+        </figure>
       </section>
 
       <section className="cta" id="contact" style={{ paddingTop: 110 }}>
