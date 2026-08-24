@@ -324,3 +324,15 @@
   .hero .bg img{object-position:center 22%}
   .hero{min-height:640px}
 }
+
+/* ===== pipeline steps (01 · 02 · 03) — was unstyled: images stretched ===== */
+.ppl{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+.ppl .pstep{background:var(--ink-2);border:1px solid var(--line);padding:12px}
+.ppl .pstep img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#0b0d12}
+.ppl .pnum{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold);margin:14px 2px 4px}
+.ppl .ptitle{font-family:var(--disp);font-size:19px;letter-spacing:.03em;text-transform:uppercase;color:#f4eee0;padding:0 2px}
+.ppl .ptext{font-size:13.5px;color:var(--mute);padding:6px 2px 4px;line-height:1.55}
+@media (max-width:860px){.ppl{grid-template-columns:1fr;gap:16px}}
+
+/* photo figures: never stretch, keep the frame's proportion */
+.photo img{width:100%;height:auto;display:block;object-fit:cover}
