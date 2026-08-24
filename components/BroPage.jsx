@@ -56,8 +56,18 @@ export default function BroPage() {
   return (
     <>
       <div className="bar" id="bar">
-        <div className="brand">
-          B<b>R</b>O
+        <div className="barleft">
+          <a className="brand" href="/bro/">
+            B<b>R</b>O
+          </a>
+          <nav className="tabs" aria-label="Sections">
+            <a href="/bro/" className="on" aria-current="page">
+              <T en="The film" ru="Фильм" />
+            </a>
+            <a href="/bro/characters/">
+              <T en="Characters" ru="Персонажи" />
+            </a>
+          </nav>
         </div>
         <div className="langs" role="group" aria-label="Language">
           <button type="button" className={lang === 'en' ? 'on' : ''} onClick={() => setLang('en')}>
