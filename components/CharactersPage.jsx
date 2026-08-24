@@ -139,7 +139,7 @@ export default function CharactersPage() {
       <section className="cards">
         <div className="wrap">
           {CARDS.map((c) => (
-            <figure className="cardrow rv" key={c.id} id={c.id}>
+            <figure className="cardrow" key={c.id} id={c.id}>
               <div className="cardmeta">
                 <div className="cnum">{c.num}</div>
                 <div className="cname">
