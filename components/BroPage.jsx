@@ -81,11 +81,14 @@ export default function BroPage() {
 
       <header className="hero">
         <div className="bg">
-          <img
-            src="/assets/hero_night.jpg"
-            alt="Ahmed on his custom bike at night, the Jakarta skyline behind him"
-            fetchPriority="high"
-          />
+          <picture>
+            <source media="(max-width:760px)" srcSet="/assets/hero_night_916.jpg" />
+            <img
+              src="/assets/hero_night.jpg"
+              alt="Ahmed on his custom bike at night, the Jakarta skyline behind him"
+              fetchPriority="high"
+            />
+          </picture>
         </div>
         <div className="scrim"></div>
         <div className="inner">
@@ -589,18 +592,44 @@ export default function BroPage() {
               <T en="Why now" ru="Почему сейчас" />
             </div>
             <h2>
-              <T en="A $6M film, produced for $2M" ru="Фильм на $6 млн — производством за $2 млн" />
+              <T en="$6M on screen. $2M to make it happen." ru="$6 млн на экране. $2 млн, чтобы это случилось." />
             </h2>
             <p>
               <T
-                en="BRO was fully developed for conventional production: the same script, storyboards and creative team were budgeted at over $6,000,000 under a studio model. AI production brings the total project cost to $2,000,000 — with live actors for voice and reference, and an orchestral score recorded live."
-                ru="«БРО» полностью разработан под классическое производство: тот же сценарий, раскадровки и творческая группа стоили бы больше $6 000 000 в студийной модели. ИИ-производство сводит полную стоимость проекта к $2 000 000 — с живыми актёрами (голос и референсы) и живой оркестровой записью музыки."
+                en="BRO was developed as a conventional feature and budgeted as one: the same screenplay, the same 346 storyboards, the same creative team come to over $6,000,000 in a studio model. Our ask is $2,000,000 — and it is split in half by design."
+                ru="«БРО» разработан как классический полный метр и просчитан как классический: тот же сценарий, те же 346 листов раскадровки, та же творческая группа — свыше $6 000 000 в студийной модели. Мы просим $2 000 000, и эта сумма осознанно поделена пополам."
               />
             </p>
+            <div className="split">
+              <div className="sp">
+                <div className="spsum">$1M</div>
+                <div className="spname">
+                  <T en="The film itself" ru="Сам фильм" />
+                </div>
+                <div className="sptext">
+                  <T
+                    en="Full cycle to a theatrical master: production, live actors for voice and performance reference, an original score recorded with a live orchestra, sound design, colour."
+                    ru="Полный цикл до кинотеатрального мастера: производство, живые актёры для голоса и пластики, оригинальная музыка живым оркестром, звуковой дизайн, цвет."
+                  />
+                </div>
+              </div>
+              <div className="sp gold">
+                <div className="spsum">$1M</div>
+                <div className="spname">
+                  <T en="Getting it seen" ru="Выход к зрителю" />
+                </div>
+                <div className="sptext">
+                  <T
+                    en="Marketing, distribution and festival campaign across four markets that have already answered — Central Asia, Southeast Asia, CIS and India."
+                    ru="Маркетинг, дистрибуция и фестивальная кампания на четырёх рынках, которые уже ответили, — Центральная Азия, ЮВА, СНГ и Индия."
+                  />
+                </div>
+              </div>
+            </div>
             <p>
               <T
-                en="Every frame on this page was produced with the film's own pipeline."
-                ru="Каждый кадр на этой странице сделан собственным пайплайном фильма."
+                en="Most independent films die not because they were made badly, but because no one was left to tell anyone about them. Here the release is funded on the same line as the shoot."
+                ru="Большинство независимых фильмов гибнет не потому, что плохо сделаны, — а потому, что о них некому рассказать. Здесь прокат профинансирован наравне с производством."
               />
             </p>
           </div>
@@ -627,13 +656,13 @@ export default function BroPage() {
                 $2<small>M</small>
               </div>
               <div className="l">
-                <T en="total project cost" ru="полная стоимость проекта" />
+                <T en="total raise · film + release" ru="общий бюджет · фильм и прокат" />
               </div>
             </div>
             <div className="fact">
-              <div className="n">3×</div>
+              <div className="n">6×</div>
               <div className="l">
-                <T en="below the conventional budget" ru="дешевле классической сметы" />
+                <T en="screen value to production budget" ru="экранная стоимость к бюджету производства" />
               </div>
             </div>
           </div>
