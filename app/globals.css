@@ -271,6 +271,7 @@
   text-transform:uppercase;color:var(--paper);background:rgba(7,8,11,.72);border:1px solid var(--line);
   padding:7px 12px;opacity:0;transition:opacity .3s}
 .cardimg:hover .czoom,.cardimg:focus-visible .czoom{opacity:1}
+@media (hover:none){.cardimg .czoom{opacity:1}}
 .cardimg:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 .cardsfoot{padding:26px 0 96px;border-top:1px solid var(--line)}
 .cardsfoot p{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3.2vw,32px);line-height:1.3;
