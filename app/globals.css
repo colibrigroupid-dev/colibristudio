@@ -281,3 +281,31 @@
   .cardmeta .cdrive{margin-left:0;text-align:left;width:100%}
   .cardrow{margin-bottom:56px}
 }
+
+/* ===== three-stage: storyboard → animatic → film ===== */
+.s3{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr;gap:12px;align-items:start;margin-top:44px}
+.s3step{margin:0;border:1px solid var(--line);background:var(--ink-2);padding:10px}
+.s3step img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#0b0d12}
+.s3step figcaption{display:block;padding:12px 2px 4px}
+.s3num{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--mute)}
+.s3name{display:block;font-family:var(--disp);font-size:19px;letter-spacing:.04em;text-transform:uppercase;color:#f4eee0;margin-top:5px}
+.s3desc{display:block;font-size:13px;color:var(--mute);line-height:1.5;margin-top:4px}
+.s3step.film{border-color:rgba(201,162,94,.42)}
+.s3step.film .s3num{color:var(--gold)}
+.s3arrow{font-family:var(--disp);font-size:24px;color:var(--red);text-align:center;padding-top:22%}
+@media (max-width:900px){
+  .s3{grid-template-columns:1fr;gap:8px}
+  .s3arrow{transform:rotate(90deg);padding:0;margin:2px auto}
+}
+
+/* ===== action grid ===== */
+.actgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.act{margin:0;position:relative;border:1px solid var(--line);background:var(--ink-2);overflow:hidden}
+.act img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform .6s ease}
+.act:hover img{transform:scale(1.03)}
+.act.big{grid-column:span 3}
+.act.big img{aspect-ratio:21/9}
+.act figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 13px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);
+  background:linear-gradient(180deg,transparent,rgba(7,8,11,.88) 62%)}
+@media (max-width:860px){.actgrid{grid-template-columns:1fr}.act.big{grid-column:span 1}.act.big img{aspect-ratio:16/9}}
