@@ -83,7 +83,7 @@ export default function BroPage() {
         <div className="bg">
           <img
             src="/assets/hero_night.jpg"
-            alt="Ahmed on a black motorbike at night in Jakarta; the rooster Bro rides in a cage behind him"
+            alt="Ahmed on his custom bike at night, the Jakarta skyline behind him"
             fetchPriority="high"
           />
         </div>
@@ -155,8 +155,8 @@ export default function BroPage() {
           <div className="ppl rv">
             <div className="pstep">
               <img
-                src="/assets/locker_wraps.jpg"
-                alt="Live-action frame from the teaser shoot: Ahmed wrapping his fists in the locker room"
+                src="/assets/sb_sc17_sketch.jpg"
+                alt="Original hand-drawn storyboard panel SC 17 from the film's 346-page storyboard"
                 loading="lazy"
               />
               <div className="pnum">01</div>
@@ -187,8 +187,8 @@ export default function BroPage() {
             </div>
             <div className="pstep">
               <img
-                src="/assets/night_ride.jpg"
-                alt="Finished cinematic frame: night chase through neon streets"
+                src="/assets/act_kick.jpg"
+                alt="Finished cinematic frame: Ahmed's flying split kick in the gambling hall"
                 loading="lazy"
               />
               <div className="pnum">03</div>
@@ -240,17 +240,57 @@ export default function BroPage() {
           </div>
           <div className="rv" style={{ marginTop: 84 }}>
             <div className="eyebrow">
-              <T en="Storyboard → film" ru="Раскадровка → фильм" />
+              <T en="Storyboard → animatic → film" ru="Раскадровка → аниматик → фильм" />
             </div>
             <h2>
-              <T en="From hand-drawn sketch to a finished frame" ru="Из рисованного скетча — в готовый кадр" />
+              <T en="How one frame is born" ru="Как рождается один кадр" />
             </h2>
             <p>
               <T
-                en="The action scenes of BRO exist as 346 hand-drawn storyboards — the teaser shows them as animatics. The pipeline turns each sketch into a finished photoreal frame with the same characters, the same bike, the same grade."
-                ru="Экшн-сцены «БРО» отрисованы в 346 раскадровках — в тизере они показаны аниматиком. Пайплайн превращает каждый скетч в готовый фотореалистичный кадр: те же герои, тот же байк, тот же грейд."
+                en="BRO exists as 346 hand-drawn storyboard panels. The teaser turned them into animatics. The pipeline finishes the job — the same composition becomes a photoreal frame with the same face, the same wardrobe, the same grade. Below: panel SC 17, all three stages."
+                ru="«БРО» отрисован в 346 листах раскадровки. Тизер превратил их в аниматик. Пайплайн доводит дело до конца — та же композиция становится фотореалистичным кадром: то же лицо, тот же костюм, тот же грейд. Ниже — лист SC 17, все три стадии."
               />
             </p>
+          </div>
+          <div className="s3 rv">
+            <figure className="s3step">
+              <img src="/assets/sb_sc17_sketch.jpg" alt="Stage one: the original hand-drawn storyboard panel SC 17" loading="lazy" />
+              <figcaption>
+                <span className="s3num">01 · 2021</span>
+                <span className="s3name">
+                  <T en="Hand-drawn panel" ru="Ручная раскадровка" />
+                </span>
+                <span className="s3desc">
+                  <T en="Pencil on paper. One of 346 panels." ru="Карандаш на бумаге. Один из 346 листов." />
+                </span>
+              </figcaption>
+            </figure>
+            <div className="s3arrow" aria-hidden="true">→</div>
+            <figure className="s3step">
+              <img src="/assets/sb_sc17_anim.jpg" alt="Stage two: the same panel as a coloured animatic in the teaser" loading="lazy" />
+              <figcaption>
+                <span className="s3num">02 · 2023</span>
+                <span className="s3name">
+                  <T en="Animatic" ru="Аниматик" />
+                </span>
+                <span className="s3desc">
+                  <T en="The panel in motion, inside the teaser." ru="Лист в движении — в тизере фильма." />
+                </span>
+              </figcaption>
+            </figure>
+            <div className="s3arrow" aria-hidden="true">→</div>
+            <figure className="s3step film">
+              <img src="/assets/sb_sc17_film.jpg" alt="Stage three: the same shot as a finished photoreal film frame" loading="lazy" />
+              <figcaption>
+                <span className="s3num">03 · 2026</span>
+                <span className="s3name">
+                  <T en="Film frame" ru="Кадр фильма" />
+                </span>
+                <span className="s3desc">
+                  <T en="Neyra pipeline. Canon face, canon grade." ru="Пайплайн Нейры. Канон лица, канон грейда." />
+                </span>
+              </figcaption>
+            </figure>
           </div>
           <div className="s2f rv">
             <div className="pair">
@@ -287,11 +327,56 @@ export default function BroPage() {
         </div>
       </section>
 
+      <section id="action">
+        <div className="wrap">
+          <div className="rv">
+            <div className="eyebrow">
+              <T en="Action" ru="Экшн" />
+            </div>
+            <h2>
+              <T en="Pencak silat, shot frame by frame" ru="Пенчак-силат, поставленный покадрово" />
+            </h2>
+            <p>
+              <T
+                en="Every fight beat is choreographed on paper first, then built in the pipeline. Same fighter, same wardrobe, same grade — at feature scale, without a stunt budget."
+                ru="Каждый удар сперва поставлен на бумаге, потом собран в пайплайне. Тот же боец, тот же костюм, тот же грейд — в масштабе полного метра, без каскадёрского бюджета."
+              />
+            </p>
+          </div>
+          <div className="actgrid rv">
+            <figure className="act big">
+              <img src="/assets/act_kick.jpg" alt="Ahmed frozen mid-air in a flying split kick between two bodyguards" loading="lazy" />
+              <figcaption>
+                <T en="Flying split kick · the tournament hall" ru="Прыжок-шпагат · зал турнира" />
+              </figcaption>
+            </figure>
+            <figure className="act">
+              <img src="/assets/act_parkour.jpg" alt="Ahmed vaults over an overturned poker table, cards in the air" loading="lazy" />
+              <figcaption>
+                <T en="Vault over the table · escape" ru="Вольт через стол · побег" />
+              </figcaption>
+            </figure>
+            <figure className="act">
+              <img src="/assets/act_train.jpg" alt="Ahmed leaps between the roofs of two moving freight trains under the moon" loading="lazy" />
+              <figcaption>
+                <T en="Train to train · leap of faith" ru="С поезда на поезд · прыжок веры" />
+              </figcaption>
+            </figure>
+            <figure className="act">
+              <img src="/assets/act_rooster.jpg" alt="Bro the rooster flies at a bodyguard's face, feathers everywhere" loading="lazy" />
+              <figcaption>
+                <T en="Bro joins the fight" ru="Бро вступает в бой" />
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <section className="still" style={{ paddingTop: 0 }}>
         <figure className="frame rv">
           <img
             src="/assets/jakarta_day.jpg"
-            alt="Ahmed's black motorbike with Bro's cage crossing a rainy Jakarta avenue among cars, scooters and tuk-tuks"
+            alt="Ahmed and Nyoman race the custom bike straight at camera through a narrow Jakarta alley at night"
             loading="lazy"
           />
           <figcaption className="cap">
@@ -330,7 +415,7 @@ export default function BroPage() {
           <figure className="photo rv">
             <img
               src="/assets/night_ride.jpg"
-              alt="Night ride through neon-lit streets: Ahmed and Bro's cage on the back of the motorbike, motion blur"
+              alt="Night chase: Nyoman rides pillion with Bro in his backpack, headlights of the pursuing SUV behind"
               loading="lazy"
             />
             <figcaption className="pcap">
@@ -344,12 +429,12 @@ export default function BroPage() {
         <figure className="frame rv">
           <img
             src="/assets/locker_prayer.jpg"
-            alt="Ahmed in a worn locker room, hands folded in prayer before the fight, sunlight through the windows"
+            alt="The tournament hall: Ahmed evades two bodyguards in a low pencak-silat spin, banknotes in the air"
             loading="lazy"
           />
           <figcaption className="cap">
             <span>
-              <T en="Scene one. A prayer before the fight." ru="Первая сцена. Молитва перед боем." />
+              <T en="The tournament. The point of no return." ru="Турнир. Точка невозврата." />
             </span>
           </figcaption>
         </figure>
