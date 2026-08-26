@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRO — инвестиционная презентация</title>
+<style>
+  :root{
+    --bg:#0a0a0e; --panel:rgba(18,18,24,.82); --panel2:#17171f; --line:#2a2a34;
+    --txt:#f2f0ea; --muted:#a5a2ab; --gold:#e8b34b; --gold2:#c99432;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--txt);font-family:"Helvetica Neue",Arial,sans-serif;line-height:1.55;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+  section{padding:78px 0;border-bottom:1px solid var(--line);position:relative;}
+  .bgsec{background-size:cover;background-position:center;position:relative;}
+  .bgsec:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,14,.93),rgba(10,10,14,.82) 40%,rgba(10,10,14,.93));}
+  .bgsec .wrap{position:relative;z-index:1;}
+  .kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:700;}
+  h2{font-size:34px;font-weight:800;letter-spacing:-.3px;margin-bottom:18px;}
+  p.lead{font-size:18px;color:var(--txt);max-width:840px;}
+  p, li{color:var(--muted);font-size:16px;}
+  b{color:var(--txt);}
+  /* HERO */
+  .hero{min-height:92vh;display:flex;align-items:flex-end;background:url("/assets/hero_night.jpg") center 30%/cover no-repeat;position:relative;border-bottom:1px solid var(--line);}
+  .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,14,.55) 0%,rgba(10,10,14,.25) 45%,rgba(10,10,14,.96) 100%);}
+  .hero .wrap{position:relative;z-index:1;padding-bottom:70px;padding-top:120px;}
+  .hero .tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;padding:7px 14px;border-radius:99px;margin-bottom:24px;background:rgba(10,10,14,.55);}
+  .hero h1{font-size:100px;font-weight:900;letter-spacing:5px;line-height:.95;text-shadow:0 4px 40px rgba(0,0,0,.6);}
+  .hero .logline{font-size:22px;color:var(--txt);margin:24px 0 10px;max-width:820px;font-weight:600;text-shadow:0 2px 20px rgba(0,0,0,.8);}
+  .hero .sub{font-size:16px;color:#cfccd4;max-width:780px;text-shadow:0 2px 16px rgba(0,0,0,.8);}
+  .cta{display:inline-block;margin-top:30px;background:var(--gold);color:#141008;font-weight:800;text-decoration:none;padding:15px 30px;border-radius:8px;font-size:16px;letter-spacing:.4px;}
+  .cta:hover{background:var(--gold2);}
+  .cta.ghost{background:rgba(10,10,14,.5);color:var(--gold);border:1.5px solid var(--gold);margin-left:12px;}
+  /* GRID */
+  .grid{display:grid;gap:16px;margin-top:30px;}
+  .g2{grid-template-columns:repeat(2,1fr);} .g3{grid-template-columns:repeat(3,1fr);} .g4{grid-template-columns:repeat(4,1fr);}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;backdrop-filter:blur(4px);}
+  .card h3{font-size:17px;margin-bottom:8px;color:var(--txt);}
+  .card p{font-size:14.5px;}
+  .num{font-size:38px;font-weight:900;color:var(--gold);line-height:1;}
+  .num small{font-size:14.5px;color:var(--muted);font-weight:400;display:block;margin-top:8px;letter-spacing:.3px;}
+  .done{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px;}
+  .done .card{display:flex;gap:14px;align-items:flex-start;}
+  .tick{min-width:26px;height:26px;border-radius:50%;background:rgba(232,179,75,.15);border:1.5px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;}
+  .video{position:relative;padding-top:56.25%;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin-top:30px;background:#000;}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  table{width:100%;border-collapse:collapse;margin-top:28px;font-size:15px;background:var(--panel);border-radius:12px;overflow:hidden;}
+  th{color:var(--gold);font-size:12px;text-transform:uppercase;letter-spacing:1.6px;text-align:left;padding:13px 14px;border-bottom:1.5px solid var(--gold);}
+  td{padding:14px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top;}
+  td b{color:var(--txt);}
+  .pt-badge{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:1px;color:#8fd694;border:1px solid #4c7d50;border-radius:99px;padding:3px 10px;margin-top:10px;text-transform:uppercase;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;counter-reset:s;}
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;}
+  .step:before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:13px;font-weight:800;color:var(--gold);letter-spacing:2px;}
+  .step h3{font-size:16px;margin:10px 0 6px;color:var(--txt);}
+  .step p{font-size:13.5px;}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px;}
+  .vs .card.win{border-color:var(--gold);background:linear-gradient(180deg, rgba(232,179,75,.10), var(--panel));}
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:30px;}
+  .gallery img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:block;}
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px;}
+  .cards3 img{width:100%;border-radius:12px;border:1px solid var(--line);display:block;}
+  .budget{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px;}
+  .footer{padding:70px 0 80px;}
+  .footer .brands{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8b8894;margin-top:26px;}
+  .disclaimer{font-size:11.5px;color:#6d6a75;margin-top:34px;max-width:920px;line-height:1.5;}
+  a{color:var(--gold);}
+  @media (max-width:860px){
+    .hero h1{font-size:58px;}
+    .g2,.g3,.g4,.done,.vs,.steps,.gallery,.cards3,.budget{grid-template-columns:1fr;}
+    h2{font-size:27px;}
+    .hero{min-height:70vh;}
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. HERO -->
+<div class="hero">
+  <div class="wrap">
+    <span class="tag">Инвестиционная презентация · Feature Film · Индонезия</span>
+    <h1>BRO</h1>
+    <p class="logline">Двое парней с улиц Джакарты и боевой петух по имени Бро — против больших денег и больших проблем. Приключенческая экшн-комедия о дружбе, удаче и цене мечты.</p>
+    <p class="sub">Локальная история и герои — органично для крупнейшего рынка Юго-Восточной Азии. Жанр, юмор и визуальный масштаб — билет на международную аудиторию.</p>
+    <a class="cta" href="#teaser">▶ Смотреть тизер</a>
+    <a class="cta ghost" href="#offer">Форматы участия</a>
+  </div>
+</div>
+
+<!-- 2. ИСТОРИЯ -->
+<section class="bgsec" style="background-image:url('/assets/nyoman_hero_219.jpg');">
+  <div class="wrap">
+    <div class="kicker">01 · История</div>
+    <h2>Почему зритель это посмотрит</h2>
+    <p class="lead">BRO соединяет то, что стабильно собирает залы: динамичный экшн, комедию и эмоциональную историю — рассказанную на языке индонезийской культуры, с индонезийскими героями и локациями.</p>
+    <div class="grid g4">
+      <div class="card"><h3>Локальная история</h3><p>Узнаваемая культура, характеры и юмор — фильм «свой» для аудитории с первого кадра.</p></div>
+      <div class="card"><h3>Жанровый микс</h3><p>Экшн + комедия + эмоциональное ядро — самая широкая аудитория: дети и взрослые.</p></div>
+      <div class="card"><h3>Зрелищность</h3><p>Погони, трюки, турниры — масштаб большого кино при контролируемом бюджете.</p></div>
+      <div class="card"><h3>Франшизный потенциал</h3><p>Герои и вселенная рассчитаны на продолжения и международный прокат.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. ГЕРОИ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">02 · Герои</div>
+    <h2>Команда, за которую болеешь</h2>
+    <p class="lead">Ахмед, Ньоман и чемпион по имени Бро — трио, которое несёт и юмор, и сердце фильма.</p>
+    <div class="cards3">
+      <img src="/assets/cards/card_ahmed.jpg" alt="Ахмед">
+      <img src="/assets/cards/card_nyoman.jpg" alt="Ньоман">
+      <img src="/assets/cards/card_bro.jpg" alt="Бро">
+    </div>
+  </div>
+</section>
+
+<!-- 4. РЫНОК -->
+<section class="bgsec" style="background-image:url('/assets/jakarta_day.jpg');">
+  <div class="wrap">
+    <div class="kicker">03 · Рынок</div>
+    <h2>Почему Индонезия — и почему сейчас</h2>
+    <div class="grid g3">
+      <div class="card"><div class="num">280M+<small>население — четвёртая страна мира, молодая киноаудитория</small></div></div>
+      <div class="card"><div class="num">~150M<small>активная аудитория кино и видео; локальные фильмы лидируют в прокате</small></div></div>
+      <div class="card"><div class="num">Ниша<small>крупного локального жанрового кино критически мало — экшн-комедия открыта</small></div></div>
+    </div>
+    <p style="margin-top:26px;">Индонезийский рынок растёт на локальном контенте: собственные истории собирают больше голливудских релизов, стриминговый сегмент — один из самых быстрорастущих в Азии. Зрелищного жанрового кино национального производства мало, потому что классическим способом его снимать дорого. BRO заходит ровно в этот разрыв.</p>
+  </div>
+</section>
+
+<!-- 5. ГОТОВНОСТЬ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">04 · Статус проекта</div>
+    <h2>Это не идея — это проект в production-ready стадии</h2>
+    <p class="lead">За пять лет в развитие проекта инвестировано <b>$330 000</b> — девелопмент пройден и профинансирован без внешних инвесторов:</p>
+    <div class="done">
+      <div class="card"><span class="tick">✓</span><div><h3>Сценарий полного метра</h3><p>Завершён: 186 сцен, несколько редакций с участием международной сценарной группы.</p></div></div>
+      <div class="card"><span class="tick">✓</span><div><h3>Тизер снят в Индонезии</h3><p>Живые актёры, реальные локации Джакарты — жанр и тон фильма видны на экране.</p></div></div>
+      <div class="card"><span class="tick">✓</span><div><h3>~700 кадров раскадровки</h3><p>Фильм спланирован покадрово; утверждён визуальный канон героев и мира.</p></div></div>
+      <div class="card"><span class="tick">✓</span><div><h3>Препродакшн завершён</h3><p>Производственная модель, смета, команда и партнёры по постпродакшну определены.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ТИЗЕР -->
+<section id="teaser" class="bgsec" style="background-image:url('/assets/station_night.jpg');">
+  <div class="wrap">
+    <div class="kicker">05 · Материал</div>
+    <h2>Тизер — снят в Индонезии</h2>
+    <p class="lead">Лучший аргумент проекта — на экране: живые актёры, реальная Джакарта.</p>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/n2V2EEB_0sk" title="BRO — тизер, снят вживую в Индонезии" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="gallery">
+      <img src="/assets/act_kick.jpg" alt="Экшн — драка">
+      <img src="/assets/act_parkour.jpg" alt="Экшн — паркур">
+      <img src="/assets/act_train.jpg" alt="Экшн — поезда">
+      <img src="/assets/s2f_film_chase.jpg" alt="Экшн — погоня">
+    </div>
+  </div>
+</section>
+
+<!-- 6b. ИИ-АНИМАТИК ЭКШН-СЦЕНЫ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">06 · Технология в деле</div>
+    <h2>Экшн-сцена, собранная технологией</h2>
+    <p class="lead">Свежая работа режиссёра: сцена фильма, сделанная тем самым производственным контуром — живой материал, 3D VFX и AI. Так будет выглядеть весь экшн картины.</p>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/b5kOvHU12k4" title="BRO — ИИ-аниматик экшн-сцены" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+  </div>
+</section>
+
+<!-- 6c. АНТАГОНИСТ -->
+<section class="bgsec" style="background-image:url('/assets/villain_aquarium.jpg');">
+  <div class="wrap">
+    <div class="kicker">06 · Мир фильма</div>
+    <h2>Против них — синдикат мисс Тонако</h2>
+    <p class="lead">У истории есть не только сердце, но и настоящая угроза. Кабинет с аквариумом пираний, женщина, которая не повышает голос, и её силовик Саймон — сцена, где решается судьба героев.</p>
+    <div class="gallery">
+      <img src="/assets/villain_office.jpg" alt="Кабинет мисс Тонако">
+      <img src="/assets/villain_tonako.jpg" alt="Мисс Тонако">
+      <img src="/assets/villain_simon.jpg" alt="Саймон — правая рука Тонако">
+      <img src="/assets/villain_aquarium.jpg" alt="Аквариум с пираньями">
+    </div>
+  </div>
+</section>
+
+<!-- 7. МОДЕЛЬ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">06 · Производственная модель</div>
+    <h2>Фильм нового поколения: живые актёры + 3D VFX + AI-производство</h2>
+    <p class="lead">Основа фильма — реальные индонезийские актёры и живые съёмки. Поверх них работают <b>3D VFX</b> и AI-производство студии: локации, окружение, сложные постановочные и экшн-сцены. Это не «кино без съёмок» — это классический кинопроцесс, усиленный технологией.</p>
+    <div class="grid g4">
+      <div class="card"><h3>Больше масштаб</h3><p>Сцены, которые в классике стоят миллионы, становятся достижимыми.</p></div>
+      <div class="card"><h3>Меньше затрат</h3><p>Экономика производства кратно ниже классической при том же экранном результате.</p></div>
+      <div class="card"><h3>Быстрее производство</h3><p>Полный цикл — 5–6 месяцев вместо 1,5–2 лет.</p></div>
+      <div class="card"><h3>Ниже риск</h3><p>Меньше капитала под тот же результат — асимметрия риска и потенциала.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ЭКОНОМИКА ПРОИЗВОДСТВА -->
+<section class="bgsec" style="background-image:url('/assets/night_ride.jpg');">
+  <div class="wrap">
+    <div class="kicker">07 · Бюджет</div>
+    <h2>То, что стоило $6M, — теперь втрое дешевле</h2>
+    <div class="vs">
+      <div class="card"><h3>Классическая смета проекта</h3><div class="num">~$6M<small>историческая смета BRO при классическом производстве · 21–24 месяца</small></div></div>
+      <div class="card win"><h3>Полная рамка AI-модели</h3><div class="num">$2M<small>производство + актёры + постпродакшн + маркетинг · 5–6 месяцев производства</small></div></div>
+    </div>
+    <div class="budget">
+      <div class="card"><div class="num">$500K<small><b>Производство</b> — команда студии и AI-рендеринг полного цикла</small></div></div>
+      <div class="card"><div class="num">$500K<small><b>Актёры, 3D VFX и постпродакшн</b> — живые съёмки, 3D-графика и визуальные эффекты, музыка, цвет, звук, локализация на несколько языков</small></div></div>
+      <div class="card"><div class="num">$1M<small><b>Маркетинг и прокат</b> — рекламная кампания и вывод фильма на рынки</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. КОМАНДА -->
+<section>
+  <div class="wrap">
+    <div class="kicker">08 · Кто делает</div>
+    <h2>Проект и производство</h2>
+    <div class="grid g3">
+      <div class="card">
+        <h3>PT Colibri Group Indonesia</h3>
+        <p>Проектная компания фильма BRO. Автор сценария и режиссёр — Ара Аруш; проект развивается командой более 7 лет.</p>
+      </div>
+      <div class="card">
+        <h3>Neyra Vision Studio · Джакарта</h3>
+        <p>AI-студия полного цикла: от сценария до финального рендера. Фильм студии «Nusantara» — <b>Best Documentary и Special Jury Prize, Cannes AI Film Awards 2025</b> (359 работ из 19 стран).</p>
+        <p style="margin-top:8px;"><a href="https://youtu.be/lyPQsIUxdfk" target="_blank">Имиджевый ролик студии →</a></p>
+      </div>
+      <div class="card">
+        <h3>Партнёрская инфраструктура</h3>
+        <p>Постпродакшн-партнёр LMN VFX (Джакарта, 120+ специалистов), продакшн-партнёры с поставками проектов для Netflix Asia, государственная кинокомпания PFN (студия-партнёр).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. ПУТЬ К РЫНКУ -->
+<section class="bgsec" style="background-image:url('/assets/rooster_hero_169.jpg');">
+  <div class="wrap">
+    <div class="kicker">09 · Путь к рынку</div>
+    <h2>Территории и подтверждённый интерес</h2>
+    <div class="grid g3">
+      <div class="card"><h3>🇷🇺 Россия и СНГ</h3><p><b>Central Partnership Sales House</b> (группа «Газпром-Медиа», крупнейший кинодистрибьютор России) — письмо о намерениях приобрести театральные, ТВ- и интернет-права на территорию РФ и СНГ.</p><span class="pt-badge">Подписанный LOI · 2024</span></div>
+      <div class="card"><h3>🇮🇳 Индия</h3><p><b>Ottone Communications</b> (Бенгалуру) — готовность к ко-продакшну, постпродакшну в Индии и OTT-дистрибуции на индийском рынке.</p><span class="pt-badge">Письмо о намерениях</span></div>
+      <div class="card"><h3>🇮🇩 Индонезия</h3><p>Домашний рынок: партнёрские каналы группы — <b>Emtek/Vidio</b> (соглашение о размещении контента), <b>MNC/Vision+</b> и <b>E-Motion</b> (MOU), переговоры с театральными дистрибьюторами.</p><span class="pt-badge">Действующие партнёрства</span></div>
+      <div class="card"><h3>🇰🇿 Казахстан</h3><p>Производственно-инвестиционный трек: локальная структура студии и казахстанский сопродюсер проекта.</p><span class="pt-badge">В оформлении</span></div>
+      <div class="card"><h3>🇹🇭 Таиланд</h3><p>Кинотеатральный прокат через партнёрскую сеть проекта; рассматривается как одна из съёмочных территорий.</p><span class="pt-badge">Партнёрский канал</span></div>
+      <div class="card"><h3>🌏 Стриминг и мир</h3><p>Продакшн-партнёры группы поставляют проекты для <b>Netflix Asia</b>; музыкальный пост — оффер <b>Berberyan Studios</b> (Армения, с налоговым рибейтом 10–40%).</p><span class="pt-badge">Окно после проката</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. ЭКОНОМИКА ПРОЕКТА -->
+<section>
+  <div class="wrap">
+    <div class="kicker">10 · Экономика проекта</div>
+    <h2>Сценарии возврата</h2>
+    <p class="lead">Три расчётных сценария кинотеатрального проката в Индонезии (валовые сборы), без учёта стриминга, международных территорий и франшизы:</p>
+    <table>
+      <tr><th>Сценарий</th><th>Аудитория кинотеатров</th><th>Валовые сборы</th><th>Комментарий</th></tr>
+      <tr><td><b>Консервативный</b></td><td>~400 тыс. зрителей</td><td><b>~$1.6M</b></td><td>Скромный локальный релиз — уже сопоставим с бюджетом производства и актёров</td></tr>
+      <tr><td><b>Базовый</b></td><td>~1,2 млн зрителей</td><td><b>~$4.8M</b></td><td>Уверенный результат жанрового локального фильма с широким релизом</td></tr>
+      <tr><td><b>Успех</b></td><td>3+ млн зрителей</td><td><b>$12M+</b></td><td>Уровень локальных хитов; открывает франшизу и агрессивные международные продажи</td></tr>
+    </table>
+    <p style="margin-top:26px;"><b>Международный потенциал:</b> расчётная модель проката по 13 странам (Индонезия, Индия, США, Япония, Корея и др.) даёт свыше 9 млн билетов и до <b>$14M доле проекта</b> — модель с допущениями, раскрывается в финансовом плане. <b>Ключевое инвестиционное преимущество — асимметрия:</b> производство кратно дешевле традиционного фильма сопоставимого масштаба при рыночном потенциале сборов. Дополнительные окна: стриминг, ТВ, продакт-плейсмент, франшиза.</p>
+  </div>
+</section>
+
+<!-- 12. ФОРМАТЫ ВХОДА -->
+<section id="offer" class="bgsec" style="background-image:url('/assets/ahmed_hero_219.jpg');">
+  <div class="wrap">
+    <div class="kicker">11 · Предложение</div>
+    <h2>Форматы участия</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Финансирование производства</h3><p>Участие в финансировании рамки $2M (возможно поэтапно) с долей в доходах проекта. Права на фильм остаются за проектной компанией.</p></div>
+      <div class="card"><h3>Совместное производство</h3><p>Копродукция с производственным, дистрибуционным или маркетинговым вкладом партнёра.</p></div>
+      <div class="card"><h3>Права и платформы</h3><p>Для платформ и прокатчиков: приобретение прав на территории и окна — театральный прокат, стриминг, ТВ.</p></div>
+    </div>
+    <p style="margin-top:26px;">По запросу: финансовая модель, производственная смета, сценарий (по NDA), расширенный пакет раскадровок и материалов.</p>
+  </div>
+</section>
+
+<!-- 13. РОАДМАП -->
+<section>
+  <div class="wrap">
+    <div class="kicker">12 · Дорожная карта</div>
+    <h2>От финансирования до экрана — за один сезон</h2>
+    <div class="steps">
+      <div class="step"><h3>Закрытие финансирования</h3><p>Финальная смета, договоры, производственный план.</p></div>
+      <div class="step"><h3>Производство · 3 мес</h3><p>Съёмки с актёрами + AI-производство параллельно.</p></div>
+      <div class="step"><h3>Постпродакшн · 2 мес</h3><p>Монтаж, музыка, звук, цвет, VFX с партнёрскими студиями, локализация.</p></div>
+      <div class="step"><h3>Релиз</h3><p>Прокат Индонезии → Россия/СНГ, Индия, Казахстан, Таиланд → стриминг.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. КОНТАКТЫ -->
+<section class="footer bgsec" style="background-image:url('/assets/sunset_ride.jpg');border-bottom:none;">
+  <div class="wrap">
+    <div class="kicker">Контакты</div>
+    <h2>Обсудить участие в проекте</h2>
+    <p class="lead">Александр Андреянов — продюсер · <a href="mailto:alex@neyra.ai">alex@neyra.ai</a> · Telegram <a href="https://t.me/mis_ter_bro">@mis_ter_bro</a></p>
+    <div class="brands">PT COLIBRI GROUP INDONESIA · NEYRA VISION STUDIO · COLIBRISTUDIO.AI — JAKARTA · SINGAPORE · BALI</div>
+    <p class="disclaimer">Материал предназначен для предварительного ознакомления потенциальных партнёров и инвесторов и не является публичной офертой. Финансовые показатели разделов 07 и 10 — оценочные сценарии и расчётные модели; допущения раскрываются в финансовом плане проекта. Статусы партнёрств и писем о намерениях указаны по состоянию на август 2026 г.; актуальность отдельных документов подтверждается при переговорах.</p>
+  </div>
+</section>
+
+</body>
+</html>
