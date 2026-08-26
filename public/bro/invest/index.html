@@ -24,6 +24,7 @@
   b{color:var(--txt);}
   /* HERO */
   .hero{min-height:92vh;display:flex;align-items:flex-end;background:url("/assets/hero_night.jpg") center 30%/cover no-repeat;position:relative;border-bottom:1px solid var(--line);}
+  @media (max-width:760px){.hero{background-image:url("/assets/hero_night_916.jpg");background-position:center 18%;}}
   .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,14,.55) 0%,rgba(10,10,14,.25) 45%,rgba(10,10,14,.96) 100%);}
   .hero .wrap{position:relative;z-index:1;padding-bottom:70px;padding-top:120px;}
   .hero .tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:2.5px;text-transform:uppercase;padding:7px 14px;border-radius:99px;margin-bottom:24px;background:rgba(10,10,14,.55);}
@@ -129,7 +130,7 @@
 </section>
 
 <!-- 3. ГЕРОИ -->
-<section>
+<section class="bgsec" style="background-image:url('/assets/cards/card_bro.jpg');">
   <div class="wrap">
     <div class="kicker">02 · Герои</div>
     <h2>Команда, за которую болеешь</h2>
@@ -157,7 +158,7 @@
 </section>
 
 <!-- 5. ГОТОВНОСТЬ -->
-<section>
+<section class="bgsec" style="background-image:url('/assets/s2f_film_kick.jpg');">
   <div class="wrap">
     <div class="kicker">04 · Статус проекта</div>
     <h2>Это не идея — это проект в production-ready стадии</h2>
@@ -177,7 +178,7 @@
     <div class="kicker">05 · Материал</div>
     <h2>Тизер — снят в Индонезии</h2>
     <p class="lead">Лучший аргумент проекта — на экране: живые актёры, реальная Джакарта.</p>
-    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/n2V2EEB_0sk" title="BRO — тизер, снят вживую в Индонезии" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/0VcsuVsog7k" title="BRO — тизер, снят вживую в Индонезии" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
     <div class="gallery">
       <img src="/assets/act_kick.jpg" alt="Экшн — драка">
       <img src="/assets/act_parkour.jpg" alt="Экшн — паркур">
@@ -188,7 +189,7 @@
 </section>
 
 <!-- 6b. ИИ-АНИМАТИК ЭКШН-СЦЕНЫ -->
-<section>
+<section class="bgsec" style="background-image:url('/assets/act_parkour.jpg');">
   <div class="wrap">
     <div class="kicker">06 · Технология в деле</div>
     <h2>Экшн-сцена, собранная технологией</h2>
@@ -213,7 +214,7 @@
 </section>
 
 <!-- 7. МОДЕЛЬ -->
-<section>
+<section class="bgsec" style="background-image:url('/assets/villain_office.jpg');">
   <div class="wrap">
     <div class="kicker">06 · Производственная модель</div>
     <h2>Фильм нового поколения: живые актёры + 3D VFX + AI-производство</h2>
@@ -245,7 +246,7 @@
 </section>
 
 <!-- 9. КОМАНДА -->
-<section>
+<section class="bgsec" style="background-image:url('/assets/act_train.jpg');">
   <div class="wrap">
     <div class="kicker">08 · Кто делает</div>
     <h2>Проект и производство</h2>
@@ -284,7 +285,7 @@
 </section>
 
 <!-- 11. ЭКОНОМИКА ПРОЕКТА -->
-<section>
+<section class="bgsec" style="background-image:url('/assets/villain_tonako.jpg');">
   <div class="wrap">
     <div class="kicker">10 · Экономика проекта</div>
     <h2>Сценарии возврата</h2>
@@ -314,7 +315,7 @@
 </section>
 
 <!-- 13. РОАДМАП -->
-<section>
+<section class="bgsec" style="background-image:url('/assets/sunset_ride.jpg');">
   <div class="wrap">
     <div class="kicker">12 · Дорожная карта</div>
     <h2>От финансирования до экрана — за один сезон</h2>
