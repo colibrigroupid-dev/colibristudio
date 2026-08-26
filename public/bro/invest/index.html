@@ -68,11 +68,34 @@
   .footer .brands{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8b8894;margin-top:26px;}
   .disclaimer{font-size:11.5px;color:#6d6a75;margin-top:34px;max-width:920px;line-height:1.5;}
   a{color:var(--gold);}
+  @media (max-width:1000px){
+    .g4{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr);}
+  }
   @media (max-width:860px){
     .hero h1{font-size:58px;}
-    .g2,.g3,.g4,.done,.vs,.steps,.gallery,.cards3,.budget{grid-template-columns:1fr;}
+    .g2,.g3,.g4,.done,.vs,.steps,.cards3,.budget{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2,1fr);gap:10px;}
     h2{font-size:27px;}
     .hero{min-height:70vh;}
+  }
+  /* phones: tighter rhythm so the deck is not endless to scroll */
+  @media (max-width:700px){
+    section{padding:48px 0;}
+    .wrap{padding:0 18px;}
+    p.lead{font-size:16.5px;}
+    .num{font-size:31px;}
+    .grid,.vs,.budget,.steps,.gallery,.video{margin-top:22px;}
+    .card{padding:18px;}
+    .kicker{margin-bottom:10px;letter-spacing:2.2px;}
+    h2{margin-bottom:14px;}
+    .hero .wrap{padding-bottom:48px;padding-top:96px;}
+  }
+  @media (max-width:430px){
+    .hero h1{font-size:46px;letter-spacing:3px;}
+    h2{font-size:24px;}
+    .num{font-size:28px;}
+    .cta a,.cta .btn{width:100%;text-align:center;}
   }
 </style>
 </head>
