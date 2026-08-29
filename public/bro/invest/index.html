@@ -69,6 +69,25 @@
   .footer .brands{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8b8894;margin-top:26px;}
   .disclaimer{font-size:11.5px;color:#6d6a75;margin-top:34px;max-width:920px;line-height:1.5;}
   a{color:var(--gold);}
+  /* funding timeline */
+  .fund{margin-top:34px;display:grid;gap:14px;}
+  .fstage{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;position:relative;overflow:hidden;}
+  .fstage.done{border-color:rgba(232,179,75,.42);}
+  .fstage.live{border-color:rgba(232,179,75,.75);box-shadow:0 0 0 1px rgba(232,179,75,.25) inset;}
+  .fhead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .fstage h3{font-size:19px;font-weight:800;}
+  .fsum{font-size:30px;font-weight:900;color:var(--gold);line-height:1;white-space:nowrap;}
+  .fstage.done .fsum{color:#8fbf7a;}
+  .fmeta{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+  .fstage p{margin-top:12px;font-size:15px;}
+  .fbar{height:7px;border-radius:99px;background:#23232c;margin-top:16px;overflow:hidden;}
+  .fbar span{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:99px;}
+  .fstage.done .fbar span{background:linear-gradient(90deg,#5f8f4e,#8fbf7a);}
+  .fnote{font-size:12.5px;color:var(--muted);margin-top:9px;}
+  .fstatus{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;padding:5px 11px;border-radius:99px;border:1px solid var(--line);color:var(--muted);}
+  .fstage.done .fstatus{color:#8fbf7a;border-color:rgba(143,191,122,.45);}
+  .fstage.live .fstatus{color:#0a0a0e;background:var(--gold);border-color:var(--gold);}
+  @media (max-width:700px){.fsum{font-size:26px;}.fstage{padding:18px;}}
   @media (max-width:1000px){
     .g4{grid-template-columns:repeat(2,1fr);}
     .steps{grid-template-columns:repeat(2,1fr);}
@@ -110,7 +129,7 @@
     <p class="logline">Двое парней с улиц Джакарты и боевой петух по имени Бро — против больших денег и больших проблем. Приключенческая экшн-комедия о дружбе, удаче и цене мечты.</p>
     <p class="sub">Локальная история и герои — органично для крупнейшего рынка Юго-Восточной Азии. Жанр, юмор и визуальный масштаб — билет на международную аудиторию.</p>
     <a class="cta" href="#teaser">▶ Смотреть тизер</a>
-    <a class="cta ghost" href="#offer">Форматы участия</a>
+    <a class="cta ghost" href="#stages">Этапы и участие</a>
   </div>
 </div>
 
@@ -245,6 +264,92 @@
   </div>
 </section>
 
+<!-- 7b. ЭТАПЫ ФИНАНСИРОВАНИЯ И УЧАСТИЕ -->
+<section id="stages" class="bgsec" style="background-image:url('/assets/act_train.jpg');">
+  <div class="wrap">
+    <div class="kicker">07 · Этапы и участие</div>
+    <h2>Три этапа до экрана — войти можно в любой</h2>
+    <p class="lead">Бюджет разбит на понятные шаги. Каждый следующий этап включается, когда закрыт предыдущий, — и на каждом можно участвовать любой суммой, а не только «всем траншем».</p>
+
+    <div class="fund">
+      <div class="fstage done">
+        <div class="fhead">
+          <div>
+            <h3>Этап 0 · Разработка</h3>
+            <div class="fmeta">Завершён · 5 лет работы</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="fsum">$330K</div>
+            <div class="fstatus">Вложено</div>
+          </div>
+        </div>
+        <p>Сценарий полного метра, 346 листов раскадровки, кастинг, тизер, снятый в Индонезии, препродакшн и партнёрская инфраструктура. Собственные средства команды.</p>
+        <div class="fbar"><span style="width:100%"></span></div>
+        <div class="fnote">Это уже сделано и не требует финансирования — фильм приходит к инвестору подготовленным.</div>
+      </div>
+
+      <div class="fstage live">
+        <div class="fhead">
+          <div>
+            <h3>Этап 1 · Производство</h3>
+            <div class="fmeta">Открыт сейчас · 3 месяца</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="fsum">$500K</div>
+            <div class="fstatus">Идёт сбор</div>
+          </div>
+        </div>
+        <p>Производственная команда студии и полный цикл AI-производства: сборка всех сцен фильма по готовым раскадровкам.</p>
+        <div class="fbar"><span style="width:0%"></span></div>
+        <div class="fnote">Результат этапа: собранная картина целиком, готовая к работе с актёрами и постпродакшну.</div>
+      </div>
+
+      <div class="fstage">
+        <div class="fhead">
+          <div>
+            <h3>Этап 2 · Актёры, 3D VFX и постпродакшн</h3>
+            <div class="fmeta">Следующий · 2 месяца</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="fsum">$500K</div>
+            <div class="fstatus">Открывается после этапа 1</div>
+          </div>
+        </div>
+        <p>Живые актёры — голос и пластика, 3D-графика и визуальные эффекты, оригинальная музыка с живой оркестровой записью, звуковой дизайн, цвет и локализации на языки прокатных рынков.</p>
+        <div class="fbar"><span style="width:0%"></span></div>
+        <div class="fnote">Результат этапа: кинотеатральный мастер фильма.</div>
+      </div>
+
+      <div class="fstage">
+        <div class="fhead">
+          <div>
+            <h3>Этап 3 · Маркетинг и прокат</h3>
+            <div class="fmeta">Финальный · к датам релиза</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="fsum">$1M</div>
+            <div class="fstatus">Открывается после этапа 2</div>
+          </div>
+        </div>
+        <p>Рекламная кампания и вывод картины на рынки: Казахстан и Центральная Азия, Индонезия и ЮВА, СНГ, Индия и мир. Половина всего бюджета — именно здесь.</p>
+        <div class="fbar"><span style="width:0%"></span></div>
+        <div class="fnote">Большинство независимых фильмов теряется не на производстве, а на выходе к зрителю. Здесь прокат профинансирован наравне со съёмкой.</div>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:26px;">
+      <div class="card"><h3>Любая сумма</h3><p>Участвовать можно как крупным траншем, так и частью этапа — доля фиксируется пропорционально вкладу.</p></div>
+      <div class="card"><h3>Любой этап</h3><p>Войти можно в текущий или в следующий этап — например, только в маркетинг, если ближе прокатная часть.</p></div>
+      <div class="card"><h3>Прозрачные результаты</h3><p>У каждого этапа есть измеримый результат: собранная картина, мастер, релиз. Отчётность по этапам.</p></div>
+    </div>
+
+    <div class="cta" style="margin-top:28px;">
+      <a class="btn" href="#offer">Форматы участия</a>
+      <a class="btn ghost" href="/bro/partners/">Партнёрам и брендам</a>
+    </div>
+  </div>
+</section>
+
 <!-- 9. КОМАНДА -->
 <section class="bgsec" style="background-image:url('/assets/act_train.jpg');">
   <div class="wrap">
@@ -335,7 +440,7 @@
     <h2>Обсудить участие в проекте</h2>
     <p class="lead">Александр Андреянов — продюсер · <a href="mailto:alex@neyra.ai">alex@neyra.ai</a> · Telegram <a href="https://t.me/mis_ter_bro">@mis_ter_bro</a></p>
     <div class="brands">PT COLIBRI GROUP INDONESIA · NEYRA VISION STUDIO · COLIBRISTUDIO.AI — JAKARTA · SINGAPORE · BALI</div>
-    <p class="disclaimer">Материал предназначен для предварительного ознакомления потенциальных партнёров и инвесторов и не является публичной офертой. Финансовые показатели разделов 07 и 10 — оценочные сценарии и расчётные модели; допущения раскрываются в финансовом плане проекта. Статусы партнёрств и писем о намерениях указаны по состоянию на август 2026 г.; актуальность отдельных документов подтверждается при переговорах.</p>
+    <p class="disclaimer">Материал предназначен для предварительного ознакомления потенциальных партнёров и инвесторов и не является публичной офертой или предложением ценных бумаг. Финансовые показатели разделов 07 и 10 — оценочные сценарии и расчётные модели, а не обещание доходности. Условия участия, размер доли и порядок отчётности по каждому этапу финансирования фиксируются отдельным договором. Статусы партнёрств и дистрибуционных договорённостей — по состоянию на август 2026 года.</p>
   </div>
 </section>
 
