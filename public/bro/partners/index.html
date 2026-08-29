@@ -70,6 +70,10 @@
   .footer .brands{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#8b8894;margin-top:26px;}
   .disclaimer{font-size:11.5px;color:#6d6a75;margin-top:34px;max-width:920px;line-height:1.5;}
   a{color:var(--gold);}
+  .ctarow{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:30px;}
+  .ctarow .cta{margin-top:0;}
+  .ctarow .cta.ghost{margin-left:0;}
+  @media (max-width:520px){.ctarow{flex-direction:column;align-items:stretch;}.ctarow .cta{text-align:center;}}
   @media (max-width:1000px){
     .g4{grid-template-columns:repeat(2,1fr);}
     .steps{grid-template-columns:repeat(2,1fr);}
@@ -110,9 +114,9 @@
     <h1>BRO</h1>
     <p class="logline">Ваш бренд — не вставка между сценами, а часть дороги героев через всю Индонезию.</p>
     <p class="sub">Пять интеграций уже прописаны в сценарии — с ролью в сюжете и посчитанным экранным временем, суммарно около 48 минут. Фильм ещё в производстве: бренд закладывается в кадр на этапе съёмки, а не приклеивается в монтаже.</p>
-    <div class="cta">
-      <a class="btn" href="#looking">Кого мы ищем</a>
-      <a class="btn ghost" href="#formats">Форматы участия</a>
+    <div class="ctarow">
+      <a class="cta" href="#looking">Кого мы ищем</a>
+      <a class="cta ghost" href="#formats">Форматы участия</a>
     </div>
   </div>
 </header>
@@ -227,8 +231,8 @@
       <div class="card"><h3>Готовые точки входа</h3><p>Сценарий и раскадровки завершены — видно заранее, в какие именно сцены встаёт ваш продукт.</p></div>
       <div class="card"><h3>Короткий срок</h3><p>От договорённости до проката — порядка одного производственного сезона, а не двух лет.</p></div>
     </div>
-    <div class="cta" style="margin-top:26px;">
-      <a class="btn" href="/bro/invest/#stages">Этапы финансирования</a>
+    <div class="ctarow" style="margin-top:26px;">
+      <a class="cta" href="/bro/invest/#stages">Этапы финансирования</a>
     </div>
   </div>
 </section>
@@ -283,9 +287,10 @@
     <div class="kicker">07 · Контакты</div>
     <h2>Обсудить партнёрство</h2>
     <p class="lead">Расскажите о бренде и рынке, который вам интересен, — вернёмся с вариантами интеграции по конкретным сценам сценария.</p>
-    <div class="cta" style="margin-top:26px;">
-      <a class="btn" href="mailto:colibrigroupid@gmail.com?subject=BRO%20%E2%80%94%20%D0%BF%D0%B0%D1%80%D1%82%D0%BD%D1%91%D1%80%D1%81%D1%82%D0%B2%D0%BE">Написать нам</a>
-      <a class="btn ghost" href="/bro/">О фильме</a>
+    <div class="ctarow" style="margin-top:26px;">
+      <a class="cta" href="/bro/invest/#contact">Оставить заявку</a>
+      <a class="cta ghost" href="mailto:colibrigroupid@gmail.com?subject=BRO%20partnership">Написать письмом</a>
+      <a class="cta ghost" href="/bro/">О фильме</a>
     </div>
     <p class="disclaimer">Страница носит информационный характер и не является офертой. Состав сцен и форматы интеграции обсуждаются индивидуально и фиксируются договором. Статусы дистрибуционных партнёрств — на август 2026 года.</p>
   </div>
