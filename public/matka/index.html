@@ -133,6 +133,26 @@
   .script-src{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);text-align:center;margin-top:22px}
   @media(max-width:700px){.script-page{padding:34px 22px;font-size:13.5px}}
 
+
+  /* producer room */
+  .prodlock-card{background:var(--ink-3);border:1px solid var(--line);max-width:560px;margin:40px auto 0;padding:42px 40px;text-align:center}
+  .prodlock-card .k{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--turq)}
+  .prodlock-card h3{font-family:var(--disp);font-weight:500;font-size:26px;letter-spacing:.08em;margin:12px 0 8px}
+  .prodlock-card p{color:var(--mute);font-size:14.5px;margin-bottom:20px}
+  .prodlock-card input{width:100%;background:var(--ink);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:17px;letter-spacing:.24em;text-transform:uppercase;text-align:center;padding:12px;outline:none}
+  .prodlock-card input:focus{border-color:var(--turq)}
+  .prodlock-card button{margin-top:12px;width:100%;background:var(--turq);color:var(--ink);border:0;font-family:var(--disp);font-weight:600;letter-spacing:.18em;font-size:14px;padding:12px;cursor:pointer;text-transform:uppercase}
+  .prodlock-card .err2{color:#e0705f;font-family:var(--mono);font-size:12px;margin-top:10px;min-height:14px}
+  .confbar{display:flex;align-items:center;gap:14px;border:1px solid rgba(224,112,95,.45);background:rgba(224,112,95,.07);padding:12px 18px;margin-bottom:34px}
+  .confbar b{font-family:var(--mono);font-size:12px;letter-spacing:.26em;color:#e0705f;text-transform:uppercase;white-space:nowrap}
+  .confbar span{color:var(--mute);font-size:13px}
+  #prodsec{display:none}
+  #prodsec.open{display:block}
+  .calc{margin-top:56px}
+  .calc h3{font-family:var(--disp);font-weight:500;font-size:24px;letter-spacing:.04em;margin-bottom:14px}
+  .calc .ex{border-left:2px solid var(--turq);padding:4px 0 4px 20px;margin:18px 0;color:#d6cdb8;font-size:16px}
+  .calc .ex b{color:var(--honey)}
+
 </style>
 </head>
 <body class="locked">
@@ -302,19 +322,35 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
-    <div class="eyebrow">06 · Экономика</div>
-    <h2>Что это стоит</h2>
+    <div class="eyebrow">06 · Для продюсеров</div>
+    <h2>Экономика, сроки, калькуляция</h2>
+    <p class="lead">Цены позиций, месячная модель команды и ориентиры для расчёта бюджета AI-блока картины — в закрытом разделе.</p>
+    <div class="prodlock-card" id="prodlock">
+      <div class="k">Кабинет продюсера · конфиденциально</div>
+      <h3>Доступ по коду</h3>
+      <p>Код выдаётся продюсерам лично. Раздел содержит коммерческие условия.</p>
+      <input id="pcode" type="text" autocomplete="off" placeholder="КОД ПРОДЮСЕРА" aria-label="Код продюсера">
+      <button id="pbtn">Открыть раздел</button>
+      <div class="err2" id="perr"></div>
+    </div>
+  </div>
+</section>
+<section class="alt" id="prodsec">
+  <div class="wrap">
+    <div class="confbar"><b>Конфиденциально</b><span>Раздел для продюсеров проекта. Цифры — предмет переговоров; просьба не распространять.</span></div>
+    <div class="eyebrow">06 · Кабинет продюсера</div>
+    <h2>Экономика и сроки</h2>
     <p class="lead">Сейчас — этап знакомства: превиз-пробы по «Матке» сделаны на средства студии, без счёта проекту. Сетка ниже — честный ориентир стоимости, когда проект входит в производство: чтобы бюджет на AI-блок можно было планировать заранее.</p>
     <table>
       <tr><th>Позиция</th><th>Что входит</th><th>Цена</th><th>≈ в тенге</th></tr>
-      <tr><td>Концепт-кадр / кейфрейм</td><td>1 утверждённый кадр 2K: 2–3 варианта на выбор + 2 круга правок</td><td class="price">$20–30</td><td class="price">₸9 000–13 500</td></tr>
-      <tr><td>Карта персонажа</td><td>5 изображений: лист 3 ракурсов + портрет крупно + фигура в рост, 2K</td><td class="price">$60–90</td><td class="price">₸27 000–40 500</td></tr>
-      <tr><td>Мудборд сцены</td><td>8–12 кадров единой стилистики + карта деталей локации</td><td class="price">$150–250</td><td class="price">₸68 000–113 000</td></tr>
-      <tr><td>Видео-шот 5–15 с, 1080p</td><td>1 готовый дубль со звуком + до 3 пересдач включено</td><td class="price">$60–120</td><td class="price">₸27 000–54 000</td></tr>
-      <tr><td>Сцена под ключ</td><td>Режиссёрский план (10–15 планов) + карты героев + 15–20 кейфреймов + аниматик 60 с</td><td class="price">$600–900</td><td class="price">₸270 000–405 000</td></tr>
-      <tr><td>Промо / тизер 30 с, 1080p</td><td>1 сценарный ролик: раскадровка, 2 дубля на выбор, звук, монтаж</td><td class="price">$350–500</td><td class="price">₸158 000–225 000</td></tr>
+      <tr><td>Концепт-кадр / кейфрейм</td><td>1 утверждённый кадр 2K: 2–3 варианта на выбор + 2 круга правок · срок: 1 день</td><td class="price">$20–30</td><td class="price">₸9 000–13 500</td></tr>
+      <tr><td>Карта персонажа</td><td>5 изображений: лист 3 ракурсов + портрет крупно + фигура в рост, 2K · срок: 1–2 дня</td><td class="price">$60–90</td><td class="price">₸27 000–40 500</td></tr>
+      <tr><td>Мудборд сцены</td><td>8–12 кадров единой стилистики + карта деталей локации · срок: 2–3 дня</td><td class="price">$150–250</td><td class="price">₸68 000–113 000</td></tr>
+      <tr><td>Видео-шот 5–15 с, 1080p</td><td>1 готовый дубль со звуком + до 3 пересдач включено · срок: 1–2 дня</td><td class="price">$60–120</td><td class="price">₸27 000–54 000</td></tr>
+      <tr><td>Сцена под ключ</td><td>Режиссёрский план (10–15 планов) + карты героев + 15–20 кейфреймов + аниматик 60 с · срок: 2–4 дня</td><td class="price">$600–900</td><td class="price">₸270 000–405 000</td></tr>
+      <tr><td>Промо / тизер 30 с, 1080p</td><td>1 сценарный ролик: раскадровка, 2 дубля на выбор, звук, монтаж · срок: 2–5 дней</td><td class="price">$350–500</td><td class="price">₸158 000–225 000</td></tr>
     </table>
     <h2 style="margin-top:70px;font-size:clamp(24px,3.4vw,34px)">Команда на проекте — месячная модель</h2>
     <p class="lead">Для картины в производстве выгоднее не поштучный заказ, а выделенная AI-команда внутри проекта. В ставку уже включено всё: работа креатора, генерации (нейросети), супервизия и организация со стороны студии.</p>
@@ -324,6 +360,12 @@
       <tr><td>Юнит: 2 креатора + арт-супервизия</td><td>2–3 сцены параллельно, единый канон, приёмка студией, до 200 кадров + 25 шотов</td><td class="price">$5 500–7 000</td><td class="price">₸2,5–3,2 млн</td></tr>
       <tr><td>Разовый месяц препродакшна</td><td>Библия образов, 3–4 ключевые сцены, аниматики, питч-пакет картины</td><td class="price">от $4 000</td><td class="price">от ₸1,8 млн</td></tr>
     </table>
+    <div class="calc">
+      <h3>Как посчитать свой проект — три ориентира</h3>
+      <div class="ex"><b>Питч-пакет одной сцены</b> (как «Матка» на этой странице): сцена под ключ + промо 30 с ≈ <b>$1 000–1 400</b> (₸450–630 тыс) · 4–7 дней.</div>
+      <div class="ex"><b>Превиз ключевых сцен картины</b>: 4–5 сцен + общий тизер ≈ <b>$3 500–5 000</b> (₸1,6–2,3 млн) · 3–4 недели, один креатор.</div>
+      <div class="ex"><b>Полный препродакшн полного метра</b>: библия образов, 12–15 сцен, аниматики, питч-пакет ≈ <b>$9 000–14 000</b> (₸4–6,3 млн) · 1,5–2 месяца, юнит из двух креаторов.</div>
+    </div>
     <p class="note">Ставки включают лицензии и расход генеративных моделей; отдельно проект их не оплачивает. Объёмы и состав команды настраиваются под график картины. Тенге — справочно по курсу ₸450/$ (Нацбанк, сентябрь 2026), счёт выставляется в долларах или тенге по курсу на день оплаты.</p>
 </section>
 
@@ -358,6 +400,18 @@
       else{document.getElementById("gerr").textContent="Неверный код";}})}
   document.getElementById("gbtn").addEventListener("click",tryCode);
   document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
+
+  /* ---- producer room ---- */
+  var PH="1fe8afc142cb5e67db3fbae1196108630d3e16c76e184e881c07d69f92c745b8";
+  function openProd(){document.getElementById("prodsec").classList.add("open");
+    var pl=document.getElementById("prodlock"); if(pl) pl.closest("section").style.display="none";}
+  try{if(localStorage.getItem("matka_prod")===PH)openProd()}catch(e){}
+  function tryProd(){var v=(document.getElementById("pcode").value||"").trim().toUpperCase();
+    sha(v).then(function(hx){if(hx===PH){try{localStorage.setItem("matka_prod",hx)}catch(e){};openProd();
+        document.getElementById("prodsec").scrollIntoView({behavior:"smooth"});}
+      else{document.getElementById("perr").textContent="Неверный код";}})}
+  document.getElementById("pbtn").addEventListener("click",tryProd);
+  document.getElementById("pcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryProd()});
   /* ---- lightbox ---- */
   var figs=[].slice.call(document.querySelectorAll("figure"));
   var items=figs.map(function(f){var img=f.querySelector("img"),c=f.querySelector("figcaption");
