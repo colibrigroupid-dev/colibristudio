@@ -153,6 +153,33 @@
   .calc .ex{border-left:2px solid var(--turq);padding:4px 0 4px 20px;margin:18px 0;color:#d6cdb8;font-size:16px}
   .calc .ex b{color:var(--honey)}
 
+
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tablewrap table{min-width:640px}
+  @media(max-width:700px){
+    body{font-size:16px}
+    section{padding:64px 0}
+    .hero h1{font-size:clamp(72px,26vw,120px)}
+    .hero .meta{font-size:10.5px;letter-spacing:.08em;line-height:2}
+    .hero .byline{font-size:10.5px;letter-spacing:.16em;line-height:1.9}
+    .logline{font-size:16px}
+    .lead{font-size:16px}
+    .quote{font-size:19px;padding-left:16px}
+    h2{font-size:26px}
+    .step{grid-template-columns:52px 1fr;gap:12px;padding:20px 0}
+    .step::before{font-size:28px}
+    .step h3{font-size:18px}
+    .step p{font-size:14.5px}
+    .confbar{flex-direction:column;align-items:flex-start;gap:6px}
+    th,td{padding:10px 10px;font-size:13.5px}
+    .videocard .cap b{font-size:15.5px}
+    .videocard .cap p{font-size:13px}
+    figcaption{font-size:10.5px}
+    .calc .ex{font-size:14.5px}
+    .prodlock-card{padding:30px 20px}
+    .gate .card{padding:34px 22px}
+  }
+
 </style>
 </head>
 <body class="locked">
@@ -182,7 +209,7 @@
     <h1>МАТКА</h1>
     <div class="byline">проект <em>Елены Лисасиной</em> · <em>Taurus Asia Production</em> · Казахстан · превиз-производство <em>Colibri Studio</em></div>
     <p class="logline">Чтобы спасти свой брак, бесплодная женщина соглашается взять в дом приёмную девочку, которую выбрала её свекровь. Спустя время она понимает: девочку готовят не в дочери — а на замену ей самой.</p>
-    <div class="meta">сцена убийства пчёлами<span class="sep">•</span>15 планов<span class="sep">•</span>20 кейфреймов<span class="sep">•</span>5 роликов<span class="sep">•</span>один вечер производства</div>
+    <div class="meta">сцена убийства пчёлами<span class="sep">•</span>15 планов<span class="sep">•</span>22 кейфрейма<span class="sep">•</span>7 видео<span class="sep">•</span>один вечер производства</div>
   </div>
 </header>
 
@@ -253,17 +280,17 @@
         <p>Один непрерывный прогон видеомодели по режиссёрскому промпту: монтаж, ритм и камера — решения модели внутри заданной драматургии. Рой вырывается из ульев, атака, крупные планы вторжения, тихий кадр наблюдателя за стеклом, финал у запертой двери.</p></div>
       </div>
       <div class="videocard" style="grid-column:1/-1">
-        <video src="assets/promo2.mp4" controls preload="metadata"></video>
+        <video src="assets/promo2.mp4" controls preload="metadata" poster="assets/poster_p2.jpg"></video>
         <div class="cap"><b>«Вторжение» · 30 секунд · 720p</b>
         <p>Тихий боди-хоррор — контраст экшену: она замерла у стены, рой не атакует — он заселяется. Пчела заходит в ухо, замирает у ноздри, протискивается в уголок губ; крик срывает стазис — рой отвечает маской. Финал — свидетель за стеклом.</p></div>
       </div>
       <div class="videocard">
-        <video src="assets/promo15.mp4" controls preload="metadata"></video>
+        <video src="assets/promo15.mp4" controls preload="metadata" poster="assets/poster_p15.jpg"></video>
         <div class="cap"><b>Экшен-этюд · 15 секунд · 480p, черновик</b>
         <p>Первая проба свободного мультишота: эскалация от роя до маски из пчёл.</p></div>
       </div>
       <div class="videocard">
-        <video src="assets/animatic60.mp4" controls preload="metadata"></video>
+        <video src="assets/animatic60.mp4" controls preload="metadata" poster="assets/poster_anim.jpg"></video>
         <div class="cap"><b>Аниматик сцены · 60 секунд · 480p, черновик</b>
         <p>Черновой прогон всех 12 планов по раскадровке — рабочий инструмент режиссёра.</p></div>
       </div>
@@ -331,7 +358,7 @@
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">05а · Документы превиза</div>
+    <div class="eyebrow">05 · Документы превиза</div>
     <h2>Раскадровка и ключевой арт</h2>
     <div class="grid c2">
       <figure><img src="assets/contact_sheet.jpg" loading="lazy" alt="Контактный лист 15 планов сцены"><figcaption>Контактный лист сцены — 15 планов одним документом</figcaption></figure>
@@ -342,7 +369,7 @@
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">05 · Как это сделано</div>
+    <div class="eyebrow">06 · Как это сделано</div>
     <h2>Кино-конвейер Colibri Studio</h2>
     <div class="steps">
       <div class="step"><div><h3>Режиссёрский план</h3><p>Сценарная сцена раскладывается на планы: задача, композиция, оптика, свет, реквизит, звук. Фиксируется канон мира — палитра в HEX, костюмы, хронология деталей (платок Катиры рассказывает историю сам). <span class="m">15 карточек планов</span></p></div></div>
@@ -356,17 +383,17 @@
 
 <section class="alt">
   <div class="wrap">
-    <div class="eyebrow">05б · Управление сценой</div>
+    <div class="eyebrow">07 · Управление сценой</div>
     <h2>3D-блокинг → фотореал: камера подчиняется режиссёру</h2>
     <p class="lead">Главный вопрос продюсера к AI — «а можно ли этим управлять?» Можно. Мизансцену и движение камеры мы ставим руками в 3D — серые болванки, честная геометрия двора. Затем видеомодель повторяет эту камеру кадр в кадр и надевает фотореал: Жулдыз идёт с банкой от улья к топчану, камера ведёт её и встаёт в финальный план — ровно так, как задано в блокинге.</p>
     <div class="grid c2">
       <div class="videocard">
-        <video src="assets/blocking3d.mp4" controls preload="metadata" muted loop></video>
+        <video src="assets/blocking3d.mp4" controls preload="metadata" muted loop poster="assets/poster_blk.jpg"></video>
         <div class="cap"><b>1 · Блокинг в Blender · 15 секунд</b>
         <p>Постановка мизансцены и камеры: один непрерывный кадр, три прохода правок до чистового.</p></div>
       </div>
       <div class="videocard">
-        <video src="assets/alive3d.mp4" controls preload="metadata"></video>
+        <video src="assets/alive3d.mp4" controls preload="metadata" poster="assets/poster_alv.jpg"></video>
         <div class="cap"><b>2 · Тот же кадр после видеомодели · 720p</b>
         <p>Та же траектория камеры, та же мизансцена — в фотореале и каноне картины, со звуком двора.</p></div>
       </div>
@@ -377,7 +404,7 @@
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">06 · Для продюсеров</div>
+    <div class="eyebrow">08 · Для продюсеров</div>
     <h2>Экономика, сроки, калькуляция</h2>
     <p class="lead">Цены позиций, месячная модель команды и ориентиры для расчёта бюджета AI-блока картины — в закрытом разделе.</p>
     <div class="prodlock-card" id="prodlock">
@@ -393,10 +420,10 @@
 <section class="alt" id="prodsec">
   <div class="wrap">
     <div class="confbar"><b>Конфиденциально</b><span>Раздел для продюсеров проекта. Цифры — предмет переговоров; просьба не распространять.</span></div>
-    <div class="eyebrow">06 · Кабинет продюсера</div>
+    <div class="eyebrow">08 · Кабинет продюсера</div>
     <h2>Экономика и сроки</h2>
     <p class="lead">Сейчас — этап знакомства: превиз-пробы по «Матке» сделаны на средства студии, без счёта проекту. Сетка ниже — честный ориентир стоимости, когда проект входит в производство: чтобы бюджет на AI-блок можно было планировать заранее.</p>
-    <table>
+    <div class="tablewrap"><table>
       <tr><th>Позиция</th><th>Что входит</th><th>Цена</th><th>≈ в тенге</th></tr>
       <tr><td>Концепт-кадр / кейфрейм</td><td>1 утверждённый кадр 2K: 2–3 варианта на выбор + 2 круга правок · срок: 1 день</td><td class="price">$20–30</td><td class="price">₸9 000–13 500</td></tr>
       <tr><td>Карта персонажа</td><td>5 изображений: лист 3 ракурсов + портрет крупно + фигура в рост, 2K · срок: 1–2 дня</td><td class="price">$60–90</td><td class="price">₸27 000–40 500</td></tr>
@@ -404,15 +431,15 @@
       <tr><td>Видео-шот 5–15 с, 1080p</td><td>1 готовый дубль со звуком + до 3 пересдач включено · срок: 1–2 дня</td><td class="price">$60–120</td><td class="price">₸27 000–54 000</td></tr>
       <tr><td>Сцена под ключ</td><td>Режиссёрский план (10–15 планов) + карты героев + 15–20 кейфреймов + аниматик 60 с · срок: 2–4 дня</td><td class="price">$600–900</td><td class="price">₸270 000–405 000</td></tr>
       <tr><td>Промо / тизер 30 с, 1080p</td><td>1 сценарный ролик: раскадровка, 2 дубля на выбор, звук, монтаж · срок: 2–5 дней</td><td class="price">$350–500</td><td class="price">₸158 000–225 000</td></tr>
-    </table>
+    </table></div>
     <h2 style="margin-top:70px;font-size:clamp(24px,3.4vw,34px)">Команда на проекте — месячная модель</h2>
     <p class="lead">Для картины в производстве выгоднее не поштучный заказ, а выделенная AI-команда внутри проекта. В ставку уже включено всё: работа креатора, генерации (нейросети), супервизия и организация со стороны студии.</p>
-    <table>
+    <div class="tablewrap"><table>
       <tr><th>Состав</th><th>Объём в месяц (ориентир)</th><th>В месяц</th><th>≈ в тенге</th></tr>
       <tr><td>Выделенный AI-креатор</td><td>До 100 кейфреймов ИЛИ 12–18 видео-шотов, либо микс; полная загрузка под режиссёра</td><td class="price">$2 500–3 500</td><td class="price">₸1,1–1,6 млн</td></tr>
       <tr><td>Юнит: 2 креатора + арт-супервизия</td><td>2–3 сцены параллельно, единый канон, приёмка студией, до 200 кадров + 25 шотов</td><td class="price">$5 500–7 000</td><td class="price">₸2,5–3,2 млн</td></tr>
       <tr><td>Разовый месяц препродакшна</td><td>Библия образов, 3–4 ключевые сцены, аниматики, питч-пакет картины</td><td class="price">от $4 000</td><td class="price">от ₸1,8 млн</td></tr>
-    </table>
+    </table></div>
     <div class="calc">
       <h3>Как посчитать свой проект — три ориентира</h3>
       <div class="ex"><b>Питч-пакет одной сцены</b> (как «Матка» на этой странице): сцена под ключ + промо 30 с ≈ <b>$1 000–1 400</b> (₸450–630 тыс) · 4–7 дней.</div>
