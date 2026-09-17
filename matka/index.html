@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>МАТКА — AI-превиз сцены</title>
+<meta name="description" content="МАТКА — психологическая драма-триллер Елены Лисасиной. AI-превиз ключевой сцены: режиссёрский план, карты персонажей, кейфреймы, промо-ролик. Производство превиза — Colibri Studio.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐝</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#0b0906; --ink-2:#141008; --ink-3:#1d160c;
+    --line:#2b2416;
+    --paper:#efe7d5; --mute:#98907e;
+    --honey:#c99a45; --honey-deep:#a67b3c;
+    --turq:#7fa3a1;
+    --disp:"Oswald","Arial Narrow",sans-serif;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,video{max-width:100%;display:block}
+  a{color:inherit}
+  ::selection{background:var(--honey);color:var(--ink)}
+  body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    animation:grain 7s steps(10) infinite}
+  @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-8%,3%)}40%{transform:translate(-3%,8%)}60%{transform:translate(6%,0)}80%{transform:translate(-6%,0)}}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  .bar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
+    padding:16px 26px;background:rgba(11,9,6,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(43,36,22,.6)}
+  .bar .brand{font-family:var(--disp);font-weight:600;letter-spacing:.34em;font-size:14px}
+  .bar .brand b{color:var(--honey)}
+  .bar a{text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--mute)}
+  .hero{position:relative;height:100svh;min-height:620px;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;z-index:-2}
+  .hero .bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:kb 22s ease-out forwards}
+  @keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.03)}}
+  .hero .scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(180deg,rgba(11,9,6,.7) 0%,rgba(11,9,6,0) 24%),
+    linear-gradient(180deg,rgba(11,9,6,0) 40%,rgba(11,9,6,.92) 84%,var(--ink) 100%)}
+  .hero .inner{width:100%;max-width:1100px;margin:0 auto;padding:0 24px 8vh}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--honey)}
+  .hero h1{font-family:var(--disp);font-weight:600;font-size:clamp(88px,18vw,240px);line-height:.9;letter-spacing:.06em;margin:12px 0 6px;
+    background:linear-gradient(180deg,#f7efdd 55%,#b3a687);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .byline{font-family:var(--mono);font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);margin-bottom:22px}
+  .hero .byline em{color:var(--paper);font-style:normal}
+  .logline{max-width:36em;font-size:clamp(17px,2vw,20px);color:#ddd5c2}
+  .hero .meta{margin-top:20px;font-family:var(--mono);font-size:12.5px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase}
+  .hero .meta span.sep{color:var(--honey);margin:0 10px}
+  section{position:relative;padding:100px 0}
+  section.alt{background:var(--ink-2)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--honey);margin-bottom:16px}
+  h2{font-family:var(--disp);font-weight:500;font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:.02em;margin-bottom:22px}
+  .lead{max-width:44em;color:#d6cdb8;font-size:18px}
+  .quote{font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.6vw,27px);line-height:1.5;color:#e7ddc6;max-width:36em;margin:34px 0 10px;border-left:2px solid var(--honey);padding-left:24px}
+  .quote-src{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);padding-left:26px}
+  .grid{display:grid;gap:14px;margin-top:40px}
+  .grid.c2{grid-template-columns:repeat(2,1fr)}
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  .grid.c4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){.grid.c3,.grid.c4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid.c2,.grid.c3,.grid.c4{grid-template-columns:1fr}}
+  figure{position:relative;background:var(--ink-3);border:1px solid var(--line);overflow:hidden}
+  figure img{aspect-ratio:16/9;object-fit:cover;width:100%;transition:transform .5s ease,opacity .4s}
+  figure:hover img{transform:scale(1.03)}
+  figcaption{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--mute);padding:10px 12px;text-transform:uppercase}
+  .videocard{background:var(--ink-3);border:1px solid var(--line)}
+  .videocard video{width:100%;aspect-ratio:16/9;background:#000}
+  .videocard .cap{padding:14px 16px}
+  .videocard .cap b{font-family:var(--disp);letter-spacing:.06em;font-weight:500;font-size:18px}
+  .videocard .cap p{color:var(--mute);font-size:14px;margin-top:4px}
+  .steps{counter-reset:s;display:grid;gap:0;margin-top:36px;border-top:1px solid var(--line)}
+  .step{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line)}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--disp);font-size:44px;font-weight:600;color:var(--honey);opacity:.85;line-height:1}
+  .step h3{font-family:var(--disp);font-weight:500;font-size:21px;letter-spacing:.03em;margin-bottom:6px}
+  .step p{color:#cfc6b0;font-size:16px;max-width:52em}
+  .step p .m{font-family:var(--mono);font-size:13px;color:var(--turq)}
+  table{width:100%;border-collapse:collapse;margin-top:30px;font-size:15.5px}
+  th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:500}
+  td.price{font-family:var(--mono);color:var(--honey);white-space:nowrap}
+  .note{font-size:14px;color:var(--mute);margin-top:16px;max-width:52em}
+  footer{padding:70px 0 90px;border-top:1px solid var(--line);background:var(--ink-2)}
+  footer .brandline{font-family:var(--disp);letter-spacing:.3em;font-size:15px}
+  footer .brandline b{color:var(--honey)}
+  footer p{color:var(--mute);font-size:14px;margin-top:10px;max-width:44em}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--turq);border:1px solid rgba(127,163,161,.4);padding:3px 10px;border-radius:2px;margin:0 8px 8px 0}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="brand">COLIBRI <b>STUDIO</b> · AI</div>
+  <a href="/">colibristudio.ai</a>
+</div>
+
+<header class="hero">
+  <div class="bg"><img src="assets/hero_mask.jpg" alt="Кадр: лицо, наполовину покрытое живым ковром пчёл"></div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="kicker">AI-превиз ключевой сцены · драма / триллер</div>
+    <h1>МАТКА</h1>
+    <div class="byline">проект <em>Елены Лисасиной</em> · Казахстан · превиз-производство <em>Colibri Studio</em></div>
+    <p class="logline">Чтобы спасти свой брак, бесплодная женщина соглашается взять в дом приёмную девочку, которую выбрала её свекровь. Спустя время она понимает: девочку готовят не в дочери — а на замену ей самой.</p>
+    <div class="meta">сцена убийства пчёлами<span class="sep">•</span>15 планов<span class="sep">•</span>20 кейфреймов<span class="sep">•</span>3 ролика<span class="sep">•</span>один вечер производства</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">01 · Замысел</div>
+    <h2>Сцена на грани фантазии<br>и абсолютной натуралистичности</h2>
+    <p class="lead">Кульминация фильма — убийство свекрови без оружия и без прикосновения: инструментом становятся пчёлы собственной пасеки. Автор задала регистр «Субстанции»: телесный ужас без капли крови. Мы собрали полный AI-превиз сцены — чтобы продюсер и фонд увидели её до съёмок.</p>
+    <div class="quote">Хотелось бы создать сцену на грани фантазии и абсолютной натуралистичности…</div>
+    <div class="quote-src">Елена Лисасина, автор и режиссёр</div>
+    <p class="note" style="margin-top:28px">Механизм сцены химически достоверен: героиня подменяет духи грушевой эссенцией — изоамилацетатом, главным компонентом феромона тревоги медоносных пчёл. Жало, оставшееся в коже, продолжает испарять феромон — так одна пчела превращается в рой. Наука работает на драму.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">02 · Ролики</div>
+    <h2>Сцена в движении</h2>
+    <div class="grid c2">
+      <div class="videocard" style="grid-column:1/-1">
+        <video src="assets/promo30.mp4" controls preload="metadata" poster="assets/poster30.jpg"></video>
+        <div class="cap"><b>Промо-фрагмент · 30 секунд · со звуком</b>
+        <p>Один непрерывный прогон видеомодели по режиссёрскому промпту: монтаж, ритм и камера — решения модели внутри заданной драматургии. Рой вырывается из ульев, атака, крупные планы вторжения, тихий кадр наблюдателя за стеклом, финал у запертой двери.</p></div>
+      </div>
+      <div class="videocard">
+        <video src="assets/promo15.mp4" controls preload="metadata"></video>
+        <div class="cap"><b>Экшен-этюд · 15 секунд</b>
+        <p>Первая проба свободного мультишота: эскалация от роя до маски из пчёл.</p></div>
+      </div>
+      <div class="videocard">
+        <video src="assets/animatic60.mp4" controls preload="metadata"></video>
+        <div class="cap"><b>Аниматик сцены · 60 секунд</b>
+        <p>Черновой прогон всех 12 планов по раскадровке — рабочий инструмент режиссёра.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">03 · Персонажи</div>
+    <h2>Карты идентичности</h2>
+    <p class="lead">У каждого героя — карта лица в трёх ракурсах, крупный портрет и фигура в полный рост. Карты работают референсами во всех генерациях: один и тот же человек держится от кадра к кадру.</p>
+    <div class="grid c2">
+      <figure><img src="assets/card_katira.jpg" loading="lazy" alt="Карта Катиры: три ракурса"><figcaption>Катира, 63 — карта лица</figcaption></figure>
+      <figure><img src="assets/card_zhuldyz.jpg" loading="lazy" alt="Карта Жулдыз: три ракурса"><figcaption>Жулдыз, 33 — карта лица</figcaption></figure>
+    </div>
+    <div class="grid c4">
+      <figure><img src="assets/ref_katira_face.jpg" loading="lazy" alt="Катира крупно"><figcaption>Катира — портрет</figcaption></figure>
+      <figure><img src="assets/ref_katira_full.jpg" loading="lazy" alt="Катира в рост"><figcaption>Катира — в рост</figcaption></figure>
+      <figure><img src="assets/ref_zhuldyz_face.jpg" loading="lazy" alt="Жулдыз крупно"><figcaption>Жулдыз — портрет</figcaption></figure>
+      <figure><img src="assets/ref_zhuldyz_full.jpg" loading="lazy" alt="Жулдыз в рост"><figcaption>Жулдыз — в рост</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">04 · Кейфреймы сцены</div>
+    <h2>15 планов — от ритуала заботы до тишины</h2>
+    <p class="lead">Каждый план сцены закрыт утверждённым кадром: единая палитра (мёд, охра, умбра, бирюза), казахский аул под Текели, анатомически точные медоносные пчёлы. Приёмка каждого кадра — по палитре, анатомии и континуити.</p>
+    <div class="grid c3">
+      <figure><img src="assets/f01_topchan.jpg" loading="lazy" alt=""><figcaption>П1 · Топчан — ритуал заботы</figcaption></figure>
+      <figure><img src="assets/f02_reshenie.jpg" loading="lazy" alt=""><figcaption>П2 · Решение</figcaption></figure>
+      <figure><img src="assets/f03_banka.jpg" loading="lazy" alt=""><figcaption>П3 · Инструмент</figcaption></figure>
+      <figure><img src="assets/f04_ukus.jpg" loading="lazy" alt=""><figcaption>П4 · Укус</figcaption></figure>
+      <figure><img src="assets/f05_zhalo.jpg" loading="lazy" alt=""><figcaption>П5 · Жало остаётся</figcaption></figure>
+      <figure><img src="assets/f06_duhi.jpg" loading="lazy" alt=""><figcaption>П6 · «Духи»</figcaption></figure>
+      <figure><img src="assets/f07_dver.jpg" loading="lazy" alt=""><figcaption>П7 · Дверь закрывается</figcaption></figure>
+      <figure><img src="assets/f08_letok.jpg" loading="lazy" alt=""><figcaption>П8 · Ответ улья</figcaption></figure>
+      <figure><img src="assets/f09_roy.jpg" loading="lazy" alt=""><figcaption>П9 · Рой поднимается</figcaption></figure>
+      <figure><img src="assets/f10_vskochila.jpg" loading="lazy" alt=""><figcaption>П10 · Первые укусы</figcaption></figure>
+      <figure><img src="assets/f11_uho.jpg" loading="lazy" alt=""><figcaption>П11 · Ухо</figcaption></figure>
+      <figure><img src="assets/f12_glaz.jpg" loading="lazy" alt=""><figcaption>П11 · Глаз</figcaption></figure>
+      <figure><img src="assets/f13_rot.jpg" loading="lazy" alt=""><figcaption>П11 · Рот</figcaption></figure>
+      <figure><img src="assets/f14_glaza.jpg" loading="lazy" alt=""><figcaption>Глаза распахнуты</figcaption></figure>
+      <figure><img src="assets/f15_yazyk.jpg" loading="lazy" alt=""><figcaption>Язык</figcaption></figure>
+      <figure><img src="assets/f16_volosy.jpg" loading="lazy" alt=""><figcaption>Волосы и шея</figcaption></figure>
+      <figure><img src="assets/f17_pov.jpg" loading="lazy" alt=""><figcaption>П12 · Субъективка</figcaption></figure>
+      <figure><img src="assets/f18_dver_zaperta.jpg" loading="lazy" alt=""><figcaption>П13 · Запертая дверь</figcaption></figure>
+      <figure><img src="assets/f19_okno.jpg" loading="lazy" alt=""><figcaption>П14 · Окно — казнь</figcaption></figure>
+      <figure><img src="assets/f20_final.jpg" loading="lazy" alt=""><figcaption>П15 · Финал — тишина</figcaption></figure>
+      <figure><img src="assets/hero_mask.jpg" loading="lazy" alt=""><figcaption>Маска — кандидат в постер</figcaption></figure>
+    </div>
+    <p class="note">Поисковые варианты стилистики (Midjourney) — параллельная проба фактуры роя:</p>
+    <div class="grid c3">
+      <figure><img src="assets/mj1.jpg" loading="lazy" alt=""><figcaption>Поиск · рой у дома</figcaption></figure>
+      <figure><img src="assets/mj2.jpg" loading="lazy" alt=""><figcaption>Поиск · плотность атаки</figcaption></figure>
+      <figure><img src="assets/mj3.jpg" loading="lazy" alt=""><figcaption>Поиск · макро-фактура</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">05 · Как это сделано</div>
+    <h2>Кино-конвейер Colibri Studio</h2>
+    <div class="steps">
+      <div class="step"><div><h3>Режиссёрский план</h3><p>Сценарная сцена раскладывается на планы: задача, композиция, оптика, свет, реквизит, звук. Фиксируется канон мира — палитра в HEX, костюмы, хронология деталей (платок Катиры рассказывает историю сам). <span class="m">15 карточек планов</span></p></div></div>
+      <div class="step"><div><h3>Карты персонажей и локаций</h3><p>Листы идентичности в трёх ракурсах + детали локации из утверждённых кадров. Дальше каждый кадр генерится с картой-референсом — герой не «плывёт». <span class="m">2 карты героев · 1 карта локации</span></p></div></div>
+      <div class="step"><div><h3>Кейфреймы с приёмкой</h3><p>Кадры генерятся парами моделей (A/B), принимаются по чек-листу: палитра замеряется скриптом, анатомия пчёл и континуити проверяются покадрово, брак пересдаётся. <span class="m">20 принятых из 31 генерации</span></p></div></div>
+      <div class="step"><div><h3>Видео</h3><p>Кейфреймы оживают через видеомодель: черновики в 480p, отбор, чистовые прогоны. Финальный промо — свободный мультишот: модель сама монтирует внутри жёсткой драматургии промпта. <span class="m">14 клипов · аниматик · промо 15с и 30с</span></p></div></div>
+      <div class="step"><div><h3>Сдача</h3><p>Заказчик получает все принятые материалы + архив промптов и параметров: любой кадр воспроизводим и пересдаваем. <span class="m">полная воспроизводимость</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">06 · Экономика</div>
+    <h2>Что это стоит</h2>
+    <p class="lead">Две цифры честно: себестоимость чистой генерации (API) — и цена работы под ключ с AI-креатором: режиссура промптов, все дубли, приёмка, сборка.</p>
+    <table>
+      <tr><th>Позиция</th><th>Что получает продюсер</th><th>API-себестоимость</th><th>Под ключ</th></tr>
+      <tr><td>Концепт-кадр / кейфрейм</td><td>2K кино-кадр в палитре проекта, варианты на выбор</td><td class="price">$0.2–0.5</td><td class="price">$20–30</td></tr>
+      <tr><td>Карта персонажа</td><td>Лист идентичности + портрет + фигура в рост</td><td class="price">~$1</td><td class="price">$60–90</td></tr>
+      <tr><td>Мудборд сцены</td><td>8–12 кадров единой стилистики + карта локации</td><td class="price">$3–6</td><td class="price">$150–250</td></tr>
+      <tr><td>Видео-шот 5–15 с, 1080p</td><td>Готовый дубль со звуком, до 3 пересдач</td><td class="price">$3–8</td><td class="price">$60–120</td></tr>
+      <tr><td>Сцена под ключ</td><td>План + карты + 15–20 кейфреймов + аниматик</td><td class="price">$25–40</td><td class="price">$600–900</td></tr>
+      <tr><td>Промо / тизер 30 с, 1080p</td><td>Сценарный ролик с монтажом и звуком</td><td class="price">$15–25</td><td class="price">$350–500</td></tr>
+      <tr><td>День AI-креатора в команде</td><td>Любые задачи генерации под режиссёра</td><td class="price">—</td><td class="price">$200–300</td></tr>
+    </table>
+    <p class="note">Цена «под ключ» — за принятый результат: сколько генераций ушло внутри — забота студии. Для ориентира: весь превиз этой сцены (план, карты, 20 кейфреймов, аниматик, два промо) собран за один рабочий вечер при API-расходе ≈ $25. Классический препродакшн такого объёма — недели и тысячи долларов.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brandline">COLIBRI <b>STUDIO</b> · AI PRODUCTION</div>
+    <p>Превиз, концепт-арт и промо-материалы для кино средствами генеративных моделей — с режиссёрской дисциплиной: канон, приёмка, воспроизводимость.</p>
+    <p style="margin-top:18px">
+      <span class="tag">Nano Banana 2</span><span class="tag">Cinema Studio 2.5</span><span class="tag">Seedance 2.5</span><span class="tag">Midjourney</span><span class="tag">Weave</span>
+    </p>
+    <p style="margin-top:18px">Проект «Матка» — © Елена Лисасина, Taurus Asia Production. Материалы превиза показаны с ведома автора как кейс студии.</p>
+  </div>
+</footer>
+
+</body>
+</html>
