@@ -117,6 +117,22 @@
   .gate button{margin-top:14px;width:100%;background:var(--honey);color:var(--ink);border:0;font-family:var(--disp);font-weight:600;letter-spacing:.2em;font-size:15px;padding:13px;cursor:pointer;text-transform:uppercase}
   .gate .err{color:#e0705f;font-family:var(--mono);font-size:12px;margin-top:12px;min-height:16px}
 
+
+  /* script page */
+  .script-wrap{display:flex;justify-content:center;margin-top:44px}
+  .script-page{background:#efe7d5;color:#241c10;max-width:660px;width:100%;padding:52px 56px 46px;
+    font-family:"Courier New","IBM Plex Mono",monospace;font-size:15px;line-height:1.75;
+    box-shadow:0 30px 80px rgba(0,0,0,.55);transform:rotate(-.4deg);position:relative}
+  .script-page::before{content:"";position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(90,70,40,.18);pointer-events:none}
+  .script-page .slug{font-weight:700;letter-spacing:.06em;margin-bottom:22px}
+  .script-page p{margin-bottom:16px}
+  .script-page .action{max-width:58ch}
+  .script-page .char{margin:18px auto 0;text-align:center;font-weight:700;letter-spacing:.08em}
+  .script-page .dial{max-width:36ch;margin:2px auto 14px;text-align:center}
+  .script-page .pnum{position:absolute;top:20px;right:28px;font-size:13px;color:#6e6250}
+  .script-src{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);text-align:center;margin-top:22px}
+  @media(max-width:700px){.script-page{padding:34px 22px;font-size:13.5px}}
+
 </style>
 </head>
 <body class="locked">
@@ -149,6 +165,28 @@
     <div class="meta">сцена убийства пчёлами<span class="sep">•</span>15 планов<span class="sep">•</span>20 кейфреймов<span class="sep">•</span>5 роликов<span class="sep">•</span>один вечер производства</div>
   </div>
 </header>
+
+
+<section class="alt" id="script">
+  <div class="wrap">
+    <div class="eyebrow">Из сценария</div>
+    <h2>Сцена, с которой всё началось</h2>
+    <div class="script-wrap">
+      <div class="script-page">
+        <div class="pnum">47.</div>
+        <div class="slug">НАТ. ДОМ ЕГЕРЯ / ТОПЧАН — ДЕНЬ</div>
+        <p class="action">Катира лежит на животе на топчане возле дома. Жулдыз, как обычно, готовится делать свекрови процедуру апитоксинотерапии.</p>
+        <div class="char">КАТИРА</div>
+        <p class="dial">У Ернура опять колики… Бедный мой мальчик, он сам ничего не может.</p>
+        <p class="action">К ней подходит Жулдыз. Бросив взгляд на пасеку, она берёт из банки пчелу и сажает на спину свекрови. Слегка прижимает. Катира крякает от укуса.</p>
+        <p class="action">Пчела умирает. Запах доходит до ульев — и пчёлы начинают вылетать.</p>
+        <p class="action">Жулдыз берёт флакон духов, брызгает на место укуса — и со словами, что свекрови нужно немного полежать, уходит в дом.</p>
+        <p class="action">Видно, как с пасеки к топчану быстро приближается рой.</p>
+      </div>
+    </div>
+    <div class="script-src">Из сценария Елены Лисасиной · фрагмент публикуется с ведома автора</div>
+  </div>
+</section>
 
 <section>
   <div class="wrap">
