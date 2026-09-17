@@ -154,7 +154,9 @@
   .calc .ex b{color:var(--honey)}
 
 
-  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative}
+  .swipehint{display:none;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--turq);text-transform:uppercase;margin:8px 0 0}
+  @media(max-width:700px){.swipehint{display:block}}
   .tablewrap table{min-width:640px}
   @media(max-width:700px){
     body{font-size:16px}
@@ -431,7 +433,7 @@
       <tr><td>Видео-шот 5–15 с, 1080p</td><td>1 готовый дубль со звуком + до 3 пересдач включено · срок: 1–2 дня</td><td class="price">$60–120</td><td class="price">₸27 000–54 000</td></tr>
       <tr><td>Сцена под ключ</td><td>Режиссёрский план (10–15 планов) + карты героев + 15–20 кейфреймов + аниматик 60 с · срок: 2–4 дня</td><td class="price">$600–900</td><td class="price">₸270 000–405 000</td></tr>
       <tr><td>Промо / тизер 30 с, 1080p</td><td>1 сценарный ролик: раскадровка, 2 дубля на выбор, звук, монтаж · срок: 2–5 дней</td><td class="price">$350–500</td><td class="price">₸158 000–225 000</td></tr>
-    </table></div>
+    </table></div><p class="swipehint">← листайте таблицу вбок →</p>
     <h2 style="margin-top:70px;font-size:clamp(24px,3.4vw,34px)">Команда на проекте — месячная модель</h2>
     <p class="lead">Для картины в производстве выгоднее не поштучный заказ, а выделенная AI-команда внутри проекта. В ставку уже включено всё: работа креатора, генерации (нейросети), супервизия и организация со стороны студии.</p>
     <div class="tablewrap"><table>
@@ -439,7 +441,7 @@
       <tr><td>Выделенный AI-креатор</td><td>До 100 кейфреймов ИЛИ 12–18 видео-шотов, либо микс; полная загрузка под режиссёра</td><td class="price">$2 500–3 500</td><td class="price">₸1,1–1,6 млн</td></tr>
       <tr><td>Юнит: 2 креатора + арт-супервизия</td><td>2–3 сцены параллельно, единый канон, приёмка студией, до 200 кадров + 25 шотов</td><td class="price">$5 500–7 000</td><td class="price">₸2,5–3,2 млн</td></tr>
       <tr><td>Разовый месяц препродакшна</td><td>Библия образов, 3–4 ключевые сцены, аниматики, питч-пакет картины</td><td class="price">от $4 000</td><td class="price">от ₸1,8 млн</td></tr>
-    </table></div>
+    </table></div><p class="swipehint">← листайте таблицу вбок →</p>
     <div class="calc">
       <h3>Как посчитать свой проект — три ориентира</h3>
       <div class="ex"><b>Питч-пакет одной сцены</b> (как «Матка» на этой странице): сцена под ключ + промо 30 с ≈ <b>$1 000–1 400</b> (₸450–630 тыс) · 4–7 дней.</div>
