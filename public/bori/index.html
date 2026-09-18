@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>БӨРІ — AI-превиз сцены превращения</title>
+<meta name="description" content="БӨРІ — казахский оборотень. AI-превиз сцены превращения по раскадровке режиссёра: локации, карты персонажей, 3D-блокинг камеры.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#0b0906; --ink-2:#141008; --ink-3:#1d160c;
+    --line:#2b2416;
+    --paper:#e6e9e4; --mute:#98907e;
+    --honey:#9fd3b0; --honey-deep:#6fa885;
+    --turq:#6f8fb0;
+    --disp:"Oswald","Arial Narrow",sans-serif;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,video{max-width:100%;display:block}
+  a{color:inherit}
+  ::selection{background:var(--honey);color:var(--ink)}
+  body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    animation:grain 7s steps(10) infinite}
+  @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-8%,3%)}40%{transform:translate(-3%,8%)}60%{transform:translate(6%,0)}80%{transform:translate(-6%,0)}}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  .bar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
+    padding:16px 26px;background:rgba(11,9,6,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(43,36,22,.6)}
+  .bar .brand{font-family:var(--disp);font-weight:600;letter-spacing:.34em;font-size:14px}
+  .bar .brand b{color:var(--honey)}
+  .bar a{text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--mute)}
+  .hero{position:relative;height:100svh;min-height:620px;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;z-index:-2}
+  .hero .bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:kb 22s ease-out forwards}
+  @keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.03)}}
+  .hero .scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(180deg,rgba(11,9,6,.7) 0%,rgba(11,9,6,0) 24%),
+    linear-gradient(180deg,rgba(11,9,6,0) 40%,rgba(11,9,6,.92) 84%,var(--ink) 100%)}
+  .hero .inner{width:100%;max-width:1100px;margin:0 auto;padding:0 24px 8vh}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--honey)}
+  .hero h1{font-family:var(--disp);font-weight:600;font-size:clamp(88px,18vw,240px);line-height:.9;letter-spacing:.06em;margin:12px 0 6px;
+    background:linear-gradient(180deg,#f2f5f0 55%,#9aa79f);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .byline{font-family:var(--mono);font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);margin-bottom:22px}
+  .hero .byline em{color:var(--paper);font-style:normal}
+  .logline{max-width:36em;font-size:clamp(17px,2vw,20px);color:#ddd5c2}
+  .hero .meta{margin-top:20px;font-family:var(--mono);font-size:12.5px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase}
+  .hero .meta span.sep{color:var(--honey);margin:0 10px}
+  section{position:relative;padding:100px 0}
+  section.alt{background:var(--ink-2)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--honey);margin-bottom:16px}
+  h2{font-family:var(--disp);font-weight:500;font-size:clamp(30px,4.6vw,46px);line-height:1.12;letter-spacing:.02em;margin-bottom:22px}
+  .lead{max-width:44em;color:#d6cdb8;font-size:18px}
+  .quote{font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.6vw,27px);line-height:1.5;color:#e7ddc6;max-width:36em;margin:34px 0 10px;border-left:2px solid var(--honey);padding-left:24px}
+  .quote-src{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);padding-left:26px}
+  .grid{display:grid;gap:14px;margin-top:40px}
+  .grid.c2{grid-template-columns:repeat(2,1fr)}
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  .grid.c4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){.grid.c3,.grid.c4{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid.c2,.grid.c3,.grid.c4{grid-template-columns:1fr}}
+  figure{position:relative;background:var(--ink-3);border:1px solid var(--line);overflow:hidden}
+  figure img{aspect-ratio:16/9;object-fit:cover;width:100%;transition:transform .5s ease,opacity .4s}
+  figure:hover img{transform:scale(1.03)}
+  figcaption{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:var(--mute);padding:10px 12px;text-transform:uppercase}
+  .videocard{background:var(--ink-3);border:1px solid var(--line)}
+  .videocard video{width:100%;aspect-ratio:16/9;background:#000}
+  .videocard .cap{padding:14px 16px}
+  .videocard .cap b{font-family:var(--disp);letter-spacing:.06em;font-weight:500;font-size:18px}
+  .videocard .cap p{color:var(--mute);font-size:14px;margin-top:4px}
+  .steps{counter-reset:s;display:grid;gap:0;margin-top:36px;border-top:1px solid var(--line)}
+  .step{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line)}
+  .step::before{counter-increment:s;content:"0" counter(s);font-family:var(--disp);font-size:44px;font-weight:600;color:var(--honey);opacity:.85;line-height:1}
+  .step h3{font-family:var(--disp);font-weight:500;font-size:21px;letter-spacing:.03em;margin-bottom:6px}
+  .step p{color:#cfc6b0;font-size:16px;max-width:52em}
+  .step p .m{font-family:var(--mono);font-size:13px;color:var(--turq)}
+  table{width:100%;border-collapse:collapse;margin-top:30px;font-size:15.5px}
+  th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:500}
+  td.price{font-family:var(--mono);color:var(--honey);white-space:nowrap}
+  .note{font-size:14px;color:var(--mute);margin-top:16px;max-width:52em}
+  footer{padding:70px 0 90px;border-top:1px solid var(--line);background:var(--ink-2)}
+  footer .brandline{font-family:var(--disp);letter-spacing:.3em;font-size:15px}
+  footer .brandline b{color:var(--honey)}
+  footer p{color:var(--mute);font-size:14px;margin-top:10px;max-width:44em}
+  .tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--turq);border:1px solid rgba(127,163,161,.4);padding:3px 10px;border-radius:2px;margin:0 8px 8px 0}
+
+  /* lightbox */
+  figure.lb{cursor:zoom-in}
+  .lbox{position:fixed;inset:0;z-index:90;background:rgba(7,6,4,.96);display:none;align-items:center;justify-content:center;flex-direction:column;padding:30px}
+  .lbox.on{display:flex}
+  .lbox img{max-width:min(96vw,1600px);max-height:82vh;object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,.6)}
+  .lbox .lcap{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:16px;text-align:center}
+  .lbox .lcap b{color:var(--honey);margin-right:14px}
+  .lbtn{position:fixed;top:50%;transform:translateY(-50%);z-index:91;background:rgba(20,16,8,.7);border:1px solid var(--line);color:var(--paper);font-size:26px;line-height:1;padding:16px 18px;cursor:pointer;user-select:none}
+  .lbtn:hover{background:rgba(201,154,69,.25)}
+  .lprev{left:14px}.lnext{right:14px}
+  .lclose{position:fixed;top:16px;right:16px;z-index:91;background:rgba(20,16,8,.7);border:1px solid var(--line);color:var(--paper);font-size:20px;padding:10px 15px;cursor:pointer}
+  @media(max-width:700px){.lbtn{padding:12px 13px;font-size:20px}}
+  /* access gate */
+  body.locked{overflow:hidden}
+  body.locked .bar, body.locked .hero, body.locked section, body.locked footer{filter:blur(26px);pointer-events:none;user-select:none}
+  .gate{position:fixed;inset:0;z-index:120;background:rgba(9,7,4,.9);display:none;align-items:center;justify-content:center;padding:24px}
+  body.locked .gate{display:flex}
+  .gate .card{background:var(--ink-2);border:1px solid var(--line);padding:44px 40px;max-width:420px;width:100%;text-align:center}
+  .gate .card .k{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--honey)}
+  .gate .card h3{font-family:var(--disp);font-weight:500;font-size:30px;letter-spacing:.14em;margin:10px 0 6px}
+  .gate .card p{color:var(--mute);font-size:14px;margin-bottom:22px}
+  .gate input{width:100%;background:var(--ink);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:18px;letter-spacing:.28em;text-transform:uppercase;text-align:center;padding:13px 12px;outline:none}
+  .gate input:focus{border-color:var(--honey)}
+  .gate button{margin-top:14px;width:100%;background:var(--honey);color:var(--ink);border:0;font-family:var(--disp);font-weight:600;letter-spacing:.2em;font-size:15px;padding:13px;cursor:pointer;text-transform:uppercase}
+  .gate .err{color:#e0705f;font-family:var(--mono);font-size:12px;margin-top:12px;min-height:16px}
+
+
+  /* script page */
+  .script-wrap{display:flex;justify-content:center;margin-top:44px}
+  .script-page{background:#efe7d5;color:#241c10;max-width:660px;width:100%;padding:52px 56px 46px;
+    font-family:"Courier New","IBM Plex Mono",monospace;font-size:15px;line-height:1.75;
+    box-shadow:0 30px 80px rgba(0,0,0,.55);transform:rotate(-.4deg);position:relative}
+  .script-page::before{content:"";position:absolute;inset:0;box-shadow:inset 0 0 60px rgba(90,70,40,.18);pointer-events:none}
+  .script-page .slug{font-weight:700;letter-spacing:.06em;margin-bottom:22px}
+  .script-page p{margin-bottom:16px}
+  .script-page .action{max-width:58ch}
+  .script-page .char{margin:18px auto 0;text-align:center;font-weight:700;letter-spacing:.08em}
+  .script-page .dial{max-width:36ch;margin:2px auto 14px;text-align:center}
+  .script-page .pnum{position:absolute;top:20px;right:28px;font-size:13px;color:#6e6250}
+  .script-src{font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);text-align:center;margin-top:22px}
+  @media(max-width:700px){.script-page{padding:34px 22px;font-size:13.5px}}
+
+
+  /* producer room */
+  .prodlock-card{background:var(--ink-3);border:1px solid var(--line);max-width:560px;margin:40px auto 0;padding:42px 40px;text-align:center}
+  .prodlock-card .k{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--turq)}
+  .prodlock-card h3{font-family:var(--disp);font-weight:500;font-size:26px;letter-spacing:.08em;margin:12px 0 8px}
+  .prodlock-card p{color:var(--mute);font-size:14.5px;margin-bottom:20px}
+  .prodlock-card input{width:100%;background:var(--ink);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:17px;letter-spacing:.24em;text-transform:uppercase;text-align:center;padding:12px;outline:none}
+  .prodlock-card input:focus{border-color:var(--turq)}
+  .prodlock-card button{margin-top:12px;width:100%;background:var(--turq);color:var(--ink);border:0;font-family:var(--disp);font-weight:600;letter-spacing:.18em;font-size:14px;padding:12px;cursor:pointer;text-transform:uppercase}
+  .prodlock-card .err2{color:#e0705f;font-family:var(--mono);font-size:12px;margin-top:10px;min-height:14px}
+  .confbar{display:flex;align-items:center;gap:14px;border:1px solid rgba(224,112,95,.45);background:rgba(224,112,95,.07);padding:12px 18px;margin-bottom:34px}
+  .confbar b{font-family:var(--mono);font-size:12px;letter-spacing:.26em;color:#e0705f;text-transform:uppercase;white-space:nowrap}
+  .confbar span{color:var(--mute);font-size:13px}
+  #prodsec{display:none}
+  #prodsec.open{display:block}
+  .calc{margin-top:56px}
+  .calc h3{font-family:var(--disp);font-weight:500;font-size:24px;letter-spacing:.04em;margin-bottom:14px}
+  .calc .ex{border-left:2px solid var(--turq);padding:4px 0 4px 20px;margin:18px 0;color:#d6cdb8;font-size:16px}
+  .calc .ex b{color:var(--honey)}
+
+
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative}
+  .swipehint{display:none;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--turq);text-transform:uppercase;margin:8px 0 0}
+  @media(max-width:700px){.swipehint{display:block}}
+  .tablewrap table{min-width:640px}
+  @media(max-width:700px){
+    body{font-size:16px}
+    section{padding:64px 0}
+    .hero h1{font-size:clamp(72px,26vw,120px)}
+    .hero .meta{font-size:10.5px;letter-spacing:.08em;line-height:2}
+    .hero .byline{font-size:10.5px;letter-spacing:.16em;line-height:1.9}
+    .logline{font-size:16px}
+    .lead{font-size:16px}
+    .quote{font-size:19px;padding-left:16px}
+    h2{font-size:26px}
+    .step{grid-template-columns:52px 1fr;gap:12px;padding:20px 0}
+    .step::before{font-size:28px}
+    .step h3{font-size:18px}
+    .step p{font-size:14.5px}
+    .confbar{flex-direction:column;align-items:flex-start;gap:6px}
+    th,td{padding:10px 10px;font-size:13.5px}
+    .videocard .cap b{font-size:15.5px}
+    .videocard .cap p{font-size:13px}
+    figcaption{font-size:10.5px}
+    .calc .ex{font-size:14.5px}
+    .prodlock-card{padding:30px 20px}
+    .gate .card{padding:34px 22px}
+  }
+
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="card">
+    <div class="k">Закрытый показ</div>
+    <h3>БӨРІ</h3>
+    <p style="font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);margin-bottom:10px">Казахстан · сцена превращения<br>превиз-производство Colibri Studio</p>
+    <p>Материалы предоставляются по коду доступа.</p>
+    <input id="gcode" type="text" autocomplete="off" placeholder="КОД" aria-label="Код доступа">
+    <button id="gbtn">Войти</button>
+    <div class="err" id="gerr"></div>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="brand" style="letter-spacing:.22em;font-weight:500;font-size:12.5px;color:var(--mute)">colibri <b>studio</b></div>
+  <a href="/">colibristudio.ai</a>
+</div>
+
+<header class="hero">
+  <div class="bg"><img src="assets/vannaya.jpg" alt="Ванная: серый кафель, треснувшее зеркало, лампа-трубка"></div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="kicker">AI-превиз сцены превращения · хоррор / драма</div>
+    <h1>БӨРІ</h1>
+    <div class="byline">казахский оборотень · по раскадровке <em>режиссёра-сценариста</em> · превиз-производство <em>Colibri Studio</em></div>
+    <p class="logline">Ночь. Коридор старой панельки, в конце — открытая дверь в ванную. Улан, 20, добирается до раковины, и под мигающей лампой его тело перестаёт быть человеческим. В треснувшем зеркале — тот, кто выходит из комнаты.</p>
+    <div class="meta">одна сцена<span class="sep">•</span>14 кадров раскадровки<span class="sep">•</span>3 локации<span class="sep">•</span>2 карты персонажей<span class="sep">•</span>3D-блокинг 60 секунд</div>
+  </div>
+</header>
+
+<section class="alt" id="script">
+  <div class="wrap">
+    <div class="eyebrow">Из сценария</div>
+    <h2>Сцена, которую ставим</h2>
+    <div class="script-wrap">
+      <div class="script-page">
+        <div class="pnum">1.</div>
+        <div class="slug">ИНТ. КОМНАТА - НОЧЬ</div>
+        <p class="action">Ночной коридор через который еле проходит тусклый лунный свет. Слышится частое дыхание и крики юноши. В конце коридора открытая дверь, ведущая к фактурной ванной комнате, серый холодный кафель.</p><p class="action">В сторону раковины проходит корчащийся от невыносимой боли УЛАН (20). Юноша опирается об раковину, кричит, будто что-то внутри мучает его и пронзает его болью. Улан издает еще более дикий крик.</p><p class="action">Свет в ванной мерцает, замыкает, то включается, то выключается, создавая строб. Улан падает на пол, скукоживается, ползет. После юноша вновь хватается за край раковины, пытается подняться.</p><p class="action">Над раковиной потрескавшееся зеркало. Рука Улана, которая держится за раковину меняется в форме, чернеет. Появляются когти. Улан кричит все безумнее. Виднеется увеличивающийся искаженный силуэт через зеркало. Глаза Улана расширяются, желтеют, звереют. Нога юноши тоже чернеет, увеличивается и обретает звериный вид. Клыки становятся отчетливее, лицо Улана чернеет и вытягивается все больше принимая очертания зверя. Спина и шея становятся шире, крики уже совсем нечеловеческие. В зеркале между мерцанием света и трещин еле виден силуэт волка, который рычит и стремительно покидает комнату.</p>
+      </div>
+    </div>
+    <div class="script-src">Proof of Concept · сцена режиссёра-сценариста · рабочий материал, не для распространения</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">01 · Замысел</div>
+    <h2>Превращение в четырёх стенах</h2>
+    <p class="lead">Вся сцена держится на трёх инструментах: строб замыкающей лампы, треснувшее зеркало как второй персонаж и раковина как точка опоры — пришёл, упал, пополз, снова схватился. Стадии тела показываются инсертами: рука, глаза, нога, клыки; лицо целиком — три раза.</p>
+    <div class="grid c4" style="margin-top:34px">
+      <div style="border:1px solid var(--line);padding:18px 20px"><div class="eyebrow" style="margin-bottom:6px">Жанр</div><div style="font-family:var(--disp);font-size:20px">Хоррор · драма</div></div>
+      <div style="border:1px solid var(--line);padding:18px 20px"><div class="eyebrow" style="margin-bottom:6px">Стадия</div><div style="font-family:var(--disp);font-size:20px">Proof of Concept</div></div>
+      <div style="border:1px solid var(--line);padding:18px 20px"><div class="eyebrow" style="margin-bottom:6px">Свет</div><div style="font-family:var(--disp);font-size:20px">Лампа и луна</div></div>
+      <div style="border:1px solid var(--line);padding:18px 20px"><div class="eyebrow" style="margin-bottom:6px">Регистр</div><div style="font-family:var(--disp);font-size:20px">Живые люди, без CG-глянца</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">02 · Раскадровка режиссёра</div>
+    <h2>14 кадров — от пустого коридора до силуэта в зеркале</h2>
+    <p class="lead">Режиссёр отдал два листа: рисунки для мизансцен и фото-референсы для фактуры. Мы разобрали их по кадрам — это и есть план сцены, под который собираются локации, персонажи и камера.</p>
+    <div class="tablewrap"><table>
+      <tr><th>#</th><th>Кадр</th><th>Что в кадре</th><th>Источник</th></tr>
+      <tr><td class="n">1</td><td><b>Коридор, ночь</b></td><td>Одноточечная перспектива, статичная камера. Пусто, в конце приоткрыта дверь в ванную. Дыхание и крик за кадром</td><td class="mono">рисунок</td></tr><tr><td class="n">2</td><td><b>Появление</b></td><td>Та же камера. В проёме появляется Улан, входит</td><td class="mono">рисунок</td></tr><tr><td class="n">3</td><td><b>Со спины, общий</b></td><td>Голый торс, руки на раковине, лампа-трубка над зеркалом, кафель в потёках</td><td class="mono">реф</td></tr><tr><td class="n">4</td><td><b>Крик</b></td><td>Крупно лицо: крик, мокрые волосы</td><td class="mono">реф</td></tr><tr><td class="n">5</td><td><b>Инсерт лампы</b></td><td>Трубка над зеркалом мигает, замыкает — строб</td><td class="mono">реф</td></tr><tr><td class="n">6</td><td><b>На полу</b></td><td>На четвереньках, в джинсах, торс мокрый</td><td class="mono">реф</td></tr><tr><td class="n">7</td><td><b>Корчится в мучениях</b></td><td>Лицо крупно, руки на лице, рот открыт</td><td class="mono">рисунок</td></tr><tr><td class="n">8</td><td><b>Топшот</b></td><td>Вид сверху: раковина у левой стены, унитаз в правом верхнем углу. Ползёт к раковине, встаёт к зеркалу</td><td class="mono">рисунок</td></tr><tr><td class="n">9</td><td><b>Когти</b></td><td>Когтистая рука на бортике, мокрый кафель</td><td class="mono">реф</td></tr><tr><td class="n">10</td><td><b>Глаза</b></td><td>Сверхкрупно: желтеют</td><td class="mono">реф</td></tr><tr><td class="n">11</td><td><b>Зеркало</b></td><td>Треснувшее зеркало, лицо еле видно между трещин. Частично превратился</td><td class="mono">рисунок</td></tr><tr><td class="n">12</td><td><b>Лапы</b></td><td>Лапы волка на мокром кафеле</td><td class="mono">реф</td></tr><tr><td class="n">13</td><td><b>Превратился</b></td><td>Голова волка: оскал, рык</td><td class="mono">реф</td></tr><tr><td class="n">14</td><td><b>Выходит из кадра</b></td><td>В зеркале серый силуэт волка уходит влево</td><td class="mono">рисунок</td></tr>
+    </table></div>
+    <p class="note">Что раскадровка изменила в нашей постановке: герой без футболки, в джинсах, тело мокрое; раковина и зеркало у левой стены, унитаз в дальнем правом углу; отдельный инсерт лампы; топшот как ключевой ракурс; три зеркальных кадра.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">03 · Локации</div>
+    <h2>Коридор и ванная</h2>
+    <p class="lead">Панельная квартира: масляная краска по низу стен, линолеум, дверь в конце коридора. Ванная — по топшоту режиссёра: раковина и треснувшее зеркало слева, лампа-трубка над зеркалом, ванна справа, унитаз в углу, мокрый кафель.</p>
+    <div class="grid c2">
+      <figure><img src="assets/koridor.jpg" loading="lazy" alt="Коридор ночью, дверь в ванную"><figcaption>Коридор — кадр 1 раскадровки</figcaption></figure>
+      <figure><img src="assets/vannaya.jpg" loading="lazy" alt="Ванная от двери"><figcaption>Ванная от двери — кадр 3</figcaption></figure>
+    </div>
+    <div class="grid c2">
+      <figure><img src="assets/topshot.jpg" loading="lazy" alt="Ванная сверху"><figcaption>Топшот — кадр 8: план комнаты</figcaption></figure>
+      <figure><img src="assets/ulan_portret.jpg" loading="lazy" alt="Улан, портрет"><figcaption>Улан под лампой — свет сцены</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">04 · Персонажи</div>
+    <h2>Карты идентичности</h2>
+    <p class="lead">Улан — 20 лет, худой, мокрые чёрные волосы, голый торс, джинсы. Бөрі — чёрный волк, скрывающий детали: правильные волчьи зубы и уши, пять пальцев с когтями, свет только контровой. Карты держат одно лицо и одно тело во всех кадрах.</p>
+    <div class="grid c2">
+      <figure><img src="assets/card_ulan.jpg" loading="lazy" alt="Карта Улана: три ракурса"><figcaption>Улан, 20 — карта персонажа</figcaption></figure>
+      <figure><img src="assets/card_volk.jpg" loading="lazy" alt="Карта волка: три ракурса"><figcaption>Бөрі — карта персонажа</figcaption></figure>
+    </div>
+    <div class="grid c2">
+      <figure><img src="assets/ulan_portret.jpg" loading="lazy" alt="Улан крупно"><figcaption>Улан — портрет</figcaption></figure>
+      <figure><img src="assets/volk_golova.jpg" loading="lazy" alt="Волк, оскал"><figcaption>Бөрі — оскал (кадр 13)</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">05 · Управление сценой</div>
+    <h2>3D-блокинг: камера подчиняется режиссёру</h2>
+    <p class="lead">Мизансцену и все 14 камер мы ставим руками в 3D: серые болванки, честная геометрия ванной по топшоту, строб лампы по кадрам. Это черновик движения и ракурсов, а не картинка. Следующий шаг — видеомодель повторяет эту камеру кадр-в-кадр в фотореале с картами персонажей.</p>
+    <div class="grid c2">
+      <div class="videocard" style="grid-column:1/-1">
+        <video src="assets/blocking3d.mp4" controls preload="metadata" muted poster="assets/poster_blk.jpg"></video>
+        <div class="cap"><b>Блокинг · 60 секунд · 14 камер по раскадровке</b>
+        <p>Подписи внизу кадра — номер и содержание кадра раскадровки. Мигание — настоящий строб лампы по кадрам.</p></div>
+      </div>
+      <figure style="grid-column:1/-1"><img src="assets/contact_sheet.jpg" loading="lazy" alt="Контрольный лист 14 камер"><figcaption>Контрольный лист: по одному кадру с каждой камеры</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">06 · Как это сделано</div>
+    <h2>Порядок работы</h2>
+    <div class="grid c3">
+      <div style="border:1px solid var(--line);padding:22px"><div class="eyebrow">Шаг 1</div><p>Раскадровка режиссёра → расшифровка по кадрам → план сцены на 60 секунд.</p></div>
+      <div style="border:1px solid var(--line);padding:22px"><div class="eyebrow">Шаг 2</div><p>Локации и карты персонажей — фотореал, живые люди, единый свет сцены. Правки по замечаниям режиссёра.</p></div>
+      <div style="border:1px solid var(--line);padding:22px"><div class="eyebrow">Шаг 3</div><p>3D-блокинг камер → видеомодель повторяет камеру в фотореале → аниматик сцены со звуком.</p></div>
+    </div>
+    <p class="note" style="margin-top:30px"><b style="color:var(--honey)">Статус:</b> шаги 1–2 сделаны, идёт доработка по замечаниям; блокинг собран, оживление видеомоделью — следующий этап.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Контакт</div>
+    <h2>Colibri Studio</h2>
+    <p class="lead">Превиз-производство для кино: раскадровки, карты персонажей, локации, 3D-блокинг и оживление сцен. <a href="https://colibristudio.ai">colibristudio.ai</a></p>
+    <p class="note">Материалы конфиденциальны и предназначены для команды проекта.</p>
+  </div>
+</section>
+
+<div class="lbox" id="lbox" role="dialog" aria-label="Просмотр кадра">
+  <img id="lbimg" src="" alt="">
+  <div class="lcap" id="lbcap"></div>
+</div>
+<button class="lbtn lprev" id="lbprev" aria-label="Предыдущий">‹</button>
+<button class="lbtn lnext" id="lbnext" aria-label="Следующий">›</button>
+<button class="lclose" id="lbclose" aria-label="Закрыть">✕</button>
+<script>
+(function(){
+  /* ---- gate ---- */
+  var HASH="ced7c065fdd5357342c9fcbe38de5faef5a8a51997270ff4ff919bb05428f96a";
+  function sha(t){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return [].map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,"0")}).join("")})}
+  function unlock(){document.body.classList.remove("locked")}
+  try{if(localStorage.getItem("bori_ok")===HASH)unlock()}catch(e){}
+  function tryCode(){var v=(document.getElementById("gcode").value||"").trim().toUpperCase();
+    sha(v).then(function(hx){if(hx===HASH){try{localStorage.setItem("bori_ok",HASH)}catch(e){};unlock()}
+      else{document.getElementById("gerr").textContent="Неверный код";}})}
+  document.getElementById("gbtn").addEventListener("click",tryCode);
+  document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
+
+  /* ---- lightbox ---- */
+  var figs=[].slice.call(document.querySelectorAll("figure"));
+  var items=figs.map(function(f){var img=f.querySelector("img"),c=f.querySelector("figcaption");
+    return {src:img.getAttribute("src"),cap:c?c.textContent:""}});
+  var box=document.getElementById("lbox"),im=document.getElementById("lbimg"),cp=document.getElementById("lbcap");
+  var bp=document.getElementById("lbprev"),bn=document.getElementById("lbnext"),bc=document.getElementById("lbclose");
+  var cur=0,open=false;
+  function show(i){cur=(i+items.length)%items.length;im.src=items[cur].src;
+    cp.innerHTML="<b>"+(cur+1)+" / "+items.length+"</b>"+items[cur].cap}
+  function setOpen(v){open=v;box.classList.toggle("on",v);
+    bp.style.display=bn.style.display=bc.style.display=v?"block":"none";
+    document.body.style.overflow=v?"hidden":""}
+  setOpen(false);
+  figs.forEach(function(f,i){f.classList.add("lb");f.addEventListener("click",function(){show(i);setOpen(true)})});
+  bp.addEventListener("click",function(){show(cur-1)});
+  bn.addEventListener("click",function(){show(cur+1)});
+  bc.addEventListener("click",function(){setOpen(false)});
+  box.addEventListener("click",function(e){if(e.target===box)setOpen(false)});
+  document.addEventListener("keydown",function(e){if(!open)return;
+    if(e.key==="ArrowLeft")show(cur-1);else if(e.key==="ArrowRight")show(cur+1);else if(e.key==="Escape")setOpen(false)});
+  var tx=null;
+  box.addEventListener("touchstart",function(e){tx=e.touches[0].clientX},{passive:true});
+  box.addEventListener("touchend",function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;
+    if(dx>50)show(cur-1);else if(dx<-50)show(cur+1);tx=null},{passive:true});
+})();
+</script>
+
+</body>
+</html>
