@@ -110,6 +110,11 @@
   .snd audio{width:100%;filter:invert(1) hue-rotate(180deg) brightness(.85)}
   .snd.cov{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:start}
   .snd.cov img{width:96px;height:96px;object-fit:cover;border:1px solid var(--line)}
+  .sndlist{list-style:none;margin:14px 0 0;padding:0;border-top:1px solid var(--line)}
+  .sndlist li{display:grid;grid-template-columns:1fr minmax(240px,360px);gap:16px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+  .sndlist span{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:#d6cdb8}
+  .sndlist audio{width:100%;height:36px;filter:invert(1) hue-rotate(180deg) brightness(.85)}
+  @media(max-width:640px){.sndlist li{grid-template-columns:1fr}}
   /* access gate */
   body.locked{overflow:hidden}
   body.locked .bar, body.locked .hero, body.locked section, body.locked footer{filter:blur(26px);pointer-events:none;user-select:none}
@@ -453,30 +458,32 @@
 
 <section class="alt" id="sound">
   <div class="wrap">
-    <div class="eyebrow">06а · Саунд-дизайн</div>
-    <h2>Звук сцены: тишина → лампа → тело → рык</h2>
-    <p class="lead">Музыки в сцене нет до финального рыка — звук строится лестницей: дыхание, крик, треск лампы, хруст превращения, рык. Ниже — первые материалы: главная тема «Көк Бөрі» в двух версиях (кобыз, горловое пение, боевые барабаны) и атмосферные слои ванной. Дальше — библиотека спецэффектов: дыхание, крик, лампа, превращение, зеркало, лапы.</p>
-    <div class="sound">
-      <div class="snd cov"><img src="assets/sound/cover_v1.jpg" alt=""><div><div class="t">Көк Бөрі · главная тема · версия 1</div><div class="d">2:54 · кобыз, горловое пение, барабаны</div><audio controls preload="none" src="assets/sound/kok-bori-tema-v1.mp3"></audio></div></div>
-      <div class="snd cov"><img src="assets/sound/cover_v2.jpg" alt=""><div><div class="t">Көк Бөрі · главная тема · версия 2</div><div class="d">2:15 · вариант аранжировки</div><audio controls preload="none" src="assets/sound/kok-bori-tema-v2.mp3"></audio></div></div>
-      <div class="snd"><div class="t">Көк Бөрі · 60 секунд</div><div class="d">1:00 · под хронометраж сцены</div><audio controls preload="none" src="assets/sound/kok-bori-60s.mp3"></audio></div>
-      <div class="snd"><div class="t">Гул лампы</div><div class="d">1:00 · атмосфера · слой под всю сцену</div><audio controls preload="none" src="assets/sound/fluorescent-hum.mp3"></audio></div>
-      <div class="snd"><div class="t">Гул лампы · вариант B</div><div class="d">1:00 · атмосфера</div><audio controls preload="none" src="assets/sound/fluorescent-hum-b.mp3"></audio></div>
-      <div class="snd"><div class="t">Гул лампы · длинный</div><div class="d">3:29 · для монтажа без петли</div><audio controls preload="none" src="assets/sound/fluorescent-hum-long.mp3"></audio></div>
-      <div class="snd"><div class="t">Капель по керамике</div><div class="d">1:00 · атмосфера · раковина</div><audio controls preload="none" src="assets/sound/ceramic-drip.mp3"></audio></div>
-    </div>
-    <h3 style="font-family:var(--disp);font-weight:500;font-size:22px;letter-spacing:.03em;margin-top:34px">Эффекты · по кадрам</h3>
-    <p class="note" style="margin:8px 0 0">Каждый эффект — отдельный промпт, 2–3 дубля, выбираем лучший. Промпты и настройки — в рабочих документах.</p>
-    <div class="sound" id="sfx">
-      <div class="snd"><div class="t">Превращение · тело · дубль 2</div><div class="d">0:10 · кадры 5–11 · кости, хрящи, кожа, без голоса</div><audio controls preload="none" src="assets/sound/fx-transform-body-2.mp3"></audio></div>
-      <div class="snd"><div class="t">Превращение · тело · дубль 3</div><div class="d">0:10 · кадры 5–11 · вариант</div><audio controls preload="none" src="assets/sound/fx-transform-body-3.mp3"></audio></div>
-      <div class="snd"><div class="t">Голос: человек → зверь · дубль 1</div><div class="d">0:10 · кадры 4–13 · одно горло, без тела</div><audio controls preload="none" src="assets/sound/fx-voice-man-beast-1.mp3"></audio></div>
-      <div class="snd"><div class="t">Голос: человек → зверь · дубль 4</div><div class="d">0:10 · кадры 4–13 · вариант</div><audio controls preload="none" src="assets/sound/fx-voice-man-beast-4.mp3"></audio></div>
-      <div class="snd"><div class="t">Разрыв футболки · дубль 3</div><div class="d">0:03 · кадр 11 · швы, ткань, нити</div><audio controls preload="none" src="assets/sound/fx-shirt-rip-3.mp3"></audio></div>
-      <div class="snd"><div class="t">Разрыв футболки · дубль 4</div><div class="d">0:03 · кадр 11 · вариант</div><audio controls preload="none" src="assets/sound/fx-shirt-rip-4.mp3"></audio></div>
-      <div class="snd"><div class="t">Превращение с криком · дубль 1</div><div class="d">0:10 · кадры 4–11 · голос + тело + разрыв футболки</div><audio controls preload="none" src="assets/sound/fx-transform-scream-1.mp3"></audio></div>
-      <div class="snd"><div class="t">Превращение с криком · дубль 3</div><div class="d">0:10 · кадры 4–11 · вариант</div><audio controls preload="none" src="assets/sound/fx-transform-scream-3.mp3"></audio></div>
-    </div>
+    <div class="eyebrow">06а · Звук</div>
+    <h2>Музыкальные наброски и звуковые эффекты</h2>
+    <p class="lead">Музыки в сцене нет до финального рыка — звук строится лестницей: дыхание, крик, треск лампы, хруст превращения, рык. Ниже два набора: наброски музыки и темы (черновые эскизы, не саунд-дизайн) и звуковые эффекты сцены по кадрам.</p>
+
+    <h3 style="font-family:var(--disp);font-weight:500;font-size:22px;letter-spacing:.03em;margin-top:34px">Наброски музыки и треков</h3>
+    <ul class="sndlist">
+      <li><span>Көк Бөрі · главная тема · версия 1 · 2:54</span><audio controls preload="none" src="assets/sound/kok-bori-tema-v1.mp3"></audio></li>
+      <li><span>Көк Бөрі · главная тема · версия 2 · 2:15</span><audio controls preload="none" src="assets/sound/kok-bori-tema-v2.mp3"></audio></li>
+      <li><span>Көк Бөрі · 60 секунд · 1:00</span><audio controls preload="none" src="assets/sound/kok-bori-60s.mp3"></audio></li>
+      <li><span>Гул лампы · 1:00</span><audio controls preload="none" src="assets/sound/fluorescent-hum.mp3"></audio></li>
+      <li><span>Гул лампы · вариант B · 1:00</span><audio controls preload="none" src="assets/sound/fluorescent-hum-b.mp3"></audio></li>
+      <li><span>Гул лампы · длинный · 3:29</span><audio controls preload="none" src="assets/sound/fluorescent-hum-long.mp3"></audio></li>
+      <li><span>Капель по керамике · 1:00</span><audio controls preload="none" src="assets/sound/ceramic-drip.mp3"></audio></li>
+    </ul>
+
+    <h3 style="font-family:var(--disp);font-weight:500;font-size:22px;letter-spacing:.03em;margin-top:34px">Звуковые эффекты сцены</h3>
+    <ul class="sndlist" id="sfx">
+      <li><span>Голос: человек → зверь · дубль 1 · 0:10</span><audio controls preload="none" src="assets/sound/fx-voice-man-beast-1.mp3"></audio></li>
+      <li><span>Голос: человек → зверь · дубль 4 · 0:10</span><audio controls preload="none" src="assets/sound/fx-voice-man-beast-4.mp3"></audio></li>
+      <li><span>Превращение · тело · дубль 2 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-body-2.mp3"></audio></li>
+      <li><span>Превращение · тело · дубль 3 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-body-3.mp3"></audio></li>
+      <li><span>Превращение с криком · дубль 1 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-scream-1.mp3"></audio></li>
+      <li><span>Превращение с криком · дубль 3 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-scream-3.mp3"></audio></li>
+      <li><span>Разрыв футболки · дубль 3</span><audio controls preload="none" src="assets/sound/fx-shirt-rip-3.mp3"></audio></li>
+      <li><span>Разрыв футболки · дубль 4</span><audio controls preload="none" src="assets/sound/fx-shirt-rip-4.mp3"></audio></li>
+    </ul>
     <p class="note" style="margin-top:26px"><b style="color:var(--honey)">Как это складывается:</b> гул лампы и капель — фоном на всю сцену; голос «человек → зверь» и «тело» — одновременно, два слоя; разрыв футболки — точкой на кадре 11; главная тема входит только на финальном рыке.</p>
   </div>
 </section>
