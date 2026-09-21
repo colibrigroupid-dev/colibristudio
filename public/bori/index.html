@@ -115,6 +115,12 @@
   .sndlist span{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:#d6cdb8}
   .sndlist audio{width:100%;height:36px;filter:invert(1) hue-rotate(180deg) brightness(.85)}
   @media(max-width:640px){.sndlist li{grid-template-columns:1fr}}
+  .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:30px}
+  .tm{border:1px solid var(--line);background:var(--ink-2);padding:14px}
+  .tm img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 20%;border:1px solid var(--line);margin-bottom:12px}
+  .tm .n{font-family:var(--disp);font-size:19px;letter-spacing:.02em;color:#fff}
+  .tm .r{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--honey);margin:4px 0 10px;min-height:28px}
+  .tm p{font-size:13.5px;line-height:1.5;color:#d6cdb8;margin:0}
   /* access gate */
   body.locked{overflow:hidden}
   body.locked .bar, body.locked .hero, body.locked section, body.locked footer{filter:blur(26px);pointer-events:none;user-select:none}
@@ -201,7 +207,7 @@
   <div class="card">
     <div class="k">Закрытый показ</div>
     <h3>БӨРІ</h3>
-    <p style="font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);margin-bottom:10px">Neyra Vision Studio · Казахстан<br>AI-превиз — Colibri Studio</p>
+    <p style="font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);margin-bottom:10px">Taurus Asia Production · Neyra Vision Studio<br>AI-превиз — Colibri Studio</p>
     <p>Материалы предоставляются по коду доступа.</p>
     <input id="gcode" type="text" autocomplete="off" placeholder="КОД" aria-label="Код доступа">
     <button id="gbtn">Войти</button>
@@ -220,7 +226,7 @@
   <div class="inner">
     <div class="kicker">AI-превиз сцены превращения · хоррор / драма</div>
     <h1>БӨРІ</h1>
-    <div class="byline">производство <em>Neyra Vision Studio</em> · Казахстан · по раскадровке <em>режиссёра-сценариста</em> · AI-превиз <em>Colibri Studio</em></div>
+    <div class="byline">производство <em>Taurus Asia Production</em> · <em>Neyra Vision Studio</em> · режиссёр <em>Куаныш Стаханов</em> · AI-превиз <em>Colibri Studio</em></div>
     <p class="logline">Ночь. Коридор старой панельки, в конце — открытая дверь в ванную. Улан, 20, добирается до раковины, и под мигающей лампой его тело перестаёт быть человеческим. В треснувшем зеркале — тот, кто выходит из комнаты.</p>
     <div class="meta">одна сцена<span class="sep">•</span>14 кадров раскадровки<span class="sep">•</span>3 локации<span class="sep">•</span>карты персонажей<span class="sep">•</span>превращение в видео<span class="sep">•</span>3D-блокинг</div>
   </div>
@@ -480,21 +486,20 @@
       <li><span>Превращение · тело · дубль 2 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-body-2.mp3"></audio></li>
       <li><span>Превращение · тело · дубль 3 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-body-3.mp3"></audio></li>
       <li><span>Превращение с криком · дубль 1 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-scream-1.mp3"></audio></li>
-      <li><span>Превращение с криком · дубль 3 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-scream-3.mp3"></audio></li>
-      <li><span>Разрыв футболки · дубль 3</span><audio controls preload="none" src="assets/sound/fx-shirt-rip-3.mp3"></audio></li>
-      <li><span>Разрыв футболки · дубль 4</span><audio controls preload="none" src="assets/sound/fx-shirt-rip-4.mp3"></audio></li>
-    </ul>
-    <p class="note" style="margin-top:26px"><b style="color:var(--honey)">Как это складывается:</b> гул лампы и капель — фоном на всю сцену; голос «человек → зверь» и «тело» — одновременно, два слоя; разрыв футболки — точкой на кадре 11; главная тема входит только на финальном рыке.</p>
-  </div>
-</section>
-
-<section class="alt">
+      <li><span>Превращение с криком · дубль 3 · 0:10</span><audio controls preload="none" src="assets/sound/fx-transform-scream-3.mp<section class="alt" id="team">
   <div class="wrap">
     <div class="eyebrow">Команда</div>
     <h2>Кто делает «Бөрі»</h2>
-    <div class="grid c3">
-      <div style="border:1px solid var(--line);padding:22px"><div class="eyebrow">Продакшн</div><div style="font-family:var(--disp);font-size:20px;margin-bottom:6px">Neyra Vision Studio</div><p>Производство фильма: режиссура, сценарий, художник-постановщик, кастинг, локации, съёмка.</p></div>
-      <div style="border:1px solid var(--line);padding:22px"><div class="eyebrow">AI-превиз</div><div style="font-family:var(--disp);font-size:20px;margin-bottom:6px">Colibri Studio</div><p>Раскадровка в кадрах, карты персонажей и локаций, превращение в видео, 3D-блокинг камеры, саунд-дизайн, эта страница.</p></div>
+    <p class="lead">Производство — <b>Taurus Asia Production</b> (Алматы) совместно с <b>Neyra Vision Studio</b>. AI-превиз и эта страница — <b>Colibri Studio</b>.</p>
+    <div class="team">
+      <div class="tm"><img src="assets/team/kuanysh-stakhanov.jpg" alt="Куаныш Стаханов"><div class="n">Куаныш Стаханов</div><div class="r">Сценарист и режиссёр</div><p>Выпускник New York Film Academy (Лос-Анджелес), стипендиат «Болашак». Сериалы «Игрок», «Чёрная икра», драма-триллер «4 градуса» — номинант Global OTT Awards (Busan IFF). Полнометражный дебют «Бүркітші» (2026, «Казахфильм»).</p></div>
+      <div class="tm"><img src="assets/team/anara-zhunusova.jpg" alt="Анара Жунусова"><div class="n">Анара Жунусова</div><div class="r">Генеральный продюсер</div><p>Сооснователь и генеральный продюсер Taurus Asia Production. «Приговор» (2024, «Отечественный фильм года» Freedom Ticketon Awards), «Қара бекіре» (2025), сериал «Шекер» (Пусан). Член Национальной киноакадемии и Альянса креативных индустрий.</p></div>
+      <div class="tm"><img src="assets/team/anna-chakirtova.jpg" alt="Анна Чакиртова"><div class="n">Анна Чакиртова</div><div class="r">Продюсер</div><p>Сооснователь и продюсер Taurus Asia Production. «Приговор», «Қара бекіре»; ранее — исполнительный продюсер «Томирис» и «Дороги к матери» (реж. Акан Сатаев). Член Национальной киноакадемии и Альянса креативных индустрий.</p></div>
+      <div class="tm"><img src="assets/team/aliya-shmanova.jpg" alt="Алия Шманова"><div class="n">Алия Шманова</div><div class="r">Художник-постановщик</div><p>Художник по гриму и художник-постановщик с 2002 года, школа «Казахфильма». Более 60 картин: «Тюльпан», «Шиза», «Баксы», «Шуга», «Путь Лидера», «Маленький Самурай», «Жеты-Ата». В «Бөрі» — образ оборотня: скульптура лапы и морды, грим превращения.</p></div>
+      <div class="tm"><img src="assets/team/aleksandr-andreyanov.jpg" alt="Александр Андреянов"><div class="n">Александр Андреянов</div><div class="r">AI-продюсер · сопродюсер</div><p>Основатель Neyra Vision Studio, сопродюсер Taurus Asia Production. «Nusantara: The Story of Gajah Mada» — Best Documentary и Спецприз жюри AI Film Awards Cannes 2025. В «Бөрі» — AI-превиз: раскадровка, персонажи, локации, 3D-блокинг, звук.</p></div>
+    </div>
+  </div>
+</section>:var(--disp);font-size:20px;margin-bottom:6px">Colibri Studio</div><p>Раскадровка в кадрах, карты персонажей и локаций, превращение в видео, 3D-блокинг камеры, саунд-дизайн, эта страница.</p></div>
       <div style="border:1px solid var(--line);padding:22px"><div class="eyebrow">Творческая группа</div><div style="font-family:var(--disp);font-size:20px;margin-bottom:6px">Режиссёр-сценарист · художник-постановщик · AI-продюсер</div><p>Решения по образу, локациям и сцене принимаются вместе на рабочих встречах; материалы страницы обновляются по их итогам.</p></div>
     </div>
   </div>
@@ -503,8 +508,8 @@
 <section>
   <div class="wrap">
     <div class="eyebrow">Контакт</div>
-    <h2>Neyra Vision Studio × Colibri Studio</h2>
-    <p class="lead"><b>Neyra Vision Studio</b> — продакшн-студия проекта «Бөрі». <b>Colibri Studio</b> — AI-превиз для кино: раскадровки, карты персонажей, локации, 3D-блокинг, оживление сцен и саунд-дизайн. <a href="https://colibristudio.ai">colibristudio.ai</a></p>
+    <h2>Taurus Asia Production × Neyra Vision Studio × Colibri Studio</h2>
+    <p class="lead"><b>Taurus Asia Production</b> и <b>Neyra Vision Studio</b> — производство проекта «Бөрі». <b>Colibri Studio</b> — AI-превиз для кино: раскадровки, карты персонажей, локации, 3D-блокинг, оживление сцен и саунд-дизайн. <a href="https://colibristudio.ai">colibristudio.ai</a></p>
     <p class="note">Материалы конфиденциальны и предназначены для команды проекта.</p>
   </div>
 </section>
