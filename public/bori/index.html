@@ -121,9 +121,10 @@
   .tm .n{font-family:var(--disp);font-size:19px;letter-spacing:.02em;color:#fff}
   .tm .r{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--honey);margin:4px 0 10px;min-height:28px}
   .tm p{font-size:13.5px;line-height:1.5;color:#d6cdb8;margin:0}
-  .barlinks{display:flex;gap:22px}
+  .barlinks{display:flex;gap:22px;flex-wrap:wrap;justify-content:flex-end}
   .barlinks a{white-space:nowrap}
-  @media(max-width:640px){.barlinks{gap:12px}.barlinks a{font-size:10.5px;letter-spacing:.06em}}
+  .barlinks a span{display:inline}
+  @media(max-width:700px){.bar{padding:12px 16px}.barlinks{gap:10px}.barlinks a{font-size:10px;letter-spacing:.04em}.barlinks a span{display:none}}
   .foot{border-top:1px solid var(--line);padding:34px 0 40px;background:var(--ink-2)}
   .foot .row{display:flex;flex-wrap:wrap;gap:12px 34px;justify-content:space-between;align-items:center}
   .foot .cred{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
@@ -228,9 +229,9 @@
 <div class="bar">
   <div class="brand" style="letter-spacing:.22em;font-weight:500;font-size:12.5px;color:var(--mute)">colibri <b>studio</b></div>
   <nav class="barlinks">
-    <a href="https://www.taurusproduction.net/ru" target="_blank" rel="noopener">Taurus Asia Production</a>
-    <a href="https://neyra.ai/" target="_blank" rel="noopener">Neyra Vision Studio</a>
-    <a href="https://colibristudio.ai/">Colibri Studio</a>
+    <a href="https://www.taurusproduction.net/ru" target="_blank" rel="noopener">Taurus<span> Asia Production</span></a>
+    <a href="https://neyra.ai/" target="_blank" rel="noopener">Neyra<span> Vision Studio</span></a>
+    <a href="https://colibristudio.ai/">Colibri<span> Studio</span></a>
   </nav>
 </div>
 
