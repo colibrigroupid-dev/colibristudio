@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+<script>if(location.protocol==="http:"&&/colibristudio\.ai$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>БӨРІ — AI-превиз сцены превращения</title>
@@ -558,12 +559,21 @@
 (function(){
   /* ---- gate ---- */
   var HASH="ced7c065fdd5357342c9fcbe38de5faef5a8a51997270ff4ff919bb05428f96a";
-  function sha(t){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return [].map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,"0")}).join("")})}
+  function hex(b){return [].map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2)}).join("")}
+  function sha256js(str){var K=[],P=[],i,j,n=2;for(;P.length<64;n++){for(i=0;i<P.length&&n%P[i];i++);if(i===P.length){P.push(n);K.push(Math.floor(Math.pow(n,1/3)*4294967296)|0)}}
+    var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    var m=unescape(encodeURIComponent(str)),L=m.length,W=[],w=[];for(i=0;i<L;i++)W[i>>2]|=m.charCodeAt(i)<<(24-(i%4)*8);W[L>>2]|=0x80<<(24-(L%4)*8);W[((L+8>>6)<<4)+15]=L*8;
+    for(j=0;j<W.length;j+=16){var a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+      for(i=0;i<64;i++){if(i<16)w[i]=W[j+i]|0;else{var s0=((w[i-15]>>>7)|(w[i-15]<<25))^((w[i-15]>>>18)|(w[i-15]<<14))^(w[i-15]>>>3),s1=((w[i-2]>>>17)|(w[i-2]<<15))^((w[i-2]>>>19)|(w[i-2]<<13))^(w[i-2]>>>10);w[i]=(w[i-16]+s0+w[i-7]+s1)|0}
+        var S1=((e>>>6)|(e<<26))^((e>>>11)|(e<<21))^((e>>>25)|(e<<7)),ch=(e&f)^(~e&g),t1=(h+S1+ch+K[i]+w[i])|0,S0=((a>>>2)|(a<<30))^((a>>>13)|(a<<19))^((a>>>22)|(a<<10)),mj=(a&b)^(a&c)^(b&c),t2=(S0+mj)|0;h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0}
+      H[0]=(H[0]+a)|0;H[1]=(H[1]+b)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0}
+    return H.map(function(x){return ("00000000"+(x>>>0).toString(16)).slice(-8)}).join("")}
+  function sha(t){if(window.crypto&&crypto.subtle&&window.isSecureContext){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(hex).catch(function(){return sha256js(t)})}return Promise.resolve(sha256js(t))}
   function unlock(){document.body.classList.remove("locked")}
   try{if(localStorage.getItem("bori_ok")===HASH)unlock()}catch(e){}
-  function tryCode(){var v=(document.getElementById("gcode").value||"").trim().toUpperCase();
+  function tryCode(){var v=(document.getElementById("gcode").value||"").replace(/\s+/g,"").toUpperCase();
     sha(v).then(function(hx){if(hx===HASH){try{localStorage.setItem("bori_ok",HASH)}catch(e){};unlock()}
-      else{document.getElementById("gerr").textContent="Неверный код";}})}
+      else{document.getElementById("gerr").textContent="Неверный код";}}).catch(function(e){document.getElementById("gerr").textContent="Ошибка браузера: "+e})}
   document.getElementById("gbtn").addEventListener("click",tryCode);
   document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
 
