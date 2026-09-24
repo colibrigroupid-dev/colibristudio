@@ -33,8 +33,10 @@
   figcaption{font-family:var(--mono);font-size:12.5px;color:var(--mute);margin-top:8px;letter-spacing:.04em}
   figcaption b{color:var(--paper)}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  figure img.tall{aspect-ratio:9/21;object-fit:contain;background:#fff}
   .foot{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.08em}
-  @media (max-width:900px){.grid2{grid-template-columns:1fr}.wrap{padding:20px 16px 60px}}
+  @media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}.wrap{padding:20px 16px 60px}}
   .gate{position:fixed;inset:0;z-index:120;background:rgba(9,7,4,.9);display:none;align-items:center;justify-content:center;padding:24px}
   body.locked .gate{display:flex}
   .gate .card{background:var(--ink-2);border:1px solid var(--line);padding:44px 40px;max-width:420px;width:100%;text-align:center}
@@ -59,8 +61,8 @@
 
   <div class="kicker">Существо · на утверждение</div>
   <h1>АВАТАР BORI</h1>
-  <p class="lead">Один и тот же зверь в одиннадцати кадрах: идентичность, полный рост, две стойки, голова, кисти и стопы. Белый фон нужен, чтобы этот аватар дальше оживлять видеомоделью и сажать в любую локацию.</p>
-  <div class="how"><b>Как утверждаем:</b> Куаныш и Алия отвечают по номерам кадров: «утверждаю» или «заменить: что именно». В разделах «Кисти» и «Стопы» по два варианта, нужен выбор A или B. После ответа аватар становится каноном, и все кадры фильма делаются от него.</div>
+  <p class="lead">Один и тот же зверь: идентичность, полный рост вертикально, две стойки, голова, кисти и стопы. Белый фон нужен, чтобы этот аватар дальше оживлять видеомоделью и сажать в любую локацию. Версия 2 от 25.09: полный рост крупно, одни кисти и одни стопы во всех кадрах.</p>
+  <div class="how"><b>Как утверждаем:</b> Куаныш и Алия отвечают по номерам кадров: «утверждаю» или «заменить: что именно». Кисти зафиксированы по скульпту художника-постановщика, стопы — с прибылым пальцем; оба показаны отдельно, скажите, если нужен другой вариант. После ответа аватар становится каноном, и все кадры фильма делаются от него.</div>
 
   <section id="s1">
     <h2><span>1</span>ИДЕНТИЧНОСТЬ</h2>
@@ -70,10 +72,11 @@
 
   <section id="s2">
     <h2><span>2</span>ПОЛНЫЙ РОСТ</h2>
-    <p class="sub">Стоя на двух ногах, слегка сгорблен, руки висят низко. Со спины виден гребень, переходящий в хвост, и голая спина.</p>
-    <div class="grid2">
-      <figure><img src="img/02-stoya-spered.jpg" alt=""><figcaption><b>02</b> · спереди, нейтральное лицо</figcaption></figure>
-      <figure><img src="img/03-stoya-szadi.jpg" alt=""><figcaption><b>03</b> · со спины, гребень и хвост</figcaption></figure>
+    <p class="sub">Вертикальные кадры, зверь заполняет кадр целиком. Стоя на двух ногах, слегка сгорблен, руки висят низко. Со спины виден гребень, переходящий в хвост, и голая спина.</p>
+    <div class="grid3">
+      <figure><img class="tall" src="img/v2-stoya-spered-9x21.jpg" alt=""><figcaption><b>02</b> · спереди, нейтральное лицо</figcaption></figure>
+      <figure><img class="tall" src="img/v2-stoya-szadi-9x21-a.jpg" alt=""><figcaption><b>03a</b> · со спины, гребень и хвост</figcaption></figure>
+      <figure><img class="tall" src="img/v2-stoya-szadi-9x21-b.jpg" alt=""><figcaption><b>03b</b> · со спины, второй дубль</figcaption></figure>
     </div>
   </section>
 
@@ -82,7 +85,7 @@
     <p class="sub">Охотничья: тело низко, длинные руки вперёд, остаётся гуманоидом на четырёх. Атака: на двух ногах, лапы подняты, оскал без мультяшного рёва.</p>
     <div class="grid2">
       <figure><img src="img/04-stoyka-ohota.jpg" alt=""><figcaption><b>04</b> · низкая охотничья стойка</figcaption></figure>
-      <figure><img src="img/05-stoyka-ataka.jpg" alt=""><figcaption><b>05</b> · стойка атаки</figcaption></figure>
+      <figure><img src="img/v2-stoyka-ataka-v2.jpg" alt=""><figcaption><b>05</b> · стойка атаки, кисти по скульпту</figcaption></figure>
     </div>
   </section>
 
@@ -96,24 +99,29 @@
   </section>
 
   <section id="s5">
-    <h2><span>5</span>КИСТИ · выбор A или B</h2>
-    <p class="sub">A — по пластилиновому скульпту художника-постановщика: четыре пальца вместе, тяжёлые подушки, короткие когти, маленький боковой большой палец. B — как на эталонном кадре: пять длинных пальцев с большим, длинные изогнутые когти.</p>
+    <h2><span>5</span>КИСТИ · канон по скульпту</h2>
+    <p class="sub">Каждая кисть отдельным кадром: четыре длинных пальца вместе, тяжёлые подушки, короткие когти из кончиков, маленький боковой большой палец. Это кисть, которую повторяем во всех кадрах.</p>
     <div class="grid2">
-      <figure><img src="img/08-kisti-A-skulpt.jpg" alt=""><figcaption><b>08 · A</b> · по скульпту, тыл и ладонь</figcaption></figure>
-      <figure><img src="img/09-kisti-B-avatar.jpg" alt=""><figcaption><b>09 · B</b> · по эталону, тыл и ладонь</figcaption></figure>
+      <figure><img src="img/v2-kist-tyl-KANON.jpg" alt=""><figcaption><b>08</b> · тыл кисти</figcaption></figure>
+      <figure><img src="img/v2-kist-ladon-KANON.jpg" alt=""><figcaption><b>09</b> · ладонь, когти продолжают пальцы</figcaption></figure>
+    </div>
+    <p class="sub" style="margin-top:18px">Для сравнения: пара кистей по скульпту (A) и пара по эталонному кадру (B, пять пальцев, длинные когти).</p>
+    <div class="grid2">
+      <figure><img src="img/v2-kisti-A-dlinnye-palcy.jpg" alt=""><figcaption><b>08 · A</b> · пара по скульпту</figcaption></figure>
+      <figure><img src="img/v2-kisti-B-avatar-v2.jpg" alt=""><figcaption><b>09 · B</b> · пара по эталону</figcaption></figure>
     </div>
   </section>
 
   <section id="s6">
-    <h2><span>6</span>СТОПЫ · выбор A или B</h2>
-    <p class="sub">A — опора на всю стопу с пяткой, четыре тяжёлых пальца с когтями. B — четыре пальца на земле и маленький пятый прибылой выше, как у собаки. Стопу художник ещё не делал, это первые варианты для разговора.</p>
+    <h2><span>6</span>СТОПЫ · с прибылым пальцем</h2>
+    <p class="sub">Четыре пальца на земле и маленький пятый прибылой выше, как у собаки. Стопу художник ещё не делал, это рабочий вариант, который повторяем во всех кадрах.</p>
     <div class="grid2">
-      <figure><img src="img/10-stopy-A-plantigrad.jpg" alt=""><figcaption><b>10 · A</b> · спереди и сзади</figcaption></figure>
-      <figure><img src="img/11-stopy-B-pribyloy.jpg" alt=""><figcaption><b>11 · B</b> · с прибылым пальцем, спереди и сзади</figcaption></figure>
+      <figure><img src="img/11-stopy-B-pribyloy.jpg" alt=""><figcaption><b>11</b> · спереди и сзади</figcaption></figure>
+      <figure><img src="img/10-stopy-A-plantigrad.jpg" alt=""><figcaption><b>10</b> · отклонённый вариант с пяткой, для истории</figcaption></figure>
     </div>
   </section>
 
-  <div class="foot">Taurus Asia Production · Neyra Vision Studio · AI-превиз — Colibri Studio · 24.09.2026 · см. также <a href="../cvet/">цвет фильма</a></div>
+  <div class="foot">Taurus Asia Production · Neyra Vision Studio · AI-превиз — Colibri Studio · 25.09.2026 · см. также <a href="../cvet/">цвет фильма</a></div>
 </div>
 
 <script>
