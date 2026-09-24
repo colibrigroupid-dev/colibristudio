@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script>if(location.protocol==="http:"&&/colibristudio\.ai$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>БӨРІ — библия персонажа</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{--ink:#0b0906;--ink-2:#141008;--line:#2b2416;--paper:#e6e9e4;--mute:#98907e;--honey:#9fd3b0;
+    --disp:"Oswald","Arial Narrow",sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--honey)}
+  .wrap{max-width:980px;margin:0 auto;padding:28px 24px 80px}
+  .bar{display:flex;justify-content:space-between;align-items:center;padding:14px 0 26px;border-bottom:1px solid var(--line);margin-bottom:34px}
+  .bar .brand{font-family:var(--disp);font-weight:600;letter-spacing:.34em;font-size:14px}
+  .bar .brand b{color:var(--honey)}
+  .bar a{text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--mute)}
+  .k{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--honey)}
+  h1{font-family:var(--disp);font-weight:600;font-size:clamp(40px,7vw,86px);line-height:1;letter-spacing:.06em;margin:10px 0 14px}
+  .lead{color:var(--mute);margin-bottom:10px}
+  h2{font-family:var(--disp);font-weight:500;font-size:30px;letter-spacing:.08em;margin:40px 0 10px;padding-top:18px;border-top:1px solid var(--line)}
+  h3{font-family:var(--disp);font-weight:500;font-size:20px;letter-spacing:.06em;margin:18px 0 6px}
+  p{margin:8px 0}
+  ul{margin:6px 0 10px 22px}
+  li{margin:4px 0}
+  .box{border:1px solid var(--line);padding:16px 18px;margin:16px 0;font-size:15px}
+  .box b{display:block;color:var(--honey);margin-bottom:4px}
+  .q{background:#2a220d;border-left:4px solid #e0b83c;padding:12px 14px;margin:14px 0;font-size:15px}
+  .q b{color:#e0b83c}
+  .imgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 18px}
+  .imgs figure{margin:0}
+  .imgs img{width:100%;display:block;background:#fff}
+  .imgs figcaption,.small{font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:6px;letter-spacing:.04em}
+  .wide img{width:100%;display:block}
+  .no{color:#e0705f}
+  .mono{font-family:var(--mono);font-size:13px;white-space:pre-wrap;background:var(--ink-2);border:1px solid var(--line);padding:14px;margin:8px 0 16px;line-height:1.5}
+  table{border-collapse:collapse;width:100%;font-size:15px;margin:10px 0}
+  td,th{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+  th{color:var(--honey);font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+  .gate{position:fixed;inset:0;z-index:120;background:rgba(9,7,4,.9);display:none;align-items:center;justify-content:center;padding:24px}
+  body.locked .gate{display:flex}
+  .gate .card{background:var(--ink-2);border:1px solid var(--line);padding:44px 40px;max-width:420px;width:100%;text-align:center}
+  .gate .card .k{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--honey)}
+  .gate .card h3{font-family:var(--disp);font-weight:500;font-size:30px;letter-spacing:.14em;margin:10px 0 6px}
+  .gate .card p{color:var(--mute);font-size:14px;margin-bottom:22px}
+  .gate input{width:100%;background:var(--ink);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:18px;letter-spacing:.28em;text-transform:uppercase;text-align:center;padding:13px 12px;outline:none}
+  .gate button{margin-top:14px;width:100%;background:var(--honey);color:var(--ink);border:0;font-family:var(--disp);font-weight:600;letter-spacing:.2em;font-size:15px;padding:13px;cursor:pointer;text-transform:uppercase}
+  .gate .err{color:#e0705f;font-family:var(--mono);font-size:12px;margin-top:12px;min-height:16px}
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate"><div class="card">
+  <div class="k">Закрытый показ</div><h3>БӨРІ</h3>
+  <p>Материалы предоставляются по коду доступа.</p>
+  <input id="gcode" type="text" autocomplete="off" placeholder="КОД" aria-label="Код доступа">
+  <button id="gbtn">Войти</button><div class="err" id="gerr"></div>
+</div></div>
+<div class="wrap">
+  <div class="bar"><div class="brand">colibri <b>studio</b></div><a href="../">← БӨРІ · главная</a></div>
+
+
+<div class="k">Библия персонажа · на утверждение</div>
+<h1>БӨРІ · БИБЛИЯ ПЕРСОНАЖА</h1>
+<div class="lead">Версия 2 · на утверждение режиссёру и художнику-постановщику · 24.09.2026</div>
+
+<div class="box">
+  <b>Как читать и что нужно от Куаныша и Алии</b>
+  Это описание одного конкретного существа, а не «оборотня вообще». По нему будут делаться грим, реквизит, все AI-кадры и превиз. Ответ нужен по номерам разделов: «утверждаю» или «заменить на …». Особое внимание к жёлтым блокам «Вопрос» — там решения, которые пока не приняты. После ответа библия фиксируется и меняется только отдельным решением.
+</div>
+
+<div class="wide"><img src="img/avatar.jpg" alt=""></div>
+<div class="small">Единственный утверждённый эталон визуальной идентичности на 24.09. Все дальнейшие кадры — тот же индивид: череп, морда, уши, гребень, хвост, кожа, пропорции. Остальные разделы описаны текстом; картинки добавляем по мере утверждения.</div>
+
+
+<div class="imgs">
+  <figure><img src="../avatar/img/v2-stoya-spered-9x21.jpg" alt=""><figcaption>Полный рост спереди (аватар v2)</figcaption></figure>
+  <figure><img src="../avatar/img/v2-stoya-szadi-9x21-a.jpg" alt=""><figcaption>Со спины: гребень → хвост</figcaption></figure>
+  <figure><img src="../avatar/img/06-lico-front-neytral.jpg" alt=""><figcaption>Нейтральное лицо</figcaption></figure>
+</div>
+<h2>1. Кто такой Бөрі</h2>
+<p>Огромное гуманоидное хищное существо, биологически правдоподобный оборотень. Он должен читаться как живой организм, снятый на площадке, а не как персонаж игры. Он <b>не</b> классический мохнатый оборотень: почти всё тело — голая чёрно-серая кожа, тяжёлая мускулатура, компактная волчья голова, огромные плечи, длинные руки и одна узкая полоса жёсткой чёрной шерсти от макушки по хребту в хвост. Пугает именно тем, что почти безволосый.</p>
+<ul>
+  <li><b>Рост стоя:</b> 210–220 см. Ощущение массы: 180–230 кг плотных мышц и костей.</li>
+  <li><b>Не</b> сухой, <b>не</b> супергерой, <b>не</b> бодибилдер. Плотный, тяжёлый, с переднеприводным центром тяжести.</li>
+  <li>Умён. Не бешеный. Агрессия с намерением: наблюдает, держит взгляд, малые изменения лица страшнее крика.</li>
+</ul>
+
+<h2>2. Силуэт-подпись</h2>
+<p>Узнаваем даже как тёмное пятно: компактная брутальная волчья голова, маленькие уши, короткая широкая морда, маленькие жёлтые глаза, огромные трапеции и плечи, толстая шея, почти голое чёрно-серое тело в шрамах, очень длинные руки, крупные когтистые кисти, тёмные рваные штаны, тяжёлый хвост и узкая полоса шерсти от макушки по всему хребту в хвост.</p>
+
+<h2>3. Голова</h2>
+<ul>
+  <li><b>Череп:</b> большой, широкий, тяжёлый, компактный; низкий широкий лоб, сильные надбровные дуги, глубокие глазницы, мощные жевательные мышцы.</li>
+  <li><b>Морда:</b> <b>короткая</b>, широкая, плотная. Никогда не длинная, не лисья, не «овчарка», не обычный волк. Выступает умеренно; при оскале глубокие складки на переносице.</li>
+  <li><b>Нос:</b> большой чёрный собачий, широкие ноздри, чуть неправильной формы, мокрая фактура с порами и трещинками. Не гладкий, не пластиковый.</li>
+  <li><b>Глаза:</b> маленькие относительно черепа, глубоко посажены. Цвет — грязный янтарно-жёлтый с вертикальным зрачком; белок почти не виден. Единственный тёплый цвет в кадре. Не светятся как лампочки, но <b>ловят свет, как глаза зверя</b>: в темноте видны только два глаза (референс режиссёра — «Схватка»).</li>
+  <li><b>Уши:</b> маленькие, компактные, гораздо меньше волчьих, высоко и чуть по бокам; толстый хрящ, лёгкая асимметрия, небольшие повреждения краёв (одни и те же во всех кадрах); в агрессии прижаты назад. Никаких больших «фэнтезийных» ушей.</li>
+  <li><b>Рот:</b> большой, тяжёлые чёрно-серые неровные губы, влажность. Закрыт — компактный. Оскал — верхняя губа поднимается асимметрично, видна десна. Без мультяшных гримас.</li>
+  <li><b>Зубы:</b> крупные, грязно-костяные, желтее к десне, неровные, разной длины, со сколами. Волчьи, не вампирские клыки, не белые «голливудские». Дёсны тёмно-красные. Слюна.</li>
+</ul>
+
+<h2>4. Кожа и цвет</h2>
+<ul>
+  <li><b>Цвет:</b> угольно-чёрный / графитово-серый, холодный. <span class="no">Коричневого и тёплых подтонов нет</span> (решение встречи 21.09: коричневый «менее страшный»). Натянутая кожа чуть светлее, глубокие складки почти чёрные.</li>
+  <li><b>Фактура:</b> толстая, грубая, как у слона или носорога: сеть мелких морщин, глубокие складки на суставах, поры, старые шрамы, растяжки, ссадины, неровная пигментация. Не гладкая, не латекс, не резина, не глянцевый CG.</li>
+  <li><b>Влажность:</b> выборочная. Высокие точки ловят узкий холодный блик, впадины остаются матовыми и тёмными.</li>
+  <li><b>Лицо:</b> самая тяжёлая фактура: складки лба, морщины вокруг глаз, складки вокруг носа и губ, редкие короткие волоски на щеках. Поры видны даже крупно.</li>
+</ul>
+<h3>Как материалы отвечают на свет</h3>
+<p>Кожа — матовое с влажными участками, поры. Волосы — тёмные, ломаные блики, отдельные пряди. Нос — сильный мокрый блик. Глаза — влажные отражения. Зубы — лёгкий мокрый блик эмали. Когти — низкий глянец кератина. Штаны — поглощают свет, слегка влажные.</p>
+
+<h2>5. Волосы</h2>
+<ul>
+  <li><b>Тело почти безволосое.</b> Никакого меха. Редкие жёсткие чёрные волоски только на затылке, внешней стороне плеч, верхней части предплечий, локтях, голенях и небольших участках торса. Большие площади голой кожи всегда видны.</li>
+  <li><b>Гребень по хребту — главный опознавательный знак.</b> Одна непрерывная полоса жёсткой чёрной шерсти по средней линии спины: макушка → затылок → задняя сторона шеи → середина трапеций → между лопаток → грудной и поясничный отдел → крестец → основание хвоста → хвост. <b>Никакого разрыва</b> между волосами головы, гребнем и хвостом: одна биологическая система.</li>
+  <li><b>Ширина полосы:</b> голова и шея 8–14 см, верх спины 12–20 см, середина и низ спины 8–16 см. Не покрывает спину: <b>70–80 % спины остаётся голой кожей</b>. Край неровный. Волосы почти чёрные, жёсткие, толстые, неровной длины, сальные, слипшиеся; часть стоит дыбом, часть лежит. В агрессии гребень на шее приподнимается. Не львиная грива, не ирокез, не украшение.</li>
+  <li><b>Голова:</b> верх и перед черепа почти голые, редкие волоски; к макушке гуще, и эта гуща переходит в гребень. Никакой человеческой причёски.</li>
+  <li><b>Хвост:</b> шерсть заметно гуще, чем на теле, но это продолжение гребня, а не «приклеенный» хвост.</li>
+</ul>
+
+<h2>6. Тело</h2>
+<ul>
+  <li><b>Пропорции:</b> очень широкий плечевой пояс (шире, чем у человека того же роста), огромные трапеции, короткая бычья шея, голова будто утоплена между плеч, глубокая грудная клетка, талия уже плеч, но толстая; длинные руки, крупные предплечья, крупные кисти; массивные бёдра, сильные голени и лодыжки. Небольшие естественные асимметрии, без зеркальной симметрии.</li>
+  <li><b>Стойка:</b> почти никогда не выпрямляется полностью. Плечи вперёд, верх спины скруглён, шея сжата, голова ниже плеч, руки висят необычно низко, колени слегка согнуты. При угрозе центр тяжести резко падает.</li>
+  <li><b>Передвижение:</b> и на двух, и на четырёх конечностях. На четырёх остаётся гуманоидом с длинными руками, <b>никогда не превращается в обычного волка на четырёх лапах</b>.</li>
+  <li><b>Шея:</b> исключительно толстая и короткая; трапеции поднимаются почти к черепу; спереди и по бокам голая морщинистая кожа, сзади гребень; складки при повороте головы.</li>
+  <li><b>Грудь и живот:</b> почти голые, крупные грудные мышцы, не симметричные, старые шрамы. Живот сильный, но не «кубики»: группы мышц неровные, спрятаны под толстой кожей, складки при приседании. Рёбра проступают по бокам при наклоне.</li>
+  <li><b>Спина:</b> массивные трапеции и широчайшие, видна борозда позвоночника под гребнем, шрамы и зажившие царапины, гребень строго по центру.</li>
+  <li><b>Руки:</b> длинные, очень мускулистые, крупные предплечья, в основном голая кожа, сухожилия и деформация мышц под нагрузкой.</li>
+</ul>
+
+<h2>7. Кисть — по скульпту художника-постановщика (пластилин, 23.09)</h2>
+<div class="imgs">
+  <figure><img src="../avatar/img/v2-kist-tyl-KANON.jpg" alt=""><figcaption>Кисть, тыл (рабочий кадр)</figcaption></figure>
+  <figure><img src="../avatar/img/v2-kist-ladon-KANON.jpg" alt=""><figcaption>Кисть, ладонь (рабочий кадр)</figcaption></figure>
+</div>
+<ul>
+  <li><b>Четыре длинных рабочих пальца</b> одной длины, трубчатые, без выраженных средних суставов, держатся вместе, а не растопырены как у человека.</li>
+  <li>На конце каждого пальца тяжёлая круглая подушка-«шишка», из неё растёт <b>короткий толстый конический коготь</b>.</li>
+  <li><b>Пятый, большой палец</b> — маленький, с собственным когтем, сидит низко на внешней стороне запястья, торчит в сторону, в опоре не участвует.</li>
+  <li>Длинная пясть, по тылу четыре сухожилия-валика, к запястью кисть сужается и переходит в толстое предплечье.</li>
+  <li>Кожа — как на всём теле: чёрно-серая слоновья, складки у оснований пальцев и на запястье, редкий волос по тылу и предплечью. Когти тёмно-серые, матовые у основания, стёртые на кончиках.</li>
+  <li>Кисть умеет хватать; вес несут средние пальцы.</li>
+</ul>
+<div class="q"><b>Вопрос 1 (Куаныш, Алия).</b> В черновике библии от 23.09 было «пять человеческих пальцев». Скульпт Алии — четыре пальца плюс боковой большой. Предлагаем утвердить скульпт как канон кисти: реквизит будет в кадре физически, а AI-кадры подстроим под него. Подтвердите или скажите, что переделываем скульпт.</div>
+
+<h2>8. Стопа (пока не выбрана)</h2>
+<div class="imgs">
+  <figure><img src="../avatar/img/11-stopy-B-pribyloy.jpg" alt=""><figcaption>Рабочий вариант стопы с прибылым пальцем (не утверждён)</figcaption></figure>
+</div>
+<ul>
+  <li><b>Рабочее описание, не утверждено:</b> дигитиградная — стоит на пальцах, пятка поднята, длинная плюсна с сухожилиями под кожей.</li>
+  <li>Четыре тяжёлых пальца с толстыми подушками и глубокими складками, тёмные конические когти длиной с фалангу; <b>прибылой палец</b> выше на плюсне, маленький, пола не касается.</li>
+  <li>Кожа зернистая чёрно-серая, чуть светлее на складках; редкие волоски между пальцами.</li>
+  <li>Стопа должна убедительно нести несколько сотен килограммов в движении: широкая опора, никаких хрупких лодыжек.</li>
+</ul>
+<div class="q"><b>Вопрос 3.</b> Стопу художник ещё не сделал, референс не выбран. Описание выше — рабочее, ждём скульпт или рисунок Алии; после этого раздел дополняем и утверждаем.</div>
+<ul>
+</ul>
+
+<h2>9. Хвост</h2>
+<p>Один длинный тяжёлый хвост от крестца, анатомически правдоподобный переход от позвоночника. Гребень перетекает на хвост без шва. Основание очень толстое, середина мускулистая, кончик тоньше. Шерсть чёрная, жёсткая, длинная, грязная, слипшаяся. Хвост подчиняется гравитации: в покое висит тяжело, в движении несёт инерцию и уравновешивает тело. Не декоративный, не невесомый. В темноте именно хвост делает силуэт «волком», а не большим человеком.</p>
+
+<h2>10. Шрамы</h2>
+<p>Много <b>старых</b> заживших повреждений, случайных и биологических, не декоративных: грудь — несколько неровных зажившихся царапин; плечи — старые порезы; руки — мелкие порезы и ссадины; верх спины — несколько неровных шрамов через голую кожу; бока — отдельные зажившие повреждения. Ткань шрамов разная: приподнятые бледно-серые, тёмные линии, розовато-серые, лёгкий келоид. Без свежих ран (если не нужно по сцене), без симметрии, без ритуальных узоров. Карта шрамов одна на все кадры.</p>
+
+<h2>11. Одежда</h2>
+<p>Один предмет: тёмные рваные штаны — уголь, вылинявший чёрный, тёмный графит; плотный хлопок, рабочая ткань. Старые, местами мокрые, грязные, натянуты на бёдрах, рваные на коленях, голенях, местами на бёдрах и по низу, с бахромой на разрывах. Никогда чистые и новые. Без рубашки, обуви, ремней, украшений, брони.</p>
+<div class="q"><b>Вопрос 2.</b> Джинсы или трико? На встрече 21.09 решение не принято: джинсы могут не порваться «от мышц», трикотаж рвётся легче. И держим ли вариант «майка лоскутами» на торсе? Нужен ответ на оба.</div>
+
+<h2>12. Движение</h2>
+<ul>
+  <li>Очень тяжёлый умный хищник: вес примата, суставы человека, намерение собаки. Каждое движение переносит массу: кисти вдавливаются в пол, мышцы деформируются, плечи перекатываются, гребень чуть отзывается, хвост балансирует. Никакой невесомости и акробатики.</li>
+  <li><b>Низкое ползание (охота):</b> тело предельно низко, плечи на уровне головы или выше, длинные руки вперёд, кисти распластаны, задние ноги поджаты, голова вперёд, взгляд на цели. Остаётся гуманоидом.</li>
+  <li><b>Стоя:</b> 210–220 см, слегка сгорблен, плечи очень широкие, руки висят низко, голова вынесена вперёд, гребень виден со спины, хвост висит за тазом.</li>
+  <li><b>Контакт с поверхностью:</b> пальцы расходятся естественно, кожа сжимается, мышцы включаются, есть контактные тени. В приседе бёдра сжимаются, живот складывается, плечи бугрятся, шея морщится.</li>
+</ul>
+
+<h2>13. Два канонических лица</h2>
+<ul>
+  <li><b>Нейтральное</b> (для эталонных кадров): рот почти закрыт, челюсть тяжёлая, взгляд сфокусирован, уши нейтрально или чуть назад, без выражения.</li>
+  <li><b>Агрессивное:</b> голова чуть опущена, тяжёлая бровь, взгляд вперёд, уши назад, верхняя губа поднята, зубы видны, складки морды глубже, челюсть открыта ровно настолько, насколько нужно. Без мультяшного рёва.</li>
+</ul>
+
+<h2>14. Состояние и «не красить»</h2>
+<p>Никогда не ухожен: пот, влага, пыль, грязь в складках, слипшиеся волосы, умеренно и реалистично. Не делать его элегантным, симметричным, «модельным»; не чистить кожу, не укладывать волосы, не отбеливать зубы, не сглаживать шрамы и морщины. Несовершенства — часть идентичности.</p>
+
+<h2>15. Чего нет — абсолютные запреты</h2>
+<p class="no">Сплошного меха; классического мохнатого оборотня; анатомии обычного волка; длинной морды; больших или эльфийских ушей; гривы вокруг шеи; шерсти на груди, животе и всей спине; разрыва между гребнем и хвостом; человеческой пятипалой кисти вместо кисти по скульпту; копыт, рогов, шипов; брони, украшений, рубашки, обуви; светящихся «неоновых» глаз; магических эффектов; чистой кожи; латексной фактуры; бодибилдерской идеальности; игровой, супергеройской, мультяшной анатомии; случайного передизайна от кадра к кадру.</p>
+
+<h2>16. Правило непрерывности</h2>
+<p>Каждый кадр показывает <b>того же самого индивида</b>, а не другого представителя вида: тот же череп, расстояние между глаз, морда, нос, уши, ширина плеч, длина рук, кисти, кожа, гребень, хвост, одежда, пропорции. Новый ракурс не меняет анатомию, новая эмоция не меняет лицо, новая локация не меняет цвет, новый свет не меняет материалы. Спереди — короткая морда и широкий череп; в профиль морду не удлинять; со спины виден гребень; в три четверти сзади гребень переходит в хвост; сбоку хвост растёт из таза.</p>
+
+<h2>17. Открытые вопросы — сводка</h2>
+<table>
+  <tr><th>#</th><th>Вопрос</th><th>Предложение Alexis</th></tr>
+  <tr><td>1</td><td>Кисть: 4 пальца + большой (скульпт) или 5 человеческих</td><td>Скульпт Алии</td></tr>
+  <tr><td>2</td><td>Штаны: джинсы или трико; майка лоскутами — да/нет</td><td>Трико тёмное, майки нет</td></tr>
+  <tr><td>3</td><td>Стопа: скульпт или рисунок от Алии</td><td>Ждём художника</td></tr>
+  <tr><td>4</td><td>Рост: 210 или 220 см</td><td>215 см</td></tr>
+  <tr><td>5</td><td>Цвет фильма (страница «Цвет» на сайте): A, B, C или D</td><td>A или B</td></tr>
+</table>
+
+<h2 class="pb">Приложение. Блоки для генерации (англ.)</h2>
+<p class="small">Три коротких лока вместо полного текста: они вставляются в каждый промпт целиком, а сцена описывается отдельно. Полный русский текст выше — для команды и грима.</p>
+
+<h3>BORI CANON</h3>
+<div class="mono">BORI, a Kazakh steppe werewolf: the same individual creature in every shot. 210–220 cm upright, 180–230 kg, dense front-loaded body, huge trapezius and shoulders, short bull neck, very long arms, slightly hunched; moves on two legs or on all four limbs but stays humanoid, never a quadruped wolf. Mostly BARE black-grey scarred skin, no warm tones; one narrow continuous ridge of coarse black hair from the crown down the spine into a long heavy hairy tail; torn dark trousers, barefoot. Practical creature makeup on a live-action set, ARRI Alexa 35, not CG.</div>
+
+<h3>BORI FACE LOCK</h3>
+<div class="mono">Head: large wide compact skull, low broad forehead, heavy brow, SHORT broad dense muzzle (never long or elegant), large black wet canine nose with pores, small deep-set dirty amber-yellow eyes with vertical pupils that catch the light like an animal's (never LED glow), small compact ears pinned back with slightly damaged edges, heavy black-grey irregular lips, uneven dirty-ivory wolf teeth of different lengths with chipped edges, dark red gums, saliva. Face skin heavily wrinkled with visible pores; sparse short hairs on the cheeks; skull mostly bald, hair denser at the crown flowing into the spinal ridge.</div>
+
+<h3>BORI BODY / HANDS / FEET LOCK</h3>
+<div class="mono">Skin: charcoal-black to graphite-grey, cold, thick wrinkled hide like elephant skin, deep creases at the joints, pores, old healed scars on chest, shoulders, arms and upper back; selectively wet — narrow cold highlights on high points, matte recesses; no latex, no rubber, no plastic. Hair only as the spinal ridge (8–20 cm wide, 70–80 % of the back stays bare) plus sparse coarse hairs on rear skull, outer shoulders, forearms, elbows, shins. Hands (production sculpt): four long tubular fingers of equal length held close together, heavy rounded pads with short thick conical claws, a small side thumb with its own claw low on the outer wrist, four tendon ridges on the back of the hand, thick wrist. Feet: digitigrade, four heavy toes with thick pads and deep folds, dark conical claws, a small dewclaw higher on the metatarsus, sparse hair between the toes. Tail: thick base, muscular, hairier than the body, obeys gravity.</div>
+
+<h3>NEGATIVES</h3>
+<div class="mono">No full-body fur, no furry werewolf, no normal wolf anatomy, no long muzzle, no big or elf ears, no neck mane, no fur on chest/belly/back, no break between ridge and tail, no five human fingers, no paws instead of hands, no brown or warm skin, no vampire fangs, no white teeth, no glowing neon eyes, no shirt, no shoes, no armor, no jewelry, no pristine skin, no latex or CG gloss, no superhero or bodybuilder physique, no redesign between shots.</div>
+
+<p class="small" style="margin-top:20px">Источники: KANON-BORI-21-09.md (решения встречи 21.09), OPISANIE-VOLKA-KANON.md (22.09), скульпты Алии (21–23.09), черновик CANON MASTER v2.0 (23.09). Подготовил Alexis, AI-ассистент проекта. 24.09.2026.</p>
+
+  <p class="small">См. также: <a href="../avatar/">аватар BORI</a> · <a href="../cvet/">цвет фильма</a></p>
+</div>
+<script>
+(function(){
+  var HASH="ced7c065fdd5357342c9fcbe38de5faef5a8a51997270ff4ff919bb05428f96a";
+  function hex(b){return [].map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2)}).join("")}
+  function sha256js(str){var K=[],P=[],i,j,n=2;for(;P.length<64;n++){for(i=0;i<P.length&&n%P[i];i++);if(i===P.length){P.push(n);K.push(Math.floor(Math.pow(n,1/3)*4294967296)|0)}}
+    var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    var m=unescape(encodeURIComponent(str)),L=m.length,W=[],w=[];for(i=0;i<L;i++)W[i>>2]|=m.charCodeAt(i)<<(24-(i%4)*8);W[L>>2]|=0x80<<(24-(L%4)*8);W[((L+8>>6)<<4)+15]=L*8;
+    for(j=0;j<W.length;j+=16){var a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+      for(i=0;i<64;i++){if(i<16)w[i]=W[j+i]|0;else{var s0=((w[i-15]>>>7)|(w[i-15]<<25))^((w[i-15]>>>18)|(w[i-15]<<14))^(w[i-15]>>>3),s1=((w[i-2]>>>17)|(w[i-2]<<15))^((w[i-2]>>>19)|(w[i-2]<<13))^(w[i-2]>>>10);w[i]=(w[i-16]+s0+w[i-7]+s1)|0}
+        var S1=((e>>>6)|(e<<26))^((e>>>11)|(e<<21))^((e>>>25)|(e<<7)),ch=(e&f)^(~e&g),t1=(h+S1+ch+K[i]+w[i])|0,S0=((a>>>2)|(a<<30))^((a>>>13)|(a<<19))^((a>>>22)|(a<<10)),mj=(a&b)^(a&c)^(b&c),t2=(S0+mj)|0;h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0}
+      H[0]=(H[0]+a)|0;H[1]=(H[1]+b)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0}
+    return H.map(function(x){return ("00000000"+(x>>>0).toString(16)).slice(-8)}).join("")}
+  function sha(t){if(window.crypto&&crypto.subtle&&window.isSecureContext){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(hex).catch(function(){return sha256js(t)})}return Promise.resolve(sha256js(t))}
+  function unlock(){document.body.classList.remove("locked")}
+  try{if(localStorage.getItem("bori_ok")===HASH)unlock()}catch(e){}
+  function tryCode(){var v=(document.getElementById("gcode").value||"").replace(/\s+/g,"").toUpperCase();
+    sha(v).then(function(hx){if(hx===HASH){try{localStorage.setItem("bori_ok",HASH)}catch(e){};unlock()}
+      else{document.getElementById("gerr").textContent="Неверный код";}}).catch(function(e){document.getElementById("gerr").textContent="Ошибка браузера: "+e})}
+  document.getElementById("gbtn").addEventListener("click",tryCode);
+  document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
+})();
+</script>
+</body>
+</html>
