@@ -34,9 +34,11 @@
   figcaption b{color:var(--paper)}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
   figure img.tall{aspect-ratio:9/21;object-fit:contain;background:#fff}
+  .grid4 figure img.tall{aspect-ratio:9/16;object-fit:cover}
   .foot{border-top:1px solid var(--line);margin-top:40px;padding-top:20px;font-family:var(--mono);font-size:12px;color:var(--mute);letter-spacing:.08em}
-  @media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}.wrap{padding:20px 16px 60px}}
+  @media (max-width:900px){.grid2,.grid3{grid-template-columns:1fr}.grid4{grid-template-columns:1fr 1fr}.wrap{padding:20px 16px 60px}}
   .gate{position:fixed;inset:0;z-index:120;background:rgba(9,7,4,.9);display:none;align-items:center;justify-content:center;padding:24px}
   body.locked .gate{display:flex}
   .gate .card{background:var(--ink-2);border:1px solid var(--line);padding:44px 40px;max-width:420px;width:100%;text-align:center}
@@ -63,6 +65,17 @@
   <h1>АВАТАР BORI</h1>
   <p class="lead">Один и тот же зверь: идентичность, полный рост вертикально, две стойки, голова, кисти и стопы. Белый фон нужен, чтобы этот аватар дальше оживлять видеомоделью и сажать в любую локацию. Версия 2 от 25.09: полный рост крупно, одни кисти и одни стопы во всех кадрах.</p>
   <div class="how"><b>Как утверждаем:</b> Куаныш и Алия отвечают по номерам кадров: «утверждаю» или «заменить: что именно». Кисти зафиксированы по скульпту художника-постановщика, стопы — с прибылым пальцем; оба показаны отдельно, скажите, если нужен другой вариант. После ответа аватар становится каноном, и все кадры фильма делаются от него.</div>
+
+  <section id="s0">
+    <h2><span>★</span>КИСТИ И СТОПЫ · ВЫБОР</h2>
+    <p class="sub">Главные кадры: кисть сверху и сбоку, стопа сбоку и спереди. Кисть: четыре пальца и большой, когти растут из кончиков пальцев. Стопа: стоит на пальцах, сбоку маленький прибылой палец. Все кадры ниже равняются на эти.</p>
+    <div class="grid4">
+      <figure><img class="tall" src="img/va-01-kist-sverhu.jpg" alt=""><figcaption><b>1</b> · кисть сверху</figcaption></figure>
+      <figure><img class="tall" src="img/va-04-kist-sboku.jpg" alt=""><figcaption><b>2</b> · кисть сбоку</figcaption></figure>
+      <figure><img class="tall" src="img/va-02-stopa-sboku.jpg" alt=""><figcaption><b>3</b> · стопа сбоку, прибылой палец</figcaption></figure>
+      <figure><img class="tall" src="img/va-03-stopa-speredi.jpg" alt=""><figcaption><b>4</b> · стопа спереди</figcaption></figure>
+    </div>
+  </section>
 
   <section id="s1">
     <h2><span>1</span>ИДЕНТИЧНОСТЬ</h2>
@@ -99,17 +112,15 @@
   </section>
 
   <section id="s5">
-    <h2><span>5</span>КИСТИ · 10 вариантов, выбор</h2>
-    <p class="sub">Нарисованы с нуля 25.09: слияние человеческой кисти и волчьей лапы. У всех когти растут из ногтевого ложа на кончике пальца и загибаются вниз, подушки под кончиками. Выберите один или два номера, дальше повторяем эту кисть во всех кадрах.</p>
+    <h2><span>5</span>КИСТИ · в кадре</h2>
+    <p class="sub">Та же кисть в сценах, тёмный свет и цвет фильма. Когти растут из кончиков пальцев и загибаются вниз, под ними отдельные подушки.</p>
     <div class="grid2">
+      <figure><img src="img/kist10-08.jpg" alt=""><figcaption><b>К8</b> · профиль, крюк ★</figcaption></figure>
       <figure><img src="img/kist10-01.jpg" alt=""><figcaption><b>К1</b> · классика, на кафеле</figcaption></figure>
       <figure><img src="img/kist10-02.jpg" alt=""><figcaption><b>К2</b> · хватка в камеру</figcaption></figure>
-      <figure><img src="img/kist10-03.jpg" alt=""><figcaption><b>К3</b> · волчья, стоит на кончиках</figcaption></figure>
-      <figure><img src="img/kist10-04.jpg" alt=""><figcaption><b>К4</b> · длинные костлявые пальцы</figcaption></figure>
-      <figure><img src="img/kist10-05.jpg" alt=""><figcaption><b>К5</b> · когти в раковину, царапины на эмали</figcaption></figure>
+      <figure><img src="img/kist10-05.jpg" alt=""><figcaption><b>К5</b> · когти в раковину</figcaption></figure>
       <figure><img src="img/kist10-06.jpg" alt=""><figcaption><b>К6</b> · ладонь: подушки, когти за кончиком</figcaption></figure>
       <figure><img src="img/kist10-07.jpg" alt=""><figcaption><b>К7</b> · тяжёлая, удар о пол</figcaption></figure>
-      <figure><img src="img/kist10-08.jpg" alt=""><figcaption><b>К8</b> · профиль, крюк ★ нравится</figcaption></figure>
       <figure><img src="img/kist10-09.jpg" alt=""><figcaption><b>К9</b> · концепт художника: 4 пальца + прибылой</figcaption></figure>
       <figure><img src="img/kist10-10.jpg" alt=""><figcaption><b>К10</b> · царапает кафель стены</figcaption></figure>
     </div>
