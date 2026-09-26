@@ -39,7 +39,7 @@
   .bar a{text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--mute)}
   .hero{position:relative;height:100svh;min-height:620px;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
   .hero .bg{position:absolute;inset:0;z-index:-2}
-  .hero .bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;animation:kb 22s ease-out forwards}
+  .hero .bg img{width:100%;height:100%;object-fit:cover;object-position:85% 40%;animation:kb 22s ease-out forwards}
   @keyframes kb{from{transform:scale(1.14)}to{transform:scale(1.03)}}
   .hero .scrim{position:absolute;inset:0;z-index:-1;background:
     linear-gradient(180deg,rgba(5,11,15,.7) 0%,rgba(5,11,15,0) 24%),
@@ -229,6 +229,8 @@
   .src{font-size:13.5px;color:var(--mute);margin-top:18px;columns:2;column-gap:40px}
   .src li{margin:0 0 10px 18px;break-inside:avoid}
   .src a{color:var(--honey);word-break:break-all}
+  figure.full img{aspect-ratio:auto;object-fit:contain}
+  figure.full:hover img{transform:none}
   @media(max-width:700px){.src{columns:1}.hero h1{font-size:clamp(52px,17vw,90px)}}
 </style>
 </head>
@@ -255,14 +257,14 @@
 </div>
 
 <header class="hero">
-  <div class="bg"><img src="assets/hero.jpg" alt="Бейби Шарп смотрит в камеру из толщи воды"></div>
+  <div class="bg"><img src="assets/art/k-rays.jpg" alt="Бейби Шарп в лучах света над глубиной"></div>
   <div class="scrim"></div>
   <div class="inner">
     <div class="kicker">Анимационный сериал · триллер / приключения</div>
     <h1>BABY SHARP</h1>
     <div class="byline">фильм <em>Ары Аруша</em> · идея <em>Роман Небо и Ара Аруш</em> · производство <em>Neyra Vision Studio</em> · продвижение <em>Агентство «Боратиони»</em></div>
     <p class="logline">Детёныш белой акулы выживает ещё до рождения — и первым делом должен уплыть от собственной матери. Дальше — огромный океан, где всё впервые: красота, голод, хищники и дружба. И один простой вопрос: как понять, кто тебе друг, а кто — еда?</p>
-    <div class="meta">часть первая · 15 минут<span class="sep">•</span>7 языковых версий<span class="sep">•</span>сериал-вселенная<span class="sep">•</span>YouTube · VK Video</div>
+    <div class="meta">часть первая · 15 минут<span class="sep">•</span>карты персонажей<span class="sep">•</span>7 языковых версий<span class="sep">•</span>сериал-вселенная<span class="sep">•</span>YouTube · VK Video</div>
   </div>
 </header>
 
@@ -307,7 +309,27 @@
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">03 · Кадры первой части</div>
+    <div class="eyebrow">03 · Ключевые кадры</div>
+    <h2>Океан, в котором растёт хищник</h2>
+    <p class="lead">Ключевые кадры проекта в 4K — свет, фактура и характер героев так, как они должны выглядеть в сериале.</p>
+    <div class="grid c2">
+      <figure><img src="assets/art/k-chase.jpg" alt="" loading="lazy"><figcaption>Погоня в затонувшем судне</figcaption></figure>
+      <figure><img src="assets/art/k-stuck.jpg" alt="" loading="lazy"><figcaption>Застрял: иллюминатор затонувшего судна</figcaption></figure>
+    </div>
+    <div class="grid c3" style="margin-top:14px">
+      <figure><img src="assets/art/k-reef.jpg" alt="" loading="lazy"><figcaption>Риф</figcaption></figure>
+      <figure><img src="assets/art/k-hole.jpg" alt="" loading="lazy"><figcaption>У норы Креветки</figcaption></figure>
+      <figure><img src="assets/art/k-burrow.jpg" alt="" loading="lazy"><figcaption>Креветка в норе</figcaption></figure>
+      <figure><img src="assets/art/k-moray.jpg" alt="" loading="lazy"><figcaption>Мурена</figcaption></figure>
+      <figure><img src="assets/art/k-eye.jpg" alt="" loading="lazy"><figcaption>Мурена в глазу акулёнка</figcaption></figure>
+      <figure><img src="assets/art/k-deep.jpg" alt="" loading="lazy"><figcaption>Житель глубины</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">03а · Кадры первой части</div>
     <h2>Жестокий океан — глазами новорождённого</h2>
     <div class="grid c4">
       <figure><img src="assets/st/s007.jpg" alt="" loading="lazy"><figcaption>Мать — суперхищник</figcaption></figure>
@@ -327,24 +349,52 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="eyebrow">04 · Герои</div>
     <h2>Кто живёт в этом океане</h2>
     <div class="chars">
-      <div class="ch"><img src="assets/st/s032.jpg" alt="Бейби Шарп" loading="lazy"><div class="b"><div class="n">Бейби Шарп</div><div class="r">Главный герой</div><p>Детёныш белой акулы. Выжил ещё до рождения и сразу уплыл от матери. Всё видит впервые и учится отличать друзей от еды.</p></div></div>
-      <div class="ch"><img src="assets/st/s071.jpg" alt="Креветка" loading="lazy"><div class="b"><div class="n">Креветка</div><div class="r">Друг и напарник</div><p>Могла стать обедом — стала другом. Вдвоём с Бейби Шарпом они выручают друг друга и так выживают.</p></div></div>
-      <div class="ch"><img src="assets/st/s007.jpg" alt="Мать" loading="lazy"><div class="b"><div class="n">Мать</div><div class="r">Суперхищник</div><p>Та, от кого герой бежит в первые минуты жизни. Главный вопрос истории — жестокая ли она на самом деле.</p></div></div>
+      <div class="ch"><img src="assets/art/k-reef.jpg" alt="Бейби Шарп" loading="lazy"><div class="b"><div class="n">Бейби Шарп</div><div class="r">Главный герой</div><p>Новорождённый детёныш большой белой акулы с белым верхним плавником — от матери. Любопытный, быстро учится. Его путь — выжить и стать легендой океана.</p></div></div>
+      <div class="ch"><img src="assets/art/k-burrow.jpg" alt="Креветка" loading="lazy"><div class="b"><div class="n">Креветка</div><div class="r">Друг и напарник</div><p>Маленькая, быстрая и хитрая. Боится акулёнка, много болтает и уверяет, что ядовита. Могла стать обедом — стала другом и проводником.</p></div></div>
+      <div class="ch"><img src="assets/art/k-chase.jpg" alt="Мама Шарк" loading="lazy"><div class="b"><div class="n">Мама Шарк</div><div class="r">Суперхищник</div><p>Большая белая акула, около 6 метров, вся в шрамах старых сражений. Живёт инстинктами выживания. Главный вопрос истории — жестокая ли она на самом деле.</p></div></div>
+      <div class="ch"><img src="assets/art/ch-tortilla.jpg" alt="Тортилла" loading="lazy"><div class="b"><div class="n">Тортилла</div><div class="r">Наставник</div><p>Древняя зелёная черепаха, ей несколько сотен лет. Мудрая, спокойная, язвительная. Наставник, защитник и учитель — «Слушай сердце, а не глупую креветку».</p></div></div>
       <div class="ch"><img src="assets/st/s076.jpg" alt="Обитатели глубины" loading="lazy"><div class="b"><div class="n">Океан</div><div class="r">Хищники и люди</div><p>Мурены, обитатели рифа и тёмной глубины, рыбаки с крючками. Каждый встречный — угроза или урок.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">04а · Карты персонажей</div>
+    <h2>Библия героев: ракурсы, детали, характер</h2>
+    <p class="lead">Для каждого героя — лист ракурсов, крупные детали, выражения, палитра и масштаб. По этим картам герои остаются одинаковыми во всех сериях и языковых версиях.</p>
+    <div class="grid c2">
+      <figure class="full"><img src="assets/art/card-baby.jpg" alt="" loading="lazy"><figcaption>Бейби Шарп · главный герой</figcaption></figure>
+      <figure class="full"><img src="assets/art/card-mama.jpg" alt="" loading="lazy"><figcaption>Мама Шарк · большая белая акула</figcaption></figure>
+      <figure class="full"><img src="assets/art/card-shrimp.jpg" alt="" loading="lazy"><figcaption>Креветка · друг и соглавный герой</figcaption></figure>
+      <figure class="full"><img src="assets/art/card-tortilla.jpg" alt="" loading="lazy"><figcaption>Тортилла · древняя черепаха</figcaption></figure>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
+    <div class="eyebrow">04б · Локация и раскадровка</div>
+    <h2>Поляна на рифе и схватка с муреной</h2>
+    <p class="lead">Одна локация — одна карта: поляна на рифе с шести точек съёмки, от северной арки до норы Креветки на востоке. Раскадровка схватки с муреной — шесть кадров.</p>
+    <div class="grid c2">
+      <figure class="full"><img src="assets/art/loc-reef.jpg" alt="" loading="lazy"><figcaption>Карта локации · 6 точек съёмки</figcaption></figure>
+      <figure class="full"><img src="assets/art/sb-moray.jpg" alt="" loading="lazy"><figcaption>Раскадровка · схватка с муреной</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
     <div class="eyebrow">05 · Дистрибуция и аудитория</div>
     <h2>Долгая вселенная на своих каналах</h2>
     <p class="lead">BABY SHARP развивается как долгосрочная вселенная с постоянным выпуском новых серий. Международная дистрибуция строится на собственных YouTube-каналах и сети социальных площадок, включая VK Video.</p>
+    <figure class="full" style="margin-top:30px"><img src="assets/art/banner-vk.jpg" alt="" loading="lazy"><figcaption>Обложка сообщества VK · «Бейби Шарп — друзья не еда»</figcaption></figure>
     <div class="langs"><span class="tag">English</span><span class="tag">Русский</span><span class="tag">Français</span><span class="tag">Bahasa Indonesia</span><span class="tag">中文</span><span class="tag">한국어</span><span class="tag">日本語</span></div>
     <div class="steps">
       <div class="step"><div><h3>Языковые версии</h3><p>Семь языков: английский, русский, французский, индонезийский, китайский, корейский и японский. Выход на аудитории и развитие каналов — постепенно.</p></div></div>
@@ -354,7 +404,7 @@
   </div>
 </section>
 
-<section class="alt" id="team">
+<section id="team">
   <div class="wrap">
     <div class="eyebrow">Команда</div>
     <h2>Кто делает BABY SHARP</h2>
@@ -368,7 +418,7 @@
   </div>
 </section>
 
-<section>
+<section class="alt">
   <div class="wrap">
     <div class="eyebrow">06 · Для продюсеров</div>
     <h2>Бюджет, модель дохода, окупаемость</h2>
@@ -383,7 +433,7 @@
     </div>
   </div>
 </section>
-<section class="alt" id="prodsec">
+<section id="prodsec">
   <div class="wrap">
     <div class="confbar"><b>Конфиденциально</b><span>Раздел для продюсеров и партнёров проекта. Цифры — ориентиры и предмет переговоров; просьба не распространять.</span></div>
     <div class="eyebrow">06 · Кабинет продюсера</div>
@@ -459,7 +509,7 @@
   </div>
 </section>
 
-<section>
+<section class="alt">
   <div class="wrap">
     <div class="eyebrow">Контакт</div>
     <h2>Ара Аруш × Neyra Vision Studio × Агентство «Боратиони»</h2>
