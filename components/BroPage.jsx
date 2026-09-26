@@ -105,7 +105,7 @@ export default function BroPage() {
               }
               ru={
                 <>
-                  Фильм <em>Ары Аруша</em>
+                  Фильм <em>Ара Аруш</em>
                 </>
               }
             />
