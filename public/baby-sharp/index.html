@@ -229,6 +229,8 @@
   .src{font-size:13.5px;color:var(--mute);margin-top:18px;columns:2;column-gap:40px}
   .src li{margin:0 0 10px 18px;break-inside:avoid}
   .src a{color:var(--honey);word-break:break-all}
+  .age{display:inline-block;font-family:var(--mono);font-size:13px;letter-spacing:.2em;color:var(--ink);background:var(--turq);padding:5px 12px;margin:0 0 18px;font-weight:500}
+  .videocard video{aspect-ratio:1470/630}
   figure.full img{aspect-ratio:auto;object-fit:contain}
   figure.full:hover img{transform:none}
   @media(max-width:700px){.src{columns:1}.hero h1{font-size:clamp(52px,17vw,90px)}}
@@ -302,6 +304,7 @@
 <section class="alt" id="film">
   <div class="wrap">
     <div class="eyebrow">02 · Часть первая</div>
+    <div class="age">ВЕРСИЯ 16+</div>
     <h2>BABY SHARP — Part One</h2>
     <p class="lead">Первая часть целиком: от утробы матери до первой встречи с Креветкой, рыболовного крючка и тех, кто живёт в глубине. 15 минут, заканчивается словами «To be continued».</p>
     <div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/9KwiFCK4kGU?rel=0" title="BABY SHARP — Part One" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
@@ -310,6 +313,20 @@
 </section>
 
 <section>
+  <div class="wrap">
+    <div class="eyebrow">02а · Сцены</div>
+    <h2>Сцены в движении</h2>
+    <p class="lead">Четыре сцены с героями — по 20 секунд, в широком кинокадре. Смотреть со звуком.</p>
+    <div class="grid c2">
+      <div class="videocard"><video controls playsinline preload="none" poster="assets/video/scene-18.jpg" src="assets/video/scene-18.mp4"></video><div class="cap"><b>Друг или еда?</b><p>Бейби Шарп и Креветка — первая встреча.</p></div></div>
+      <div class="videocard"><video controls playsinline preload="none" poster="assets/video/scene-17.jpg" src="assets/video/scene-17.mp4"></video><div class="cap"><b>Креветка и акулёнок</b><p>Глаза в глаза: крупные планы.</p></div></div>
+      <div class="videocard"><video controls playsinline preload="none" poster="assets/video/scene-6.jpg" src="assets/video/scene-6.mp4"></video><div class="cap"><b>Огонёк в темноте</b><p>Свет в глубине оказывается ловушкой.</p></div></div>
+      <div class="videocard"><video controls playsinline preload="none" poster="assets/video/scene-2.jpg" src="assets/video/scene-2.mp4"></video><div class="cap"><b>Житель глубины</b><p>Хозяин подводной пещеры с короной из шипов.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
   <div class="wrap">
     <div class="eyebrow">03 · Ключевые кадры</div>
     <h2>Океан, в котором растёт хищник</h2>
@@ -329,7 +346,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="eyebrow">03а · Кадры первой части</div>
     <h2>Жестокий океан — глазами новорождённого</h2>
@@ -353,7 +370,7 @@
   </div>
 </section>
 
-<section>
+<section class="alt">
   <div class="wrap">
     <div class="eyebrow">04 · Герои</div>
     <h2>Кто живёт в этом океане</h2>
@@ -367,7 +384,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="eyebrow">04а · Карты персонажей</div>
     <h2>Библия героев: ракурсы, детали, характер</h2>
@@ -381,7 +398,7 @@
   </div>
 </section>
 
-<section>
+<section class="alt">
   <div class="wrap">
     <div class="eyebrow">04б · Локация и раскадровка</div>
     <h2>Поляна на рифе и схватка с муреной</h2>
@@ -393,7 +410,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="eyebrow">05 · Дистрибуция и аудитория</div>
     <h2>Долгая вселенная на своих каналах</h2>
@@ -408,7 +425,7 @@
   </div>
 </section>
 
-<section id="team">
+<section class="alt" id="team">
   <div class="wrap">
     <div class="eyebrow">Команда</div>
     <h2>Кто делает BABY SHARP</h2>
@@ -422,7 +439,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="eyebrow">06 · Для продюсеров</div>
     <h2>Бюджет, модель дохода, окупаемость</h2>
@@ -437,7 +454,7 @@
     </div>
   </div>
 </section>
-<section id="prodsec">
+<section class="alt" id="prodsec">
   <div class="wrap">
     <div class="confbar"><b>Конфиденциально</b><span>Раздел для продюсеров и партнёров проекта. Цифры — ориентиры и предмет переговоров; просьба не распространять.</span></div>
     <div class="eyebrow">06 · Кабинет продюсера</div>
@@ -513,7 +530,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section>
   <div class="wrap">
     <div class="eyebrow">Контакт</div>
     <h2>Ара Аруш × Neyra Vision Studio × Агентство «Боратиони»</h2>
