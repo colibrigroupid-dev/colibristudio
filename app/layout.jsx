@@ -1,6 +1,7 @@
 import './globals.css'
 
 export const metadata = {
+  metadataBase: new URL('https://colibristudio.ai'),
   title: 'BRO — Feature Film',
   description:
     'BRO — an AI-produced adventure drama feature film by Ara Arush. A boy, a fighter and a rooster cross Indonesia. For investors and producers.',

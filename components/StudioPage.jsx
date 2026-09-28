@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Slate from './Slate'
 
 function T({ en, ru }) {
   return (
@@ -10,6 +11,44 @@ function T({ en, ru }) {
     </>
   )
 }
+
+const FAQ = [
+  {
+    q: { en: 'What is Colibri Studio?', ru: 'Что такое Colibri Studio?' },
+    a: {
+      en: 'Colibri Studio is a film studio working between Jakarta, Bali and Almaty. We develop and shoot feature films, commercials and music films, and we finish them with neural production inside the Neyra ecosystem. Six projects are in development right now, each with a named director or author.',
+      ru: 'Colibri Studio — киностудия, которая работает между Джакартой, Бали и Алматы. Мы придумываем и снимаем полный метр, рекламу и музыкальные фильмы, а доводим их нейропродакшном внутри экосистемы Neyra. Сейчас в разработке шесть проектов, у каждого есть режиссёр или автор.',
+    },
+  },
+  {
+    q: { en: 'What does “live action × neural production” mean?', ru: 'Что значит «живые съёмки × нейропродакшн»?' },
+    a: {
+      en: 'It means we shoot real actors and real locations, and build everything a small budget cannot shoot — crowds, creatures, cities, impossible camera moves — with neural tools. The actor, the voice and the performance stay human. The scale around them is produced, not rented.',
+      ru: 'Мы снимаем живых актёров и настоящие локации, а всё, что маленький бюджет снять не может — толпы, существ, города, невозможные движения камеры — собираем нейросетями. Актёр, голос и игра остаются человеческими. Масштаб вокруг них производится, а не арендуется.',
+    },
+  },
+  {
+    q: { en: 'Which projects are in development?', ru: 'Какие проекты сейчас в разработке?' },
+    a: {
+      en: 'Six: BRO, an adventure comedy shot in Indonesia; БӨРІ, a Kazakh thriller; MATKA, a drama; NECTARIUM, an animated universe; BABY SHARP, an animated series; and THE YACHT, a metaphysical drama. Each card on this page names the director or author and the stage the project has reached.',
+      ru: 'Шесть: BRO — экшн-комедия, снятая в Индонезии; БӨРІ — казахстанский триллер; «Матка» — драма; «Нектариум» — анимационная вселенная; BABY SHARP — анимационный сериал; и «Яхта» — метафизическая драма. В каждой карточке на этой странице указаны автор и стадия, на которой проект находится.',
+    },
+  },
+  {
+    q: { en: 'Can a brand order a commercial from the studio?', ru: 'Можно ли заказать у студии рекламу или бренд-фильм?' },
+    a: {
+      en: 'Yes. We take commercials and brand films from the director’s treatment through to the final master, and we work the same way as on features: real shooting plus neural production. Write a few lines about the project in the form below and we answer within one working day.',
+      ru: 'Да. Берём рекламу и бренд-фильмы от режиссёрского тритмента до финального мастера и работаем так же, как в кино: живая съёмка плюс нейропродакшн. Напишите пару строк о проекте в форме ниже — отвечаем в течение рабочего дня.',
+    },
+  },
+  {
+    q: { en: 'Where does the studio work?', ru: 'Где работает студия?' },
+    a: {
+      en: 'Jakarta, Bali and Almaty. Production in Indonesia runs through PT Colibri Group Indonesia together with Neyra Vision Studio; projects in Kazakhstan run with Taurus Asia Production. The technology comes from Neyra Labs in Singapore.',
+      ru: 'Джакарта, Бали и Алматы. Производство в Индонезии идёт через PT Colibri Group Indonesia вместе с Neyra Vision Studio, проекты в Казахстане — вместе с Taurus Asia Production. Технология — Neyra Labs, Сингапур.',
+    },
+  },
+]
 
 export default function StudioPage() {
   const [lang, setLang] = useState('en')
@@ -99,28 +138,62 @@ export default function StudioPage() {
         <div className="scrollcue" aria-hidden="true"></div>
       </header>
 
-      <section id="works">
+      <section id="slate">
         <div className="wrap">
           <div className="rv">
             <div className="eyebrow">
-              <T en="Selected work" ru="Работы" />
+              <T en="In development · 2026–2027" ru="В разработке · 2026–2027" />
             </div>
             <h2>
-              <T en="What we are making" ru="Что мы делаем сейчас" />
+              <T en="What the studio is making now" ru="Что студия делает сейчас" />
+            </h2>
+            <p>
+              <T
+                en="Six pictures at different stages: from a treatment on the table to a teaser already shot. Every project has a director or an author — we do not put anonymous work on this page."
+                ru="Шесть картин на разных стадиях: от тритмента на столе до уже снятого тизера. У каждого проекта есть режиссёр или автор — анонимных работ на этой странице нет."
+              />
+            </p>
+          </div>
+          <div className="rv">
+            <Slate />
+          </div>
+        </div>
+      </section>
+
+      <section className="statement">
+        <div className="wrap rv">
+          <p>
+            <T
+              en="“A small budget used to decide the size of the story. It does not any more.”"
+              ru="«Раньше маленький бюджет решал, какого размера будет история. Больше не решает»."
+            />
+          </p>
+          <div className="src">Colibri Studio</div>
+        </div>
+      </section>
+
+      <section id="works" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="rv">
+            <div className="eyebrow">
+              <T en="Released" ru="Уже вышло" />
+            </div>
+            <h2>
+              <T en="You can watch this today" ru="Это можно посмотреть уже сейчас" />
             </h2>
           </div>
-          <div className="works rv">
+          <div className="works two rv">
             <a className="wcard" href="/bro/">
-              <img src="/assets/hero_night.jpg" alt="BRO — feature film" loading="lazy" />
+              <img src="/assets/night_ride.jpg" alt="BRO — feature film" loading="lazy" />
               <div className="winfo">
                 <div className="wtag">
-                  <T en="Feature film · in development" ru="Полный метр · в производстве" />
+                  <T en="Feature film · teaser" ru="Полный метр · тизер" />
                 </div>
                 <div className="wname">BRO</div>
                 <div className="wdesc">
                   <T
-                    en="Two orphans. One rooster. All of Indonesia against them."
-                    ru="Два сироты. Один петух. Против них — вся Индонезия."
+                    en="Shot in Indonesia. The project page with the teaser."
+                    ru="Снято в Индонезии. Страница проекта с тизером."
                   />
                 </div>
               </div>
@@ -142,22 +215,6 @@ export default function StudioPage() {
                 </div>
               </div>
             </a>
-            <div className="wcard soon">
-              <div className="winfo">
-                <div className="wtag">
-                  <T en="Commercial · coming soon" ru="Реклама · скоро" />
-                </div>
-                <div className="wname">
-                  <T en="New work" ru="Новая работа" />
-                </div>
-                <div className="wdesc">
-                  <T
-                    en="A commercial production case is being finished. Check back shortly."
-                    ru="Рекламный кейс на финальной стадии. Загляните чуть позже."
-                  />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -214,6 +271,35 @@ export default function StudioPage() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="rv">
+            <div className="eyebrow">
+              <T en="Questions" ru="Вопросы" />
+            </div>
+            <h2>
+              <T en="Short answers" ru="Коротко о главном" />
+            </h2>
+          </div>
+          <div className="faq rv">
+            {FAQ.map((item, i) => (
+              <details key={i}>
+                <summary>
+                  <span>
+                    <T en={item.q.en} ru={item.q.ru} />
+                  </span>
+                </summary>
+                <div className="ans">
+                  <p>
+                    <T en={item.a.en} ru={item.a.ru} />
+                  </p>
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>
