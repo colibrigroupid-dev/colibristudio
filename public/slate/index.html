@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Colibri Studio — проекты в разработке</title>
+<style>
+  :root{
+    --ink:#07080b; --ink-2:#0e1016; --ink-3:#161a22; --line:#23272f;
+    --paper:#efe9dd; --mute:#93938f; --gold:#c9a25e;
+    --disp:"Oswald","Arial Narrow",sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--ink);color:var(--paper);font-family:"Helvetica Neue",Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+       padding:16px 24px;background:rgba(7,8,11,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .brand{font-family:var(--disp);font-size:20px;letter-spacing:.22em;text-transform:uppercase;color:#f4eee0;text-decoration:none}
+  .brand b{color:var(--gold);font-weight:inherit}
+  .priv{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+        border:1px solid var(--gold);padding:5px 11px;border-radius:99px;white-space:nowrap}
+
+  header.hero{padding:86px 0 10px}
+  .eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  h1{font-family:var(--disp);font-size:clamp(40px,7vw,86px);line-height:.98;letter-spacing:.01em;text-transform:uppercase;color:#f4eee0}
+  .lede{max-width:660px;margin-top:20px;font-size:16.5px;color:#c8c4bb}
+  .note{margin-top:26px;padding:14px 18px;border-left:2px solid var(--gold);background:var(--ink-2);font-size:13.5px;color:var(--mute);max-width:660px}
+
+  .slate{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin:54px 0 90px}
+  .card{border:1px solid var(--line);background:var(--ink-2);overflow:hidden;display:flex;flex-direction:column}
+  .shot{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--ink-3)}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88;transition:transform .7s ease,opacity .4s}
+  .card:hover .shot img{transform:scale(1.03);opacity:1}
+  .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,8,11,.55))}
+  .shot.blank{display:flex;align-items:center;justify-content:center;
+              background:repeating-linear-gradient(45deg,var(--ink-2),var(--ink-2) 14px,#10131a 14px,#10131a 15px)}
+  .shot.blank span{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#4d525c}
+
+  .body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .kind{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  .name{font-family:var(--disp);font-size:30px;letter-spacing:.03em;text-transform:uppercase;color:#f4eee0;line-height:1.05}
+  .what{font-size:14.5px;color:#c8c4bb}
+  .crew{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);display:grid;gap:5px}
+  .row{display:grid;grid-template-columns:104px 1fr;gap:12px;font-size:13px}
+  .role{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#6f7480;padding-top:3px}
+  .who{color:#ded8cc}
+  .stage{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:10px}
+
+  footer{border-top:1px solid var(--line);padding:30px 0 60px;font-size:12.5px;color:#6f7480}
+  @media (max-width:880px){ .slate{grid-template-columns:1fr;gap:20px} header.hero{padding:56px 0 0} }
+  @media (max-width:620px){
+    .bar{padding:12px 18px;gap:12px}
+    .brand{font-size:17px;letter-spacing:.18em}
+    .priv{white-space:normal;text-align:right;letter-spacing:.12em;font-size:9px;padding:4px 9px;line-height:1.35}
+    .wrap{padding:0 18px}
+    .lede,.note{font-size:14.5px}
+    .body{padding:18px 18px 20px}
+    .name{font-size:26px}
+    .row{grid-template-columns:92px 1fr;gap:10px;font-size:12.5px}
+    .slate{margin:36px 0 64px}
+  }
+  @media (max-width:400px){
+    .priv{font-size:8.5px;letter-spacing:.08em}
+    .row{grid-template-columns:1fr;gap:1px}
+    .role{padding-top:0}
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <a class="brand" href="/">C<b>O</b>LIBRI</a>
+  <div class="priv">Внутренний документ · не для публикации</div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Slate 2026–2027</div>
+    <h1>Проекты<br>в разработке</h1>
+    <p class="lede">Картины и сериалы, над которыми студия работает сейчас: препродакшн, превизуализация и разработка. Порядок — по стадии готовности.</p>
+    <div class="note">Страница закрытая: не индексируется и не связана ссылками с сайтом. Материалы — рабочие, к публикации не предназначены.</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="slate">
+
+    <article class="card">
+      <div class="shot"><img src="/assets/slate/bro.jpg" alt="BRO" loading="lazy"></div>
+      <div class="body">
+        <div class="kind">Полный метр · Индонезия</div>
+        <div class="name">BRO</div>
+        <p class="what">Приключенческая экшн-комедия о двух мальчишках и петухе, которые едут через всю Яву.</p>
+        <div class="crew">
+          <div class="row"><div class="role">Режиссёр</div><div class="who">Ара Аруш</div></div>
+          <div class="row"><div class="role">Сценарий</div><div class="who">Ара Аруш</div></div>
+          <div class="row"><div class="role">Производство</div><div class="who">PT Colibri Group Indonesia · Neyra Vision Studio</div></div>
+          <div class="stage">Препродакшн · тизер снят</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="/assets/slate/bori.jpg" alt="BÖRI" loading="lazy"></div>
+      <div class="body">
+        <div class="kind">Полный метр · Казахстан</div>
+        <div class="name">БӨРІ</div>
+        <p class="what">Мистическая драма по тюркской легенде о волке-предке. Наследие вместо проклятия.</p>
+        <div class="crew">
+          <div class="row"><div class="role">Режиссёр</div><div class="who">Куаныш Стаханов</div></div>
+          <div class="row"><div class="role">Продюсеры</div><div class="who">Анара Жунусова · Анна Чакиртова</div></div>
+          <div class="row"><div class="role">Художник</div><div class="who">Алия Шманова</div></div>
+          <div class="row"><div class="role">Производство</div><div class="who">Taurus Asia Production · Neyra Vision Studio</div></div>
+          <div class="stage">Превизуализация · Colibri Studio</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="/assets/slate/matka.jpg" alt="MATKA" loading="lazy"></div>
+      <div class="body">
+        <div class="kind">Полный метр · Казахстан</div>
+        <div class="name">Матка</div>
+        <p class="what">Драма, где природа отвечает человеку. Студия готовит ключевую сцену картины.</p>
+        <div class="crew">
+          <div class="row"><div class="role">Автор</div><div class="who">Елена Лисасина</div></div>
+          <div class="row"><div class="role">Производство</div><div class="who">Taurus Asia Production</div></div>
+          <div class="stage">Превизуализация сцены · Colibri Studio</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="/assets/slate/nektarium.jpg" alt="Nectarium" loading="lazy"></div>
+      <div class="body">
+        <div class="kind">Анимационная вселенная</div>
+        <div class="name">Нектариум</div>
+        <p class="what">Мир пчелиной цивилизации, выросший из романа и знаний практикующего пчеловода.</p>
+        <div class="crew">
+          <div class="row"><div class="role">Автор мира</div><div class="who">Владимир Григорьев</div></div>
+          <div class="row"><div class="role">Соавтор романа</div><div class="who">Людмила Лазарева</div></div>
+          <div class="stage">Пилотный эпизод · раскадровка</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot"><img src="/assets/slate/sharp.jpg" alt="Baby Sharp" loading="lazy"></div>
+      <div class="body">
+        <div class="kind">Анимационный сериал</div>
+        <div class="name">Baby Sharp</div>
+        <p class="what">История акулёнка, который с первого дня остаётся один. Вселенная с постоянным выпуском серий.</p>
+        <div class="crew">
+          <div class="row"><div class="role">Автор</div><div class="who">Ара Аруш</div></div>
+          <div class="row"><div class="role">Производство</div><div class="who">Neyra Vision Studio · Colibri Studio</div></div>
+          <div class="stage">Первая часть в производстве</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="shot blank"><span>Кадр в работе</span></div>
+      <div class="body">
+        <div class="kind">Полный метр</div>
+        <div class="name">Яхта</div>
+        <p class="what">Мелодрама по сценарию «Две секунды любви». Идёт работа над новой редакцией.</p>
+        <div class="crew">
+          <div class="row"><div class="role">Сценарий</div><div class="who">Котляров · Былинский</div></div>
+          <div class="stage">Разработка · новый тритмент</div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Colibri Studio · Jakarta · Bali · Almaty — внутренний документ, обновляется по ходу работы</div>
+</footer>
+
+</body>
+</html>
