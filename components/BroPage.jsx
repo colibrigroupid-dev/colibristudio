@@ -596,20 +596,32 @@ export default function BroPage() {
             </h2>
             <p>
               <T
-                en="BRO was developed as a conventional feature and budgeted as one: the same screenplay, the same 346 storyboards, the same creative team come to over $6,000,000 in a studio model. Our ask is $2,000,000 — and it is split in half by design."
-                ru="«БРО» разработан как классический полный метр и просчитан как классический: тот же сценарий, те же 346 листов раскадровки, та же творческая группа — свыше $6 000 000 в студийной модели. Мы просим $2 000 000, и эта сумма осознанно поделена пополам."
+                en="BRO was developed as a conventional feature and budgeted as one: the same screenplay, the same 346 storyboards, the same creative team come to over $6,000,000 in a studio model. Our ask is $2,000,000, split into three steps — and half of it goes to the release."
+                ru="«БРО» разработан как классический полный метр и просчитан как классический: тот же сценарий, те же 346 листов раскадровки, та же творческая группа — свыше $6 000 000 в студийной модели. Мы просим $2 000 000 и делим их на три шага, половина — на выход к зрителю."
               />
             </p>
-            <div className="split">
+            <div className="split three">
               <div className="sp">
-                <div className="spsum">$1M</div>
+                <div className="spsum">$500K</div>
                 <div className="spname">
-                  <T en="The film itself" ru="Сам фильм" />
+                  <T en="Production" ru="Производство" />
                 </div>
                 <div className="sptext">
                   <T
-                    en="Full cycle to a theatrical master: production, live actors for voice and performance reference, an original score recorded with a live orchestra, sound design, colour."
-                    ru="Полный цикл до кинотеатрального мастера: производство, живые актёры для голоса и пластики, оригинальная музыка живым оркестром, звуковой дизайн, цвет."
+                    en="The studio production team and the full neural pipeline: every scene of the film assembled from the finished storyboards."
+                    ru="Производственная команда студии и полный цикл нейропроизводства: все сцены фильма, собранные по готовым раскадровкам."
+                  />
+                </div>
+              </div>
+              <div className="sp">
+                <div className="spsum">$500K</div>
+                <div className="spname">
+                  <T en="Actors, 3D VFX and post" ru="Актёры, 3D VFX и постпродакшн" />
+                </div>
+                <div className="sptext">
+                  <T
+                    en="Live actors for voice and performance, 3D graphics and visual effects, an original score recorded with a live orchestra, sound design, colour and localisation."
+                    ru="Живые актёры — голос и пластика, 3D-графика и визуальные эффекты, оригинальная музыка живым оркестром, звуковой дизайн, цвет и локализации."
                   />
                 </div>
               </div>

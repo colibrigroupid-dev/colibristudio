@@ -379,3 +379,6 @@
 .faq .ans p{max-width:62ch}
 .works.two{grid-template-columns:1fr 1fr}
 @media (max-width:900px){.works.two{grid-template-columns:1fr}}
+.split.three{grid-template-columns:repeat(3,1fr)}
+.split.three .spsum{font-size:38px}
+@media (max-width:900px){.split.three{grid-template-columns:1fr}}
