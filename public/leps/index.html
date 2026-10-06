@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script>if(location.protocol==="http:"&&/colibristudio\.ai$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>А мне не важно, кто остальные — клип</title>
+<meta name="description" content="Концепт и визуальная разработка клипа на песню Григория Лепса «А мне не важно, кто остальные». Два мира, стол и зал, технология NEYRA.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0908">
+<meta property="og:title" content="А мне не важно, кто остальные — клип">
+<meta property="og:description" content="Концепт и визуальная разработка клипа. Два мира: стол и зал.">
+<meta property="og:image" content="https://colibristudio.ai/leps/assets/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%23c9382b%22/></svg>">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#0b0908; --ink-2:#110e0b; --ink-3:#19140f;
+    --line:#2a231c;
+    --paper:#efe7da; --mute:#9d9183;
+    --amber:#d9a24a; --amber-deep:#b57f2e;
+    --steel:#6f97b8; --red:#c9382b;
+    --disp:"Oswald","Arial Narrow",sans-serif;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --ease:cubic-bezier(.16,1,.3,1);
+    color-scheme:dark;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,video{max-width:100%;height:auto;display:block}
+  a{color:inherit}
+  ::selection{background:var(--amber);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    animation:grain 7s steps(10) infinite}
+  @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-8%,3%)}40%{transform:translate(-3%,8%)}60%{transform:translate(6%,0)}80%{transform:translate(-6%,0)}}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  .bar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;
+    padding:16px 26px;background:rgba(11,9,8,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(42,35,28,.6)}
+  .bar .brand{font-family:var(--disp);font-weight:500;letter-spacing:.22em;font-size:12.5px;color:var(--mute)}
+  .bar .brand b{color:var(--amber)}
+  .barlinks{display:flex;gap:26px}
+  .barlinks a{text-decoration:none;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+  .barlinks a:hover{color:var(--paper)}
+
+  .hero{position:relative;height:100svh;min-height:640px;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+  .hero .bg{position:absolute;left:0;right:0;top:-15%;bottom:0;z-index:-2}
+  .hero .bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;animation:kb 24s var(--ease) forwards}
+  @keyframes kb{from{transform:scale(1.12)}to{transform:scale(1.02)}}
+  .hero .scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(180deg,rgba(11,9,8,.6) 0%,rgba(11,9,8,0) 26%),
+    linear-gradient(180deg,rgba(11,9,8,0) 38%,rgba(11,9,8,.9) 82%,var(--ink) 100%)}
+  .hero .inner{width:100%;max-width:1180px;margin:0 auto;padding:0 24px 7vh}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--amber)}
+  .hero h1{font-family:var(--disp);font-weight:600;font-size:clamp(46px,9.4vw,138px);line-height:.94;letter-spacing:.02em;text-transform:uppercase;margin:14px 0 14px;text-wrap:balance;max-width:11em}
+  .hero .byline{font-family:var(--mono);font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-bottom:22px;line-height:1.9}
+  .hero .byline em{color:var(--paper);font-style:normal}
+  .logline{max-width:34em;font-size:clamp(17px,2vw,20px);color:#dcd2c2}
+  .hero .meta{margin-top:22px;font-family:var(--mono);font-size:12.5px;color:var(--mute);letter-spacing:.14em;text-transform:uppercase}
+  .hero .meta span.sep{color:var(--amber);margin:0 10px}
+
+  section{position:relative;padding:clamp(80px,10vw,140px) 0}
+  section.alt{background:var(--ink-2)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin-bottom:18px}
+  h2{font-family:var(--disp);font-weight:500;font-size:clamp(30px,4.6vw,50px);line-height:1.08;letter-spacing:.01em;margin-bottom:24px;text-wrap:balance}
+  h3{font-family:var(--disp);font-weight:500;font-size:clamp(22px,2.6vw,30px);line-height:1.15;letter-spacing:.02em}
+  .lead{max-width:40em;color:#d3c8b6;font-size:18px}
+  p{max-width:62ch;text-wrap:pretty}
+  .note{color:var(--mute);font-size:14.5px;max-width:60ch}
+  .g2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,40px);align-items:start}
+  .g75{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,5vw,80px);align-items:start}
+
+  /* песня */
+  .lyr{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(24px,3.2vw,38px);line-height:1.28;color:var(--paper)}
+  .lyr p{max-width:none;margin-bottom:1.1em}
+  .lyr b{font-weight:600;color:var(--amber)}
+  .about{padding-top:10px}
+  .about p{margin-bottom:1em;color:#d3c8b6}
+  .about .k{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .about .k span{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:5px 11px;color:var(--mute)}
+
+  /* два мира */
+  .worlds{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,28px);margin:40px 0 44px}
+  .world{position:relative}
+  .world img{width:100%;aspect-ratio:16/9;object-fit:cover}
+  .world .lab{position:absolute;left:0;bottom:0;padding:14px 16px;font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;background:linear-gradient(90deg,rgba(11,9,8,.85),rgba(11,9,8,0))}
+  .world .lab i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:10px;vertical-align:-1px}
+  .world.warm .lab i{background:var(--red)}
+  .world.cold .lab i{background:var(--steel)}
+  .idea p{margin-bottom:1em;color:#d3c8b6}
+  .idea .g2 p{max-width:none}
+
+  /* сетка кадров */
+  .frames{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.6vw,34px) clamp(14px,2vw,28px);margin-top:44px}
+  figure{cursor:zoom-in}
+  figure img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .5s var(--ease),filter .5s}
+  figure:hover img{filter:brightness(1.06)}
+  figcaption{margin-top:12px;font-size:15px;color:#d3c8b6;line-height:1.5}
+  figcaption b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);margin-bottom:5px;font-weight:500}
+  figcaption b s{text-decoration:none;color:var(--mute);margin-right:12px}
+
+  /* что может только ИИ */
+  .imp{display:grid;grid-template-columns:7fr 5fr;gap:clamp(22px,4vw,64px);align-items:end;margin-top:clamp(56px,7vw,96px)}
+  .imp:nth-child(even){grid-template-columns:5fr 7fr}
+  .imp:nth-child(even) figure{order:2}
+  .imp figure img{aspect-ratio:16/9}
+  .imp .t{padding-bottom:6px}
+  .imp .n{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:var(--amber);margin-bottom:10px}
+  .imp h3{margin-bottom:12px}
+  .imp p{color:#d3c8b6;max-width:none}
+  .imp .how{margin-top:12px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+
+  /* сборка */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);margin-top:36px}
+  .cols h3{margin-bottom:14px}
+  .cols ul{list-style:none}
+  .cols li{padding:11px 0;border-top:1px solid var(--line);color:#d3c8b6}
+  .cols li:last-child{border-bottom:1px solid var(--line)}
+  .cols .live h3{color:var(--amber)}
+  .cols .ai h3{color:var(--steel)}
+  table{width:100%;border-collapse:collapse;margin-top:48px;font-size:15.5px}
+  th{text-align:left;font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);padding:0 12px 12px 0;border-bottom:1px solid var(--line)}
+  td{padding:13px 12px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;color:#d3c8b6}
+  td.tc{font-family:var(--mono);font-size:13px;color:var(--paper);white-space:nowrap;font-variant-numeric:tabular-nums}
+  td.who{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+  td.who.l{color:var(--amber)} td.who.a{color:var(--steel)} td.who.m{color:var(--paper)}
+
+  .contact .lead b{color:var(--paper)}
+  .foot{padding:50px 0 60px;border-top:1px solid var(--line)}
+  .foot .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--mute)}
+  .foot .cred b{color:var(--paper);font-weight:500}
+  .foot .links{display:flex;gap:22px}
+  .foot .links a{text-decoration:none}
+
+  /* gate */
+  body.locked{overflow:hidden}
+  body.locked .bar, body.locked .hero, body.locked section, body.locked footer{filter:blur(26px);pointer-events:none;user-select:none}
+  .gate{position:fixed;inset:0;z-index:120;background:rgba(8,6,5,.9);display:none;align-items:center;justify-content:center;padding:24px}
+  body.locked .gate{display:flex}
+  .gate .card{background:var(--ink-2);border:1px solid var(--line);padding:44px 40px;max-width:440px;width:100%;text-align:center}
+  .gate .card .k{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber)}
+  .gate .card h3{font-family:var(--disp);font-weight:500;font-size:26px;letter-spacing:.08em;text-transform:uppercase;margin:12px 0 8px;line-height:1.15}
+  .gate .card p{color:var(--mute);font-size:14px;margin-bottom:22px}
+  .gate input{width:100%;background:var(--ink);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:18px;letter-spacing:.28em;text-transform:uppercase;text-align:center;padding:13px 12px;outline:none}
+  .gate input:focus{border-color:var(--amber)}
+  .gate button{margin-top:12px;width:100%;min-height:46px;background:var(--amber);color:var(--ink);border:0;font-family:var(--disp);font-weight:600;letter-spacing:.18em;font-size:14px;padding:12px;cursor:pointer;text-transform:uppercase;transition:transform .2s var(--ease),background-color .2s}
+  .gate button:hover{background:#e6b35c}
+  .gate button:active{transform:scale(.97)}
+  .gate .err{color:#e0705f;font-family:var(--mono);font-size:12px;margin-top:10px;min-height:14px}
+
+  /* lightbox */
+  .lbox{position:fixed;inset:0;z-index:90;background:rgba(8,6,5,.96);display:none;align-items:center;justify-content:center;flex-direction:column;padding:30px}
+  .lbox.on{display:flex}
+  .lbox img{max-width:min(96vw,1700px);max-height:82vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .lbox .lcap{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:16px;text-align:center;max-width:70ch}
+  .lbox .lcap b{color:var(--amber);margin-right:14px}
+  .lbtn{position:fixed;top:50%;transform:translateY(-50%);z-index:95;background:transparent;border:1px solid var(--line);color:var(--paper);width:48px;height:48px;font-size:26px;line-height:1;cursor:pointer;display:none}
+  .lbtn:hover{border-color:var(--amber)}
+  .lprev{left:18px}.lnext{right:18px}
+  .lclose{position:fixed;top:18px;right:18px;z-index:95;background:transparent;border:1px solid var(--line);color:var(--paper);width:44px;height:44px;font-size:18px;cursor:pointer;display:none}
+
+  .js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .js [data-reveal].in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .js [data-reveal]{opacity:1;transform:none;transition:none}
+    .hero .bg img{animation:none}
+    body::after{animation:none}
+    html{scroll-behavior:auto}
+  }
+
+  @media(max-width:860px){
+    .g75,.imp,.imp:nth-child(even){grid-template-columns:1fr}
+    .imp:nth-child(even) figure{order:0}
+    .imp{gap:18px;margin-top:56px}
+    .cols{grid-template-columns:1fr;gap:28px}
+    .barlinks a span{display:none}
+    .barlinks{gap:18px}
+  }
+  @media(max-width:700px){
+    body{font-size:16px}
+    .wrap,.hero .inner{padding-left:18px;padding-right:18px}
+    .hero{min-height:560px}
+    .hero .bg img{object-position:30% 40%}
+    .hero h1{font-size:clamp(44px,12vw,80px)}
+    .hero .byline{letter-spacing:.16em;font-size:11.5px}
+    .hero .meta span.sep{margin:0 7px}
+    .worlds,.frames,.g2{grid-template-columns:1fr}
+    .lyr{font-size:clamp(22px,6.4vw,28px)}
+    .gate .card{padding:32px 20px}
+    table{font-size:14px}
+    td.who{white-space:normal}
+    th:nth-child(2),td:nth-child(2){padding-right:8px}
+    .lbtn{width:42px;height:42px}
+  }
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+  <div class="card">
+    <div class="k">Закрытый показ</div>
+    <h3>А мне не важно,<br>кто остальные</h3>
+    <p style="font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);margin-bottom:10px">Песня Григория Лепса · Neyra Vision Studio<br>Страница проекта — Colibri Studio</p>
+    <p>Материалы предоставляются по коду доступа.</p>
+    <input id="gcode" type="text" autocomplete="off" placeholder="КОД" aria-label="Код доступа">
+    <button id="gbtn">Войти</button>
+    <div class="err" id="gerr"></div>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="brand">colibri <b>studio</b></div>
+  <nav class="barlinks">
+    <a href="#idea">Идея</a>
+    <a href="#ai"><span>Что может </span>ИИ</a>
+    <a href="https://colibristudio.ai/">Colibri<span> Studio</span></a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="bg"><img src="assets/hero.jpg" width="1600" height="896" alt="Герой стоит один среди сотен фигур, превратившихся в соль" fetchpriority="high"></div>
+  <div class="scrim"></div>
+  <div class="inner">
+    <div class="kicker">Клип · концепт и визуальная разработка</div>
+    <h1>А мне не&nbsp;важно, кто остальные</h1>
+    <div class="byline">песня <em>Григорий Лепс</em> · концепт и визуал <em>Neyra Vision Studio</em> · страница проекта <em>Colibri Studio</em></div>
+    <p class="logline">Один человек против остальных. Тёплый стол и холодный зал, сотни склонённых голов и лезвие света, которое не&nbsp;падает, а&nbsp;шепчет.</p>
+    <div class="meta">концепт · октябрь 2026<span class="sep">•</span>23 кадра<span class="sep">•</span>два мира<span class="sep">•</span>полная версия 3:30</div>
+  </div>
+</header>
+
+<section class="alt" id="song">
+  <div class="wrap g75">
+    <div class="lyr" data-reveal>
+      <p>А мне не&nbsp;важно, кто остальные,<br>пока я жив и&nbsp;со&nbsp;мною правда.<br>Я не&nbsp;боюсь — у&nbsp;меня остались<br>и&nbsp;ум, и&nbsp;совесть, и&nbsp;всё, что надо.</p>
+      <p>За&nbsp;тихим <b>шёпотом гильотины</b><br><b>склоняют голову</b> дни шальные,<br>со&nbsp;мной те, кто <b>прикроет спину</b>,<br>и&nbsp;мне не&nbsp;важно, кто остальные.</p>
+    </div>
+    <div class="about">
+      <div class="eyebrow">О чём песня</div>
+      <p>Один человек стоит на&nbsp;своём, пока жив и&nbsp;пока с&nbsp;ним правда. Ему есть чем стоять: ум, совесть, «всё, что надо».</p>
+      <p>Вокруг — тихий шёпот гильотины. Не&nbsp;казнь, а&nbsp;сплетня, суд толпы, страх. Под этот шёпот остальные склоняют голову. Он — нет. И&nbsp;за&nbsp;спиной у&nbsp;него есть те, кто прикроет.</p>
+      <div class="k"><span>шёпот</span><span>гильотина</span><span>склонённые головы</span><span>спина</span><span>правда</span><span>остальные</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="idea">
+  <div class="wrap idea">
+    <div class="eyebrow">Идея</div>
+    <h2>Стол и зал. Два мира, одна ночь</h2>
+    <div class="worlds" data-reveal>
+      <div class="world warm"><img src="assets/01-stol.jpg" width="1920" height="1074" alt="Один за длинным деревянным столом под лампой" loading="lazy"><div class="lab"><i></i>Тёплый мир · красные линзы</div></div>
+      <div class="world cold"><img src="assets/02-zal.jpg" width="1920" height="1074" alt="Зал с сотнями склонённых голов и лезвием света" loading="lazy"><div class="lab"><i></i>Холодный мир · синие линзы</div></div>
+    </div>
+    <div class="g2">
+      <div>
+        <p><b>Тёплый мир — стол.</b> Дом, ночь, длинный деревянный стол, одна лампа. Здесь он и&nbsp;его люди. Здесь правда говорится вслух. Клип начинается там же, где родилась песня: артист за&nbsp;столом, под лампой.</p>
+        <p><b>Холодный мир — зал.</b> Огромный тёмный зал, сотни одинаковых фигур в&nbsp;серых пальто, все с&nbsp;опущенными головами. Над ними висит лезвие холодного света — гильотина. Она не&nbsp;падает. Она шепчет. В&nbsp;этом зале никто не&nbsp;смотрит в&nbsp;глаза.</p>
+      </div>
+      <div>
+        <p>Герой проходит через зал, не&nbsp;склоняя головы. Лезвие опускается — и&nbsp;оказывается дверью: щель тёплого света, за&nbsp;ней стол. Он выходит из&nbsp;зала к&nbsp;своим. В&nbsp;финале стол полон, а&nbsp;остальные остаются за&nbsp;стеклом и&nbsp;растворяются в&nbsp;дожде.</p>
+        <p><b>Очки ведут историю.</b> Тонированные линзы — знак артиста. В&nbsp;тёплом мире они красные, в&nbsp;холодном зале синие, на&nbsp;пороге в&nbsp;одной оправе обе. Зритель всегда знает, где он.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="board">
+  <div class="wrap">
+    <div class="eyebrow">Раскадровка</div>
+    <h2>Восемь опорных кадров</h2>
+    <p class="lead">Мир клипа строка за&nbsp;строкой: от&nbsp;пустого стола до&nbsp;полного.</p>
+    <div class="frames">
+      <figure><img src="assets/01-stol.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>01</s>Интро</b>Один за&nbsp;столом. Одна лампа, пустые стулья.</figcaption></figure>
+      <figure><img src="assets/02-zal.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>02</s>«А мне не важно, кто остальные»</b>Зал. Сотни склонённых голов, один стоит. Над ним лезвие света.</figcaption></figure>
+      <figure><img src="assets/03-shepot.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>03</s>«За тихим шёпотом гильотины»</b>Через плечо героя: серые фигуры шепчут друг другу в&nbsp;ухо.</figcaption></figure>
+      <figure><img src="assets/04-lezvie.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>04</s>«Склоняют голову»</b>Лезвие опускается. Он не&nbsp;наклоняет головы.</figcaption></figure>
+      <figure><img src="assets/05-spina.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>05</s>«Со мной те, кто прикроет спину»</b>Сверху: пятеро спиной к&nbsp;спине. Тёплое кольцо в&nbsp;холодной толпе.</figcaption></figure>
+      <figure><img src="assets/06-porog.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>06</s>«И мне не важно, кто остальные»</b>Порог. Лезвие стало дверью, он выходит в&nbsp;тёплый свет.</figcaption></figure>
+      <figure><img src="assets/07-final.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>07</s>Финал</b>Стол полон. За&nbsp;стеклом остальные растворяются в&nbsp;дожде.</figcaption></figure>
+      <figure><img src="assets/08-poster.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>08</s>Ключевой арт</b>Спина, лезвие света, склонённая толпа. Место под название.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="artist">
+  <div class="wrap">
+    <div class="eyebrow">Артист в кадре</div>
+    <h2>Он в этом мире</h2>
+    <p class="lead">Кадры собраны по&nbsp;фотографиям артиста. В&nbsp;клипе лицо, руки и&nbsp;пение снимаются живьём, всё остальное строится вокруг него.</p>
+    <div class="frames">
+      <figure><img src="assets/11-stol-leps.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>11</s>Стол</b>Поёт за&nbsp;столом под лампой. Красные линзы.</figcaption></figure>
+      <figure><img src="assets/12-zal-leps.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>12</s>Зал</b>Лицом к&nbsp;нам среди склонённых голов, лезвие над ним. Синие линзы.</figcaption></figure>
+      <figure><img src="assets/13-shepot-leps.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>13</s>Шёпот</b>Профиль, за&nbsp;спиной шепчут. В&nbsp;линзе отражается лезвие.</figcaption></figure>
+      <figure><img src="assets/14-kolco-leps.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>14</s>Кольцо</b>Те, кто прикроет спину: четверо спиной к&nbsp;нему, он лицом к&nbsp;нам.</figcaption></figure>
+      <figure><img src="assets/15-mikrofon-leps.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>15</s>Микрофон в зале</b>Его концерт внутри зала остальных. Открытая ладонь, красный галстук.</figcaption></figure>
+      <figure><img src="assets/16-porog-leps.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>16</s>Порог</b>Оглянулся с&nbsp;порога. Одна линза красная, другая синяя.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="ai">
+  <div class="wrap">
+    <div class="eyebrow">Что может только ИИ</div>
+    <h2>Шесть невозможных вещей</h2>
+    <p class="lead">Живьём снимаем то, что человек делает лучше машины: лицо, руки, пение. Всё, что в&nbsp;павильоне стоит миллионы или невозможно вовсе, делает технология NEYRA.</p>
+
+    <div class="imp" data-reveal>
+      <figure><img src="assets/21-zrachok.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>21</s>Зрачок</b>В&nbsp;красной линзе отражается зал.</figcaption></figure>
+      <div class="t"><div class="n">01</div><h3>Один план без склеек — от зрачка до зала</h3><p>Клип открывается макро: зрачок сквозь красную линзу. В&nbsp;линзе отражается зал. Камера входит в&nbsp;отражение, и&nbsp;мы уже летим над сотней тысяч склонённых голов к&nbsp;одному стоящему. Непрерывный план на&nbsp;25–30 секунд.</p><div class="how">на съёмке невозможно</div></div>
+    </div>
+    <div class="imp" data-reveal>
+      <figure><img src="assets/22-shepot-dym.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>22</s>Шёпот как вещество</b>Чёрный дым тянет головы вниз. Вокруг него рассеивается.</figcaption></figure>
+      <div class="t"><div class="n">02</div><h3>Шёпот как вещество</h3><p>«Тихий шёпот гильотины» — не&nbsp;звук, а&nbsp;чёрный дым. Он ползёт по&nbsp;полу от&nbsp;рта ко&nbsp;рту, забирается по&nbsp;пальто, обвивает шеи и&nbsp;тянет головы вниз. Вокруг него дым рассеивается, как от&nbsp;жара. Это и&nbsp;есть «склоняют голову».</p><div class="how">на съёмке — месяц симуляций</div></div>
+    </div>
+    <div class="imp" data-reveal>
+      <figure><img src="assets/23-lezvie-skvoz.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>23</s>Лезвие сквозь него</b>Внутри нет ничего, кроме света.</figcaption></figure>
+      <div class="t"><div class="n">03</div><h3>Лезвие проходит сквозь него</h3><p>Лезвие света опускается и&nbsp;проходит через грудь. Он не&nbsp;вздрагивает. На&nbsp;секунду мы видим его насквозь, и&nbsp;внутри нет ничего, кроме света. «И ум, и&nbsp;совесть, и&nbsp;всё, что надо» — показали, что внутри.</p><div class="how">на съёмке невозможно</div></div>
+    </div>
+    <div class="imp" data-reveal>
+      <figure><img src="assets/24-sol.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>24</s>Толпа из соли</b>Он один живой среди сотен статуй.</figcaption></figure>
+      <div class="t"><div class="n">04</div><h3>Толпа становится солью</h3><p>После прохода лезвия остальные застывают: серые пальто превращаются в&nbsp;соляные статуи с&nbsp;трещинами, с&nbsp;голов сыплется пыль. Он один живой. Когда в&nbsp;финале открывается дверь, ветер из&nbsp;неё осыпает статуи.</p><div class="how">кадр для постера</div></div>
+    </div>
+    <div class="imp" data-reveal>
+      <figure><img src="assets/25-stol-skvoz-zal.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>25</s>Стол через зал</b>Тёплое вытесняет холодное.</figcaption></figure>
+      <div class="t"><div class="n">05</div><h3>Стол растёт сквозь зал</h3><p>Дверь из&nbsp;зала открывается, и&nbsp;стол из&nbsp;дома вытягивается через весь зал, на&nbsp;километр. За&nbsp;ним садятся те, кто прикроет спину. Статуи остаются по&nbsp;тёмным краям. Один план сверху: стол как река света.</p><div class="how">на съёмке невозможно</div></div>
+    </div>
+    <div class="imp" data-reveal>
+      <figure><img src="assets/26-molodoy.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>26</s>Он в тридцать напротив</b>«Пока я жив и со мною правда».</figcaption></figure>
+      <div class="t"><div class="n">06</div><h3>Он в тридцать напротив себя</h3><p>За&nbsp;столом напротив сидит он же, лет тридцати. Молча. «Пока я жив и&nbsp;со&nbsp;мною правда» — правда сидит напротив. Самый сильный кадр клипа. Делается только по&nbsp;согласованию с&nbsp;артистом и&nbsp;по&nbsp;его архивным фотографиям.</p><div class="how">по согласованию с артистом</div></div>
+    </div>
+
+    <div class="frames" style="margin-top:clamp(56px,7vw,96px)">
+      <figure><img src="assets/27-portret.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>27</s>Портрет</b>Поверх очков. Левая линза красная, правая синяя.</figcaption></figure>
+      <figure><img src="assets/28-mikrofon.jpg" width="1920" height="1074" alt="" loading="lazy"><figcaption><b><s>28</s>У микрофона</b>То, что снимаем живьём: чёрный фон, нота, рука.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <div class="eyebrow">Как это собирается</div>
+    <h2>Один съёмочный день и технология NEYRA</h2>
+    <p class="lead">Живые кадры артиста становятся каноном лица для всех сцен. Переходы между живым и&nbsp;сгенерированным прячутся во&nbsp;вспышках лезвия: каждая вспышка — склейка.</p>
+    <div class="cols">
+      <div class="live">
+        <h3>Снимаем живьём</h3>
+        <ul>
+          <li>Артист за&nbsp;столом в&nbsp;доме: поёт, руки, стакан, телефон</li>
+          <li>Артист у&nbsp;микрофона на&nbsp;чёрном: полный проход песни, три крупности</li>
+          <li>Порог: шаг вперёд, оглянулся</li>
+          <li>Друзья за&nbsp;столом: 6–8 человек, живая сцена</li>
+        </ul>
+      </div>
+      <div class="ai">
+        <h3>Делает технология NEYRA</h3>
+        <ul>
+          <li>Зал и&nbsp;толпа из&nbsp;сотен тысяч склонённых голов</li>
+          <li>Лезвие света: гильотина, дверь, вспышки-склейки</li>
+          <li>Шёпот-дым, соляные статуи, стол через зал</li>
+          <li>План от&nbsp;зрачка до&nbsp;зала и&nbsp;он в&nbsp;тридцать напротив</li>
+        </ul>
+      </div>
+    </div>
+    <table>
+      <thead><tr><th>Время</th><th>Что происходит</th><th>Как</th></tr></thead>
+      <tbody>
+        <tr><td class="tc">0:00–0:25</td><td>Зрачок → линза → зал, один план</td><td class="who a">NEYRA</td></tr>
+        <tr><td class="tc">0:25–0:50</td><td>Куплет: он стоит в&nbsp;зале, шёпот-дым ползёт</td><td class="who m">живьём + NEYRA</td></tr>
+        <tr><td class="tc">0:50–1:15</td><td>Стол, он поёт, красные линзы</td><td class="who l">живьём</td></tr>
+        <tr><td class="tc">1:15–1:40</td><td>Лезвие опускается, проходит сквозь него</td><td class="who a">NEYRA</td></tr>
+        <tr><td class="tc">1:40–2:00</td><td>Толпа становится солью, он один живой</td><td class="who a">NEYRA</td></tr>
+        <tr><td class="tc">2:00–2:25</td><td>Кольцо: те, кто прикроет спину</td><td class="who m">живьём + NEYRA</td></tr>
+        <tr><td class="tc">2:25–2:50</td><td>Дверь, стол растёт через зал</td><td class="who a">NEYRA</td></tr>
+        <tr><td class="tc">2:50–3:15</td><td>Стол полон, он в&nbsp;тридцать напротив</td><td class="who m">живьём + NEYRA</td></tr>
+        <tr><td class="tc">3:15–3:30</td><td>Лезвие стало дверью, он уходит в&nbsp;тёплый свет, статуи осыпаются</td><td class="who a">NEYRA</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="alt contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Контакт</div>
+    <h2>Григорий Лепс × Neyra Vision Studio × Colibri Studio</h2>
+    <p class="lead"><b>Neyra Vision Studio</b> — концепт, визуальная разработка и&nbsp;производство клипа. Страница проекта подготовлена <b>Colibri Studio</b> — AI-превиз для кино и&nbsp;музыкального видео: раскадровки, карты персонажей, локации, оживление сцен. colibristudio.ai</p>
+    <p class="note" style="margin-top:22px">Материалы конфиденциальны и&nbsp;предназначены для артиста и&nbsp;его команды. Не&nbsp;для распространения.</p>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="row">
+      <div class="cred"><b>«А мне не важно, кто остальные»</b> · песня <b>Григорий Лепс</b> · концепт клипа <b>Neyra Vision Studio</b> · 2026</div>
+      <div class="links">
+        <a href="https://neyra.ai/" target="_blank" rel="noopener">neyra.ai</a>
+        <a href="https://colibristudio.ai/">colibristudio.ai</a>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px;font-size:12.5px">Кадры — концепт-арт клипа, технология NEYRA. Образ артиста использован по&nbsp;заказу для презентации концепта.</p>
+  </div>
+</footer>
+
+<div class="lbox" id="lbox" role="dialog" aria-label="Просмотр кадра">
+  <img id="lbimg" src="" alt="">
+  <div class="lcap" id="lbcap"></div>
+</div>
+<button class="lbtn lprev" id="lbprev" aria-label="Предыдущий">‹</button>
+<button class="lbtn lnext" id="lbnext" aria-label="Следующий">›</button>
+<button class="lclose" id="lbclose" aria-label="Закрыть">✕</button>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  /* ---- gate ---- */
+  var HASH="d5ff3e70b1a43369f60ffacf0ceba23576c1baf85268f7db7baac4e470f81938";
+  function hex(b){return [].map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2)}).join("")}
+  function sha256js(str){var K=[],P=[],i,j,n=2;for(;P.length<64;n++){for(i=0;i<P.length&&n%P[i];i++);if(i===P.length){P.push(n);K.push(Math.floor(Math.pow(n,1/3)*4294967296)|0)}}
+    var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    var m=unescape(encodeURIComponent(str)),L=m.length,W=[],w=[];for(i=0;i<L;i++)W[i>>2]|=m.charCodeAt(i)<<(24-(i%4)*8);W[L>>2]|=0x80<<(24-(L%4)*8);W[((L+8>>6)<<4)+15]=L*8;
+    for(j=0;j<W.length;j+=16){var a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+      for(i=0;i<64;i++){if(i<16)w[i]=W[j+i]|0;else{var s0=((w[i-15]>>>7)|(w[i-15]<<25))^((w[i-15]>>>18)|(w[i-15]<<14))^(w[i-15]>>>3),s1=((w[i-2]>>>17)|(w[i-2]<<15))^((w[i-2]>>>19)|(w[i-2]<<13))^(w[i-2]>>>10);w[i]=(w[i-16]+s0+w[i-7]+s1)|0}
+        var S1=((e>>>6)|(e<<26))^((e>>>11)|(e<<21))^((e>>>25)|(e<<7)),ch=(e&f)^(~e&g),t1=(h+S1+ch+K[i]+w[i])|0,S0=((a>>>2)|(a<<30))^((a>>>13)|(a<<19))^((a>>>22)|(a<<10)),mj=(a&b)^(a&c)^(b&c),t2=(S0+mj)|0;h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0}
+      H[0]=(H[0]+a)|0;H[1]=(H[1]+b)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0}
+    return H.map(function(x){return ("00000000"+(x>>>0).toString(16)).slice(-8)}).join("")}
+  function sha(t){if(window.crypto&&crypto.subtle&&window.isSecureContext){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(hex).catch(function(){return sha256js(t)})}return Promise.resolve(sha256js(t))}
+  function unlock(){document.body.classList.remove("locked")}
+  try{if(localStorage.getItem("leps_ok")===HASH)unlock()}catch(e){}
+  function tryCode(){var v=(document.getElementById("gcode").value||"").replace(/\s+/g,"").toUpperCase();
+    sha(v).then(function(hx){if(hx===HASH){try{localStorage.setItem("leps_ok",HASH)}catch(e){};unlock()}
+      else{document.getElementById("gerr").textContent="Неверный код";}}).catch(function(e){document.getElementById("gerr").textContent="Ошибка браузера: "+e})}
+  document.getElementById("gbtn").addEventListener("click",tryCode);
+  document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
+
+  /* ---- reveal ---- */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+    document.querySelectorAll('[data-reveal]').forEach(function(el){io.observe(el)});
+  }else{document.querySelectorAll('[data-reveal]').forEach(function(el){el.classList.add('in')})}
+
+  /* ---- lightbox ---- */
+  var figs=[].slice.call(document.querySelectorAll("figure"));
+  var items=figs.map(function(f){var img=f.querySelector("img"),c=f.querySelector("figcaption");
+    return {src:img.getAttribute("src"),cap:c?c.textContent.replace(/^\s*\d+\s*/,""):""}});
+  var box=document.getElementById("lbox"),im=document.getElementById("lbimg"),cp=document.getElementById("lbcap");
+  var bp=document.getElementById("lbprev"),bn=document.getElementById("lbnext"),bc=document.getElementById("lbclose");
+  var cur=0,open=false;
+  function show(i){cur=(i+items.length)%items.length;im.src=items[cur].src;
+    cp.innerHTML="<b>"+(cur+1)+" / "+items.length+"</b>"+items[cur].cap}
+  function setOpen(v){open=v;box.classList.toggle("on",v);
+    bp.style.display=bn.style.display=bc.style.display=v?"block":"none";
+    document.body.style.overflow=v?"hidden":""}
+  setOpen(false);
+  figs.forEach(function(f,i){f.addEventListener("click",function(){show(i);setOpen(true)})});
+  bp.addEventListener("click",function(){show(cur-1)});
+  bn.addEventListener("click",function(){show(cur+1)});
+  bc.addEventListener("click",function(){setOpen(false)});
+  box.addEventListener("click",function(e){if(e.target===box)setOpen(false)});
+  document.addEventListener("keydown",function(e){if(!open)return;
+    if(e.key==="ArrowLeft")show(cur-1);else if(e.key==="ArrowRight")show(cur+1);else if(e.key==="Escape")setOpen(false)});
+  var tx=null;
+  box.addEventListener("touchstart",function(e){tx=e.touches[0].clientX},{passive:true});
+  box.addEventListener("touchend",function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;
+    if(dx>50)show(cur-1);else if(dx<-50)show(cur+1);tx=null},{passive:true});
+})();
+</script>
+</body>
+</html>
