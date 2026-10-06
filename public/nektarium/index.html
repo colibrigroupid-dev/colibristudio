@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<script>if(location.protocol==="http:"&&/colibristudio\.ai$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>НЕКТАРИУМ — тизер «В покое летящей стрелы»</title>
+<meta name="description" content="Нектариум — вселенная пчелиной цивилизации по роману Владимира Григорьева и Людмилы Лазаревой. Тизер 5 минут: материалы проекта.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0d0a06">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐝</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#0d0a06; --ink-2:#14100a; --ink-3:#1b150d; --line:#2e2414;
+    --paper:#efe6d4; --mute:#a3937a; --soft:#d8cbb2;
+    --honey:#e3a83c; --raktum:#f2c66b; --zunan:#c8452f; --leaf:#4f8a5b;
+    --disp:"Cormorant Garamond",Georgia,serif;
+    --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img,video,audio{max-width:100%;display:block}
+  a{color:inherit}
+  ::selection{background:var(--honey);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--raktum);outline-offset:3px}
+  h1,h2,h3{text-wrap:balance}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---- замок ---- */
+  .gate{position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:24px;
+    background:radial-gradient(ellipse at 20% 30%,rgba(242,198,107,.16),transparent 55%),radial-gradient(ellipse at 85% 70%,rgba(200,69,47,.14),transparent 55%),var(--ink)}
+  body.locked .gate{display:grid}
+  body.locked main,body.locked .bar{display:none}
+  .gate-box{width:min(420px,100%);text-align:center}
+  .gate-box .suns{display:flex;justify-content:center;gap:18px;margin-bottom:28px}
+  .gate-box .suns i{display:block;width:34px;height:34px;border-radius:50%;background:var(--raktum);box-shadow:0 0 40px rgba(242,198,107,.6)}
+  .gate-box .suns i+i{width:20px;height:20px;margin-top:7px;background:var(--zunan);box-shadow:0 0 30px rgba(200,69,47,.6)}
+  .gate-box h1{font-family:var(--disp);font-weight:600;font-size:46px;letter-spacing:.16em;line-height:1}
+  .gate-box .who{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin:16px 0 30px;line-height:1.9}
+  .field{display:flex;gap:8px}
+  .field input{flex:1;min-width:0;background:var(--ink-3);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:16px;letter-spacing:.2em;text-transform:uppercase;padding:13px 14px}
+  .field input:focus{border-color:var(--honey);outline:none}
+  .btn{background:var(--honey);color:var(--ink);border:0;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:13px 20px;cursor:pointer;transition:background .2s var(--ease)}
+  .btn:hover{background:var(--raktum)}
+  .err{min-height:22px;margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--zunan)}
+
+  /* ---- шапка ---- */
+  .bar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    padding:14px 24px;background:rgba(13,10,6,.86);border-bottom:1px solid rgba(46,36,20,.7)}
+  .bar .brand{font-family:var(--disp);font-weight:600;letter-spacing:.3em;font-size:17px;text-decoration:none}
+  .bar nav{display:flex;gap:20px}
+  .bar nav a{text-decoration:none;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);transition:color .2s}
+  .bar nav a:hover{color:var(--raktum)}
+  @media(max-width:760px){.bar nav a:not(.cta){display:none}}
+  .bar nav a.cta{color:var(--honey)}
+
+  /* ---- первый экран ---- */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;isolation:isolate;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;z-index:-2}
+  .hero .bg img{width:100%;height:100%;object-fit:cover;object-position:55% 50%;animation:kb 24s var(--ease) forwards}
+  @keyframes kb{from{transform:scale(1.12)}to{transform:scale(1.02)}}
+  .hero .scrim{position:absolute;inset:0;z-index:-1;background:
+    linear-gradient(90deg,rgba(13,10,6,.55) 0%,rgba(13,10,6,0) 55%),
+    linear-gradient(180deg,rgba(13,10,6,.6) 0%,rgba(13,10,6,0) 22%),
+    linear-gradient(180deg,rgba(13,10,6,0) 38%,rgba(13,10,6,.9) 80%,var(--ink) 100%)}
+  .hero .inner{width:100%;max-width:1120px;margin:0 auto;padding:120px 24px 9vh}
+  .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--honey)}
+  .hero .kicker{color:var(--raktum);text-shadow:0 1px 14px rgba(13,10,6,.95),0 0 2px rgba(13,10,6,.9)}
+  .hero h1{font-family:var(--disp);font-weight:600;font-size:clamp(40px,11.5vw,176px);line-height:.92;letter-spacing:.08em;margin:14px 0 10px;color:#f6ecd8}
+  @media(max-width:520px){.hero h1{letter-spacing:.04em}}
+  .hero .sub{font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(24px,3.4vw,38px);color:var(--raktum);margin-bottom:22px}
+  .byline{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);line-height:2}
+  .byline em{font-style:normal;color:var(--paper)}
+  .hero .meta{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  .tag{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border:1px solid rgba(227,168,60,.4);color:var(--soft)}
+  .tag.ok{border-color:rgba(79,138,91,.7);color:#bfe0c5}
+
+  /* ---- секции ---- */
+  section{padding:clamp(80px,11vw,150px) 0}
+  section.alt{background:var(--ink-2)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--honey);margin-bottom:18px}
+  h2{font-family:var(--disp);font-weight:600;font-size:clamp(36px,5.4vw,62px);line-height:1.04;letter-spacing:.01em;margin-bottom:24px}
+  .lead{max-width:40em;color:var(--soft);font-size:clamp(17px,1.6vw,19px)}
+  .lead+.lead{margin-top:14px}
+  .quote{font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.3;color:#f4e7cc;max-width:22em;margin:0 0 14px}
+  .quote-src{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+
+  .world{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,90px);align-items:center}
+  @media(max-width:860px){.world{grid-template-columns:1fr}}
+  .suns-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:34px;background:var(--line);border:1px solid var(--line)}
+  .suns-row div{background:var(--ink);padding:20px}
+  .suns-row b{display:block;font-family:var(--disp);font-size:28px;font-weight:600}
+  .suns-row div:first-child b{color:var(--raktum)} .suns-row div:last-child b{color:var(--zunan)}
+  .suns-row span{font-size:14px;color:var(--mute)}
+
+  /* таймлайн 5 актов */
+  .acts{margin-top:46px;border-top:1px solid var(--line)}
+  .act{display:grid;grid-template-columns:150px 1fr 1.3fr;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .act .t{font-family:var(--mono);font-size:13px;color:var(--honey);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+  .act h3{font-family:var(--disp);font-size:clamp(24px,2.6vw,30px);font-weight:600;line-height:1.15}
+  .act p{color:var(--soft);font-size:15.5px}
+  @media(max-width:760px){.act{grid-template-columns:1fr;gap:6px}}
+  .bar-len{display:flex;height:8px;margin-top:40px;gap:3px}
+  .bar-len i{display:block;height:100%;background:var(--honey);opacity:.35}
+  .bar-len i.b{opacity:1}
+  .bar-len-cap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--mute);margin-top:8px;letter-spacing:.1em}
+
+  /* герои — подпись страницы: глаз на всю ширину */
+  .eye{position:relative;min-height:88svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+  .eye img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
+  .eye::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(13,10,6,0) 45%,rgba(13,10,6,.92) 88%,var(--ink))}
+  .eye .wrap{width:100%;padding-bottom:9vh}
+  .eye h2{max-width:13em}
+  .cast{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:44px}
+  .cast figure:nth-child(1){grid-column:span 5}
+  .cast figure:nth-child(2){grid-column:span 7}
+  .cast figure:nth-child(3){grid-column:span 7}
+  .cast figure:nth-child(4){grid-column:span 5}
+  @media(max-width:760px){.cast figure{grid-column:span 12!important}}
+  figure{position:relative;background:var(--ink-3);overflow:hidden;cursor:zoom-in}
+  figure img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+  figure:hover img{transform:scale(1.03)}
+  .cast figure img{aspect-ratio:4/5}
+  .cast figure:nth-child(2) img,.cast figure:nth-child(3) img{aspect-ratio:16/11}
+  @media(max-width:760px){.cast figure img{aspect-ratio:4/5!important}}
+  figcaption{position:absolute;left:0;right:0;bottom:0;padding:28px 14px 12px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);
+    background:linear-gradient(180deg,transparent,rgba(13,10,6,.85))}
+  .note{margin-top:22px;font-size:14px;color:var(--mute);max-width:44em}
+
+  /* раскадровка */
+  .board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:44px}
+  .board figure img{aspect-ratio:16/9}
+  .board figure.wide{grid-column:span 2}
+  @media(max-width:760px){.board{grid-template-columns:1fr 1fr}.board figure.wide{grid-column:span 2}}
+
+  /* порядок работы */
+  .flow{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);margin-top:46px}
+  @media(max-width:860px){.flow{grid-template-columns:1fr}}
+  .stage h3{font-family:var(--disp);font-size:30px;font-weight:600;margin-bottom:6px}
+  .stage .len{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--honey);margin-bottom:18px}
+  .stage ol{list-style:none;border-top:1px solid var(--line)}
+  .stage li{display:grid;grid-template-columns:44px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px;color:var(--soft)}
+  .stage li b{font-family:var(--mono);font-weight:500;color:var(--honey);font-size:13px;padding-top:2px}
+  .rules{margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .rules div{background:var(--ink-2);padding:22px}
+  .rules b{display:block;font-family:var(--disp);font-size:24px;font-weight:600;color:var(--raktum);margin-bottom:6px}
+  .rules span{font-size:14.5px;color:var(--soft)}
+  @media(max-width:760px){.rules{grid-template-columns:1fr}}
+
+  /* аудио */
+  .listen{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,70px);align-items:center}
+  @media(max-width:860px){.listen{grid-template-columns:1fr}}
+  .player{background:var(--ink-3);border:1px solid var(--line);padding:22px}
+  .player .ttl{font-family:var(--disp);font-size:26px;font-weight:600}
+  .player .sub{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:4px 0 16px}
+  .player audio{width:100%}
+
+  /* скачать */
+  .dl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+  .dl-code input{background:var(--ink-3);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:15px;letter-spacing:.2em;text-transform:uppercase;padding:12px 14px;width:220px}
+  .dl{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px);margin-top:30px}
+  @media(max-width:900px){.dl{grid-template-columns:1fr}}
+  .dl-group h3{font-family:var(--disp);font-size:28px;font-weight:600;margin-bottom:10px;color:var(--raktum)}
+  .dl-group ul{list-style:none;border-top:1px solid var(--line)}
+  .dl-group li{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+  .dl-t{font-size:15.5px;line-height:1.4;color:var(--paper)}
+  .dl-d{display:block;font-size:13.5px;color:var(--mute);margin-top:2px}
+  .dl-s{font-family:var(--mono);font-size:11.5px;color:var(--mute);letter-spacing:.06em;white-space:nowrap;font-variant-numeric:tabular-nums}
+  .dl-btn{background:transparent;border:1px solid rgba(227,168,60,.55);color:var(--honey);font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:9px 14px;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease);min-width:118px}
+  .dl-btn:hover{background:var(--honey);color:var(--ink)}
+  .dl-btn[disabled]{opacity:.6;cursor:progress}
+  .dl-btn.done{border-color:rgba(79,138,91,.8);color:#bfe0c5}
+  .dl-group:first-child li:first-child .dl-btn{background:var(--honey);color:var(--ink)}
+  .dl-audio{grid-column:1/-1}
+  .dl-audio ul{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,4vw,56px)}
+  @media(max-width:900px){.dl-audio ul{grid-template-columns:1fr}}
+  @media(max-width:520px){.dl-group li{grid-template-columns:1fr auto}.dl-s{grid-column:1;grid-row:2}.dl-btn{grid-row:1/3;grid-column:2}}
+
+  .contact{border-top:1px solid var(--line);padding:70px 0 90px}
+  .contact h2{font-size:clamp(30px,4vw,44px)}
+  .contact a{color:var(--raktum);text-decoration:none;border-bottom:1px solid rgba(242,198,107,.4)}
+  .contact .note{margin-top:28px}
+
+  /* лайтбокс */
+  .lbox{position:fixed;inset:0;z-index:90;background:rgba(8,6,4,.95);display:none;align-items:center;justify-content:center;flex-direction:column;padding:56px 16px 24px}
+  .lbox.on{display:flex}
+  .lbox img{max-height:82vh;max-width:min(1500px,100%);object-fit:contain}
+  .lcap{font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:12px;letter-spacing:.08em;text-align:center}
+  .lcap b{color:var(--honey);margin-right:10px}
+  .lbtn,.lclose{position:fixed;z-index:91;background:rgba(27,21,13,.8);border:1px solid var(--line);color:var(--paper);font-size:28px;width:48px;height:48px;cursor:pointer;display:none}
+  .lprev{left:14px;top:50%}.lnext{right:14px;top:50%}.lclose{top:14px;right:14px;font-size:20px}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body class="locked">
+
+<div class="gate" role="dialog" aria-label="Вход по коду">
+  <div class="gate-box">
+    <div class="suns" aria-hidden="true"><i></i><i></i></div>
+    <h1>НЕКТАРИУМ</h1>
+    <p class="who">Материалы проекта<br>Владимир Григорьев · Colibri Group Indonesia</p>
+    <div class="field">
+      <input id="gcode" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Код доступа" aria-label="Код доступа">
+      <button class="btn" id="gbtn" type="button">Войти</button>
+    </div>
+    <p class="err" id="gerr" aria-live="polite"></p>
+  </div>
+</div>
+
+<header class="bar">
+  <a class="brand" href="#top">НЕКТАРИУМ</a>
+  <nav>
+    <a href="#mir">Мир</a><a href="#tizer">Тизер</a><a href="#geroi">Герои</a><a href="#raskadrovka">Раскадровка</a><a href="#poryadok">Порядок</a><a class="cta" href="#skachat">Скачать</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <div class="bg"><img src="assets/hero.jpg" alt="Стрела летит над долиной между двумя солнцами — золотым Рактумом и красным Зунаном" width="2400" height="1339" fetchpriority="high"></div>
+    <div class="scrim"></div>
+    <div class="inner">
+      <div class="kicker">Тизер · 5 минут</div>
+      <h1>НЕКТАРИУМ</h1>
+      <p class="sub">«В покое летящей стрелы»</p>
+      <p class="byline">по роману «Планета Nectarium» · <em>Владимир Григорьев</em> · <em>Людмила Лазарева</em><br>сопродюсер и производство тизера · <em>Colibri Group Indonesia</em></p>
+      <div class="meta">
+        <span class="tag ok">Структура утверждена 06.10</span>
+        <span class="tag">Героиня — Зои</span>
+        <span class="tag">Без диалогов · музыка и шумы</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="mir">
+    <div class="wrap world">
+      <div class="reveal">
+        <div class="eyebrow">Мир</div>
+        <h2>Планета, где разум обрели пчёлы, шмели, муравьи и шершни</h2>
+        <p class="lead">Пчелиный народ живёт в гармонии с планетой и слышит её как систему вибраций, ритмов и света. Шершни выросли в страхе вымирания: они не злые — они травмированные, и сила для них единственный способ выжить.</p>
+        <p class="lead">Тизер открывает эту сагу одним боем — дозорной Зои против разведтройки шершней — и заканчивается обещанием войны.</p>
+        <div class="suns-row">
+          <div><b>Рактум</b><span>золотой гигант, занимает полнеба</span></div>
+          <div><b>Зунан</b><span>красный карлик, восходит кровавой каймой</span></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="quote">«Это не история о войне. Это история о моменте, когда цивилизация впервые отказывается от войны как единственного решения.»</p>
+        <p class="quote-src">Из синопсиса Владимира Григорьева</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tizer" class="alt">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Тизер · структура утверждена 06.10.2026</div>
+        <h2>Пять актов, пять минут</h2>
+        <p class="lead">Бой не растягиваем — время добираем из текстов Владимира: мир до появления героев, внутренний выбор Зои и эпилог с антагонистом. 52 кадра, ни одного слова в кадре.</p>
+      </div>
+      <div class="bar-len" aria-hidden="true">
+        <i style="flex:50"></i><i style="flex:35"></i><i class="b" style="flex:150"></i><i style="flex:40"></i><i style="flex:25"></i>
+      </div>
+      <div class="bar-len-cap"><span>0:00</span><span>бой 1:10–3:40</span><span>5:00</span></div>
+      <div class="acts">
+        <div class="act reveal"><span class="t">0:00 — 0:45</span><h3>Мир</h3><p>Два солнца, долина, лес-шатёр, пчелиный город. Рабочие пчёлы на цветах и дозорные на верхних ветках — вот кого защищают.</p></div>
+        <div class="act reveal"><span class="t">0:45 — 1:10</span><h3>Засада</h3><p>Камера поднимается по стволу. В пустой листве открываются глаза. Тройка шершней клином, у одного в сети — пленная пчела.</p></div>
+        <div class="act reveal"><span class="t">1:10 — 3:40</span><h3>Бой</h3><p>Запах страха, перед которым пчёлы теряют разум — но не Зои. Выстрел, прыжок, второй шершень, сеть вожака, падение в цветок, три отбитые стрелы, дуэль взглядов, живой шар роя.</p></div>
+        <div class="act reveal"><span class="t">3:40 — 4:20</span><h3>Последняя стрела</h3><p>Зои отпускает гнев. Яд с тычинки на острие, вдох, молитва — и выстрел навесом. «В покое летящей стрелы пролетает наша жизнь».</p></div>
+        <div class="act reveal"><span class="t">4:20 — 5:00</span><h3>Эпилог</h3><p>Ночь, ручей, раненый вожак без лат. Яд расползается под панцирем. На другом берегу пульсирует Росток Дерева-камня — путь для армии Сэта. Бой выигран, война — нет.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="eye" id="geroi" style="padding:0">
+    <img src="assets/zoi-makro.jpg" alt="Глаза Зои крупно: соты, за которыми еле видны большие глаза" width="1600" height="893" loading="lazy">
+    <div class="wrap reveal">
+      <div class="eyebrow">Героиня</div>
+      <h2>Зои — дозорная, которая слышит</h2>
+      <p class="lead">Глаза — соты, как экран: сквозь ячейки едва проступают большие живые глаза. По этому признаку её узнаёт зритель и по нему делается каждый кадр.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:clamp(40px,6vw,80px)">
+    <div class="wrap">
+      <div class="cast">
+        <figure><img src="assets/zoi-glaza.jpg" alt="Зои, портрет" width="1600" height="893" loading="lazy"><figcaption>Зои · портрет</figcaption></figure>
+        <figure><img src="assets/zoi-rost.jpg" alt="Зои в полный рост на ветке" width="1600" height="893" loading="lazy"><figcaption>Зои · полный рост, лук-меч</figcaption></figure>
+        <figure><img src="assets/shershen-portret.jpg" alt="Шершень, портрет" width="1600" height="893" loading="lazy"><figcaption>Шершень · портрет</figcaption></figure>
+        <figure><img src="assets/shershen-rost.jpg" alt="Шершень в полный рост с трезубцем" width="1600" height="893" loading="lazy"><figcaption>Шершень · полный рост</figcaption></figure>
+      </div>
+      <p class="note">Эталоны v3 — по эскизам Владимира, на утверждение. По договору это первый шаг: утверждаем героев, после чего облик становится каноном и больше не меняется от кадра к кадру.</p>
+    </div>
+  </section>
+
+  <section id="raskadrovka" class="alt">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Раскадровка</div>
+        <h2>Как это будет смотреться</h2>
+        <p class="lead">Черновая раскадровка первой версии сцены — по ней выверялись ритм и композиция. Облик героев в ней ещё до утверждения канона; чистовые кадры будут по утверждённым листам.</p>
+      </div>
+      <div class="board">
+        <figure class="wide"><img src="assets/kadry/k01.jpg" alt="Два солнца и планета между ними" loading="lazy" width="1600" height="893"><figcaption>Два солнца · Рактум и Зунан</figcaption></figure>
+        <figure><img src="assets/kadry/k02.jpg" alt="Планета Нектариум" loading="lazy" width="1600" height="893"><figcaption>Планета</figcaption></figure>
+        <figure><img src="assets/kadry/k03.jpg" alt="Долина сквозь облака" loading="lazy" width="1600" height="893"><figcaption>Долина</figcaption></figure>
+        <figure><img src="assets/kadry/k04.jpg" alt="Пчелиный город" loading="lazy" width="1600" height="893"><figcaption>Пчелиный город</figcaption></figure>
+        <figure><img src="assets/kadry/k07.jpg" alt="Зои в кроне" loading="lazy" width="1600" height="893"><figcaption>Засада в кроне</figcaption></figure>
+        <figure><img src="assets/kadry/k08.jpg" alt="Лицо Зои" loading="lazy" width="1600" height="893"><figcaption>Зои замечает тройку</figcaption></figure>
+        <figure class="wide"><img src="assets/kadry/k10.jpg" alt="Тройка шершней клином" loading="lazy" width="1600" height="893"><figcaption>Тройка шершней</figcaption></figure>
+        <figure><img src="assets/kadry/k11.jpg" alt="Вожак шершней" loading="lazy" width="1600" height="893"><figcaption>Вожак</figcaption></figure>
+        <figure><img src="assets/kadry/k13.jpg" alt="План атаки в изометрии" loading="lazy" width="1600" height="893"><figcaption>План атаки</figcaption></figure>
+        <figure><img src="assets/kadry/k14.jpg" alt="Прыжок с ветки" loading="lazy" width="1600" height="893"><figcaption>Выстрел и прыжок</figcaption></figure>
+        <figure><img src="assets/kadry/k16.jpg" alt="Стрела в шершне" loading="lazy" width="1600" height="893"><figcaption>Первый шершень</figcaption></figure>
+        <figure><img src="assets/kadry/k18.jpg" alt="Удар лук-мечом" loading="lazy" width="1600" height="893"><figcaption>Удар</figcaption></figure>
+        <figure><img src="assets/kadry/k21.jpg" alt="Зои падает в сетке" loading="lazy" width="1600" height="893"><figcaption>Сеть вожака</figcaption></figure>
+        <figure class="wide"><img src="assets/kadry/k23.jpg" alt="Зои в цветке" loading="lazy" width="1600" height="893"><figcaption>Падение в цветок</figcaption></figure>
+        <figure><img src="assets/kadry/k24.jpg" alt="Три стрелы" loading="lazy" width="1600" height="893"><figcaption>Три стрелы</figcaption></figure>
+        <figure><img src="assets/kadry/k26.jpg" alt="Дуэль взглядов" loading="lazy" width="1600" height="893"><figcaption>Дуэль взглядов</figcaption></figure>
+        <figure><img src="assets/kadry/k30.jpg" alt="Последняя стрела навесом" loading="lazy" width="1600" height="893"><figcaption>Последняя стрела</figcaption></figure>
+        <figure class="wide"><img src="assets/kadry/k33.jpg" alt="Стрела летит в два солнца" loading="lazy" width="1600" height="893"><figcaption>В покое летящей стрелы</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="poryadok">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Порядок работы</div>
+        <h2>Сначала герои, потом мир, потом бой</h2>
+        <p class="lead">Каждый следующий шаг начинается, когда утверждён предыдущий. Утверждённое становится каноном — по нему делается каждый кадр.</p>
+      </div>
+      <div class="flow">
+        <div class="stage reveal">
+          <h3>Этап 1 · Пилот</h3>
+          <div class="len">Сцена битвы · 30 секунд</div>
+          <ol>
+            <li><b>1.1</b><span>Герои — листы персонажей: лицо в трёх ракурсах, рост спереди и сзади, оружие, кадр в мире. Зои и три шершня.</span></li>
+            <li><b>1.2</b><span>Мир — ключевые кадры мест с героями в среде: крона дерева-великана и небо над долиной.</span></li>
+            <li><b>1.3</b><span>Сцена битвы — 30 секунд видео со звуком.</span></li>
+          </ol>
+        </div>
+        <div class="stage reveal">
+          <h3>Этап 2 · Тизер</h3>
+          <div class="len">5 минут · сцена битвы входит</div>
+          <ol>
+            <li><b>2.1</b><span>Сценарий и поэпизодный план тизера.</span></li>
+            <li><b>2.2</b><span>Новые герои и места, которых не было в пилоте.</span></li>
+            <li><b>2.3</b><span>Черновой монтаж целиком, с водяным знаком.</span></li>
+            <li><b>2.4</b><span>Финал: правки, звук, мастер-файл.</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="rules reveal">
+        <div><b>2 + 2</b><span>В каждом этапе два круга правок по картинкам и два по видео. Круг — один сводный список одним сообщением.</span></div>
+        <div><b>3 дня</b><span>Ответ на каждый показ. Если ответа нет 5 рабочих дней — шаг считается утверждённым.</span></div>
+        <div><b>Канон</b><span>Изменение уже утверждённого героя или места — отдельная работа.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="kniga">
+    <div class="wrap listen">
+      <div class="reveal">
+        <div class="eyebrow">Роман вслух</div>
+        <h2>«Планета Nectarium» — аудиоверсия</h2>
+        <p class="lead">Вся книга озвучена для работы команды: 32 главы, 8 часов 49 минут. Здесь — первая глава, с которой начинается тизер.</p>
+      </div>
+      <div class="player reveal">
+        <div class="ttl">Глава 1. В покое летящей стрелы</div>
+        <div class="sub">13 минут · рабочая озвучка</div>
+        <audio controls preload="none" src="assets/glava-1.mp3"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section id="skachat">
+    <div class="wrap">
+      <div class="dl-head reveal">
+        <div>
+          <div class="eyebrow">Скачать</div>
+          <h2>Все материалы проекта</h2>
+          <p class="lead">Договор, сценарии, герои, раскадровка, роман и аудиокнига. Нажмите «Скачать» — файл расшифруется в браузере кодом этой страницы и сохранится на устройство.</p>
+        </div>
+        <div class="dl-code" id="dcodewrap" hidden>
+          <input id="dcode" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Код доступа" aria-label="Код для скачивания">
+        </div>
+      </div>
+      <p class="err" id="derr" aria-live="polite"></p>
+      <div class="dl">
+<!--FILES:START-->
+<div class="dl-group"><h3>Договор и сценарий</h3><ul>
+<li><div class="dl-t">Договор о совместном производстве тизера<span class="dl-d">Черновик для обсуждения · редакция 06.10.2026</span></div><span class="dl-s">DOCX · 13 КБ</span><button class="dl-btn" type="button" data-bin="01.bin" data-name="Договор-тизер-Нектариум-06-10.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+<li><div class="dl-t">Режиссёрский сценарий тизера · 5 минут<span class="dl-d">Утверждённая структура · 5 актов, 52 кадра</span></div><span class="dl-s">DOCX · 15 КБ</span><button class="dl-btn" type="button" data-bin="02.bin" data-name="Режиссёрский-сценарий-тизер-5-мин.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+<li><div class="dl-t">Синопсис саги · режиссёрская версия<span class="dl-d">От Владимира, 06.10.2026</span></div><span class="dl-s">DOCX · 6 КБ</span><button class="dl-btn" type="button" data-bin="03.bin" data-name="Синопсис-Нектариум-режиссёрская-версия.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+<li><div class="dl-t">Сценарий серии · 3 минуты<span class="dl-d">Первая версия, литературный сценарий</span></div><span class="dl-s">DOCX · 12 КБ</span><button class="dl-btn" type="button" data-bin="04.bin" data-name="Сценарий-серия-1-3-мин.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+<li><div class="dl-t">Режиссёрский сценарий серии · 3 минуты<span class="dl-d">Первая версия, 35 кадров</span></div><span class="dl-s">DOCX · 13 КБ</span><button class="dl-btn" type="button" data-bin="05.bin" data-name="Режиссёрский-сценарий-серия-1-3-мин.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+</ul></div>
+<div class="dl-group"><h3>Герои</h3><ul>
+<li><div class="dl-t">Зои — карта персонажа<span class="dl-d">Все версии, глаза-соты, детали костюма и оружия</span></div><span class="dl-s">PDF · 6,8 МБ</span><button class="dl-btn" type="button" data-bin="06.bin" data-name="Зои-карта-персонажа.pdf" data-mime="application/pdf">Скачать</button></li>
+<li><div class="dl-t">Эталоны героев v3<span class="dl-d">Зои и шершень: портреты, рост, глаза крупно · 6 изображений</span></div><span class="dl-s">ZIP · 2,9 МБ</span><button class="dl-btn" type="button" data-bin="07.bin" data-name="Эталоны-героев-v3.zip" data-mime="application/zip">Скачать</button></li>
+<li><div class="dl-t">Коллажи версий<span class="dl-d">Зои, шершень, шершни-пары · 5 листов</span></div><span class="dl-s">ZIP · 5,4 МБ</span><button class="dl-btn" type="button" data-bin="08.bin" data-name="Коллажи-версий.zip" data-mime="application/zip">Скачать</button></li>
+<li><div class="dl-t">Студийные листы персонажей<span class="dl-d">Глаза открыты и закрыты, оружие, карта шершня · 15 листов</span></div><span class="dl-s">ZIP · 8,0 МБ</span><button class="dl-btn" type="button" data-bin="09.bin" data-name="Студийные-листы-персонажей.zip" data-mime="application/zip">Скачать</button></li>
+<li><div class="dl-t">Кинокаст первой версии<span class="dl-d">Зои, шершень, вожак, пленный · 6 портретов</span></div><span class="dl-s">ZIP · 2,6 МБ</span><button class="dl-btn" type="button" data-bin="10.bin" data-name="Кинокаст-v2.zip" data-mime="application/zip">Скачать</button></li>
+</ul></div>
+<div class="dl-group"><h3>Раскадровка и видео</h3><ul>
+<li><div class="dl-t">Раскадровка серии<span class="dl-d">PDF · 35 кадров с описанием</span></div><span class="dl-s">PDF · 9,5 МБ</span><button class="dl-btn" type="button" data-bin="11.bin" data-name="Раскадровка-серия-1.pdf" data-mime="application/pdf">Скачать</button></li>
+<li><div class="dl-t">Контактный лист<span class="dl-d">Все 35 кадров на одном листе</span></div><span class="dl-s">JPG · 1,9 МБ</span><button class="dl-btn" type="button" data-bin="12.bin" data-name="Раскадровка-контактный-лист.jpg" data-mime="image/jpeg">Скачать</button></li>
+<li><div class="dl-t">Кадры раскадровки<span class="dl-d">35 кадров по отдельности, 16:9</span></div><span class="dl-s">ZIP · 10,0 МБ</span><button class="dl-btn" type="button" data-bin="13.bin" data-name="Кадры-раскадровки.zip" data-mime="application/zip">Скачать</button></li>
+<li><div class="dl-t">Видео-тест «Выстрел»<span class="dl-d">Технический тест движения · 25 секунд</span></div><span class="dl-s">MP4 · 10,3 МБ</span><button class="dl-btn" type="button" data-bin="14.bin" data-name="Видео-тест-выстрел-25с.mp4" data-mime="video/mp4">Скачать</button></li>
+</ul></div>
+<div class="dl-group"><h3>Роман</h3><ul>
+<li><div class="dl-t">«Планета Nectarium» — роман<span class="dl-d">Главы 1–32, макет издательства «Мир»</span></div><span class="dl-s">PDF · 14,0 МБ</span><button class="dl-btn" type="button" data-bin="15.bin" data-name="Планета-Nectarium-роман.pdf" data-mime="application/pdf">Скачать</button></li>
+<li><div class="dl-t">Иллюстрации из книги<span class="dl-d">26 иллюстраций</span></div><span class="dl-s">ZIP · 3,2 МБ</span><button class="dl-btn" type="button" data-bin="16.bin" data-name="Иллюстрации-из-книги.zip" data-mime="application/zip">Скачать</button></li>
+</ul></div>
+<div class="dl-group dl-audio"><h3>Аудиокнига</h3><ul>
+<li><div class="dl-t">Глава 1. В покое летящей стрелы</div><span class="dl-s">MP3 · 4,5 МБ</span><button class="dl-btn" type="button" data-bin="17.bin" data-name="Нектариум-глава-01.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 2. Генерал сэт</div><span class="dl-s">MP3 · 5,5 МБ</span><button class="dl-btn" type="button" data-bin="18.bin" data-name="Нектариум-глава-02.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 3. Тайны фаргрима</div><span class="dl-s">MP3 · 5,0 МБ</span><button class="dl-btn" type="button" data-bin="19.bin" data-name="Нектариум-глава-03.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 4. Подготовка к празднику</div><span class="dl-s">MP3 · 5,9 МБ</span><button class="dl-btn" type="button" data-bin="20.bin" data-name="Нектариум-глава-04.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 5. День рождения богини</div><span class="dl-s">MP3 · 6,0 МБ</span><button class="dl-btn" type="button" data-bin="21.bin" data-name="Нектариум-глава-05.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 6. Тайна братьев элизиум</div><span class="dl-s">MP3 · 4,7 МБ</span><button class="dl-btn" type="button" data-bin="22.bin" data-name="Нектариум-глава-06.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 7. Магический союз</div><span class="dl-s">MP3 · 4,7 МБ</span><button class="dl-btn" type="button" data-bin="23.bin" data-name="Нектариум-глава-07.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 8. Разведка боем</div><span class="dl-s">MP3 · 6,4 МБ</span><button class="dl-btn" type="button" data-bin="24.bin" data-name="Нектариум-глава-08.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 9. Чамлики и раб зо</div><span class="dl-s">MP3 · 6,0 МБ</span><button class="dl-btn" type="button" data-bin="25.bin" data-name="Нектариум-глава-09.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 10. Сад метаморфоз</div><span class="dl-s">MP3 · 5,6 МБ</span><button class="dl-btn" type="button" data-bin="26.bin" data-name="Нектариум-глава-10.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 11. В гостях у темирши</div><span class="dl-s">MP3 · 5,3 МБ</span><button class="dl-btn" type="button" data-bin="27.bin" data-name="Нектариум-глава-11.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 12. Самый ядовитый из хищников – страх!</div><span class="dl-s">MP3 · 5,0 МБ</span><button class="dl-btn" type="button" data-bin="28.bin" data-name="Нектариум-глава-12.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 13. Ручейник и дорога к дому на болоте</div><span class="dl-s">MP3 · 7,1 МБ</span><button class="dl-btn" type="button" data-bin="29.bin" data-name="Нектариум-глава-13.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 14. Черная стрела силы</div><span class="dl-s">MP3 · 5,9 МБ</span><button class="dl-btn" type="button" data-bin="30.bin" data-name="Нектариум-глава-14.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 15. Во спасение. нектарики</div><span class="dl-s">MP3 · 7,2 МБ</span><button class="dl-btn" type="button" data-bin="31.bin" data-name="Нектариум-глава-15.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 16. Триединый амулет</div><span class="dl-s">MP3 · 4,7 МБ</span><button class="dl-btn" type="button" data-bin="32.bin" data-name="Нектариум-глава-16.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 17. Ты лжешь, ты враг!</div><span class="dl-s">MP3 · 5,2 МБ</span><button class="dl-btn" type="button" data-bin="33.bin" data-name="Нектариум-глава-17.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 18. Северный рой</div><span class="dl-s">MP3 · 5,4 МБ</span><button class="dl-btn" type="button" data-bin="34.bin" data-name="Нектариум-глава-18.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 19. Сказания и сновидения</div><span class="dl-s">MP3 · 5,3 МБ</span><button class="dl-btn" type="button" data-bin="35.bin" data-name="Нектариум-глава-19.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 20. Ненасытное чудовище</div><span class="dl-s">MP3 · 4,4 МБ</span><button class="dl-btn" type="button" data-bin="36.bin" data-name="Нектариум-глава-20.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 21. Нехорошо это. неспокойно</div><span class="dl-s">MP3 · 6,4 МБ</span><button class="dl-btn" type="button" data-bin="37.bin" data-name="Нектариум-глава-21.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 22. А завтра – война</div><span class="dl-s">MP3 · 7,6 МБ</span><button class="dl-btn" type="button" data-bin="38.bin" data-name="Нектариум-глава-22.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 23. День вне времени</div><span class="dl-s">MP3 · 5,6 МБ</span><button class="dl-btn" type="button" data-bin="39.bin" data-name="Нектариум-глава-23.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 24. Осада</div><span class="dl-s">MP3 · 3,8 МБ</span><button class="dl-btn" type="button" data-bin="40.bin" data-name="Нектариум-глава-24.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 25. В поисках флегмы</div><span class="dl-s">MP3 · 5,5 МБ</span><button class="dl-btn" type="button" data-bin="41.bin" data-name="Нектариум-глава-25.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 26. Вставай, дикий мир</div><span class="dl-s">MP3 · 5,3 МБ</span><button class="dl-btn" type="button" data-bin="42.bin" data-name="Нектариум-глава-26.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 27. Военный совет</div><span class="dl-s">MP3 · 7,0 МБ</span><button class="dl-btn" type="button" data-bin="43.bin" data-name="Нектариум-глава-27.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 28. Противостояние</div><span class="dl-s">MP3 · 5,6 МБ</span><button class="dl-btn" type="button" data-bin="44.bin" data-name="Нектариум-глава-28.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 29. Песня смерти</div><span class="dl-s">MP3 · 6,8 МБ</span><button class="dl-btn" type="button" data-bin="45.bin" data-name="Нектариум-глава-29.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 30. Цена предательства</div><span class="dl-s">MP3 · 7,9 МБ</span><button class="dl-btn" type="button" data-bin="46.bin" data-name="Нектариум-глава-30.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 31. Зелёная свирель</div><span class="dl-s">MP3 · 4,3 МБ</span><button class="dl-btn" type="button" data-bin="47.bin" data-name="Нектариум-глава-31.mp3" data-mime="audio/mpeg">Скачать</button></li>
+<li><div class="dl-t">Глава 32. Сила любви</div><span class="dl-s">MP3 · 6,4 МБ</span><button class="dl-btn" type="button" data-bin="48.bin" data-name="Нектариум-глава-32.mp3" data-mime="audio/mpeg">Скачать</button></li>
+</ul></div>
+<!--FILES:END-->
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap contact">
+    <h2>Colibri Group Indonesia — сопродюсер и производство тизера</h2>
+    <p class="lead">Вопросы по материалам и договору — <a href="mailto:colibrigroupid@gmail.com">colibrigroupid@gmail.com</a> или в рабочей группе проекта.</p>
+    <p class="note">Материалы конфиденциальны и предназначены только для участников проекта. Роман, мир планеты Нектариум, имена и персонажи принадлежат их авторам.</p>
+  </div>
+</main>
+
+<div class="lbox" id="lbox" aria-hidden="true">
+  <img id="lbimg" alt="">
+  <div class="lcap" id="lbcap"></div>
+</div>
+<button class="lbtn lprev" id="lbprev" aria-label="Предыдущий кадр">‹</button>
+<button class="lbtn lnext" id="lbnext" aria-label="Следующий кадр">›</button>
+<button class="lclose" id="lbclose" aria-label="Закрыть">✕</button>
+
+<script>
+(function(){
+  var HASH="f8f6ee9a25306976a0a9b593ca33252820c9b5c704711709493d259a088cb8a9";
+  function norm(v){return (v||"").replace(/\s+/g,"").toUpperCase()}
+  function hex(b){return [].map.call(new Uint8Array(b),function(x){return ("0"+x.toString(16)).slice(-2)}).join("")}
+  function sha(t){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(hex)}
+  var CODE=null;
+  function unlock(){document.body.classList.remove("locked");observe()}
+  try{if(localStorage.getItem("nek_ok")===HASH){CODE=localStorage.getItem("nek_code");unlock()}}catch(e){}
+  if(!CODE&&!document.body.classList.contains("locked"))document.getElementById("dcodewrap").hidden=false;
+  function tryCode(){var v=norm(document.getElementById("gcode").value);
+    sha(v).then(function(h){if(h===HASH){CODE=v;try{localStorage.setItem("nek_ok",HASH);localStorage.setItem("nek_code",v)}catch(e){}
+      document.getElementById("dcodewrap").hidden=true;unlock()}
+      else document.getElementById("gerr").textContent="Неверный код"})
+    .catch(function(){document.getElementById("gerr").textContent="Браузер не поддерживает проверку кода — откройте страницу по https"})}
+  document.getElementById("gbtn").addEventListener("click",tryCode);
+  document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
+
+  /* скачать: каждый файл зашифрован AES-GCM, ключ из кода через PBKDF2 */
+  var derr=document.getElementById("derr");
+  function decryptFile(bin,code){return fetch("files/"+bin,{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("файл не найден");return r.arrayBuffer()})
+    .then(function(buf){var b=new Uint8Array(buf),salt=b.slice(0,16),iv=b.slice(16,28),ct=b.slice(28);
+      return crypto.subtle.importKey("raw",new TextEncoder().encode(code),"PBKDF2",false,["deriveKey"])
+        .then(function(k){return crypto.subtle.deriveKey({name:"PBKDF2",salt:salt,iterations:310000,hash:"SHA-256"},k,{name:"AES-GCM",length:256},false,["decrypt"])})
+        .then(function(key){return crypto.subtle.decrypt({name:"AES-GCM",iv:iv},key,ct)})})}
+  [].forEach.call(document.querySelectorAll(".dl-btn"),function(btn){btn.addEventListener("click",function(){
+    var code=CODE||norm(document.getElementById("dcode").value);
+    if(!code){document.getElementById("dcodewrap").hidden=false;derr.textContent="Введите код страницы, чтобы скачать";document.getElementById("dcode").focus();return}
+    derr.textContent="";btn.disabled=true;btn.textContent="Готовлю…";
+    decryptFile(btn.dataset.bin,code).then(function(plain){
+      var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([plain],{type:btn.dataset.mime}));a.download=btn.dataset.name;
+      document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},4000);
+      CODE=code;btn.classList.add("done");btn.textContent="Скачано"})
+    .catch(function(e){btn.textContent="Скачать";derr.textContent=(e&&e.name==="OperationError")?"Неверный код":"Не удалось скачать: "+(e&&e.message||e)})
+    .then(function(){btn.disabled=false})})});
+
+  /* появление по скроллу */
+  function observe(){var els=document.querySelectorAll(".reveal");
+    if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return}
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target)}})},{rootMargin:"0px 0px -8% 0px"});
+    els.forEach(function(e){io.observe(e)})}
+
+  /* лайтбокс */
+  var figs=[].slice.call(document.querySelectorAll("figure"));
+  var items=figs.map(function(f){var i=f.querySelector("img"),c=f.querySelector("figcaption");return {src:i.getAttribute("src"),cap:c?c.textContent:""}});
+  var box=document.getElementById("lbox"),im=document.getElementById("lbimg"),cp=document.getElementById("lbcap");
+  var bp=document.getElementById("lbprev"),bn=document.getElementById("lbnext"),bc=document.getElementById("lbclose"),cur=0,open=false;
+  function show(i){cur=(i+items.length)%items.length;im.src=items[cur].src;cp.innerHTML="<b>"+(cur+1)+" / "+items.length+"</b>"+items[cur].cap}
+  function setOpen(v){open=v;box.classList.toggle("on",v);bp.style.display=bn.style.display=bc.style.display=v?"block":"none";document.body.style.overflow=v?"hidden":""}
+  figs.forEach(function(f,i){f.addEventListener("click",function(){show(i);setOpen(true)})});
+  bp.addEventListener("click",function(){show(cur-1)});bn.addEventListener("click",function(){show(cur+1)});bc.addEventListener("click",function(){setOpen(false)});
+  box.addEventListener("click",function(e){if(e.target===box)setOpen(false)});
+  document.addEventListener("keydown",function(e){if(!open)return;if(e.key==="ArrowLeft")show(cur-1);else if(e.key==="ArrowRight")show(cur+1);else if(e.key==="Escape")setOpen(false)});
+  var tx=null;box.addEventListener("touchstart",function(e){tx=e.touches[0].clientX},{passive:true});
+  box.addEventListener("touchend",function(e){if(tx===null)return;var dx=e.changedTouches[0].clientX-tx;if(dx>50)show(cur-1);else if(dx<-50)show(cur+1);tx=null},{passive:true});
+})();
+</script>
+</body>
+</html>
