@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЖОЛАМА МАҒАН — разбор проекта</title>
+<meta name="description" content="«Жолама маған» — казахстанский хоррор-мокьюментари о сталкинге. Разбор сценария, герои, структура, визуальный язык и IP-потенциал. Taurus Asia Production × Neyra Vision Studio.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0b0a">
+<meta property="og:title" content="ЖОЛАМА МАҒАН">
+<meta property="og:description" content="Она снимала каждый свой шаг, чтобы доказать слежку. Он снимал её дольше.">
+<meta property="og:image" content="assets/og.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22%23e0322b%22/></svg>">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ink:#0a0b0a; --ink-2:#111311; --ink-3:#181b18;
+    --line:#262a26;
+    --paper:#ece6da; --mute:#929087;
+    --amber:#d3a25a; --cctv:#8fb09c; --rec:#e0322b;
+    --disp:"Oswald","Arial Narrow",sans-serif;
+    --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block;height:auto}
+  a{color:inherit}
+  ::selection{background:var(--amber);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  body::after{content:"";position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 7s steps(10) infinite}
+  @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .narrow{max-width:760px}
+
+  /* ---- hero / viewfinder ---- */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;filter:saturate(.85) contrast(1.05)}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,10,.35) 0%,rgba(10,11,10,0) 30%,rgba(10,11,10,.55) 62%,var(--ink) 100%);z-index:1}
+  .vf{position:absolute;inset:22px;z-index:2;pointer-events:none;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:rgba(236,230,218,.85)}
+  .vf i{position:absolute;width:34px;height:34px;border-color:rgba(236,230,218,.7);border-style:solid;border-width:0}
+  .vf .c1{top:0;left:0;border-top-width:2px;border-left-width:2px}
+  .vf .c2{top:0;right:0;border-top-width:2px;border-right-width:2px}
+  .vf .c3{bottom:0;left:0;border-bottom-width:2px;border-left-width:2px}
+  .vf .c4{bottom:0;right:0;border-bottom-width:2px;border-right-width:2px}
+  .vf .rec{position:absolute;top:12px;left:52px;display:flex;align-items:center;gap:9px}
+  .vf .rec b{width:11px;height:11px;border-radius:50%;background:var(--rec);animation:blink 1.6s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .vf .tc{position:absolute;top:12px;right:52px;font-variant-numeric:tabular-nums}
+  .vf .cam{position:absolute;bottom:12px;right:52px;color:var(--cctv)}
+  .hero .in{position:relative;z-index:3;padding-bottom:9vh;width:100%}
+  .hero h1{font-family:var(--disp);font-weight:500;font-size:clamp(58px,12vw,168px);line-height:.92;letter-spacing:-.01em;text-transform:uppercase}
+  .hero .tr{font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin:14px 0 26px}
+  .hero .log{font-size:clamp(18px,2vw,23px);line-height:1.5;max-width:640px;text-wrap:balance}
+  .hero .byline{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:30px;line-height:2}
+  .hero .byline em{color:var(--paper);font-style:normal}
+
+  /* ---- sections ---- */
+  section{padding:120px 0}
+  section.alt{background:var(--ink-2)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--cctv);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--rec)}
+  h2{font-family:var(--disp);font-weight:500;font-size:clamp(32px,4.6vw,58px);line-height:1.05;letter-spacing:-.005em;text-transform:uppercase;text-wrap:balance;margin-bottom:28px}
+  h3{font-family:var(--disp);font-weight:500;font-size:24px;letter-spacing:.04em;text-transform:uppercase;line-height:1.2;margin-bottom:10px}
+  p+p{margin-top:16px}
+  .lead{font-size:clamp(18px,1.6vw,21px);line-height:1.6;color:var(--paper);max-width:760px}
+  .mute{color:var(--mute)}
+  .note{font-size:14.5px;color:var(--mute);margin-top:22px;max-width:760px}
+
+  /* passport strip */
+  .pass{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:10px}
+  .pass div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 20px}
+  .pass span{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+  .pass b{font-weight:500;font-size:16.5px;line-height:1.4}
+
+  /* big statements */
+  .state{display:grid;grid-template-columns:200px 1fr;gap:18px 40px;margin-top:20px}
+  .state dt{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);padding-top:8px}
+  .state dd{font-family:var(--disp);font-weight:300;font-size:clamp(22px,2.6vw,32px);line-height:1.25;text-wrap:balance;padding-bottom:26px;border-bottom:1px solid var(--line)}
+
+  /* frames */
+  figure{margin:0;cursor:zoom-in}
+  figure img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--ink-3)}
+  figcaption{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--mute);padding-top:10px;line-height:1.6}
+  figcaption b{color:var(--paper);font-weight:500}
+  .full{margin:60px 0 0}
+  .duo{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;margin-top:22px;align-items:start}
+  .duo.rev{grid-template-columns:1fr 1.35fr}
+
+  /* heroes */
+  .hero-card{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;margin-top:56px}
+  .hero-card.rev{grid-template-columns:1fr 1.25fr}
+  .hero-card.rev figure{order:2}
+  .role{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+  .arc{margin-top:16px;padding-top:16px;border-top:1px solid var(--line);font-size:15.5px;color:var(--mute)}
+  .arc b{color:var(--paper);font-weight:500}
+  .side{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:70px;border-top:1px solid var(--line)}
+  .side div{padding:24px 26px 26px 0;border-bottom:1px solid var(--line)}
+  .side div:nth-child(3n+2),.side div:nth-child(3n+3){padding-left:26px;border-left:1px solid var(--line)}
+  .side h4{font-family:var(--disp);font-weight:500;font-size:19px;letter-spacing:.05em;text-transform:uppercase}
+  .side em{display:block;font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--cctv);margin:4px 0 8px}
+  .side p{font-size:15px;color:var(--mute);line-height:1.6}
+
+  /* three sources */
+  .src{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:40px}
+  .src div{border-top:2px solid var(--line);padding-top:18px}
+  .src div:nth-child(1){border-color:var(--amber)}
+  .src div:nth-child(2){border-color:var(--cctv)}
+  .src div:nth-child(3){border-color:var(--rec)}
+  .src .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+  .src p{font-size:15.5px;color:var(--mute);margin-top:8px}
+
+  /* timeline */
+  .tl{margin-top:44px;position:relative}
+  .bar{display:flex;height:10px;margin-bottom:10px}
+  .bar span{display:block;height:100%}
+  .bar .a1{background:var(--amber);flex:0 0 35%}
+  .bar .a2a{background:#a88349;flex:0 0 24%}
+  .bar .a2b{background:var(--cctv);flex:0 0 24%}
+  .bar .a3{background:#6f8b7a;flex:1}
+  .ticks{display:flex;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase}
+  .ticks span{flex:0 0 35%}.ticks span:nth-child(2),.ticks span:nth-child(3){flex:0 0 24%}.ticks span:last-child{flex:1}
+  .mid{position:absolute;top:-8px;height:26px;width:2px;background:var(--rec)}
+  .mid::after{content:attr(data-l);position:absolute;top:-22px;left:-4px;white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--rec)}
+  .beats{margin-top:50px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+  .beat{display:grid;grid-template-columns:76px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .beat .n{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--amber);padding-top:3px;font-variant-numeric:tabular-nums}
+  .beat b{font-weight:500}
+  .beat p{font-size:15px;color:var(--mute);margin:2px 0 0}
+
+  /* notes */
+  .notes{margin-top:44px;counter-reset:nt}
+  .nt{display:grid;grid-template-columns:132px 1fr;gap:28px;padding:30px 0;border-top:1px solid var(--line)}
+  .nt:last-child{border-bottom:1px solid var(--line)}
+  .pri{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;line-height:1.6}
+  .pri.r{color:var(--rec)} .pri.y{color:var(--amber)} .pri.g{color:var(--cctv)}
+  .pri small{display:block;color:var(--mute);letter-spacing:.12em;margin-top:6px;font-size:10.5px}
+  .nt h3{font-size:21px;margin-bottom:8px}
+  .nt .prob{color:var(--mute);font-size:15.5px}
+  .nt .fix{margin-top:12px;font-size:15.5px;padding-left:16px;border-left:2px solid var(--amber)}
+  .nt .fix b{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:4px;font-weight:500}
+
+  .works{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px;margin-top:40px}
+  .works div{padding:20px 0;border-bottom:1px solid var(--line)}
+  .works h4{font-family:var(--disp);font-weight:500;font-size:19px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+  .works p{font-size:15.5px;color:var(--mute)}
+
+  /* setups table */
+  table{width:100%;border-collapse:collapse;margin-top:36px;font-size:15.5px}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:400;text-align:left;padding:0 18px 12px 0;border-bottom:1px solid var(--line)}
+  td{padding:15px 18px 15px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  td:first-child{font-weight:500;white-space:nowrap}
+  td .sc{font-family:var(--mono);font-size:12px;color:var(--amber)}
+  td.st{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+  td.st.ok{color:var(--cctv)} td.st.add{color:var(--amber)}
+  .tscroll{overflow-x:auto}
+
+  /* IP */
+  .ip{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:40px}
+  .ip ol{list-style:none;counter-reset:i}
+  .ip li{counter-increment:i;padding:18px 0 18px 46px;border-bottom:1px solid var(--line);position:relative}
+  .ip li::before{content:counter(i);position:absolute;left:0;top:16px;font-family:var(--disp);font-size:26px;color:var(--amber);line-height:1}
+  .ip li b{display:block;font-weight:500;margin-bottom:4px}
+  .ip li span{font-size:15.5px;color:var(--mute)}
+  .quote{font-family:var(--disp);font-weight:300;font-size:clamp(26px,3.4vw,44px);line-height:1.15;text-transform:uppercase;text-wrap:balance;border-left:3px solid var(--rec);padding-left:24px;margin:10px 0 26px}
+
+  /* cast & team */
+  .cast{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:28px;margin-top:36px}
+  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:36px}
+  .pp img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:grayscale(.15)}
+  .pp h4{font-family:var(--disp);font-weight:500;font-size:19px;letter-spacing:.04em;margin-top:12px;text-transform:uppercase}
+  .pp span{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
+  .pp p{font-size:14px;color:var(--mute);margin-top:4px}
+
+  /* next */
+  .next{display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px;margin-top:36px}
+  .next div{display:grid;grid-template-columns:56px 1fr;padding:20px 0;border-bottom:1px solid var(--line)}
+  .next .w{font-family:var(--mono);font-size:12px;color:var(--cctv);padding-top:3px}
+  .next b{font-weight:500}
+  .next p{font-size:15px;color:var(--mute);margin-top:2px}
+
+  /* gate */
+  body.locked{overflow:hidden}
+  body.locked .hero, body.locked section{filter:blur(26px);pointer-events:none;user-select:none}
+  .gate{position:fixed;inset:0;z-index:120;background:rgba(8,9,8,.9);display:none;align-items:center;justify-content:center;padding:24px}
+  body.locked .gate{display:flex}
+  .gate .card{background:var(--ink-2);border:1px solid var(--line);padding:44px 40px;max-width:420px;width:100%;text-align:center}
+  .gate .k{font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);line-height:1.9}
+  .gate h3{font-size:32px;letter-spacing:.06em;margin:12px 0 6px}
+  .gate p{color:var(--mute);font-size:14px;margin-bottom:22px}
+  .gate input,.plock input{width:100%;background:var(--ink);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:18px;letter-spacing:.24em;text-transform:uppercase;text-align:center;padding:13px 12px;outline:none}
+  .gate input:focus,.plock input:focus{border-color:var(--amber)}
+  .gate button,.plock button{margin-top:14px;width:100%;background:var(--amber);color:var(--ink);border:0;font-family:var(--disp);font-weight:600;letter-spacing:.18em;font-size:15px;padding:14px;cursor:pointer;text-transform:uppercase;transition:background .2s}
+  .gate button:hover,.plock button:hover{background:#e2b571}
+  .err{color:#e0705f;font-family:var(--mono);font-size:12px;margin-top:12px;min-height:16px}
+  .plock{background:var(--ink-3);border:1px solid var(--line);max-width:520px;margin:36px 0 0;padding:36px 34px}
+  .plock .k{font-family:var(--mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--cctv)}
+  .plock h3{margin:10px 0 6px}
+  .plock p{color:var(--mute);font-size:14.5px;margin-bottom:18px}
+  #prodsec{display:none}
+  #prodsec.open{display:block}
+  .money{width:100%;margin-top:30px}
+  .money td{font-variant-numeric:tabular-nums}
+  .money td:first-child{white-space:normal;font-weight:400}
+  .money td:last-child{text-align:right;white-space:nowrap;font-family:var(--mono)}
+  .money tr.tot td{font-weight:600;color:var(--amber);border-bottom:2px solid var(--amber)}
+  .money tr.bad td{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--rec)}
+
+  /* lightbox */
+  .lbox{position:fixed;inset:0;z-index:130;background:rgba(5,6,5,.96);display:none;align-items:center;justify-content:center;flex-direction:column;padding:30px}
+  .lbox.on{display:flex}
+  .lbox img{max-height:84vh;max-width:96vw;width:auto}
+  .lcap{font-family:var(--mono);font-size:12.5px;color:var(--mute);margin-top:14px;text-align:center;max-width:900px}
+  .lbtn,.lclose{position:fixed;z-index:131;background:none;border:0;color:var(--paper);font-size:38px;cursor:pointer;padding:14px 18px;display:none;opacity:.7}
+  .lbtn:hover,.lclose:hover{opacity:1}
+  .lbox.on~.lbtn,.lbox.on~.lclose{display:block}
+  .lprev{left:6px;top:50%;transform:translateY(-50%)} .lnext{right:6px;top:50%;transform:translateY(-50%)} .lclose{top:8px;right:8px;font-size:28px}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.vf .rec b,body::after{animation:none}html{scroll-behavior:auto}}
+
+  @media(max-width:900px){
+    .pass{grid-template-columns:repeat(2,1fr)}
+    .hero-card,.hero-card.rev,.duo,.duo.rev,.ip{grid-template-columns:1fr;gap:26px}
+    .hero-card.rev figure{order:0}
+    .side{grid-template-columns:1fr}
+    .side div,.side div:nth-child(3n+2),.side div:nth-child(3n+3){padding:20px 0;border-left:0}
+    .src,.beats,.works,.next{grid-template-columns:1fr}
+    .team{grid-template-columns:repeat(2,1fr)}
+    .state{grid-template-columns:1fr;gap:6px}
+    .nt{grid-template-columns:1fr;gap:10px}
+  }
+  @media(max-width:600px){
+    body{font-size:16px}
+    .wrap{padding:0 16px}
+    section{padding:80px 0}
+    .vf{inset:12px;font-size:10px}
+    .vf .rec{left:40px}.vf .tc{right:40px}.vf .cam{right:40px}
+    .hero .byline{font-size:10.5px;letter-spacing:.14em}
+    .pass b{font-size:15px}
+    .pass div{padding:14px}
+    .cast{grid-template-columns:1fr 1fr;gap:14px}
+    .team{gap:14px}
+    .gate .card,.plock{padding:30px 20px}
+    .ticks{font-size:9px}
+    .mid::after{font-size:9.5px}
+  }
+</style>
+</head>
+<body class="locked">
+
+<div class="gate" id="gate">
+  <div class="card">
+    <div class="k">Taurus Asia Production · Neyra Vision Studio<br>AI-превиз — Colibri Studio</div>
+    <h3>ЖОЛАМА МАҒАН</h3>
+    <p>Закрытые материалы проекта. Введите код доступа.</p>
+    <input id="gcode" type="text" autocomplete="off" placeholder="КОД" aria-label="Код доступа">
+    <button id="gbtn" type="button">Открыть</button>
+    <div class="err" id="gerr" role="status"></div>
+  </div>
+</div>
+
+<header class="hero">
+  <img src="assets/01-key-art.jpg" width="1376" height="768" alt="Томирис снимает себя на телефон в тёмной квартире, в глубине коридора стоит мужской силуэт">
+  <div class="vf" aria-hidden="true">
+    <i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i>
+    <div class="rec"><b></b>REC</div>
+    <div class="tc" id="tc">00:00:00:00</div>
+    <div class="cam">CAM 05</div>
+  </div>
+  <div class="in wrap">
+    <h1>Жолама<br>маған</h1>
+    <div class="tr">«Не подходи ко мне» · хоррор-мокьюментари · Алматы, 2026</div>
+    <p class="log">Молодая карьеристка начинает круглосуточно снимать себя, чтобы доказать, что её преследуют. После гибели главного подозреваемого она понимает: настоящий сталкер всё ещё рядом и снимает её дольше, чем она себя.</p>
+    <div class="byline">производство <em>Taurus Asia Production</em> · <em>Neyra Vision Studio</em> · режиссёр <em>Аян Найзабеков</em> · AI-превиз <em>Colibri Studio</em></div>
+  </div>
+</header>
+
+<section id="passport">
+  <div class="wrap">
+    <div class="eyebrow">Паспорт</div>
+    <h2>Камерный жанровый фильм с социальным нервом</h2>
+    <div class="pass">
+      <div><span>Формат</span><b>Полный метр</b></div>
+      <div><span>Хронометраж</span><b>85–90 мин</b></div>
+      <div><span>Жанр</span><b>Психологический триллер, хоррор, детектив</b></div>
+      <div><span>Форма</span><b>Мокьюментари, found footage</b></div>
+      <div><span>Язык</span><b>Казахский</b></div>
+      <div><span>Рейтинг</span><b>18+</b></div>
+      <div><span>Аудитория</span><b>17–34, преимущественно женская</b></div>
+      <div><span>Площадки</span><b>Кинотеатры, стриминг</b></div>
+    </div>
+    <dl class="state">
+      <dt>Хай-концепт</dt><dd>Девушка снимает каждый свой шаг, чтобы доказать, что её преследуют, и не знает, что сталкер уже снимает её.</dd>
+      <dt>Сверхидея</dt><dd>Одержимость контролем не спасает от хаоса — она его притягивает.</dd>
+      <dt>Главный конфликт</dt><dd>Иллюзия контроля против угрозы, которую нельзя предугадать.</dd>
+      <dt>Посыл</dt><dd>То, что окружающим кажется безобидным вниманием, может оказаться сталкингом и реальной угрозой.</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="alt" id="story">
+  <div class="wrap">
+    <div class="eyebrow">История</div>
+    <h2>Синопсис</h2>
+    <div class="narrow">
+      <p class="lead">Томирис, только что ставшая главой SMM-отдела, уверена, что за ней следят. Сестра смеётся, полиция отмахивается. Тогда она начинает снимать каждый свой день: телефон, потом четыре камеры в квартире.</p>
+      <p>Камень в окно, конфеты с запиской «Томпи», пропавшее бельё, чужой ужин на её кухне. Прозвище знал только бывший, Арман. Томирис выкладывает рилс «Оставь меня в покое», он улетает в миллионы просмотров, Арман прижимает её к стене во дворе — и через несколько дней погибает. Месяц тишины. Томирис записывает «последнее видео на эту тему».</p>
+      <p>Потом на запотевшем зеркале проступает «ВСЕГДА РЯДОМ». Номер, с которого пишет сталкер, оформлен на неё саму. Доставщик воды из её офиса — человек, которого коллеги никогда не видели. Квартира над ней носит тот же номер шестнадцать, и в ней стена из сотен её фотографий.</p>
+      <p>Сталкер знает её расписание лучше, чем она. В финале Томирис дерётся за жизнь тем, что он сам ей подбросил: кувшином воды, в которую подмешивал снотворное, и камерой, которой она всё доказывала. Спасает её сестра — тот самый человек, что смеялся первой. Последняя сцена — Томирис забирает у сестры дубликат ключей. Камеры в квартире она так и не выключает.</p>
+    </div>
+    <figure class="full"><img src="assets/12-dve-dveri-16.jpg" width="1376" height="768" loading="lazy" alt="Подъезд: две одинаковые двери с номером 16 на соседних этажах"><figcaption><b>Сц. 52 · Две квартиры № 16.</b> Главный поворот фильма: сталкер живёт прямо над ней и повесил на свою дверь её номер.</figcaption></figure>
+  </div>
+</section>
+
+<section id="heroes">
+  <div class="wrap">
+    <div class="eyebrow">Герои</div>
+    <h2>Трое в кадре, и все снимают</h2>
+
+    <div class="hero-card">
+      <figure><img src="assets/02-tomiris.jpg" width="1376" height="768" loading="lazy" alt="Томирис ставит телефон на штатив на кухне"><figcaption><b>Томирис</b> · карта образа</figcaption></figure>
+      <div>
+        <div class="role">Героиня · 27 лет</div>
+        <h3>Томирис</h3>
+        <p>Новый руководитель SMM-отдела. Всё по полочкам, обсессивно-компульсивное расстройство, память на детали. Жизнь по расписанию, работа — чужие соцсети, своя жизнь — тоже контент. Камера для неё — способ держать мир под контролем и доказать, что она не сходит с ума.</p>
+        <div class="arc"><b>Арка:</b> от «докажу, что я права» к «буду непредсказуемой». Она перестаёт доказывать и начинает действовать. Финальный жест — не выключенные камеры, а ключи, которые она забирает назад: дверь теперь открывается по приглашению.</div>
+      </div>
+    </div>
+
+    <div class="hero-card rev">
+      <figure><img src="assets/03-stalker.jpg" width="1376" height="768" loading="lazy" alt="Доставщик воды в кепке с бутылью на плече в офисном коридоре"><figcaption><b>Сталкер (Асылбек)</b> · карта образа</figcaption></figure>
+      <div>
+        <div class="role">Антагонист · около 30</div>
+        <h3>Асылбек — «доставщик воды»</h3>
+        <p>Незаметный человек в кепке и рабочей поло. Ходит по её офису с бутылью воды, хотя доставку отменили полгода назад, и подписывается чужим именем с бейджа. Снимает её, подмешивает снотворное в её кувшин, убирает её кухню и готовит ужин. Уверен, что заботится.</p>
+        <div class="arc"><b>Природа страха:</b> он не прячется. Его видно в кадре с первых сцен, но никто не смотрит на обслуживающий персонал. Зритель, пересматривая фильм, найдёт его раньше героини.</div>
+      </div>
+    </div>
+
+    <div class="side">
+      <div><h4>Шолпи</h4><em>Сестра · 24 · беременна</em><p>Хохотушка и вечная гостья с ключом от квартиры сестры. В доме мужа — тихая келин. Смеётся над «сталкером», в финале бьёт его камнем.</p></div>
+      <div><h4>Арман</h4><em>Бывший · ложный след</em><p>Абьюзер, но не сталкер. Главный подозреваемый первого акта. Его гибель — точка, где фильм переворачивается.</p></div>
+      <div><h4>Амина</h4><em>Коллега</em><p>Подала жалобу на домогательства начальника и стала «проблемной». Зеркало Томирис: ей тоже никто не поверил.</p></div>
+      <div><h4>Еркин</h4><em>Бывший начальник</em><p>Уволен за харассмент, считает это клеветой. Голос «да что такого».</p></div>
+      <div><h4>Алихан</h4><em>Муж Шолпи</em><p>Виктимблейминг с семейной интонацией: «сама дала повод». Самая страшная сцена фильма без крови.</p></div>
+      <div><h4>Участковый</h4><em>Система</em><p>«Вам оно надо?» Протокол за ложный вызов. Шутка про «чтобы курьер не умер, как ваш парень».</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="look">
+  <div class="wrap">
+    <div class="eyebrow">Визуальный язык</div>
+    <h2>Три камеры — три точки зрения</h2>
+    <p class="lead">Всё, что видит зритель, физически кто-то записал. Объективной камеры нет. Это правило держит жанр и одновременно выдаёт сюжет: зритель смотрит архив, который потом кто-то собрал.</p>
+    <div class="src">
+      <div><div class="k">Камера 1 · Её телефон</div><h3>Тёплая, живая</h3><p>Вертикальные блоги, сторис, исповеди в камеру. Янтарный свет ламп, дыхание, неровный горизонт. Здесь живёт комедия первого акта.</p></div>
+      <div><div class="k">Камера 2 · Четыре домашние</div><h3>Холодная, слепая</h3><p>CAM 01–04: прихожая, кухня, спальня, ванная. Ч/б инфракрасный, фишай, таймкод. Пропавшие минуты в записи — первая улика.</p></div>
+      <div><div class="k">Камера 3 · Его</div><h3>Чужая</h3><p>Длиннофокусная через ветки и окна, тяжёлое дыхание за кадром. Появляется ровно в середине фильма и меняет жанр.</p></div>
+    </div>
+    <div class="duo">
+      <figure><img src="assets/13-komnata.jpg" width="1376" height="768" loading="lazy" alt="Стена, покрытая сотнями фотографий героини, с расписанием и красными нитями"><figcaption><b>Сц. 56 · Квартира сверху.</b> На стене её расписание по минутам: этим оружием он пользовался всё время.</figcaption></figure>
+      <figure><img src="assets/10-zerkalo.jpg" width="1376" height="768" loading="lazy" alt="Запотевшее зеркало с сердцем и надписью ВСЕГДА РЯДОМ"><figcaption><b>Сц. 44 · «ВСЕГДА РЯДОМ».</b> Конец тишины после гибели Армана: сталкер не умер.</figcaption></figure>
+    </div>
+    <div class="duo rev">
+      <figure><img src="assets/15-kuvshin.jpg" width="1376" height="768" loading="lazy" alt="Девушка на стуле смотрит на стеклянный кувшин с водой на столе"><figcaption><b>Сц. 59 · Кувшин.</b> Вода, которую она пила в первой сцене, в которую он сыпал снотворное, становится её оружием.</figcaption></figure>
+      <figure><img src="assets/17-final.jpg" width="1376" height="768" loading="lazy" alt="Героиня у двери протягивает ладонь с ключами, в углу горит красный огонёк камеры"><figcaption><b>Сц. 61 · Ключи.</b> Финал на свету. Красный огонёк в углу никуда не делся.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="structure">
+  <div class="wrap">
+    <div class="eyebrow">Структура</div>
+    <h2>61 сцена: где фильм держит и где проседает</h2>
+    <p class="lead">По объёму текста сценарий сейчас тянет примерно на 60–65 минут экрана при заявленных 85–90. Гибель Армана, главный перелом, стоит на 60 % текста, хотя должна стоять в середине. Первый акт длинный и комедийный, третий плотный и быстрый.</p>
+    <div class="tl">
+      <div class="mid" style="left:59%" data-l="перелом сейчас · 59 %"></div>
+      <div class="bar"><span class="a1"></span><span class="a2a"></span><span class="a2b"></span><span class="a3"></span></div>
+      <div class="ticks"><span>Акт I · сц. 1–22</span><span>IIa · 23–36</span><span>IIb · 37–53</span><span>III · 54–61</span></div>
+    </div>
+    <div class="beats">
+      <div class="beat"><div class="n">Сц. 1</div><div><b>Крючок</b><p>«Не для майора полиции, который найдёт моё тело». Одеяло на диване оказывается сестрой. Отличный старт жанра.</p></div></div>
+      <div class="beat"><div class="n">Сц. 11–13</div><div><b>Камень в окно → камеры</b><p>Сосед подсказывает: «проще свою камеру поставить». Мотивация мокьюментари.</p></div></div>
+      <div class="beat"><div class="n">Сц. 16</div><div><b>«Томпи»</b><p>Записка указывает на бывшего. Запуск ложного следа.</p></div></div>
+      <div class="beat"><div class="n">Сц. 23</div><div><b>Рилс «НАКИПЕЛО»</b><p>Публичное обвинение Армана. Хорошая точка невозврата первого акта.</p></div></div>
+      <div class="beat"><div class="n">Сц. 30–31</div><div><b>Арман душит · чужой ужин</b><p>Угроза реальна, но «помощник» в квартире — не Арман. Зритель понимает это раньше героини.</p></div></div>
+      <div class="beat"><div class="n">Сц. 36</div><div><b>Арман умер</b><p>Перелом. Сейчас подан одной фразой в камеру, причина смерти не раскрыта.</p></div></div>
+      <div class="beat"><div class="n">Сц. 38–41</div><div><b>Его камера</b><p>Смена точки зрения: снотворное в кувшине, он у спящей. Сильнейший жанровый сдвиг.</p></div></div>
+      <div class="beat"><div class="n">Сц. 44–46</div><div><b>Зеркало · номер на её имя</b><p>Видео их самих с улицы прямо сейчас. Пик страха второго акта.</p></div></div>
+      <div class="beat"><div class="n">Сц. 51–53</div><div><b>Не тот Арсен · две № 16 · воды нет</b><p>Три удара подряд по реальности героини: газлайтинг без газлайтера.</p></div></div>
+      <div class="beat"><div class="n">Сц. 54</div><div><b>Ужин у Алихана</b><p>«Сама дала повод». Семья отворачивается. Нижняя точка.</p></div></div>
+      <div class="beat"><div class="n">Сц. 56–59</div><div><b>Его комната → осада → стул</b><p>Последнее видео-исповедь, кувшин, камера как оружие.</p></div></div>
+      <div class="beat"><div class="n">Сц. 60–61</div><div><b>Двор · ключи</b><p>Соседи смотрят из окон и не выходят. Сестра бьёт камнем. Ключи по приглашению.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="works">
+  <div class="wrap">
+    <div class="eyebrow">Разбор сценарной группы</div>
+    <h2>Что уже работает</h2>
+    <p class="lead">Мы прочитали сценарий как продюсер, сценарный редактор, режиссёр и маркетолог. Сначала — сильные стороны, которые при доработке нельзя потерять.</p>
+    <div class="works">
+      <div><h4>Хор «безобидного внимания»</h4><p>Водитель на светофоре, шутки Умбета, Еркин, «мне нравятся настойчивые» Дарины, «сама дала повод» Алихана, «вам оно надо?» участкового. Каждый эпизодник — голос нормализации. Это и есть тема фильма, разложенная по людям, а не произнесённая вслух.</p></div>
+      <div><h4>Предметы, которые стреляют</h4><p>Кувшин воды, ключ у подъезда, дворники соседа, камень, «Томпи». Почти каждая деталь первого акта возвращается в третьем. Для дебютного сценария это редкая дисциплина.</p></div>
+      <div><h4>Мокьюментари с мотивацией</h4><p>Героиня снимает не «для фильма», а чтобы ей поверили. Форма и тема совпадают: камера — её способ контроля и её же уязвимость.</p></div>
+      <div><h4>Две квартиры № 16</h4><p>Сильный, простой и дешёвый в производстве поворот. Запоминается, легко пересказывается, работает в трейлере.</p></div>
+      <div><h4>Сестра как вторая героиня</h4><p>Шолпи начинает как комический партнёр и заканчивает спасителем. Её зависимость от мужа зеркалит слежку: контроль бывает и семейным.</p></div>
+      <div><h4>Соседи в окнах</h4><p>Томирис кричит во дворе, люди смотрят и не выходят. Один кадр, который говорит про общество больше, чем любая статистика.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="notes">
+  <div class="wrap">
+    <div class="eyebrow">Разбор сценарной группы</div>
+    <h2>Что чинить до запуска</h2>
+    <p class="lead">Десять правок по убыванию важности. Каждая — с конкретным решением, а не с пожеланием.</p>
+    <div class="notes">
+      <div class="nt"><div class="pri r">Критично<small>драматургия</small></div><div>
+        <h3>Расписание как оружие — в паспорте есть, в сценарии нет</h3>
+        <p class="prob">Синопсис обещает: сталкер использовал против неё «идеально предсказуемый распорядок дня», и она побеждает, впервые став непредсказуемой. В тексте нет ни йоги, ни звонков родителям, ни распорядка, а финал решает случай и сестра. Сверхидея фильма не сыграна.</p>
+        <div class="fix"><b>Решение</b>В первом акте показать распорядок в кадре: таймкоды на её видео (06:00 йога, 07:40 выезд, 21:00 звонок маме), одинаковые ракурсы день за днём. В его комнате — то же расписание. Третий акт: Томирис сама ставит ловушку — выкладывает сторис «уезжаю к сестре», остаётся дома с камерами и заранее предупреждённой полицией. План срывается (после «ложного вызова» полиция едет медленно), но инициатива — её.</div>
+      </div></div>
+      <div class="nt"><div class="pri r">Критично<small>структура</small></div><div>
+        <h3>Гибель Армана — без причины и без последствий</h3>
+        <p class="prob">Смерть подана одной репликой в камеру, затем «прошёл месяц». Причина не названа, полиция не приходит к главной подозреваемой с мотивом в миллион просмотров, а в финале сталкер ни разу не говорит, что убил Армана.</p>
+        <div class="fix"><b>Решение</b>Добавить 2–3 сцены после смерти: допрос Томирис как подозреваемой (рилс — мотив, двор — свидетели), травля в комментариях «довела». В финале сталкер показывает ей своё видео: двор, Арман держит её за горло, — «Я видел. Он делал тебе больно». Это сразу объясняет и убийство, и то, что он снимал её с первых дней. Перелом сдвигается к середине, хронометраж растёт на 6–8 минут.</div>
+      </div></div>
+      <div class="nt"><div class="pri r">Критично<small>логика</small></div><div>
+        <h3>Как он попадает в квартиру и почему номер оформлен на неё</h3>
+        <p class="prob">Замки целы, дубликата у Армана нет. Номер телефона «зарегистрирован на Томирис К.» — без объяснения. Апашка говорит, что квартира сверху пустует два года, сам сталкер — что «вчера заехал».</p>
+        <div class="fix"><b>Решение</b>Ключи: в сц. 14 Шолпи мимоходом говорит, что держит свой дубликат под ковриком у двери, — он сделал копию. Финал с ключами становится ещё и разгадкой. Номер: каждая доставка заканчивается словом «распишитесь» (камеры, конфеты, вода) — он собирал подписи и копию удостоверения. Пустая квартира: он живёт по её расписанию и приходит, только когда её нет дома; «вчера заехал» — его ложь, которую кадр тут же опровергает.</div>
+      </div></div>
+      <div class="nt"><div class="pri y">Важно<small>хронометраж</small></div><div>
+        <h3>Не хватает 20–25 минут</h3>
+        <p class="prob">Текст тянет на час с небольшим. Добирать надо не растягиванием, а сценами, которые сейчас пропущены.</p>
+        <div class="fix"><b>Решение</b>Распорядок и видеозвонки родителям (3–4 мин), после Армана — допрос и травля (6–8 мин), пересмотр собственных записей с поиском доставщика (3 мин), подготовка ловушки (4–5 мин), линия Амины до финала (2–3 мин). Около 20 минут, и все работают на тему.</div>
+      </div></div>
+      <div class="nt"><div class="pri y">Важно<small>жанр</small></div><div>
+        <h3>Газлайтинг в офисе надо закрыть доказательством</h3>
+        <p class="prob">Сц. 53: коллеги не видели доставщика, доставки нет полгода. Сцена оставляет вопрос «а был ли он», но фильм потом не отвечает.</p>
+        <div class="fix"><b>Решение</b>Томирис пересматривает свои записи из офиса — он есть в кадре: сц. 4, сц. 24. Его просто никто не замечал. Для зрителя это момент «я видел его с самого начала», для героини — первое доказательство, которое она не придумала.</div>
+      </div></div>
+      <div class="nt"><div class="pri y">Важно<small>персонаж</small></div><div>
+        <h3>Мотив сталкера — самое слабое место финала</h3>
+        <p class="prob">«Мы были в лагере, танцевали медляк, ты похожа на мою маму» звучит впервые в последние минуты и как объяснение не убеждает.</p>
+        <div class="fix"><b>Решение</b>Заложить в первом акте: на видеозвонке мама показывает старое фото из лагеря, на краю кадра мальчик в кепке. Томирис его не узнаёт, зритель — тоже. В финале достаточно одной фразы «Ты меня даже на фото не заметила». Линию про маму убрать: она уводит в клише.</div>
+      </div></div>
+      <div class="nt"><div class="pri y">Важно<small>форма</small></div><div>
+        <h3>Название не звучит в фильме</h3>
+        <p class="prob">«Жолама маған» нигде не произносится. Ключевая фраза рилса и сообщения сталкеру — по-русски: «Оставь меня в покое».</p>
+        <div class="fix"><b>Решение</b>Сделать фразой рилса «Жолама маған!». Она становится мемом внутри фильма (её цитируют коллеги, комментаторы) и снаружи — хэштег кампании. Заодно решить язык: паспорт заявляет казахский, сценарий написан по-русски. Нужен перевод с живой городской речью, смешанной, как в Алматы.</div>
+      </div></div>
+      <div class="nt"><div class="pri y">Важно<small>продюсер</small></div><div>
+        <h3>Рейтинг 18+ против аудитории 17–34</h3>
+        <p class="prob">Семнадцатилетние на фильм 18+ не попадут. 18+ задают сц. 41 (он у спящей) и сц. 59 (раздевает связанную).</p>
+        <div class="fix"><b>Решение</b>Либо аудитория 18–34, либо прокатная версия 16+: сц. 41 показать как его видео, которое она находит позже (страшнее и без откровенности), в сц. 59 оставить угрозу без раздевания.</div>
+      </div></div>
+      <div class="nt"><div class="pri g">Желательно<small>линия</small></div><div>
+        <h3>Амина должна дойти до финала</h3>
+        <p class="prob">Её линия сильная, но заканчивается на «спасибо» в сц. 53А и в развязке не участвует.</p>
+        <div class="fix"><b>Решение</b>Амина — единственная, кто говорит Томирис «я тебе верю», потому что прошла то же. В третьем акте именно она остаётся на связи во время ловушки. Две женщины, которым не поверили, вместе.</div>
+      </div></div>
+      <div class="nt"><div class="pri g">Желательно<small>финал</small></div><div>
+        <h3>Последний кадр — для франшизы</h3>
+        <p class="prob">Синопсис и сценарий заканчиваются по-разному: «камеры не выключает» и «отдай ключи».</p>
+        <div class="fix"><b>Решение</b>Совместить: ключи, дверь закрывается, переход на CAM 01 в пустой прихожей. Затем изображение моргает, и мы видим прихожую с ракурса, которого среди её четырёх камер не было. Пятая камера. Его. Титр.</div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="setups">
+  <div class="wrap">
+    <div class="eyebrow">Сетапы и выплаты</div>
+    <h2>Карта ружей</h2>
+    <p class="lead">Что заложено и где выстреливает. Строки «добавить» — правки из разбора выше.</p>
+    <div class="tscroll">
+    <table>
+      <thead><tr><th>Предмет</th><th>Заложен</th><th>Выстреливает</th><th>Статус</th></tr></thead>
+      <tbody>
+        <tr><td>Кувшин воды</td><td><span class="sc">сц. 1</span> пьёт воду ночью на камеру</td><td><span class="sc">сц. 39</span> снотворное · <span class="sc">сц. 59</span> оружие</td><td class="st ok">есть</td></tr>
+        <tr><td>Ключ у подъезда</td><td><span class="sc">сц. 10</span> никто в чате не признался</td><td><span class="sc">сц. 55</span> открывает квартиру сверху</td><td class="st ok">есть</td></tr>
+        <tr><td>Дворники соседа</td><td><span class="sc">сц. 12</span> «кто-то снял дворники»</td><td><span class="sc">сц. 48</span> регистратор снял человека на мопеде</td><td class="st ok">есть</td></tr>
+        <tr><td>Камень</td><td><span class="sc">сц. 11</span> влетел в окно</td><td><span class="sc">сц. 60</span> Шолпи бьёт сталкера камнем</td><td class="st ok">есть</td></tr>
+        <tr><td>«Томпи»</td><td><span class="sc">сц. 16</span> только бывший так звал</td><td><span class="sc">сц. 58</span> «Томпи-Томпи-Томпи!» из-за двери</td><td class="st ok">есть</td></tr>
+        <tr><td>Камера</td><td><span class="sc">сц. 1</span> «доказательства, что не едет крыша»</td><td><span class="sc">сц. 59</span> бьёт его камерой</td><td class="st ok">есть</td></tr>
+        <tr><td>Ключи Шолпи</td><td><span class="sc">сц. 1</span> «приходи когда хочешь»</td><td><span class="sc">сц. 61</span> «двери по приглашению»</td><td class="st add">усилить: коврик</td></tr>
+        <tr><td>«Распишитесь»</td><td><span class="sc">сц. 13, 15, 45</span> доставки</td><td><span class="sc">сц. 46</span> номер оформлен на неё</td><td class="st add">добавить</td></tr>
+        <tr><td>Расписание</td><td>паспорт проекта</td><td><span class="sc">сц. 56</span> стена · ловушка в III акте</td><td class="st add">добавить</td></tr>
+        <tr><td>Фото из лагеря</td><td>видеозвонок маме</td><td><span class="sc">сц. 59</span> «ты меня даже не заметила»</td><td class="st add">добавить</td></tr>
+        <tr><td>ОКР, память на детали</td><td>—</td><td><span class="sc">сц. 49</span> запомнила имя с бейджа</td><td class="st add">заложить раньше</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<section id="ip">
+  <div class="wrap">
+    <div class="eyebrow">IP Taurus × Neyra</div>
+    <h2>Не один фильм, а бренд с фразой</h2>
+    <div class="ip">
+      <div>
+        <p class="quote">«Жолама маған» — фраза, которую можно сказать вслух</p>
+        <p>Название работает как граница: два слова, которые любая девушка в Казахстане может повторить. Это делает проект больше фильма. У него есть фраза, предмет (красный огонёк REC), жест (ладонь с ключами) и повод для разговора, который не заканчивается после титров.</p>
+        <p class="note">Сталкинг в Казахстане недавно получил отдельную статью в уголовном кодексе — тема на пике общественного внимания. Цифры и формулировки закона перед публикацией сверить с юристом.</p>
+      </div>
+      <ol>
+        <li><b>Приквел до премьеры: аккаунт Томирис</b><span>За 6–8 недель до релиза в соцсетях появляется блог героини: GRWM, офис, «мне кажется, за мной следят». Комментаторы ищут в её видео доставщика. Фильм начинается раньше кинотеатра.</span></li>
+        <li><b>Фильм в прокат и на платформу</b><span>Казахская версия с субтитрами, прокат в РК, затем стриминг в регионе.</span></li>
+        <li><b>Антология «Жолама»</b><span>Сериал из самостоятельных историй: цифровой сталкинг, преследование на работе, в семье, в аулах. Один формат, одна фраза, новые героини каждый сезон.</span></li>
+        <li><b>Социальная кампания</b><span>Партнёрство с кризисными центрами: в финальных титрах — номер помощи, на премьерах — разговор с психологами и юристами, хэштег #ЖоламаМаған для историй.</span></li>
+        <li><b>Вертикальные спин-оффы</b><span>Записи с «пятой камеры» после финала — короткий хоррор-сериал для Reels и Shorts.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="cast">
+  <div class="wrap">
+    <div class="eyebrow">Команда проекта</div>
+    <h2>Авторы и каст мечты</h2>
+    <div class="team">
+      <div class="pp"><img src="assets/tm-naizabekov.jpg" width="600" height="760" loading="lazy" alt="Аян Найзабеков"><h4>Аян Найзабеков</h4><span>Режиссёр-постановщик</span></div>
+      <div class="pp"><img src="assets/tm-sartaeva.jpg" width="600" height="760" loading="lazy" alt="Анель Сартаева"><h4>Анель Сартаева</h4><span>Автор сценария</span></div>
+      <div class="pp"><img src="assets/tm-kaunev.jpg" width="600" height="760" loading="lazy" alt="Арыстан Каунев"><h4>Арыстан Каунев</h4><span>Автор идеи · ментор</span></div>
+      <div class="pp"><img src="assets/tm-chapay.jpg" width="600" height="760" loading="lazy" alt="Мирхат Чапай"><h4>Мирхат Чапай</h4><span>Оператор-постановщик</span></div>
+    </div>
+    <h3 style="margin-top:80px">Каст мечты</h3>
+    <div class="cast">
+      <div class="pp"><img src="assets/cast-tomiris.jpg" width="600" height="776" loading="lazy" alt="Акнур Рахат"><h4>Акнур Рахат</h4><span>Томирис</span></div>
+      <div class="pp"><img src="assets/cast-asylbek.jpg" width="600" height="706" loading="lazy" alt="Ансар Болатбекулы"><h4>Ансар Болатбекулы</h4><span>Сталкер (Асылбек)</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="next">
+  <div class="wrap">
+    <div class="eyebrow">Что дальше</div>
+    <h2>От сценария к запуску</h2>
+    <div class="next">
+      <div><div class="w">01</div><div><b>Редакторская версия сценария</b><p>Десять правок из разбора, перевод на казахский, цель — 85 минут.</p></div></div>
+      <div><div class="w">02</div><div><b>AI-превиз ключевых сцен</b><p>Раскадровка сц. 1, 44–46, 52, 56–61, карты героев и локаций, утверждение лиц.</p></div></div>
+      <div><div class="w">03</div><div><b>3D-блокинг квартиры и подъезда</b><p>Две одинаковые квартиры и лестница — одна декорация. Расстановка четырёх камер до съёмок.</p></div></div>
+      <div><div class="w">04</div><div><b>Тизер на 60 секунд</b><p>Из превиза: CCTV-сетка, зеркало, две двери. Для питчинга и фондов.</p></div></div>
+      <div><div class="w">05</div><div><b>Кастинг и проба мокьюментари</b><p>Актриса должна выдержать 70 % фильма в одиночку перед телефоном.</p></div></div>
+      <div><div class="w">06</div><div><b>Запуск блога Томирис</b><p>Приквел в соцсетях стартует параллельно с подготовкой к съёмкам.</p></div></div>
+    </div>
+
+    <div class="plock" id="prodlock">
+      <div class="k">Кабинет продюсера</div>
+      <h3>Экономика и сроки</h3>
+      <p>Бюджет, правки сметы, календарь. Введите код продюсера.</p>
+      <input id="pcode" type="text" autocomplete="off" placeholder="КОД ПРОДЮСЕРА" aria-label="Код продюсера">
+      <button id="pbtn" type="button">Открыть</button>
+      <div class="err" id="perr" role="status"></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="prodsec">
+  <div class="wrap">
+    <div class="eyebrow">Кабинет продюсера</div>
+    <h2>Смета авторов и наши правки</h2>
+    <div class="narrow">
+      <table class="money">
+        <thead><tr><th>Статья</th><th>Тенге</th></tr></thead>
+        <tbody>
+          <tr><td>Разработка сценария — сценарий, доработки, редактура</td><td>8 000 000</td></tr>
+          <tr><td>Производство — подготовка, съёмки, постпродакшн</td><td>110 000 000</td></tr>
+          <tr><td>Маркетинг — PR, SMM, промо, спецпроекты, партнёрства</td><td>20 000 000</td></tr>
+          <tr><td>Итого без налога</td><td>138 000 000</td></tr>
+          <tr class="bad"><td>НДС 30 % в смете авторов</td><td>41 400 000</td></tr>
+          <tr><td>НДС 16 % (ставка РК с 2026 года)</td><td>22 080 000</td></tr>
+          <tr class="tot"><td>Итого с НДС</td><td>160 080 000</td></tr>
+        </tbody>
+      </table>
+      <p class="note">В смете авторов стоит НДС 30 % и итог 169,4 млн. Такой ставки НДС нет: по ставке 16 % итог 160,1 млн, разница 9,3 млн. Применение НДС зависит от того, кто плательщик и какие услуги в цепочке, — подтвердить у бухгалтера Taurus.</p>
+
+      <h3 style="margin-top:60px">Где фильм дешевле, чем кажется</h3>
+      <p>Около 70 % действия — квартира героини, квартира сверху и подъезд. Две квартиры № 16 строятся одной декорацией с перестановкой. Камеры в кадре — телефоны и бытовые IP-камеры, часть материала и есть «изображение» фильма. Малый основной состав: Томирис, Шолпи, сталкер, Арман.</p>
+      <p>Где дороже: офис с массовкой, ночной двор с мигалками, драка в сц. 59 с каскадёром и гримом, перевод и казахская адаптация диалогов. Сценарная редактура по разбору — уже внутри статьи «Разработка сценария».</p>
+
+      <h3 style="margin-top:60px">Ориентир по срокам</h3>
+      <table class="money">
+        <tbody>
+          <tr><td>Редакторская версия, перевод, AI-превиз</td><td>6–8 недель</td></tr>
+          <tr><td>Подготовительный период, кастинг, декорация</td><td>6 недель</td></tr>
+          <tr><td>Съёмки</td><td>20–22 смены</td></tr>
+          <tr><td>Монтаж, звук, цвет, графика интерфейсов</td><td>12–14 недель</td></tr>
+          <tr><td>Блог-приквел до премьеры</td><td>6–8 недель</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Сроки — оценка по объёму сценария и количеству локаций до утверждения редакторской версии.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Контакт</div>
+    <h2>Taurus Asia Production × Neyra Vision Studio × Colibri Studio</h2>
+    <p class="lead">Taurus Asia Production и Neyra Vision Studio — производство проекта «Жолама маған». Colibri Studio — AI-превиз для кино: раскадровки, карты персонажей, локации, 3D-блокинг, оживление сцен и саунд-дизайн. <a href="https://colibristudio.ai">colibristudio.ai</a></p>
+    <p class="note">Материалы конфиденциальны и предназначены для команды проекта и партнёров. Кадры на странице — эскизы AI-превиза, лица героев утверждаются после кастинга.</p>
+  </div>
+</section>
+
+<div class="lbox" id="lbox" role="dialog" aria-label="Просмотр кадра">
+  <img id="lbimg" alt="">
+  <div class="lcap" id="lbcap"></div>
+</div>
+<button class="lbtn lprev" id="lbprev" aria-label="Предыдущий">‹</button>
+<button class="lbtn lnext" id="lbnext" aria-label="Следующий">›</button>
+<button class="lclose" id="lbclose" aria-label="Закрыть">✕</button>
+
+<script>
+(function(){
+  function sha(t){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return [].map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,"0")}).join("")})}
+  /* gate */
+  var HASH="67cdea11a322de359bafc1bf691d1749f3ae5995b7b23ffedd6e1e9e4d91c161";
+  function unlock(){document.body.classList.remove("locked")}
+  try{if(localStorage.getItem("zholama_ok")===HASH)unlock()}catch(e){}
+  function tryCode(){var v=(document.getElementById("gcode").value||"").trim().toUpperCase();
+    sha(v).then(function(hx){if(hx===HASH){try{localStorage.setItem("zholama_ok",HASH)}catch(e){};unlock()}
+      else{document.getElementById("gerr").textContent="Неверный код";}})}
+  document.getElementById("gbtn").addEventListener("click",tryCode);
+  document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
+  /* producer */
+  var PH="3f14ca3d52635e9cb214f1083006fa4caedb80931bc401c6210be5140d4080bc";
+  function openProd(){document.getElementById("prodsec").classList.add("open");document.getElementById("prodlock").style.display="none"}
+  try{if(localStorage.getItem("zholama_prod")===PH)openProd()}catch(e){}
+  function tryProd(){var v=(document.getElementById("pcode").value||"").trim().toUpperCase();
+    sha(v).then(function(hx){if(hx===PH){try{localStorage.setItem("zholama_prod",hx)}catch(e){};openProd();
+      document.getElementById("prodsec").scrollIntoView({behavior:"smooth"})}
+      else{document.getElementById("perr").textContent="Неверный код";}})}
+  document.getElementById("pbtn").addEventListener("click",tryProd);
+  document.getElementById("pcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryProd()});
+  /* timecode */
+  var tc=document.getElementById("tc"),t0=Date.now();
+  function pad(n){return (n<10?"0":"")+n}
+  setInterval(function(){var ms=Date.now()-t0,f=Math.floor(ms/1000*24)%24,s=Math.floor(ms/1000);
+    tc.textContent=pad(Math.floor(s/3600))+":"+pad(Math.floor(s/60)%60)+":"+pad(s%60)+":"+pad(f)},42);
+  /* reveal */
+  if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    var els=document.querySelectorAll("section h2, .hero-card, .duo, figure.full, .nt, .beats, .works, .ip, .team");
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px"});
+    els.forEach(function(el){el.classList.add("reveal");io.observe(el)});
+  }
+  /* lightbox */
+  var figs=[].slice.call(document.querySelectorAll("figure"));
+  var items=figs.map(function(f){var img=f.querySelector("img"),c=f.querySelector("figcaption");return {src:img.getAttribute("src"),cap:c?c.textContent:""}});
+  var box=document.getElementById("lbox"),im=document.getElementById("lbimg"),cp=document.getElementById("lbcap"),cur=0;
+  function show(i){cur=(i+items.length)%items.length;im.src=items[cur].src;im.alt=items[cur].cap;cp.textContent=items[cur].cap}
+  figs.forEach(function(f,i){f.addEventListener("click",function(){show(i);box.classList.add("on")})});
+  function close(){box.classList.remove("on")}
+  document.getElementById("lbclose").addEventListener("click",close);
+  document.getElementById("lbprev").addEventListener("click",function(){show(cur-1)});
+  document.getElementById("lbnext").addEventListener("click",function(){show(cur+1)});
+  box.addEventListener("click",function(e){if(e.target===box)close()});
+  document.addEventListener("keydown",function(e){if(!box.classList.contains("on"))return;
+    if(e.key==="Escape")close();if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
+})();
+</script>
+</body>
+</html>
