@@ -160,6 +160,17 @@
   .player .sub{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:4px 0 16px}
   .player audio{width:100%}
 
+  /* пилот */
+  .pilot{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,70px);margin-top:40px;align-items:start}
+  @media(max-width:860px){.pilot{grid-template-columns:1fr}}
+  .ptext{border-left:2px solid var(--honey);padding-left:clamp(18px,3vw,30px)}
+  .ptext p{font-family:var(--disp);font-style:italic;font-size:clamp(22px,2.4vw,28px);line-height:1.4;color:#f4e7cc}
+  .ptext cite{display:block;margin-top:14px;font-family:var(--mono);font-style:normal;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+  .pask h3{font-family:var(--disp);font-size:28px;font-weight:600;color:var(--raktum);margin-bottom:12px}
+  .pask ol{padding-left:20px;color:var(--soft);font-size:15.5px}
+  .pask li{margin-bottom:10px}
+  .pask b{color:var(--honey)}
+
   /* от автора */
   .author{background:#120e08}
   .agroup{margin-top:clamp(48px,6vw,80px)}
@@ -190,11 +201,14 @@
   .dl-btn:hover{background:var(--honey);color:var(--ink)}
   .dl-btn[disabled]{opacity:.6;cursor:progress}
   .dl-btn.done{border-color:rgba(79,138,91,.8);color:#bfe0c5}
+  .dl-save{display:inline-block;text-align:center;min-width:118px;padding:9px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;background:var(--leaf);color:#f3f8f2;border:1px solid var(--leaf)}
+  .inapp{margin-top:18px;padding:14px 16px;border:1px solid rgba(227,168,60,.6);background:rgba(227,168,60,.08);color:var(--paper);font-size:15px}
+  .dl-hint{margin-top:14px;font-size:14px;color:var(--mute)}
   .dl-group:first-child li:first-child .dl-btn{background:var(--honey);color:var(--ink)}
   .dl-audio{grid-column:1/-1}
   .dl-audio ul{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(28px,4vw,56px)}
   @media(max-width:900px){.dl-audio ul{grid-template-columns:1fr}}
-  @media(max-width:520px){.dl-group li{grid-template-columns:1fr auto}.dl-s{grid-column:1;grid-row:2}.dl-btn{grid-row:1/3;grid-column:2}}
+  @media(max-width:520px){.dl-group li{grid-template-columns:1fr auto}.dl-s{grid-column:1;grid-row:2}.dl-btn,.dl-save{grid-row:1/3;grid-column:2}}
 
   .contact{border-top:1px solid var(--line);padding:70px 0 90px}
   .contact h2{font-size:clamp(30px,4vw,44px)}
@@ -233,7 +247,7 @@
 <header class="bar">
   <a class="brand" href="#top">НЕКТАРИУМ</a>
   <nav>
-    <a href="#avtor">От автора</a><a href="#mir">Мир</a><a href="#tizer">Тизер</a><a href="#geroi">Герои</a><a href="#raskadrovka">Раскадровка</a><a href="#poryadok">Порядок</a><a class="cta" href="#skachat">Скачать</a>
+    <a href="#avtor">От автора</a><a href="#pilot">Пилот</a><a href="#mir">Мир</a><a href="#tizer">Тизер</a><a href="#geroi">Герои</a><a href="#raskadrovka">Раскадровка</a><a href="#poryadok">Порядок</a><a class="cta" href="#skachat">Скачать</a>
   </nav>
 </header>
 
@@ -302,6 +316,31 @@
         <figure><img src="assets/avtor/kniga-25.jpg" alt="Красный паук" loading="lazy"><figcaption>Красный паук</figcaption></figure>
         <figure><img src="assets/avtor/kniga-26.jpg" alt="Паук-птицеед" loading="lazy"><figcaption>Паук-птицеед</figcaption></figure>
       </div></div>
+    </div>
+  </section>
+
+  <section id="pilot" class="alt">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Сейчас делаем · решено на созвоне 07.10</div>
+        <h2>Пилот 30 секунд — «Последняя стрела»</h2>
+        <p class="lead">Финал боя из главы 1: в колчане одна стрела. Зои отпускает гнев, вдыхает, выдыхает и стреляет навесом. Задача пилота — показать качество: красоту Зои, глаза, мимику, натяжение тетивы. Облик берём с эскизов автора и оживляем.</p>
+      </div>
+      <div class="pilot reveal">
+        <blockquote class="ptext">
+          <p>«Она направила лук-меч вниз, медленно и глубоко вдохнула, лишив себя гнева, наложила стрелу на тетиву и на выдохе спокойно подняла лук. Короткий вдох-выдох, рассчитала траекторию движения шершня, натянула тетиву и навесом выпустила стрелу на волю. Капля оранжевого яда блеснула на самом острие.»</p>
+          <cite>«Планета Nectarium», глава 1</cite>
+        </blockquote>
+        <div class="pask">
+          <h3>Что нужно от Владимира</h3>
+          <ol>
+            <li>Подтвердить или поправить авторский текст сцены.</li>
+            <li>Написать пометку автора: что зритель должен почувствовать. С созвона — Зои не хочет убивать.</li>
+            <li>Выбрать, куда попадает стрела: <b>1</b> — под панцирь вожака, он уходит раненым, как в романе; <b>2</b> — стрела уходит в небо, открытый финал; <b>3</b> — зрелищное попадание.</li>
+          </ol>
+          <p class="note">Полная заготовка с черновым хронометражем — в разделе «Скачать», файл «Пилот 30 секунд».</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -408,11 +447,11 @@
       <div class="flow">
         <div class="stage reveal">
           <h3>Этап 1 · Пилот</h3>
-          <div class="len">Сцена битвы · 30 секунд</div>
+          <div class="len">«Последняя стрела» · 30 секунд</div>
           <ol>
-            <li><b>1.1</b><span>Герои — листы персонажей: лицо в трёх ракурсах, рост спереди и сзади, оружие, кадр в мире. Зои и три шершня.</span></li>
-            <li><b>1.2</b><span>Мир — ключевые кадры мест с героями в среде: крона дерева-великана и небо над долиной.</span></li>
-            <li><b>1.3</b><span>Сцена битвы — 30 секунд видео со звуком.</span></li>
+            <li><b>1.1</b><span>Герои — оживляем эскизы автора: лицо в трёх ракурсах, рост спереди и сзади, оружие, кадр в мире. Зои и шершень-вожак.</span></li>
+            <li><b>1.2</b><span>Мир — ключевые кадры мест с героями в среде: бутон Астрального Розового на поляне и небо над долиной.</span></li>
+            <li><b>1.3</b><span>Пилот — последняя стрела Зои, 30 секунд видео со звуком.</span></li>
           </ol>
         </div>
         <div class="stage reveal">
@@ -461,11 +500,14 @@
           <input id="dcode" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Код доступа" aria-label="Код для скачивания">
         </div>
       </div>
+      <p class="inapp" id="inapp" hidden>Похоже, страница открыта внутри мессенджера — оттуда файлы не сохраняются. Нажмите «⋯» или «Поделиться» → «Открыть в браузере» (Safari или Chrome) и скачайте там.</p>
+      <p class="dl-hint">Нажали «Скачать» — дождитесь 100 %, файл сохранится сам. Если не сохранился, появится ссылка «Сохранить файл».</p>
       <p class="err" id="derr" aria-live="polite"></p>
       <div class="dl">
 <!--FILES:START-->
 <div class="dl-group"><h3>Договор и сценарий</h3><ul>
-<li><div class="dl-t">Договор о совместном производстве тизера<span class="dl-d">Черновик для обсуждения · редакция 06.10.2026</span></div><span class="dl-s">DOCX · 13 КБ</span><button class="dl-btn" type="button" data-bin="01.bin" data-name="Договор-тизер-Нектариум-06-10.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+<li><div class="dl-t">Договор о совместном производстве тизера<span class="dl-d">Редакция 07.10.2026 · пилот — последняя стрела, эскизы автора — основа облика</span></div><span class="dl-s">DOCX · 13 КБ</span><button class="dl-btn" type="button" data-bin="01.bin" data-name="Договор-тизер-Нектариум-07-10.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+<li><div class="dl-t">Пилот 30 секунд · «Последняя стрела»<span class="dl-d">Авторский текст сцены, вопрос о попадании, черновой хронометраж — Владимиру на правку</span></div><span class="dl-s">DOCX · 6 КБ</span><button class="dl-btn" type="button" data-bin="50.bin" data-name="Пилот-30-сек-последняя-стрела.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
 <li><div class="dl-t">Режиссёрский сценарий тизера · 5 минут<span class="dl-d">Утверждённая структура · 5 актов, 52 кадра</span></div><span class="dl-s">DOCX · 15 КБ</span><button class="dl-btn" type="button" data-bin="02.bin" data-name="Режиссёрский-сценарий-тизер-5-мин.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
 <li><div class="dl-t">Синопсис саги · режиссёрская версия<span class="dl-d">От Владимира, 06.10.2026</span></div><span class="dl-s">DOCX · 6 КБ</span><button class="dl-btn" type="button" data-bin="03.bin" data-name="Синопсис-Нектариум-режиссёрская-версия.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
 <li><div class="dl-t">Сценарий серии · 3 минуты<span class="dl-d">Первая версия, литературный сценарий</span></div><span class="dl-s">DOCX · 12 КБ</span><button class="dl-btn" type="button" data-bin="04.bin" data-name="Сценарий-серия-1-3-мин.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
@@ -561,23 +603,39 @@
   document.getElementById("gbtn").addEventListener("click",tryCode);
   document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
 
-  /* скачать: каждый файл зашифрован AES-GCM, ключ из кода через PBKDF2 */
+  /* скачать: каждый файл зашифрован AES-GCM, ключ из кода через PBKDF2.
+     Загрузка с процентом; после расшифровки остаётся ссылка «Сохранить файл» — на случай, если браузер не начал сохранение сам. */
   var derr=document.getElementById("derr");
-  function decryptFile(bin,code){return fetch("files/"+bin,{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("файл не найден");return r.arrayBuffer()})
-    .then(function(buf){var b=new Uint8Array(buf),salt=b.slice(0,16),iv=b.slice(16,28),ct=b.slice(28);
-      return crypto.subtle.importKey("raw",new TextEncoder().encode(code),"PBKDF2",false,["deriveKey"])
-        .then(function(k){return crypto.subtle.deriveKey({name:"PBKDF2",salt:salt,iterations:310000,hash:"SHA-256"},k,{name:"AES-GCM",length:256},false,["decrypt"])})
-        .then(function(key){return crypto.subtle.decrypt({name:"AES-GCM",iv:iv},key,ct)})})}
+  var UA=navigator.userAgent||"";
+  var INAPP=/WhatsApp|Instagram|FBAN|FBAV|FB_IAB|Telegram|TelegramBot|Line\/|MicroMessenger|VKClient|; wv\)/i.test(UA)||(/iPhone|iPad|iPod/.test(UA)&&!/Safari\//.test(UA));
+  if(INAPP){var ib=document.getElementById("inapp");if(ib)ib.hidden=false}
+  function fetchProgress(url,onp){return fetch(url,{cache:"no-store"}).then(function(r){
+    if(!r.ok)throw new Error("файл не найден ("+r.status+")");
+    var total=+r.headers.get("Content-Length")||0;
+    if(!r.body||!r.body.getReader)return r.arrayBuffer();
+    var rd=r.body.getReader(),parts=[],got=0;
+    function pump(){return rd.read().then(function(x){if(x.done){var out=new Uint8Array(got),o=0;parts.forEach(function(p){out.set(p,o);o+=p.length});return out.buffer}
+      parts.push(x.value);got+=x.value.length;if(total)onp(Math.min(99,Math.round(got*100/total)));return pump()})}
+    return pump()})}
+  function decrypt(buf,code){var b=new Uint8Array(buf),salt=b.slice(0,16),iv=b.slice(16,28),ct=b.slice(28);
+    return crypto.subtle.importKey("raw",new TextEncoder().encode(code),"PBKDF2",false,["deriveKey"])
+      .then(function(k){return crypto.subtle.deriveKey({name:"PBKDF2",salt:salt,iterations:310000,hash:"SHA-256"},k,{name:"AES-GCM",length:256},false,["decrypt"])})
+      .then(function(key){return crypto.subtle.decrypt({name:"AES-GCM",iv:iv},key,ct)})}
   [].forEach.call(document.querySelectorAll(".dl-btn"),function(btn){btn.addEventListener("click",function(){
     var code=CODE||norm(document.getElementById("dcode").value);
     if(!code){document.getElementById("dcodewrap").hidden=false;derr.textContent="Введите код страницы, чтобы скачать";document.getElementById("dcode").focus();return}
-    derr.textContent="";btn.disabled=true;btn.textContent="Готовлю…";
-    decryptFile(btn.dataset.bin,code).then(function(plain){
-      var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([plain],{type:btn.dataset.mime}));a.download=btn.dataset.name;
-      document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},4000);
-      CODE=code;btn.classList.add("done");btn.textContent="Скачано"})
-    .catch(function(e){btn.textContent="Скачать";derr.textContent=(e&&e.name==="OperationError")?"Неверный код":"Не удалось скачать: "+(e&&e.message||e)})
-    .then(function(){btn.disabled=false})})});
+    if(!(window.crypto&&crypto.subtle)){derr.textContent="Этот браузер не умеет расшифровывать файлы. Откройте страницу в Safari или Chrome.";return}
+    derr.textContent="";btn.disabled=true;btn.textContent="Загрузка…";
+    fetchProgress("files/"+btn.dataset.bin,function(p){btn.textContent="Загрузка "+p+" %"})
+    .then(function(buf){btn.textContent="Открываю…";return decrypt(buf,code)})
+    .then(function(plain){
+      var url=URL.createObjectURL(new Blob([plain],{type:btn.dataset.mime}));
+      var a=document.createElement("a");a.href=url;a.download=btn.dataset.name;a.className="dl-save";a.textContent="Сохранить файл";a.rel="noopener";
+      if(!INAPP){var t=document.createElement("a");t.href=url;t.download=btn.dataset.name;document.body.appendChild(t);t.click();t.remove()}
+      CODE=code;btn.replaceWith(a);
+      if(INAPP)derr.textContent="Файл готов — нажмите «Сохранить файл». Если не сохраняется, откройте страницу в Safari или Chrome."})
+    .catch(function(e){btn.disabled=false;btn.textContent="Скачать";
+      derr.textContent=(e&&e.name==="OperationError")?"Неверный код":"Не удалось скачать: "+(e&&e.message||e)+". Проверьте интернет и нажмите ещё раз."})})});
 
   /* появление по скроллу */
   function observe(){var els=document.querySelectorAll(".reveal");
