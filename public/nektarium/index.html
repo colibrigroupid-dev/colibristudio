@@ -160,6 +160,21 @@
   .player .sub{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:4px 0 16px}
   .player audio{width:100%}
 
+  /* от автора */
+  .author{background:#120e08}
+  .agroup{margin-top:clamp(48px,6vw,80px)}
+  .agroup h3{font-family:var(--disp);font-size:clamp(26px,3vw,34px);font-weight:600;color:var(--raktum)}
+  .adesc{color:var(--mute);font-size:15px;margin:4px 0 22px}
+  .masonry{columns:4 220px;column-gap:12px}
+  .masonry figure{break-inside:avoid;margin:0 0 12px;background:#f4efe6}
+  .masonry figure img{height:auto;object-fit:contain}
+  .masonry figcaption{position:static;background:var(--ink-3);padding:10px 12px;font-size:11px;line-height:1.5;color:var(--soft)}
+  .masonry figure:hover img{transform:none}
+  .q{display:inline-block;margin-left:6px;color:var(--honey);border-bottom:1px dotted rgba(227,168,60,.6);text-transform:none;letter-spacing:.02em}
+  .studio-tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#f0c9b8;border:1px solid rgba(200,69,47,.6);padding:5px 10px;margin-bottom:16px}
+  .hero-note{position:absolute;right:24px;bottom:18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,230,212,.55)}
+  @media(max-width:600px){.hero-note{left:24px;right:auto}}
+
   /* скачать */
   .dl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
   .dl-code input{background:var(--ink-3);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:15px;letter-spacing:.2em;text-transform:uppercase;padding:12px 14px;width:220px}
@@ -218,7 +233,7 @@
 <header class="bar">
   <a class="brand" href="#top">НЕКТАРИУМ</a>
   <nav>
-    <a href="#mir">Мир</a><a href="#tizer">Тизер</a><a href="#geroi">Герои</a><a href="#raskadrovka">Раскадровка</a><a href="#poryadok">Порядок</a><a class="cta" href="#skachat">Скачать</a>
+    <a href="#avtor">От автора</a><a href="#mir">Мир</a><a href="#tizer">Тизер</a><a href="#geroi">Герои</a><a href="#raskadrovka">Раскадровка</a><a href="#poryadok">Порядок</a><a class="cta" href="#skachat">Скачать</a>
   </nav>
 </header>
 
@@ -226,6 +241,7 @@
   <section class="hero" style="padding:0">
     <div class="bg"><img src="assets/hero.jpg" alt="Стрела летит над долиной между двумя солнцами — золотым Рактумом и красным Зунаном" width="2400" height="1339" fetchpriority="high"></div>
     <div class="scrim"></div>
+    <span class="hero-note">Кадр студии · на согласовании</span>
     <div class="inner">
       <div class="kicker">Тизер · 5 минут</div>
       <h1>НЕКТАРИУМ</h1>
@@ -236,6 +252,56 @@
         <span class="tag">Героиня — Зои</span>
         <span class="tag">Без диалогов · музыка и шумы</span>
       </div>
+    </div>
+  </section>
+
+  <section id="avtor" class="author">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">От автора · канон</div>
+        <h2>Сначала — то, каким мир видит Владимир</h2>
+        <p class="lead">Эскизы, раскадровка и иллюстрации из книги — это основа. Всё, что рисует студия, сверяется с этими листами и показывается на согласование; ничего не идёт в работу, пока автор не сказал «да».</p>
+        <p class="lead">Ориентир по качеству, который выбрал Владимир, — фильм «Warcraft» (2016): живая фактура, тёплый свет, существа, которые выглядят настоящими.</p>
+      </div>
+      <div class="agroup"><h3>Эскизы героев</h3><p class="adesc">Листы, с которых всё начинается: облик, пропорции, оружие.</p><div class="masonry">
+        <figure><img src="assets/avtor/eskiz-zoi-1.jpg" alt="Зои · рост и головы" loading="lazy"><figcaption>Зои · рост и головы</figcaption></figure>
+        <figure><img src="assets/avtor/eskiz-zoi-2.jpg" alt="Зои · позы, лук-меч, колчан" loading="lazy"><figcaption>Зои · позы, лук-меч, колчан</figcaption></figure>
+        <figure><img src="assets/avtor/eskiz-shershen-1.jpg" alt="Шершень · рост, трезубец" loading="lazy"><figcaption>Шершень · рост, трезубец</figcaption></figure>
+        <figure><img src="assets/avtor/eskiz-shershen-3.jpg" alt="Шершень · спина, медальон" loading="lazy"><figcaption>Шершень · спина, медальон</figcaption></figure>
+        <figure><img src="assets/avtor/eskiz-shershen-2.jpg" alt="Шершень · головы, этюды" loading="lazy"><figcaption>Шершень · головы, этюды</figcaption></figure>
+        <figure><img src="assets/avtor/eskiz-shershen-4.jpg" alt="Шершень · арсенал" loading="lazy"><figcaption>Шершень · арсенал</figcaption></figure>
+      </div></div>
+      <div class="agroup"><h3>Раскадровка и знак</h3><p class="adesc">Как Владимир видит ролик и заставку студии.</p><div class="masonry">
+        <figure><img src="assets/avtor/raskadrovka-avtora.jpg" alt="Раскадровка автора · 32 кадра" loading="lazy"><figcaption>Раскадровка автора · 32 кадра</figcaption></figure>
+        <figure><img src="assets/avtor/zastavka.jpg" alt="Заставка Beepherium" loading="lazy"><figcaption>Заставка Beepherium</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-01.jpg" alt="Знак Beepherium · из книги" loading="lazy"><figcaption>Знак Beepherium · из книги</figcaption></figure>
+      </div></div>
+      <div class="agroup"><h3>Места</h3><p class="adesc">Мир планеты в иллюстрациях книги.</p><div class="masonry">
+        <figure><img src="assets/avtor/kniga-03.jpg" alt="Пейзаж планеты · в небе два светила" loading="lazy"><figcaption>Пейзаж планеты · в небе два светила</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-13.jpg" alt="Пирамида на воде" loading="lazy"><figcaption>Пирамида на воде</figcaption></figure>
+      </div></div>
+      <div class="agroup"><h3>Народы и герои книги</h3><p class="adesc">Каст полного метра — по иллюстрациям романа. Где мы не уверены, кто изображён, — отмечено.</p><div class="masonry">
+        <figure><img src="assets/avtor/kniga-08.jpg" alt="Богиня Бифирия" loading="lazy"><figcaption>Богиня Бифирия</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-09.jpg" alt="Шаман в красном — Фаргрим?" loading="lazy"><figcaption>Шаман в красном — Фаргрим? <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-23.jpg" alt="Шмель-маг — Барент?" loading="lazy"><figcaption>Шмель-маг — Барент? <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-10.jpg" alt="Шмель-воин со щитом" loading="lazy"><figcaption>Шмель-воин со щитом <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-05.jpg" alt="Шмели и пчёлы-воины" loading="lazy"><figcaption>Шмели и пчёлы-воины</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-16.jpg" alt="Муравьиха-кузнец Темирша" loading="lazy"><figcaption>Муравьиха-кузнец Темирша</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-17.jpg" alt="Муравей-путник — Голубоглазый?" loading="lazy"><figcaption>Муравей-путник — Голубоглазый? <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-22.jpg" alt="Голубоглазый и Глаза Неба · Триединый амулет" loading="lazy"><figcaption>Голубоглазый и Глаза Неба · Триединый амулет</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-15.jpg" alt="Бабочки — Глаза Неба" loading="lazy"><figcaption>Бабочки — Глаза Неба</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-24.jpg" alt="Глаза Неба · музыка" loading="lazy"><figcaption>Глаза Неба · музыка</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-11.jpg" alt="Юцилий, царь грибов" loading="lazy"><figcaption>Юцилий, царь грибов</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-12.jpg" alt="Синий гриб — Флегма?" loading="lazy"><figcaption>Синий гриб — Флегма? <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-06.jpg" alt="Грибной народ — кто это?" loading="lazy"><figcaption>Грибной народ — кто это? <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-21.jpg" alt="Грибной старец — кто это?" loading="lazy"><figcaption>Грибной старец — кто это? <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-18.jpg" alt="Нектарик" loading="lazy"><figcaption>Нектарик</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-19.jpg" alt="Нектарик" loading="lazy"><figcaption>Нектарик</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-20.jpg" alt="Нектарик — Росинка?" loading="lazy"><figcaption>Нектарик — Росинка? <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-14.jpg" alt="Хищник с шипами — кто это?" loading="lazy"><figcaption>Хищник с шипами — кто это? <span class="q">уточнить у автора</span></figcaption></figure>
+        <figure><img src="assets/avtor/kniga-25.jpg" alt="Красный паук" loading="lazy"><figcaption>Красный паук</figcaption></figure>
+        <figure><img src="assets/avtor/kniga-26.jpg" alt="Паук-птицеед" loading="lazy"><figcaption>Паук-птицеед</figcaption></figure>
+      </div></div>
     </div>
   </section>
 
@@ -282,8 +348,9 @@
   <section class="eye" id="geroi" style="padding:0">
     <img src="assets/zoi-makro.jpg" alt="Глаза Зои крупно: соты, за которыми еле видны большие глаза" width="1600" height="893" loading="lazy">
     <div class="wrap reveal">
+      <span class="studio-tag">Студия · вариант на согласовании</span>
       <div class="eyebrow">Героиня</div>
-      <h2>Зои — дозорная, которая слышит</h2>
+      <h2>Зои — как мы её прочитали по эскизам</h2>
       <p class="lead">Глаза — соты, как экран: сквозь ячейки едва проступают большие живые глаза. По этому признаку её узнаёт зритель и по нему делается каждый кадр.</p>
     </div>
   </section>
@@ -296,15 +363,16 @@
         <figure><img src="assets/shershen-portret.jpg" alt="Шершень, портрет" width="1600" height="893" loading="lazy"><figcaption>Шершень · портрет</figcaption></figure>
         <figure><img src="assets/shershen-rost.jpg" alt="Шершень в полный рост с трезубцем" width="1600" height="893" loading="lazy"><figcaption>Шершень · полный рост</figcaption></figure>
       </div>
-      <p class="note">Эталоны v3 — по эскизам Владимира, на утверждение. По договору это первый шаг: утверждаем героев, после чего облик становится каноном и больше не меняется от кадра к кадру.</p>
+      <p class="note">Варианты студии v3 по эскизам Владимира — ещё не согласованы. По договору это первый шаг: утверждаем героев, после чего облик становится каноном и больше не меняется от кадра к кадру.</p>
     </div>
   </section>
 
   <section id="raskadrovka" class="alt">
     <div class="wrap">
       <div class="reveal">
+        <span class="studio-tag">Студия · на согласовании</span>
         <div class="eyebrow">Раскадровка</div>
-        <h2>Как это будет смотреться</h2>
+        <h2>Черновая раскадровка студии</h2>
         <p class="lead">Черновая раскадровка первой версии сцены — по ней выверялись ритм и композиция. Облик героев в ней ещё до утверждения канона; чистовые кадры будут по утверждённым листам.</p>
       </div>
       <div class="board">
@@ -404,6 +472,7 @@
 <li><div class="dl-t">Режиссёрский сценарий серии · 3 минуты<span class="dl-d">Первая версия, 35 кадров</span></div><span class="dl-s">DOCX · 13 КБ</span><button class="dl-btn" type="button" data-bin="05.bin" data-name="Режиссёрский-сценарий-серия-1-3-мин.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
 </ul></div>
 <div class="dl-group"><h3>Герои</h3><ul>
+<li><div class="dl-t">Эскизы автора<span class="dl-d">Зои и шершень, раскадровка и заставка Beepherium — листы Владимира · 8 изображений</span></div><span class="dl-s">ZIP · 1,8 МБ</span><button class="dl-btn" type="button" data-bin="49.bin" data-name="Эскизы-автора.zip" data-mime="application/zip">Скачать</button></li>
 <li><div class="dl-t">Зои — карта персонажа<span class="dl-d">Все версии, глаза-соты, детали костюма и оружия</span></div><span class="dl-s">PDF · 6,8 МБ</span><button class="dl-btn" type="button" data-bin="06.bin" data-name="Зои-карта-персонажа.pdf" data-mime="application/pdf">Скачать</button></li>
 <li><div class="dl-t">Эталоны героев v3<span class="dl-d">Зои и шершень: портреты, рост, глаза крупно · 6 изображений</span></div><span class="dl-s">ZIP · 2,9 МБ</span><button class="dl-btn" type="button" data-bin="07.bin" data-name="Эталоны-героев-v3.zip" data-mime="application/zip">Скачать</button></li>
 <li><div class="dl-t">Коллажи версий<span class="dl-d">Зои, шершень, шершни-пары · 5 листов</span></div><span class="dl-s">ZIP · 5,4 МБ</span><button class="dl-btn" type="button" data-bin="08.bin" data-name="Коллажи-версий.zip" data-mime="application/zip">Скачать</button></li>
