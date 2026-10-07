@@ -39,8 +39,8 @@
 
   /* ---- hero / viewfinder ---- */
   .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
-  .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;filter:saturate(.85) contrast(1.05)}
-  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,11,10,.35) 0%,rgba(10,11,10,0) 30%,rgba(10,11,10,.55) 62%,var(--ink) 100%);z-index:1}
+  .hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:22% 40%;filter:saturate(.85) contrast(1.05)}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,11,10,.7) 0%,rgba(10,11,10,0) 55%),linear-gradient(180deg,rgba(10,11,10,.35) 0%,rgba(10,11,10,0) 30%,rgba(10,11,10,.55) 62%,var(--ink) 100%);z-index:1}
   .vf{position:absolute;inset:22px;z-index:2;pointer-events:none;font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:rgba(236,230,218,.85)}
   .vf i{position:absolute;width:34px;height:34px;border-color:rgba(236,230,218,.7);border-style:solid;border-width:0}
   .vf .c1{top:0;left:0;border-top-width:2px;border-left-width:2px}
@@ -53,9 +53,9 @@
   .vf .tc{position:absolute;top:12px;right:52px;font-variant-numeric:tabular-nums}
   .vf .cam{position:absolute;bottom:12px;right:52px;color:var(--cctv)}
   .hero .in{position:relative;z-index:3;padding-bottom:9vh;width:100%}
-  .hero h1{font-family:var(--disp);font-weight:500;font-size:clamp(58px,12vw,168px);line-height:.92;letter-spacing:-.01em;text-transform:uppercase}
+  .hero h1{font-family:var(--disp);font-weight:500;font-size:clamp(58px,9vw,128px);line-height:.92;letter-spacing:-.01em;text-transform:uppercase}
   .hero .tr{font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);margin:14px 0 26px}
-  .hero .log{font-size:clamp(18px,2vw,23px);line-height:1.5;max-width:640px;text-wrap:balance}
+  .hero .log{font-size:clamp(17px,1.6vw,21px);line-height:1.5;max-width:500px;text-wrap:balance}
   .hero .byline{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);margin-top:30px;line-height:2}
   .hero .byline em{color:var(--paper);font-style:normal}
 
@@ -266,7 +266,7 @@
 </div>
 
 <header class="hero">
-  <img src="assets/01-key-art.jpg" width="1376" height="768" alt="Томирис снимает себя на телефон в тёмной квартире, в глубине коридора стоит мужской силуэт">
+  <img src="assets/01-key-art.jpg" width="1920" height="1080" alt="Томирис снимает себя на телефон в тёмной квартире, в глубине коридора стоит мужской силуэт">
   <div class="vf" aria-hidden="true">
     <i class="c1"></i><i class="c2"></i><i class="c3"></i><i class="c4"></i>
     <div class="rec"><b></b>REC</div>
@@ -324,7 +324,7 @@
     <h2>Трое в кадре, и все снимают</h2>
 
     <div class="hero-card">
-      <figure><img src="assets/02-tomiris.jpg" width="1376" height="768" loading="lazy" alt="Томирис ставит телефон на штатив на кухне"><figcaption><b>Томирис</b> · карта образа</figcaption></figure>
+      <figure><img src="assets/02-tomiris.jpg" width="1920" height="1080" loading="lazy" alt="Томирис ставит телефон на штатив на кухне"><figcaption><b>Томирис</b> · карта образа</figcaption></figure>
       <div>
         <div class="role">Героиня · 27 лет</div>
         <h3>Томирис</h3>
@@ -334,7 +334,7 @@
     </div>
 
     <div class="hero-card rev">
-      <figure><img src="assets/03-stalker.jpg" width="1376" height="768" loading="lazy" alt="Доставщик воды в кепке с бутылью на плече в офисном коридоре"><figcaption><b>Сталкер (Асылбек)</b> · карта образа</figcaption></figure>
+      <figure><img src="assets/03-stalker.jpg" width="1920" height="1080" loading="lazy" alt="Доставщик воды в кепке с бутылью на плече в офисном коридоре"><figcaption><b>Сталкер (Асылбек)</b> · карта образа</figcaption></figure>
       <div>
         <div class="role">Антагонист · около 30</div>
         <h3>Асылбек — «доставщик воды»</h3>
@@ -365,12 +365,12 @@
       <div><div class="k">Камера 3 · Его</div><h3>Чужая</h3><p>Длиннофокусная через ветки и окна, тяжёлое дыхание за кадром. Появляется ровно в середине фильма и меняет жанр.</p></div>
     </div>
     <div class="duo">
-      <figure><img src="assets/13-komnata.jpg" width="1376" height="768" loading="lazy" alt="Стена, покрытая сотнями фотографий героини, с расписанием и красными нитями"><figcaption><b>Сц. 56 · Квартира сверху.</b> На стене её расписание по минутам: этим оружием он пользовался всё время.</figcaption></figure>
-      <figure><img src="assets/10-zerkalo.jpg" width="1376" height="768" loading="lazy" alt="Запотевшее зеркало с сердцем и надписью ВСЕГДА РЯДОМ"><figcaption><b>Сц. 44 · «ВСЕГДА РЯДОМ».</b> Конец тишины после гибели Армана: сталкер не умер.</figcaption></figure>
+      <figure><img src="assets/13-komnata.jpg" width="1920" height="1080" loading="lazy" alt="Стена, покрытая сотнями фотографий героини, с расписанием и красными нитями"><figcaption><b>Сц. 56 · Квартира сверху.</b> На стене её расписание по минутам: этим оружием он пользовался всё время.</figcaption></figure>
+      <figure><img src="assets/10-zerkalo.jpg" width="1920" height="1080" loading="lazy" alt="Запотевшее зеркало с сердцем и надписью ВСЕГДА РЯДОМ"><figcaption><b>Сц. 44 · «ВСЕГДА РЯДОМ».</b> Конец тишины после гибели Армана: сталкер не умер.</figcaption></figure>
     </div>
     <div class="duo rev">
-      <figure><img src="assets/15-kuvshin.jpg" width="1376" height="768" loading="lazy" alt="Девушка на стуле смотрит на стеклянный кувшин с водой на столе"><figcaption><b>Сц. 59 · Кувшин.</b> Вода, которую она пила в первой сцене, в которую он сыпал снотворное, становится её оружием.</figcaption></figure>
-      <figure><img src="assets/17-final.jpg" width="1376" height="768" loading="lazy" alt="Героиня у двери протягивает ладонь с ключами, в углу горит красный огонёк камеры"><figcaption><b>Сц. 61 · Ключи.</b> Финал на свету. Красный огонёк в углу никуда не делся.</figcaption></figure>
+      <figure><img src="assets/15-kuvshin.jpg" width="1920" height="1080" loading="lazy" alt="Связанная Томирис на стуле, за ней сталкер, на переднем плане стеклянный кувшин с водой"><figcaption><b>Сц. 59 · Кувшин.</b> Вода, которую она пила в первой сцене, в которую он сыпал снотворное, становится её оружием.</figcaption></figure>
+      <figure><img src="assets/17-final.jpg" width="1920" height="1080" loading="lazy" alt="Героиня у двери протягивает ладонь с ключами, в углу горит красный огонёк камеры"><figcaption><b>Сц. 61 · Ключи.</b> Финал на свету. Красный огонёк в углу никуда не делся.</figcaption></figure>
     </div>
   </div>
 </section>
