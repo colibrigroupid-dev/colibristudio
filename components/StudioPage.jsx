@@ -179,10 +179,16 @@ export default function StudioPage() {
             alt="A hummingbird hovers by a red heliconia flower above a jungle river at golden hour"
             loading="lazy"
           />
-          <figcaption className="cap">
-            <span>
+          <figcaption className="cap cap-stack">
+            <div className="cap-main">
+              <T
+                en="Three grams of bird — and 800 km over open sea without a single stop."
+                ru="Три грамма веса — и 800 км над открытым морем без единой посадки."
+              />
+            </div>
+            <div className="cap-sub">
               <T en="Colibri. Small, fast, precise." ru="Колибри. Маленькая, быстрая, точная." />
-            </span>
+            </div>
           </figcaption>
         </figure>
       </section>

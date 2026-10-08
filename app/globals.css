@@ -88,6 +88,11 @@
   .still .cap{position:absolute;z-index:3;left:0;right:0;bottom:calc(9vh + 18px);display:flex;justify-content:center}
   .still .cap span{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);
     background:rgba(7,8,11,.55);backdrop-filter:blur(6px);padding:9px 18px;border:1px solid rgba(239,233,221,.14)}
+  .still .cap-stack{flex-direction:column;align-items:center;gap:10px;padding:0 16px}
+  .still .cap-stack span{background:none;backdrop-filter:none;padding:0;border:0}
+  .still .cap-main{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);line-height:1.7;text-align:center;max-width:760px;
+    background:rgba(7,8,11,.55);backdrop-filter:blur(6px);padding:9px 18px;border:1px solid rgba(239,233,221,.14)}
+  .still .cap-sub{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--paper);opacity:.6;text-shadow:0 1px 6px rgba(0,0,0,.7)}
 
   .cols{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
   .cols .text p+p{margin-top:16px}
