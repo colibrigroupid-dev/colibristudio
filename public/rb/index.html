@@ -227,6 +227,18 @@
     .barlinks a.hm{display:none}
     .understood,.two,.alsoex,.terms{grid-template-columns:1fr}
     .checks{columns:1}
+    .tw table{min-width:0}
+    .xt thead{display:none}
+    .xt table,.xt tbody,.xt tr,.xt td{display:block;width:100%}
+    .xt tr{border-bottom:1px solid var(--line);padding:8px 0}
+    .xt td{border:0;padding:4px 16px;white-space:normal}
+    .xt td.num{text-align:left;color:var(--amber)}
+    .pt thead{display:none}
+    .pt table,.pt tbody,.pt tr,.pt td{display:block;width:100%}
+    .pt tr{border-bottom:1px solid var(--line);padding:6px 0}
+    .pt td{border:0;padding:6px 16px;display:flex;justify-content:space-between;gap:12px;text-align:left}
+    .pt td:first-child{display:block;font-weight:900;text-transform:uppercase;font-size:18px;padding-top:12px}
+    .pt td[data-l]::before{content:attr(data-l);color:var(--mute);font-weight:500}
     .ads{grid-template-columns:1fr 1fr}
     .xp .cols,.xp .incl{grid-template-columns:1fr}
     .xp .frame::before,.xp .frame::after{width:28px;height:28px}
@@ -253,10 +265,6 @@
   <nav class="barlinks">
     <a href="#tiers">Уровни</a>
     <a href="#prices">Цены</a>
-    <a class="hm" href="#express">Быстрая линия</a>
-    <a class="hm" href="#auto">Автоматика</a>
-    <a class="hm" href="#month">Месяц</a>
-    <a class="hm" href="#terms">Условия</a>
   </nav>
 </div>
 
@@ -283,8 +291,7 @@
       <div><div class="n">02</div><h4>Цифры на экране, не голосом</h4><p>Титры вшиты, диктор не&nbsp;быстрее 2,4&nbsp;слова в&nbsp;секунду, у&nbsp;каждой цифры есть источник.</p></div>
       <div><div class="n">03</div><h4>Вывод и риск в финале</h4><p>«Что делать с&nbsp;этой новостью» и&nbsp;почему идея может не&nbsp;сработать. Дисклеймер в&nbsp;последнем кадре.</p></div>
       <div><div class="n">04</div><h4>Новости и цифры — на ИИ</h4><p>«Что случилось» и&nbsp;«Цифра дня» собираются из&nbsp;инфографики и&nbsp;диктора без&nbsp;съёмок, поэтому их&nbsp;можно делать каждый день.</p></div>
-      <div><div class="n">05</div><h4>Опросы и интервью — съёмка</h4><p>Один съёмочный день раз в&nbsp;две недели. Каждое интервью потом режем на&nbsp;4–6 коротких роликов.</p></div>
-      <div><div class="n">06</div><h4>Стоп-лист в конвейере</h4><p>Редполитика Альфа-Инвестиций проверяется по&nbsp;чек-листу на&nbsp;каждом ролике, а&nbsp;не&nbsp;вспоминается на&nbsp;правках.</p></div>
+      <div><div class="n">05</div><h4>Стоп-лист в конвейере</h4><p>Редполитика Альфа-Инвестиций проверяется по&nbsp;чек-листу на&nbsp;каждом ролике, а&nbsp;не&nbsp;вспоминается на&nbsp;правках.</p></div>
     </div>
   </div>
 </section>
@@ -293,7 +300,7 @@
   <div class="wrap">
     <div class="eyebrow">Вилка · цена за 20 секунд готового ролика</div>
     <h2>Три уровня качества</h2>
-    <p class="lead">Уровень выбирается под&nbsp;рубрику, а&nbsp;не&nbsp;на&nbsp;весь проект. Новости дня делаем на&nbsp;первом уровне, истории компаний на&nbsp;втором, имиджевые и&nbsp;трендовые выпуски на&nbsp;третьем.</p>
+    <p class="lead">Уровень можно выбрать под каждую рубрику. Например, «Цифру дня» делать каждый день на&nbsp;первом уровне, а&nbsp;громкую новость недели на&nbsp;втором или третьем.</p>
 
     <div class="tiers">
       <article class="tier">
@@ -338,7 +345,7 @@
             <li>Единый визуальный стиль серии</li>
             <li>Монтаж, цветокоррекция, звуковой дизайн</li>
           </ul>
-          <div class="fit"><b>Рубрики:</b> «Бизнес изнутри», «Что случилось» с&nbsp;картинкой, трендовые адаптации</div>
+          <div class="fit"><b>Рубрики:</b> «Что случилось» и&nbsp;«Цифра дня» с&nbsp;ИИ-кадрами по&nbsp;теме</div>
         </div>
       </article>
 
@@ -357,7 +364,7 @@
             <li>Отбор лучших дублей, композ, цветокоррекция</li>
             <li>Музыка и&nbsp;саунд-дизайн по&nbsp;сцене</li>
           </ul>
-          <div class="fit"><b>Рубрики:</b> имиджевые выпуски, вирусные тренды, «Бизнес изнутри» как мини-фильм</div>
+          <div class="fit"><b>Рубрики:</b> главная новость недели, спецвыпуски</div>
         </div>
       </article>
     </div>
@@ -365,7 +372,7 @@
     <div class="alsoex">
       <figure>
         <video src="assets/benza.mp4" poster="assets/benza.jpg" controls muted playsinline preload="none"></video>
-        <figcaption><b>Уровень 2, 55 секунд.</b> История компании целиком на&nbsp;ИИ: герой-рассказчик, производство, продукт. Так может выглядеть «Бизнес изнутри».</figcaption>
+        <figcaption><b>Уровень 2.</b> Герой-рассказчик, производство, продукт целиком на&nbsp;ИИ. Такими кадрами иллюстрируем новость о&nbsp;компании.</figcaption>
       </figure>
       <figure>
         <video src="assets/fjord.mp4" poster="assets/fjord.jpg" controls muted playsinline preload="none"></video>
@@ -375,7 +382,7 @@
     <p class="note">Примеры показывают уровень картинки. Первый уровень показан макетом, он&nbsp;работает прямо на&nbsp;странице. В&nbsp;роликах для&nbsp;Альфа-Инвестиций не&nbsp;будет лиц и&nbsp;голосов реальных публичных людей.</p>
 
     <h3 style="margin-top:64px">Наша реклама в вертикали</h3>
-    <p class="note" style="margin-top:8px">Продуктовые ролики на ИИ: товар, свет, фактура, человек в кадре. Тот же подход переносится на истории компаний с Мосбиржи.</p>
+    <p class="note" style="margin-top:8px">Продуктовые ролики на ИИ: товар, свет, фактура, человек в кадре. Тот же подход переносим на кадры для новостей о компаниях.</p>
     <div class="ads">
       <figure><video src="assets/ads/perfume.mp4" poster="assets/ads/perfume.jpg" controls muted loop playsinline preload="none"></video><figcaption>Парфюм, имиджевый ролик</figcaption></figure>
       <figure><video src="assets/ads/razor.mp4" poster="assets/ads/razor.jpg" controls muted loop playsinline preload="none"></video><figcaption>Бритва для Wildberries</figcaption></figure>
@@ -390,27 +397,24 @@
   <div class="wrap">
     <div class="eyebrow">Цены по форматам из брифа</div>
     <h2>Сколько стоит один ролик</h2>
-    <div class="tw">
+    <div class="tw pt">
       <table>
         <thead><tr><th>Формат</th><th>Хронометраж</th><th class="num">Инфографика</th><th class="num">ИИ-графика</th><th class="num">Кино-ИИ</th></tr></thead>
         <tbody>
-          <tr><td>Цифра дня<span class="s">одна цифра и её смысл</span></td><td>15–20 с</td><td class="num">9 000 ₽</td><td class="num">25 000 ₽</td><td class="dash">—</td></tr>
-          <tr><td>Что случилось<span class="s">хук, что произошло, вывод, риск</span></td><td>30–45 с</td><td class="num">15 000 ₽</td><td class="num">40 000 ₽</td><td class="dash">—</td></tr>
-          <tr><td>Трендовая адаптация<span class="s">вирусная механика плюс биржевой смысл</span></td><td>10–30 с</td><td class="dash">—</td><td class="num">30 000 ₽</td><td class="num">от 70 000 ₽</td></tr>
-          <tr><td>Бизнес изнутри<span class="s">история компании с Мосбиржи</span></td><td>60–90 с</td><td class="num">35 000 ₽</td><td class="num">80 000–110 000 ₽</td><td class="num">от 220 000 ₽</td></tr>
-          <tr><td>Опрос предпринимателей<span class="s">монтаж из съёмочного дня</span></td><td>30–40 с</td><td colspan="3" class="num">12 000 ₽ за ролик + съёмочный день</td></tr>
-          <tr><td>Интервью<span class="s">нарезка 5–7 минут в короткие хуковые ролики</span></td><td>5–7 мин</td><td colspan="3" class="num">12 000 ₽ за короткий ролик + съёмочный день</td></tr>
+          <tr><td>Цифра дня<span class="s">одна цифра и её смысл</span></td><td data-l="Хронометраж">15–20 с</td><td class="num" data-l="Инфографика">9 000 ₽</td><td class="num" data-l="ИИ-графика">25 000 ₽</td><td class="num" data-l="Кино-ИИ">70 000 ₽</td></tr>
+          <tr><td>Что случилось<span class="s">хук, что произошло, вывод, риск</span></td><td data-l="Хронометраж">30–45 с</td><td class="num" data-l="Инфографика">15 000 ₽</td><td class="num" data-l="ИИ-графика">40 000 ₽</td><td class="num" data-l="Кино-ИИ">110 000 ₽</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="tw" style="margin-top:18px">
+    <div class="tw xt" style="margin-top:18px">
       <table>
         <thead><tr><th>Дополнительно</th><th class="num">Стоимость</th></tr></thead>
         <tbody>
           <tr><td>Запуск: шаблоны трёх рубрик, голос диктора, музыкальная библиотека, 3 пробных ролика на реальных темах<span class="s">разово, в начале работы</span></td><td class="num">150 000 ₽</td></tr>
-          <tr><td>Съёмочный день: оператор, свет, звук, две камеры, до 6 героев<span class="s">раз в две недели; гонорары героев отдельно</span></td><td class="num">от 180 000 ₽</td></tr>
           <tr><td>Сценарий нашими силами: таблица «время / текст / что на экране» со списком источников</td><td class="num">+3 000 ₽ / +6 000 ₽<span class="s">уровень 1 / уровни 2–3</span></td></tr>
           <tr><td>Срочная новость: ролик в тот же день, 3–4 часа после утверждения текста</td><td class="num">+30 %</td></tr>
+          <tr><td>Новостной радар: каждое утро 10–15 инфоповодов с цифрами и источниками<span class="s">настройка + сопровождение в месяц</span></td><td class="num">90 000 ₽ + 30 000 ₽/мес</td></tr>
+          <tr><td>Автовыкладка утверждённых роликов в Telegram, YouTube, VK, Rutube, MAX<span class="s">настройка + сопровождение в месяц; Дзен в один клик</span></td><td class="num">120 000 ₽ + 30 000 ₽/мес</td></tr>
           <tr><td>Отдельные версии под площадки (VK, Shorts, Дзен) сверх общего мастера</td><td class="num">+10 %</td></tr>
         </tbody>
       </table>
@@ -419,201 +423,6 @@
   </div>
 </section>
 
-
-<section class="xp" id="express">
-  <div class="frame">
-    <div class="pills"><span class="pill f">AI VIDEO</span><span class="pill">быстрая линия</span></div>
-    <h2>Быстро<br>и недорого</h2>
-    <p class="sublead">Отдельная линия для простых роликов, когда скорость важнее фирменной системы. Цена за минуту готового видео, ролики до&nbsp;4&nbsp;минут.</p>
-    <div class="cols">
-      <div>
-        <h3>Мультфильм</h3>
-          <div class="row"><div class="nm">Базовая анимация<small>1 минута</small></div><div class="pr"><span class="ot">от</span>32 000 ₽<small>≈ 10 700 ₽ за 20 с</small></div></div>
-          <div class="row"><div class="nm">Стандарт<small>1 минута</small></div><div class="pr"><span class="ot">от</span>41 000 ₽</div></div>
-          <div class="row"><div class="nm">Премиум<small>1 минута</small></div><div class="pr"><span class="ot">от</span>48 500 ₽</div></div>
-        <h3 style="margin-top:36px">Видео-реализм</h3>
-          <div class="row"><div class="nm">Стандарт<small>1 минута</small></div><div class="pr"><span class="ot">от</span>45 000 ₽<small>≈ 15 000 ₽ за 20 с</small></div></div>
-          <div class="row"><div class="nm">Премиум<small>1 минута</small></div><div class="pr"><span class="ot">от</span>51 000 ₽<small>≈ 17 000 ₽ за 20 с</small></div></div>
-        <h3 style="margin-top:36px">Карусель</h3>
-          <div class="row"><div class="nm">В любом стиле<small>8–10 слайдов</small></div><div class="pr"><span class="ot">от</span>13 000 ₽</div></div>
-      </div>
-      <div>
-        <h3>Озвучка и липсинк</h3>
-          <div class="row"><div class="nm">Голоса героев</div><div class="pr">11 500 ₽<small>/ мин видео</small></div></div>
-          <div class="row"><div class="nm">Диктор по готовому тексту</div><div class="pr">5 100 ₽<small>/ ролик</small></div></div>
-          <div class="row"><div class="nm">Текст для диктора</div><div class="pr">1 900 ₽<small>/ ролик</small></div></div>
-          <div class="row"><div class="nm">Второй язык озвучки</div><div class="pr">5 100 ₽<small>/ ролик</small></div></div>
-          <div class="row"><div class="nm">Липсинк</div><div class="pr">5 100 ₽<small>/ 30 с речи</small></div></div>
-        <h3 style="margin-top:36px">Персонажи и правки</h3>
-          <div class="row"><div class="nm">Дополнительный герой сверх трёх</div><div class="pr">5 100 ₽</div></div>
-          <div class="row"><div class="nm">Фотореализм героя<small>только вымышленные лица</small></div><div class="pr">5 100 ₽<small>/ герой</small></div></div>
-          <div class="row"><div class="nm">Дополнительная правка сверх трёх</div><div class="pr">1 900 ₽</div></div>
-          <div class="row"><div class="nm">Срочный заказ</div><div class="pr">+12 800 ₽<small>/ мин</small></div></div>
-      </div>
-    </div>
-    <div class="incl">
-      <div><h4>Уже включено</h4><p>Монтаж, фоновая музыка и наложение готовой озвучки.</p></div>
-      <div><p class="m">Цены за ролик до 4 минут. Три небольшие правки включены, пересоздание сцен отдельно. Озвучка и липсинк оплачиваются отдельно. Без НДС.</p></div>
-    </div>
-  </div>
-</section>
-
-
-<section id="auto">
-  <div class="wrap">
-    <div class="eyebrow">Автоматика вокруг роликов</div>
-    <h2>Поиск новостей и выкладка на площадки</h2>
-    <p class="lead">Два модуля, которые снимают с&nbsp;редакции рутину. Решения о&nbsp;темах и&nbsp;публикации остаются за&nbsp;людьми: автоматика готовит и&nbsp;выкладывает только то, что утвердили.</p>
-    <div class="two">
-      <div class="box">
-        <div class="lvl">Модуль 1</div>
-        <h3>Новостной радар</h3>
-        <ul class="checks" style="columns:1;margin-top:14px">
-          <li>Каждое утро к 9:00 собирает инфоповоды из новостей Мосбиржи, раскрытия компаний, сообщений ЦБ, деловых СМИ и каналов аналитиков Альфа-Инвестиций</li>
-          <li>Отбирает 10–15 тем: что случилось, почему это важно инвестору, какие цифры и откуда они взяты</li>
-          <li>Отмечает темы из стоп-листа и рубрики, которые уже есть у канала</li>
-          <li>Из этого списка собирается питч недели и срочные новости дня</li>
-        </ul>
-        <p class="note" style="margin-top:14px">Радар предлагает темы, а не пишет выводы. Бумаги, цены и прогнозы берутся только из аналитики Альфа-Инвестиций.</p>
-        <table><tr><td>Настройка</td><td class="num">90 000 ₽</td></tr><tr><td>Сопровождение</td><td class="num">30 000 ₽ / мес</td></tr></table>
-      </div>
-      <div class="box">
-        <div class="lvl">Модуль 2</div>
-        <h3>Автовыкладка</h3>
-        <ul class="checks" style="columns:1;margin-top:14px">
-          <li>Утверждённый ролик сам выходит по расписанию с обложкой и подписью под каждую площадку</li>
-          <li>Очередь публикаций на неделю в одной таблице</li>
-          <li>Отчёт о выходе: где опубликовано, ссылки, ошибки</li>
-        </ul>
-        <table>
-          <tr><td>Telegram, YouTube Shorts</td><td class="num">автоматически</td></tr>
-          <tr><td>VK Клипы и VK Видео, Rutube, Instagram</td><td class="num">автоматически по API<span class="s" style="display:block;color:var(--mute);font-size:13px">доступ проверяем на старте</span></td></tr>
-          <tr><td>MAX</td><td class="num">через бота<span class="s" style="display:block;color:var(--mute);font-size:13px">после верификации владельца канала</span></td></tr>
-          <tr><td>Дзен</td><td class="num">в один клик<span class="s" style="display:block;color:var(--mute);font-size:13px">открытого API нет: готовим всё, публикует редактор</span></td></tr>
-          <tr><td>Настройка</td><td class="num">120 000 ₽</td></tr>
-          <tr><td>Сопровождение</td><td class="num">30 000 ₽ / мес</td></tr>
-        </table>
-      </div>
-    </div>
-    <p class="note">Для автовыкладки нужны доступы владельца каналов к API площадок. Ключи остаются у вас, отозвать их можно в любой момент.</p>
-  </div>
-</section>
-
-<section class="alt" id="month">
-  <div class="wrap">
-    <div class="eyebrow">Как это выглядит в месяц</div>
-    <h2>Пилот и поток</h2>
-    <p class="lead">Два расчёта, чтобы понять порядок цифр. Точный расклад по&nbsp;форматам считаем, когда будет понятно, сколько новостей, трендов и&nbsp;длинных историй нужно.</p>
-    <div class="two">
-      <div class="box">
-        <div class="lvl">Пилот · 1 месяц</div>
-        <h3>40 роликов, около двух в день</h3>
-        <table>
-          <tr><td>26 × инфографика (цифра дня, новость)</td><td class="num">312 000 ₽</td></tr>
-          <tr><td>12 × ИИ-графика (новость с картинкой, тренд, история)</td><td class="num">480 000 ₽</td></tr>
-          <tr><td>2 × кино-ИИ (тренд или имиджевый выпуск)</td><td class="num">170 000 ₽</td></tr>
-          <tr><td>Запуск</td><td class="num">150 000 ₽</td></tr>
-          <tr class="tot"><td>Итого</td><td class="num">1 112 000 ₽</td></tr>
-        </table>
-        <div class="per">В среднем 24 000 ₽ за ролик без запуска, 27 800 ₽ с запуском.</div>
-      </div>
-      <div class="box">
-        <div class="lvl">Поток · с 2-го месяца</div>
-        <h3>220 роликов, 10 в рабочий день</h3>
-        <table>
-          <tr><td>160 × инфографика</td><td class="num">1 920 000 ₽</td></tr>
-          <tr><td>50 × ИИ-графика</td><td class="num">2 000 000 ₽</td></tr>
-          <tr><td>10 × кино-ИИ</td><td class="num">850 000 ₽</td></tr>
-          <tr><td>Скидка за объём −25 %</td><td class="num">−1 192 500 ₽</td></tr>
-          <tr class="tot"><td>Итого в месяц</td><td class="num">3 577 500 ₽</td></tr>
-        </table>
-        <div class="per">В среднем 16 300 ₽ за ролик. Съёмочные дни и опросы считаются отдельно.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Конвейер дня</div>
-    <h2>Как выходит 10 роликов в день</h2>
-    <div class="steps">
-      <div><div class="t">пн</div><h4>Питч недели</h4><p>5–7 идей: инфоповод, мысль в&nbsp;одну фразу, источник цифр. Редакция выбирает.</p></div>
-      <div><div class="t">до 11:00</div><h4>Тексты дня</h4><p>Сценарии таблицей, строка «что подтвердить». Фактуру сверяют аналитики.</p></div>
-      <div><div class="t">11:00–16:00</div><h4>Производство</h4><p>Графика, генерации, диктор, титры, музыка. Каждая рубрика идёт по своему шаблону.</p></div>
-      <div><div class="t">16:00</div><h4>Черновики</h4><p>Ссылка на&nbsp;все ролики дня одним списком. Правки в&nbsp;одном окне.</p></div>
-      <div><div class="t">до 19:00</div><h4>Сдача</h4><p>Финал, обложки, подписи, источники, исходники в&nbsp;общей папке.</p></div>
-    </div>
-    <p class="note">Под поток 10&nbsp;роликов в&nbsp;день выделяем команду: продюсер, редактор, ИИ-оператор и&nbsp;три моушн-монтажёра. Срочная новость идёт вне очереди: сценарий за&nbsp;2–3 часа, ролик через 3–4 часа после утверждения текста.</p>
-
-    <h3 style="margin-top:60px">Что вы получаете по каждому ролику</h3>
-    <ul class="checks">
-      <li>MP4 9:16, 1080×1920 в двух версиях: с вшитыми титрами и без</li>
-      <li>Обложку</li>
-      <li>Подпись в 3–4 строки: цитата, строка от канала, вопрос в комментарии</li>
-      <li>Список источников всех цифр и ссылку на референс</li>
-      <li>Исходники и проект монтажа</li>
-      <li>Право использовать ролик на всех площадках без срока: сгенерированные кадры, ИИ-голос, лицензионная музыка</li>
-    </ul>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <div class="eyebrow">Редполитика встроена в работу</div>
-    <h2>Чек-лист на каждом ролике</h2>
-    <ul class="checks">
-      <li>К зрителю на «вы», без капса и призывов «срочно покупайте»</li>
-      <li>Прогнозы через «по мнению аналитиков», доходность не обещаем</li>
-      <li>Финал: вывод для инвестора и риск</li>
-      <li>Дисклеймер в последнем кадре</li>
-      <li>Бумаги, целевые цены и выводы только из аналитики Альфа-Инвестиций и А-Клуба</li>
-      <li>Ограничения вместо санкций, геополитика вместо войны, ЦБ или регулятор</li>
-      <li>Банки только как эмитенты: прибыль, дивиденды, котировки</li>
-      <li>Криптомонеты с вымышленными названиями</li>
-      <li>Никакой эстетики ставок и букмекерских коэффициентов</li>
-      <li>Нет лиц и голосов реальных публичных людей в генерации</li>
-      <li>Показатели компаний в рублях, сырьё в долларах</li>
-      <li>Альфа Банк без дефиса, Альфа-Инвестиции с дефисом</li>
-      <li>Требования ЦБ к финансовым инфлюенсерам: без давления и гарантий дохода</li>
-      <li>У каждой цифры на экране есть источник</li>
-    </ul>
-  </div>
-</section>
-
-<section id="terms">
-  <div class="wrap">
-    <div class="eyebrow">Условия</div>
-    <h2>Чтобы цена не плавала</h2>
-    <div class="terms">
-      <div><h4>Правки</h4><p>Один круг по сценарию и два по монтажу входят в цену. Третий круг по монтажу стоит 20 % от ролика.</p></div>
-      <div><h4>Снятые ролики</h4><p>Сняли после утверждения сценария — 30 %. Сняли после чернового монтажа — 70 %.</p></div>
-      <div><h4>Согласование</h4><p>Если согласование задерживается, срок сдачи сдвигается на столько же.</p></div>
-      <div><h4>Минимум</h4><p>Гарантированный минимум в месяц фиксируем после пилота. Под него держим команду.</p></div>
-      <div><h4>Музыка</h4><p>Работаем с лицензионной музыкой. Трендовые звуки из соцсетей ставим только по вашему решению и на вашей стороне риска.</p></div>
-      <div><h4>Интерфейс и логотипы</h4><p>Экран приложения, графики Мосбиржи и логотипы компаний показываем по вашему согласованию.</p></div>
-      <div><h4>Оплата</h4><p>Пилот: 50 % до старта, 50 % по итогам месяца. Поток: оплата по факту месяца по акту.</p></div>
-      <div><h4>Хранение</h4><p>Исходники и проекты кладём в облачную папку, которую выберете вы.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <div class="eyebrow">Чтобы назвать точную сумму</div>
-    <h2>Что нужно знать для старта</h2>
-    <ol class="ask">
-      <li>Сколько роликов в пилоте и какой расклад: новости, цифры, тренды, длинные истории.</li>
-      <li>Кто пишет сценарии: редакция RB или мы.</li>
-      <li>Кто со стороны Альфа-Инвестиций согласует фактуру и за сколько часов.</li>
-      <li>Сколько срочных новостей в месяц ожидается.</li>
-      <li>Голос: постоянный ИИ-диктор или живой диктор.</li>
-      <li>Нужен ли один ведущий рубрики, который появляется во всех выпусках.</li>
-      <li>Опросы и интервью: кто ищет героев и кто им платит.</li>
-      <li>В какой программе монтажа нужно сдавать проект.</li>
-    </ol>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">
