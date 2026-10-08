@@ -186,6 +186,36 @@
   .xp .incl h4{color:var(--lime);font-weight:900;text-transform:uppercase;font-size:16px;margin-bottom:6px}
   .xp .incl p{color:#d0d0d0;font-size:15.5px;line-height:1.5}
   .xp .incl p.m{color:#9a9a9a;font-size:14px}
+
+  /* ===== neon price-sheet style, whole page ===== */
+  :root{--ink:#050505;--ink-2:#0b0b0b;--ink-3:#151515;--line:#2f2f2f;--paper:#f4f4f4;--mute:#a3a3a3;--amber:#d4ff3a;--green:#d4ff3a;
+    --disp:"Inter Tight","IBM Plex Sans",Arial,sans-serif;--body:"Inter Tight","IBM Plex Sans",Arial,sans-serif}
+  body{font-family:var(--body);font-weight:500}
+  .hero h1,h2{font-family:var(--disp);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;line-height:.95}
+  .hero h1{font-size:clamp(44px,8vw,112px)}
+  h2{font-size:clamp(34px,5.4vw,64px)}
+  h3,.understood h4,.steps h4,.terms h4{font-family:var(--disp);font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+  .kicker,.eyebrow{display:inline-block;font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:0;text-transform:none;color:var(--amber);border:2px solid var(--amber);border-radius:999px;padding:4px 14px}
+  .tier .lvl,.box .lvl,.understood .n,.steps .t{font-family:var(--disp);font-weight:900;letter-spacing:.02em;color:var(--amber);font-size:15px}
+  .price,.facts .n,.box .sum{font-family:var(--disp);font-weight:900;letter-spacing:-.02em}
+  .price small{font-family:var(--disp);font-weight:500;letter-spacing:0;text-transform:none;font-size:14px}
+  .facts .n{color:#fff}
+  .tier,.box{position:relative}
+  .tier::before,.box::before{content:"";position:absolute;top:-1px;right:-1px;width:30px;height:30px;border-top:3px solid var(--amber);border-right:3px solid var(--amber);z-index:4;pointer-events:none}
+  .tier::after,.box::after{content:"";position:absolute;bottom:-1px;left:-1px;width:30px;height:30px;border-bottom:3px solid var(--amber);border-left:3px solid var(--amber);pointer-events:none}
+  .tier.mid{border-color:var(--amber)}
+  th{font-family:var(--disp);font-weight:700;letter-spacing:.02em;font-size:13px;color:var(--amber)}
+  td.num{font-weight:700;color:#fff}
+  tr.tot td{color:var(--amber)}
+  .bar .brand b,.barlinks a:hover{color:var(--amber)}
+  .barlinks a{font-family:var(--disp);font-weight:700;letter-spacing:.04em}
+  .gate button{background:var(--amber);font-family:var(--disp);font-weight:900;letter-spacing:.06em}
+  .gate .k{font-family:var(--disp);font-weight:700;letter-spacing:.1em}
+  .gate h3{text-transform:uppercase}
+  .tag{font-family:var(--disp);font-weight:700;letter-spacing:.04em;color:#050505;background:var(--amber);border-radius:999px}
+  .checks li::before{color:var(--amber)}
+  ol.ask li::marker{color:var(--amber);font-weight:900}
+  .mock .ttl,.mock .lbl,.mock .disc{font-family:"IBM Plex Mono",monospace}
   @media (max-width:980px){
     .ads{grid-template-columns:repeat(3,1fr)}
     .tiers{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto}
@@ -398,27 +428,27 @@
     <div class="cols">
       <div>
         <h3>Мультфильм</h3>
-          <div class="row"><div class="nm">Базовая анимация<small>1 минута</small></div><div class="pr"><span class="ot">от</span>30 000 ₽<small>≈ 10 000 ₽ за 20 с</small></div></div>
-          <div class="row"><div class="nm">Стандарт<small>1 минута</small></div><div class="pr"><span class="ot">от</span>38 000 ₽</div></div>
-          <div class="row"><div class="nm">Премиум<small>1 минута</small></div><div class="pr"><span class="ot">от</span>46 000 ₽</div></div>
+          <div class="row"><div class="nm">Базовая анимация<small>1 минута</small></div><div class="pr"><span class="ot">от</span>32 000 ₽<small>≈ 10 700 ₽ за 20 с</small></div></div>
+          <div class="row"><div class="nm">Стандарт<small>1 минута</small></div><div class="pr"><span class="ot">от</span>41 000 ₽</div></div>
+          <div class="row"><div class="nm">Премиум<small>1 минута</small></div><div class="pr"><span class="ot">от</span>48 500 ₽</div></div>
         <h3 style="margin-top:36px">Видео-реализм</h3>
-          <div class="row"><div class="nm">Стандарт<small>1 минута</small></div><div class="pr"><span class="ot">от</span>42 000 ₽<small>≈ 14 000 ₽ за 20 с</small></div></div>
-          <div class="row"><div class="nm">Премиум<small>1 минута</small></div><div class="pr"><span class="ot">от</span>48 000 ₽<small>≈ 16 000 ₽ за 20 с</small></div></div>
+          <div class="row"><div class="nm">Стандарт<small>1 минута</small></div><div class="pr"><span class="ot">от</span>45 000 ₽<small>≈ 15 000 ₽ за 20 с</small></div></div>
+          <div class="row"><div class="nm">Премиум<small>1 минута</small></div><div class="pr"><span class="ot">от</span>51 000 ₽<small>≈ 17 000 ₽ за 20 с</small></div></div>
         <h3 style="margin-top:36px">Карусель</h3>
-          <div class="row"><div class="nm">В любом стиле<small>8–10 слайдов</small></div><div class="pr"><span class="ot">от</span>12 000 ₽</div></div>
+          <div class="row"><div class="nm">В любом стиле<small>8–10 слайдов</small></div><div class="pr"><span class="ot">от</span>13 000 ₽</div></div>
       </div>
       <div>
         <h3>Озвучка и липсинк</h3>
-          <div class="row"><div class="nm">Голоса героев</div><div class="pr">11 000 ₽<small>/ мин видео</small></div></div>
-          <div class="row"><div class="nm">Диктор по готовому тексту</div><div class="pr">4 800 ₽<small>/ ролик</small></div></div>
-          <div class="row"><div class="nm">Текст для диктора</div><div class="pr">1 800 ₽<small>/ ролик</small></div></div>
-          <div class="row"><div class="nm">Второй язык озвучки</div><div class="pr">4 800 ₽<small>/ ролик</small></div></div>
-          <div class="row"><div class="nm">Липсинк</div><div class="pr">4 800 ₽<small>/ 30 с речи</small></div></div>
+          <div class="row"><div class="nm">Голоса героев</div><div class="pr">11 500 ₽<small>/ мин видео</small></div></div>
+          <div class="row"><div class="nm">Диктор по готовому тексту</div><div class="pr">5 100 ₽<small>/ ролик</small></div></div>
+          <div class="row"><div class="nm">Текст для диктора</div><div class="pr">1 900 ₽<small>/ ролик</small></div></div>
+          <div class="row"><div class="nm">Второй язык озвучки</div><div class="pr">5 100 ₽<small>/ ролик</small></div></div>
+          <div class="row"><div class="nm">Липсинк</div><div class="pr">5 100 ₽<small>/ 30 с речи</small></div></div>
         <h3 style="margin-top:36px">Персонажи и правки</h3>
-          <div class="row"><div class="nm">Дополнительный герой сверх трёх</div><div class="pr">4 800 ₽</div></div>
-          <div class="row"><div class="nm">Фотореализм героя<small>только вымышленные лица</small></div><div class="pr">4 800 ₽<small>/ герой</small></div></div>
-          <div class="row"><div class="nm">Дополнительная правка сверх трёх</div><div class="pr">1 800 ₽</div></div>
-          <div class="row"><div class="nm">Срочный заказ</div><div class="pr">+12 000 ₽<small>/ мин</small></div></div>
+          <div class="row"><div class="nm">Дополнительный герой сверх трёх</div><div class="pr">5 100 ₽</div></div>
+          <div class="row"><div class="nm">Фотореализм героя<small>только вымышленные лица</small></div><div class="pr">5 100 ₽<small>/ герой</small></div></div>
+          <div class="row"><div class="nm">Дополнительная правка сверх трёх</div><div class="pr">1 900 ₽</div></div>
+          <div class="row"><div class="nm">Срочный заказ</div><div class="pr">+12 800 ₽<small>/ мин</small></div></div>
       </div>
     </div>
     <div class="incl">
