@@ -172,6 +172,21 @@ export default function StudioPage() {
         </div>
       </section>
 
+      <section className="still" style={{ paddingTop: 0 }}>
+        <figure className="frame rv">
+          <img
+            src="/assets/colibri_still.jpg"
+            alt="A hummingbird hovers by a red heliconia flower above a jungle river at golden hour"
+            loading="lazy"
+          />
+          <figcaption className="cap">
+            <span>
+              <T en="Colibri. Small, fast, precise." ru="Колибри. Маленькая, быстрая, точная." />
+            </span>
+          </figcaption>
+        </figure>
+      </section>
+
       <section id="works" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="rv">
