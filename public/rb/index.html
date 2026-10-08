@@ -221,13 +221,15 @@
     .ads{grid-template-columns:repeat(3,1fr)}
     .tiers{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto}
     .steps{grid-template-columns:1fr 1fr}
-    .facts{grid-template-columns:1fr 1fr}
+    .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   }
   @media (max-width:760px){
     .wrap{padding:0 16px}
     .barlinks a.hm{display:none}
     .understood,.two,.alsoex,.terms{grid-template-columns:1fr}
     .checks{columns:1}
+    .facts div{padding:18px 14px}
+    .facts .n{font-size:25px}
     .tw table{min-width:0}
     .xt thead{display:none}
     .xt table,.xt tbody,.xt tr,.xt td{display:block;width:100%}
@@ -275,7 +277,7 @@
     <h1>Ролики про инвестиции под&nbsp;ключ</h1>
     <p class="lead">От утверждённой темы до&nbsp;готового MP4 с&nbsp;голосом, титрами, музыкой, обложкой и&nbsp;подписью. Вы&nbsp;не&nbsp;собираете ролик по&nbsp;частям у&nbsp;разных людей, вы&nbsp;получаете готовый материал в&nbsp;одном месте. Можем делать до&nbsp;10&nbsp;роликов в&nbsp;день.</p>
     <div class="facts">
-      <div><div class="n">от 14 000 ₽</div><div class="t">за 20 секунд инфографики с&nbsp;диктором</div></div>
+      <div><div class="n">от&nbsp;14&nbsp;000&nbsp;₽</div><div class="t">за 20 секунд инфографики с&nbsp;диктором</div></div>
       <div><div class="n">10 / день</div><div class="t">поток при общем шаблоне рубрик</div></div>
       <div><div class="n">3–4 часа</div><div class="t">срочная новость после утверждения текста</div></div>
       <div><div class="n">9:16</div><div class="t">1080×1920, версии с&nbsp;титрами и&nbsp;без</div></div>
@@ -319,7 +321,7 @@
         </div>
         <div class="body">
           <div class="lvl">Уровень 1 · Инфографика</div>
-          <div class="price">14 000 ₽<small>за 20 секунд</small></div>
+          <div class="price">14&nbsp;000&nbsp;₽<small>за 20 секунд</small></div>
           <ul>
             <li>Анимированная инфографика в&nbsp;фирменных шаблонах рубрики</li>
             <li>Графики, цифры, кинетическая типографика</li>
@@ -338,7 +340,7 @@
         </div>
         <div class="body">
           <div class="lvl">Уровень 2 · ИИ-графика</div>
-          <div class="price">38 000 ₽<small>за 20 секунд</small></div>
+          <div class="price">38&nbsp;000&nbsp;₽<small>за 20 секунд</small></div>
           <ul>
             <li>Всё из&nbsp;уровня 1</li>
             <li>Сгенерированные кадры по&nbsp;теме: биржевой зал, графики котировок, инвестор с&nbsp;телефоном, деловой центр, продукция компании-эмитента</li>
@@ -357,7 +359,7 @@
         </div>
         <div class="body">
           <div class="lvl">Уровень 3 · Кино-ИИ</div>
-          <div class="price">105 000 ₽<small>за 20 секунд</small></div>
+          <div class="price">105&nbsp;000&nbsp;₽<small>за 20 секунд</small></div>
           <ul>
             <li>Кинематографичный кадр: свет, оптика, пластика героев</li>
             <li>Постоянные персонажи и&nbsp;локации из&nbsp;выпуска в&nbsp;выпуск</li>
@@ -402,8 +404,8 @@
       <table>
         <thead><tr><th>Формат</th><th>Хронометраж</th><th class="num">Инфографика</th><th class="num">ИИ-графика</th><th class="num">Кино-ИИ</th></tr></thead>
         <tbody>
-          <tr><td>Цифра дня<span class="s">одна цифра и её смысл</span></td><td data-l="Хронометраж">15–20 с</td><td class="num" data-l="Инфографика">14 000 ₽</td><td class="num" data-l="ИИ-графика">38 000 ₽</td><td class="num" data-l="Кино-ИИ">105 000 ₽</td></tr>
-          <tr><td>Что случилось<span class="s">хук, что произошло, вывод, риск</span></td><td data-l="Хронометраж">30–45 с</td><td class="num" data-l="Инфографика">23 000 ₽</td><td class="num" data-l="ИИ-графика">60 000 ₽</td><td class="num" data-l="Кино-ИИ">165 000 ₽</td></tr>
+          <tr><td>Цифра дня<span class="s">одна цифра и её смысл</span></td><td data-l="Хронометраж">15–20 с</td><td class="num" data-l="Инфографика">14&nbsp;000&nbsp;₽</td><td class="num" data-l="ИИ-графика">38&nbsp;000&nbsp;₽</td><td class="num" data-l="Кино-ИИ">105&nbsp;000&nbsp;₽</td></tr>
+          <tr><td>Что случилось<span class="s">хук, что произошло, вывод, риск</span></td><td data-l="Хронометраж">30–45 с</td><td class="num" data-l="Инфографика">23&nbsp;000&nbsp;₽</td><td class="num" data-l="ИИ-графика">60&nbsp;000&nbsp;₽</td><td class="num" data-l="Кино-ИИ">165&nbsp;000&nbsp;₽</td></tr>
         </tbody>
       </table>
     </div>
@@ -411,16 +413,16 @@
       <table>
         <thead><tr><th>Дополнительно</th><th class="num">Стоимость</th></tr></thead>
         <tbody>
-          <tr><td>Запуск: шаблоны трёх рубрик, голос диктора, музыкальная библиотека, 3 пробных ролика на реальных темах<span class="s">разово, в начале работы</span></td><td class="num">220 000 ₽</td></tr>
-          <tr><td>Сценарий нашими силами: таблица «время / текст / что на экране» со списком источников</td><td class="num">+7 500 ₽ / +12 000 ₽<span class="s">уровень 1 / уровни 2–3</span></td></tr>
-          <tr><td>Срочная новость: ролик в тот же день, 3–4 часа после утверждения текста</td><td class="num">+30 %</td></tr>
-          <tr><td>Новостной радар: каждое утро 10–15 инфоповодов с цифрами и источниками<span class="s">настройка + сопровождение в месяц</span></td><td class="num">135 000 ₽ + 45 000 ₽/мес</td></tr>
-          <tr><td>Автовыкладка утверждённых роликов в Telegram, YouTube, VK, Rutube, MAX<span class="s">настройка + сопровождение в месяц; Дзен в один клик</span></td><td class="num">180 000 ₽ + 45 000 ₽/мес</td></tr>
-          <tr><td>Отдельные версии под площадки (VK, Shorts, Дзен) сверх общего мастера</td><td class="num">+10 %</td></tr>
+          <tr><td>Запуск: шаблоны трёх рубрик, голос диктора, музыкальная библиотека, 3 пробных ролика на реальных темах<span class="s">разово, в начале работы</span></td><td class="num">220&nbsp;000&nbsp;₽</td></tr>
+          <tr><td>Сценарий нашими силами: таблица «время / текст / что на экране» со списком источников</td><td class="num">+7&nbsp;500&nbsp;₽ / +12&nbsp;000&nbsp;₽<span class="s">уровень 1 / уровни 2–3</span></td></tr>
+          <tr><td>Срочная новость: ролик в тот же день, 3–4 часа после утверждения текста</td><td class="num">+30&nbsp;%</td></tr>
+          <tr><td>Новостной радар: каждое утро 10–15 инфоповодов с цифрами и источниками<span class="s">настройка + сопровождение в месяц</span></td><td class="num">135&nbsp;000&nbsp;₽ + 45&nbsp;000&nbsp;₽/мес</td></tr>
+          <tr><td>Автовыкладка утверждённых роликов в Telegram, YouTube, VK, Rutube, MAX<span class="s">настройка + сопровождение в месяц; Дзен в один клик</span></td><td class="num">180&nbsp;000&nbsp;₽ + 45&nbsp;000&nbsp;₽/мес</td></tr>
+          <tr><td>Отдельные версии под площадки (VK, Shorts, Дзен) сверх общего мастера</td><td class="num">+10&nbsp;%</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Скидка за объём: от 350 роликов в месяц −10 %, от 500 −20 %, от 600 −25 %. Цены без НДС.</p>
+    <p class="note">Скидка за объём: от 350 роликов в месяц −10&nbsp;%, от 500 −20&nbsp;%, от 600 −25&nbsp;%. Цены без НДС.</p>
   </div>
 </section>
 
