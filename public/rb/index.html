@@ -23,7 +23,7 @@
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;overflow-x:clip}
   img,video{max-width:100%;display:block}
   a{color:inherit}
   b{font-weight:600}
@@ -74,8 +74,9 @@
   .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;align-items:stretch}
   .tier{border:1px solid var(--line);background:var(--ink);display:flex;flex-direction:column}
   .tier.mid{border-color:rgba(217,162,74,.55)}
-  .tier .media{background:#000;aspect-ratio:9/16;max-height:560px;overflow:hidden;position:relative}
-  .tier .media video{width:100%;height:100%;object-fit:contain;background:#000}
+  .tier .media{background:#000;overflow:hidden;position:relative}
+  .tier .media.mk{aspect-ratio:9/16}
+  .tier .media video{width:100%;height:auto;background:#000}
   .tier .body{padding:24px 22px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
   .tier .lvl{font-family:var(--mono);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber)}
   .price{font-family:var(--disp);font-weight:500;font-size:44px;line-height:1}
@@ -111,7 +112,7 @@
 
   .alsoex{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
   .alsoex figure{border:1px solid var(--line);background:#000}
-  .alsoex video{width:100%;aspect-ratio:16/9;object-fit:cover}
+  .alsoex video{width:100%;height:auto}
   .alsoex figcaption{padding:12px 16px;font-size:14px;color:var(--mute);background:var(--ink)}
   .alsoex figcaption b{color:var(--paper);font-weight:500}
 
@@ -158,9 +159,9 @@
 
 
   /* ads gallery */
-  .ads{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:34px}
+  .ads{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:34px;align-items:start}
   .ads figure{background:#000;border:1px solid var(--line)}
-  .ads video{width:100%;aspect-ratio:9/16;object-fit:cover;background:#000}
+  .ads video{width:100%;height:auto;background:#000}
   .ads figcaption{padding:8px 10px;font-size:12.5px;color:var(--mute);background:var(--ink);line-height:1.35}
 
   /* express — price-sheet style */
@@ -304,7 +305,7 @@
 
     <div class="tiers">
       <article class="tier">
-        <div class="media">
+        <div class="media mk">
           <span class="tag">макет · инфографика</span>
           <div class="mock" aria-label="Макет ролика «Цифра дня»">
             <div class="grid"></div>
@@ -333,14 +334,14 @@
       <article class="tier mid">
         <div class="media">
           <span class="tag">пример уровня</span>
-          <video src="assets/ads/present.mp4" poster="assets/ads/present.jpg" controls muted loop playsinline preload="none"></video>
+          <video src="assets/ads/present.mp4" width="540" height="960" poster="assets/ads/present.jpg" controls muted loop playsinline preload="none"></video>
         </div>
         <div class="body">
           <div class="lvl">Уровень 2 · ИИ-графика</div>
           <div class="price">38 000 ₽<small>за 20 секунд</small></div>
           <ul>
             <li>Всё из&nbsp;уровня 1</li>
-            <li>Сгенерированные кадры по&nbsp;теме: заводы, склады, офисы, продукты компании</li>
+            <li>Сгенерированные кадры по&nbsp;теме: биржевой зал, графики котировок, инвестор с&nbsp;телефоном, деловой центр, продукция компании-эмитента</li>
             <li>Ведущий-персонаж рубрики, вымышленное лицо, не&nbsp;публичный человек</li>
             <li>Единый визуальный стиль серии</li>
             <li>Монтаж, цветокоррекция, звуковой дизайн</li>
@@ -352,7 +353,7 @@
       <article class="tier">
         <div class="media">
           <span class="tag">пример уровня</span>
-          <video src="assets/sneakers.mp4" poster="assets/sneakers.jpg" controls muted loop playsinline preload="none"></video>
+          <video src="assets/sneakers.mp4" width="720" height="1280" poster="assets/sneakers.jpg" controls muted loop playsinline preload="none"></video>
         </div>
         <div class="body">
           <div class="lvl">Уровень 3 · Кино-ИИ</div>
@@ -371,12 +372,12 @@
 
     <div class="alsoex">
       <figure>
-        <video src="assets/benza.mp4" poster="assets/benza.jpg" controls muted playsinline preload="none"></video>
-        <figcaption><b>Уровень 2.</b> Герой-рассказчик, производство, продукт целиком на&nbsp;ИИ. Такими кадрами иллюстрируем новость о&nbsp;компании.</figcaption>
+        <video src="assets/benza.mp4" width="1280" height="720" poster="assets/benza.jpg" controls muted playsinline preload="none"></video>
+        <figcaption><b>Уровень 3.</b> Герой-рассказчик, производство и&nbsp;продукт целиком на&nbsp;ИИ. Так может выглядеть главная новость недели о&nbsp;компании.</figcaption>
       </figure>
       <figure>
-        <video src="assets/fjord.mp4" poster="assets/fjord.jpg" controls muted playsinline preload="none"></video>
-        <figcaption><b>Уровень 3, 14 секунд.</b> Постоянный персонаж, локация, крупные планы. Такой кадр подходит для имиджевых выпусков.</figcaption>
+        <video src="assets/fjord.mp4" width="1280" height="720" poster="assets/fjord.jpg" controls muted playsinline preload="none"></video>
+        <figcaption><b>Уровень 3.</b> Постоянный персонаж, локация, крупные планы. Такой кадр подходит для имиджевых выпусков.</figcaption>
       </figure>
     </div>
     <p class="note">Примеры показывают уровень картинки. Первый уровень показан макетом, он&nbsp;работает прямо на&nbsp;странице. В&nbsp;роликах для&nbsp;Альфа-Инвестиций не&nbsp;будет лиц и&nbsp;голосов реальных публичных людей.</p>
@@ -384,11 +385,11 @@
     <h3 style="margin-top:64px">Наша реклама в вертикали</h3>
     <p class="note" style="margin-top:8px">Продуктовые ролики на ИИ: товар, свет, фактура, человек в кадре. Тот же подход переносим на кадры для новостей о компаниях.</p>
     <div class="ads">
-      <figure><video src="assets/ads/perfume.mp4" poster="assets/ads/perfume.jpg" controls muted loop playsinline preload="none"></video><figcaption>Парфюм, имиджевый ролик</figcaption></figure>
-      <figure><video src="assets/ads/razor.mp4" poster="assets/ads/razor.jpg" controls muted loop playsinline preload="none"></video><figcaption>Бритва для Wildberries</figcaption></figure>
-      <figure><video src="assets/ads/epederil.mp4" poster="assets/ads/epederil.jpg" controls muted loop playsinline preload="none"></video><figcaption>Уход за кожей для Wildberries</figcaption></figure>
-      <figure><video src="assets/ads/present.mp4" poster="assets/ads/present.jpg" controls muted loop playsinline preload="none"></video><figcaption>Косметика, презентация продукта</figcaption></figure>
-      <figure><video src="assets/ads/soda.mp4" poster="assets/ads/soda.jpg" controls muted loop playsinline preload="none"></video><figcaption>Газировка, продуктовый ролик</figcaption></figure>
+      <figure><video src="assets/ads/perfume.mp4" width="540" height="960" poster="assets/ads/perfume.jpg" controls muted loop playsinline preload="none"></video><figcaption>Парфюм, имиджевый ролик</figcaption></figure>
+      <figure><video src="assets/ads/razor.mp4" width="540" height="960" poster="assets/ads/razor.jpg" controls muted loop playsinline preload="none"></video><figcaption>Бритва для Wildberries</figcaption></figure>
+      <figure><video src="assets/ads/epederil.mp4" width="540" height="720" poster="assets/ads/epederil.jpg" controls muted loop playsinline preload="none"></video><figcaption>Уход за кожей для Wildberries</figcaption></figure>
+      <figure><video src="assets/ads/present.mp4" width="540" height="960" poster="assets/ads/present.jpg" controls muted loop playsinline preload="none"></video><figcaption>Косметика, презентация продукта</figcaption></figure>
+      <figure><video src="assets/ads/soda.mp4" width="540" height="960" poster="assets/ads/soda.jpg" controls muted loop playsinline preload="none"></video><figcaption>Газировка, продуктовый ролик</figcaption></figure>
     </div>
   </div>
 </section>
@@ -419,7 +420,7 @@
         </tbody>
       </table>
     </div>
-    <p class="note">Скидка за объём: от 60 роликов в месяц −10 %, от 150 −20 %, от 220 (10 в день) −25 %. Цены без НДС.</p>
+    <p class="note">Скидка за объём: от 300 роликов в месяц (10 в день) −10 %, от 500 −20 %, от 600 −25 %. Цены без НДС.</p>
   </div>
 </section>
 
