@@ -186,6 +186,34 @@
   .hero-note{position:absolute;right:24px;bottom:18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(239,230,212,.55)}
   @media(max-width:600px){.hero-note{left:24px;right:auto}}
 
+  /* новости */
+  .news{background:linear-gradient(180deg,#17110a,var(--ink))}
+  .news-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);margin-top:40px;align-items:start}
+  @media(max-width:860px){.news-grid{grid-template-columns:1fr}}
+  .news-list{list-style:none;border-top:1px solid var(--line)}
+  .news-list li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .news-list b{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--honey);padding-top:3px}
+  .news-list span{color:var(--soft);font-size:15.5px}
+  @media(max-width:520px){.news-list li{grid-template-columns:1fr;gap:4px}}
+  .news-pics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .news-pics figure img{aspect-ratio:3/4;object-fit:cover}
+  /* тезисы художнице */
+  .tz{background:var(--ink-2)}
+  .tz-grid{display:grid;grid-template-columns:1.25fr 1fr .9fr;gap:clamp(24px,4vw,56px);margin-top:44px}
+  @media(max-width:980px){.tz-grid{grid-template-columns:1fr}}
+  .tz-col h3{font-family:var(--disp);font-size:30px;font-weight:600;color:var(--raktum);margin-bottom:4px}
+  .tz-col h3+ul{margin-top:12px}
+  .tz-col ul+h3{margin-top:30px}
+  .tz-src{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--mute);margin-bottom:12px}
+  .tz-col ul{list-style:none;border-top:1px solid var(--line)}
+  .tz-col li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--soft)}
+  .tz-col li b{color:var(--paper);font-weight:600}
+  /* презентация автора */
+  .prez{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  @media(max-width:900px){.prez{grid-template-columns:repeat(2,1fr)}}
+  .prez figure img{aspect-ratio:1.41;object-fit:cover;background:#fff}
+  .prez figcaption{position:static;background:var(--ink-3);padding:8px 10px;font-size:10.5px}
+
   /* скачать */
   .dl-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
   .dl-code input{background:var(--ink-3);border:1px solid var(--line);color:var(--paper);font-family:var(--mono);font-size:15px;letter-spacing:.2em;text-transform:uppercase;padding:12px 14px;width:220px}
@@ -247,7 +275,7 @@
 <header class="bar">
   <a class="brand" href="#top">НЕКТАРИУМ</a>
   <nav>
-    <a href="#avtor">От автора</a><a href="#pilot">Пилот</a><a href="#mir">Мир</a><a href="#tizer">Тизер</a><a href="#geroi">Герои</a><a href="#raskadrovka">Раскадровка</a><a href="#poryadok">Порядок</a><a class="cta" href="#skachat">Скачать</a>
+    <a href="#novosti">Новости</a><a href="#avtor">От автора</a><a href="#pilot">Пилот</a><a href="#hudozhnice">Художнице</a><a href="#mir">Мир</a><a href="#tizer">Тизер</a><a href="#geroi">Герои</a><a href="#raskadrovka">Раскадровка</a><a href="#poryadok">Порядок</a><a class="cta" href="#skachat">Скачать</a>
   </nav>
 </header>
 
@@ -269,6 +297,29 @@
     </div>
   </section>
 
+  <section id="novosti" class="news">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Новости · 8 октября</div>
+        <h2>Сначала героев рисует художница</h2>
+        <p class="lead">Владимир посмотрел первую карту Зои и сказал прямо: получилась кукла. Решили так: героев сначала рисует вручную художница, Зою собираем в фотошопе из деталей. Генерация и анимация — уже от её листов.</p>
+      </div>
+      <div class="news-grid">
+        <ul class="news-list reveal">
+          <li><b>Задача сейчас</b><span>Два героя — Зои и шершень-вожак — и мир для сцены битвы: бутон Астрального Розового на поляне и небо с двумя солнцами.</span></li>
+          <li><b>Идеал Зои</b><span>Страница 17 презентации автора: в полный рост с луком, юбочка из волосков и шерсти, крупное брюшко.</span></li>
+          <li><b>Фактура</b><span>Как у настоящей пчелы: хитиновая кожа с мелким бархатным ворсом. Кожа Зои — между человеческой и нечеловеческой.</span></li>
+          <li><b>Роли</b><span>Владимир Григорьев — автор, сценарист и режиссёр. Ара Аруш — режиссёр AI-анимации. Александр Андреянов — продюсер и менеджер проекта, связующее звено. Художница — образы героев.</span></li>
+          <li><b>Сегодня вечером</b><span>Встреча с Владимиром: подписание договора и детали.</span></li>
+        </ul>
+        <div class="news-pics reveal">
+          <figure><img src="assets/avtor/ideal-str17.jpg" alt="Зои — идеал автора, страница 17 презентации" loading="lazy"><figcaption>Идеал · стр. 17 презентации</figcaption></figure>
+          <figure><img src="assets/avtor/pchela-makro.jpg" alt="Макрофото пчелы — фактура хитина и ворса" loading="lazy"><figcaption>Фактура · хитин и ворс</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="avtor" class="author">
     <div class="wrap">
       <div class="reveal">
@@ -277,6 +328,37 @@
         <p class="lead">Эскизы, раскадровка и иллюстрации из книги — это основа. Всё, что рисует студия, сверяется с этими листами и показывается на согласование; ничего не идёт в работу, пока автор не сказал «да».</p>
         <p class="lead">Ориентир по качеству, который выбрал Владимир, — фильм «Warcraft» (2016): живая фактура, тёплый свет, существа, которые выглядят настоящими.</p>
       </div>
+      <div class="agroup"><h3>Презентация «Вселенная Нектариум»</h3><p class="adesc">29 страниц от Владимира, 8 октября. Целиком PDF — в разделе «Скачать».</p><div class="prez">
+        <figure><img src="assets/prez/p01.jpg" alt="Презентация автора, стр. 1: Обложка · Вселенная Нектариум" loading="lazy"><figcaption>1 · Обложка · Вселенная Нектариум</figcaption></figure>
+        <figure><img src="assets/prez/p02.jpg" alt="Презентация автора, стр. 2: Шершень" loading="lazy"><figcaption>2 · Шершень</figcaption></figure>
+        <figure><img src="assets/prez/p03.jpg" alt="Презентация автора, стр. 3: Шершень · доспехи и оружие" loading="lazy"><figcaption>3 · Шершень · доспехи и оружие</figcaption></figure>
+        <figure><img src="assets/prez/p04.jpg" alt="Презентация автора, стр. 4: Шершень · эскизы" loading="lazy"><figcaption>4 · Шершень · эскизы</figcaption></figure>
+        <figure><img src="assets/prez/p05.jpg" alt="Презентация автора, стр. 5: Шершень" loading="lazy"><figcaption>5 · Шершень</figcaption></figure>
+        <figure><img src="assets/prez/p06.jpg" alt="Презентация автора, стр. 6: Богиня" loading="lazy"><figcaption>6 · Богиня</figcaption></figure>
+        <figure><img src="assets/prez/p07.jpg" alt="Презентация автора, стр. 7: Богиня" loading="lazy"><figcaption>7 · Богиня</figcaption></figure>
+        <figure><img src="assets/prez/p08.jpg" alt="Презентация автора, стр. 8: Богиня · детали" loading="lazy"><figcaption>8 · Богиня · детали</figcaption></figure>
+        <figure><img src="assets/prez/p09.jpg" alt="Презентация автора, стр. 9: Богиня в мире" loading="lazy"><figcaption>9 · Богиня в мире</figcaption></figure>
+        <figure><img src="assets/prez/p10.jpg" alt="Презентация автора, стр. 10: Богиня" loading="lazy"><figcaption>10 · Богиня</figcaption></figure>
+        <figure><img src="assets/prez/p11.jpg" alt="Презентация автора, стр. 11: Богиня" loading="lazy"><figcaption>11 · Богиня</figcaption></figure>
+        <figure><img src="assets/prez/p12.jpg" alt="Презентация автора, стр. 12: Шмель-воин" loading="lazy"><figcaption>12 · Шмель-воин</figcaption></figure>
+        <figure><img src="assets/prez/p13.jpg" alt="Презентация автора, стр. 13: Шмель · доспехи и оружие" loading="lazy"><figcaption>13 · Шмель · доспехи и оружие</figcaption></figure>
+        <figure><img src="assets/prez/p14.jpg" alt="Презентация автора, стр. 14: Шмель · эскизы" loading="lazy"><figcaption>14 · Шмель · эскизы</figcaption></figure>
+        <figure><img src="assets/prez/p15.jpg" alt="Презентация автора, стр. 15: Шмель в полёте" loading="lazy"><figcaption>15 · Шмель в полёте</figcaption></figure>
+        <figure><img src="assets/prez/p16.jpg" alt="Презентация автора, стр. 16: Зои" loading="lazy"><figcaption>16 · Зои</figcaption></figure>
+        <figure><img src="assets/prez/p17.jpg" alt="Презентация автора, стр. 17: Зои · идеал" loading="lazy"><figcaption>17 · Зои · идеал</figcaption></figure>
+        <figure><img src="assets/prez/p18.jpg" alt="Презентация автора, стр. 18: Зои · эскизы" loading="lazy"><figcaption>18 · Зои · эскизы</figcaption></figure>
+        <figure><img src="assets/prez/p19.jpg" alt="Презентация автора, стр. 19: Зои в мире" loading="lazy"><figcaption>19 · Зои в мире</figcaption></figure>
+        <figure><img src="assets/prez/p20.jpg" alt="Презентация автора, стр. 20: Зои в мире" loading="lazy"><figcaption>20 · Зои в мире</figcaption></figure>
+        <figure><img src="assets/prez/p21.jpg" alt="Презентация автора, стр. 21: Муравьиха-кузнец" loading="lazy"><figcaption>21 · Муравьиха-кузнец</figcaption></figure>
+        <figure><img src="assets/prez/p22.jpg" alt="Презентация автора, стр. 22: Муравьиха-кузнец" loading="lazy"><figcaption>22 · Муравьиха-кузнец</figcaption></figure>
+        <figure><img src="assets/prez/p23.jpg" alt="Презентация автора, стр. 23: Шаман" loading="lazy"><figcaption>23 · Шаман</figcaption></figure>
+        <figure><img src="assets/prez/p24.jpg" alt="Презентация автора, стр. 24: Шаман" loading="lazy"><figcaption>24 · Шаман</figcaption></figure>
+        <figure><img src="assets/prez/p25.jpg" alt="Презентация автора, стр. 25: Бабочка" loading="lazy"><figcaption>25 · Бабочка</figcaption></figure>
+        <figure><img src="assets/prez/p26.jpg" alt="Презентация автора, стр. 26: Бабочка" loading="lazy"><figcaption>26 · Бабочка</figcaption></figure>
+        <figure><img src="assets/prez/p27.jpg" alt="Презентация автора, стр. 27: Муравей" loading="lazy"><figcaption>27 · Муравей</figcaption></figure>
+        <figure><img src="assets/prez/p28.jpg" alt="Презентация автора, стр. 28: Муравей и амулет" loading="lazy"><figcaption>28 · Муравей и амулет</figcaption></figure>
+        <figure><img src="assets/prez/p29.jpg" alt="Презентация автора, стр. 29: Карта вселенной · два солнца" loading="lazy"><figcaption>29 · Карта вселенной · два солнца</figcaption></figure>
+      </div></div>
       <div class="agroup"><h3>Эскизы героев</h3><p class="adesc">Листы, с которых всё начинается: облик, пропорции, оружие.</p><div class="masonry">
         <figure><img src="assets/avtor/eskiz-zoi-1.jpg" alt="Зои · рост и головы" loading="lazy"><figcaption>Зои · рост и головы</figcaption></figure>
         <figure><img src="assets/avtor/eskiz-zoi-2.jpg" alt="Зои · позы, лук-меч, колчан" loading="lazy"><figcaption>Зои · позы, лук-меч, колчан</figcaption></figure>
@@ -339,6 +421,60 @@
             <li>Выбрать, куда попадает стрела: <b>1</b> — под панцирь вожака, он уходит раненым, как в романе; <b>2</b> — стрела уходит в небо, открытый финал; <b>3</b> — зрелищное попадание.</li>
           </ol>
           <p class="note">Полная заготовка с черновым хронометражем — в разделе «Скачать», файл «Пилот 30 секунд».</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hudozhnice" class="tz">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow">Тезисы для художницы</div>
+        <h2>Оживляем героев автора — не перерисовываем</h2>
+        <p class="lead">Дизайн автора — канон: силуэт, костюм, оружие и цвета сохраняем, добавляем фактуру, свет и жизнь. Уровень — кинореализм «Warcraft». Главная опасность — «кукла»: гладкий латекс, фарфоровая кожа, косплей, пластиковый шлем.</p>
+      </div>
+      <div class="tz-grid">
+        <div class="tz-col reveal">
+          <h3>Зои</h3>
+          <p class="tz-src">Канон — стр. 17 презентации; лицо, маска и лук — листы ЗОИ-1 и ЗОИ-2</p>
+          <ul>
+            <li><b>Кожа.</b> Между человеческой и хитином, вся в коротком бархатном ворсе, как у пчелы. В контровом свете — ореол по силуэту. На лице — пушок, на плечах, бёдрах и брюшке — мех. Крапинка на руках и ногах, румянец.</li>
+            <li><b>Глаза.</b> Миндалевидная маска, тёмно-синий ободок, синяя линза с сотами — и за сотами её живые глаза с янтарным отблеском. Соты не светятся. Закрытые глаза — без маски, золотые веки, ресницы.</li>
+            <li><b>Голова.</b> Лицо юное, лет 20. Золотой хитиновый шлем со швами, тёмные антенны. Медово-русый хвост с косичками, венок из жёлтых цветков и листьев.</li>
+            <li><b>Тело.</b> Шоколадный комбинезон с V-вырезом и золотыми сегментами, изумруд в листьях, меховые наплечники, ремень колчана через грудь.</li>
+            <li><b>Юбочка из ворса</b> от пояса, переходит в крупное брюшко до середины икр, с жалом.</li>
+            <li><b>Ноги.</b> Хитиновые голени в крапинку, стопа сужается в коготь. Без обуви и каблука.</li>
+            <li><b>Оружие.</b> Большой золотой лук-меч со стр. 17, оливковый колчан, золотые стрелы.</li>
+          </ul>
+        </div>
+        <div class="tz-col reveal">
+          <h3>Шершень-вожак</h3>
+          <p class="tz-src">Канон — стр. 2–5 презентации и листы ШЕРШЕНЬ-1…4</p>
+          <ul>
+            <li>Голова насекомого, тело воина в броне. Антигерой, не чудовище.</li>
+            <li>Оранжево-янтарная голова, три глазка на темени, красные фасеточные глаза, белёсые жвала.</li>
+            <li>Чёрно-золотая броня с сотами, красные пластины на груди, наплечники-купола с рогами.</li>
+            <li>Брюшко полосатое, с шипами и коротким жалом, до колен. Трезубец-посох.</li>
+            <li>Без украшений, которых нет на эскизах.</li>
+          </ul>
+          <h3>Мир сцены</h3>
+          <ul>
+            <li>Бутон Астрального Розового — огромный полураскрытый «пион», внутри тычинки с оранжевым соком.</li>
+            <li>Поляна мелких жёлтых, фиолетовых и оранжевых цветов, вдали горы — как на стр. 15, 19, 20.</li>
+            <li>Два солнца: золотой Рактум на полнеба, красный Зунан с бордовой каймой. У предметов две тени.</li>
+          </ul>
+        </div>
+        <div class="tz-col reveal">
+          <h3>Что сдать</h3>
+          <ul>
+            <li><b>Зои · тело</b> — 4 ракурса в рост, голова забелена.</li>
+            <li><b>Зои · голова</b> — анфас, три четверти, профиль, затылок и глаза закрыты.</li>
+            <li><b>Зои · детали</b> — глаз, лук, колчан, стрела, брошь, юбочка, брюшко, стопа.</li>
+            <li><b>Шершень</b> — те же три листа.</li>
+            <li><b>Мир</b> — бутон, поляна, небо.</li>
+          </ul>
+          <p class="note">16:9, от 4K, PSD со слоями. Показывать по листу по мере готовности, первой — голову Зои. По договору: «Герои» — 2 рабочих дня, «Мир» — 1 день.</p>
+          <p class="note">Все материалы — в разделе «Скачать»: тезисы целиком, презентация автора, эскизы, страница 17 и макрофото.</p>
         </div>
       </div>
     </div>
@@ -512,6 +648,12 @@
 <li><div class="dl-t">Синопсис саги · режиссёрская версия<span class="dl-d">От Владимира, 06.10.2026</span></div><span class="dl-s">DOCX · 6 КБ</span><button class="dl-btn" type="button" data-bin="03.bin" data-name="Синопсис-Нектариум-режиссёрская-версия.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
 <li><div class="dl-t">Сценарий серии · 3 минуты<span class="dl-d">Первая версия, литературный сценарий</span></div><span class="dl-s">DOCX · 12 КБ</span><button class="dl-btn" type="button" data-bin="04.bin" data-name="Сценарий-серия-1-3-мин.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
 <li><div class="dl-t">Режиссёрский сценарий серии · 3 минуты<span class="dl-d">Первая версия, 35 кадров</span></div><span class="dl-s">DOCX · 13 КБ</span><button class="dl-btn" type="button" data-bin="05.bin" data-name="Режиссёрский-сценарий-серия-1-3-мин.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+</ul></div>
+<div class="dl-group"><h3>Для художницы</h3><ul>
+<li><div class="dl-t">Тезисы для художницы<span class="dl-d">Зои, шершень-вожак, мир сцены, что сдать и в каком формате · 08.10</span></div><span class="dl-s">DOCX · 8 КБ</span><button class="dl-btn" type="button" data-bin="52.bin" data-name="Тезисы-художнице-08-10.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
+<li><div class="dl-t">Презентация автора «Вселенная Нектариум»<span class="dl-d">29 страниц от Владимира, 08.10 · идеал Зои — стр. 17</span></div><span class="dl-s">PDF · 13,3 МБ</span><button class="dl-btn" type="button" data-bin="51.bin" data-name="Презентация-Вселенная-Нектариум.pdf" data-mime="application/pdf">Скачать</button></li>
+<li><div class="dl-t">Референсы Зои<span class="dl-d">Стр. 17, макрофото пчелы и вырезки из эскизов автора · 7 изображений</span></div><span class="dl-s">ZIP · 1,0 МБ</span><button class="dl-btn" type="button" data-bin="53.bin" data-name="Референсы-Зои.zip" data-mime="application/zip">Скачать</button></li>
+<li><div class="dl-t">Библия образа Зои<span class="dl-d">Подробное описание: глаза, голова, тело, оружие, характер</span></div><span class="dl-s">DOCX · 10 КБ</span><button class="dl-btn" type="button" data-bin="54.bin" data-name="Библия-образа-Зои.docx" data-mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document">Скачать</button></li>
 </ul></div>
 <div class="dl-group"><h3>Герои</h3><ul>
 <li><div class="dl-t">Эскизы автора<span class="dl-d">Зои и шершень, раскадровка и заставка Beepherium — листы Владимира · 8 изображений</span></div><span class="dl-s">ZIP · 1,8 МБ</span><button class="dl-btn" type="button" data-bin="49.bin" data-name="Эскизы-автора.zip" data-mime="application/zip">Скачать</button></li>
