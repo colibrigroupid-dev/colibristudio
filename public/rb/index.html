@@ -228,6 +228,9 @@
     .barlinks a.hm{display:none}
     .understood,.two,.alsoex,.terms{grid-template-columns:1fr}
     .checks{columns:1}
+    .bar{padding:14px 16px}
+    .bar .brand{white-space:nowrap;letter-spacing:.14em}
+    .barlinks{gap:14px}
     .facts div{padding:18px 14px}
     .facts .n{font-size:25px}
     .tw table{min-width:0}
@@ -266,8 +269,10 @@
 <div class="bar">
   <div class="brand">colibri <b>studio</b></div>
   <nav class="barlinks">
+    <a href="#formats">Форматы</a>
     <a href="#tiers">Уровни</a>
     <a href="#prices">Цены</a>
+    <a class="hm" href="#process">Как работаем</a>
   </nav>
 </div>
 
@@ -296,6 +301,30 @@
       <div><div class="n">04</div><h4>Новости и цифры — на ИИ</h4><p>«Что случилось» и&nbsp;«Цифра дня» собираются из&nbsp;инфографики и&nbsp;диктора без&nbsp;съёмок, поэтому их&nbsp;можно делать каждый день.</p></div>
       <div><div class="n">05</div><h4>Стоп-лист в конвейере</h4><p>Редполитика Альфа-Инвестиций проверяется по&nbsp;чек-листу на&nbsp;каждом ролике, а&nbsp;не&nbsp;вспоминается на&nbsp;правках.</p></div>
     </div>
+  </div>
+</section>
+
+
+<section id="formats" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="eyebrow">Как устроено предложение</div>
+    <h2>Два формата, три уровня</h2>
+    <p class="lead">Цена ролика зависит от&nbsp;формата и&nbsp;уровня качества. Запуск оплачивается один раз в&nbsp;начале, дальше вы&nbsp;платите только за&nbsp;ролики.</p>
+    <div class="two">
+      <div class="box">
+        <div class="lvl">Формат 1 · 15–20 секунд</div>
+        <h3>Цифра дня</h3>
+        <p class="note" style="margin-top:10px">Одна цифра и&nbsp;её смысл для&nbsp;инвестора. Цифра в&nbsp;первом кадре, затем что за&nbsp;ней стоит, что это значит и&nbsp;риск.</p>
+        <table><tr><td>Инфографика</td><td class="num">14&nbsp;000&nbsp;₽</td></tr><tr><td>ИИ-графика</td><td class="num">38&nbsp;000&nbsp;₽</td></tr><tr><td>Кино-ИИ</td><td class="num">105&nbsp;000&nbsp;₽</td></tr></table>
+      </div>
+      <div class="box">
+        <div class="lvl">Формат 2 · 30–45 секунд</div>
+        <h3>Что случилось</h3>
+        <p class="note" style="margin-top:10px">Главная новость дня. Хук, что произошло и&nbsp;почему, что это значит для&nbsp;инвестора и&nbsp;мнение аналитиков, риск.</p>
+        <table><tr><td>Инфографика</td><td class="num">23&nbsp;000&nbsp;₽</td></tr><tr><td>ИИ-графика</td><td class="num">60&nbsp;000&nbsp;₽</td></tr><tr><td>Кино-ИИ</td><td class="num">165&nbsp;000&nbsp;₽</td></tr></table>
+      </div>
+    </div>
+    <p class="note">Плюс запуск один раз в&nbsp;начале — 220&nbsp;000&nbsp;₽. Что входит в&nbsp;запуск и&nbsp;как идёт работа, описано ниже.</p>
   </div>
 </section>
 
@@ -425,6 +454,37 @@
     <p class="note">Скидка за объём: от 350 роликов в месяц −10&nbsp;%, от 500 −20&nbsp;%, от 600 −25&nbsp;%. Цены без НДС.</p>
   </div>
 </section>
+
+<section class="alt" id="process">
+  <div class="wrap">
+    <div class="eyebrow">Как будет работать</div>
+    <h2>Пред-продакшн и продакшн</h2>
+    <div class="two">
+      <div class="box">
+        <div class="lvl">Пред-продакшн</div>
+        <h3>Готовим систему и темы</h3>
+        <ul class="checks" style="columns:1;margin-top:14px">
+          <li><b>Запуск, один раз, 1–2 недели.</b> Шаблоны рубрик в&nbsp;фирменном стиле, подбор голоса диктора, музыкальная библиотека, 3 пробных ролика на&nbsp;реальных темах. Вы утверждаете стиль.</li>
+          <li><b>Каждый понедельник.</b> Питч недели: 5–7 тем с&nbsp;инфоповодом и&nbsp;источником цифр. Редакция выбирает.</li>
+          <li><b>Каждый день.</b> Сценарий таблицей «время / текст / что на&nbsp;экране». Цифры сверяют аналитики Альфа-Инвестиций.</li>
+        </ul>
+      </div>
+      <div class="box">
+        <div class="lvl">Продакшн</div>
+        <h3>Делаем и сдаём ролик</h3>
+        <ul class="checks" style="columns:1;margin-top:14px">
+          <li>Графика и&nbsp;кадры по&nbsp;шаблону рубрики</li>
+          <li>Голос диктора, титры, музыка</li>
+          <li>Черновик и&nbsp;до&nbsp;двух кругов правок</li>
+          <li>Финал: MP4 с&nbsp;титрами и&nbsp;без, обложка, подпись, источники цифр</li>
+          <li>Выкладка на&nbsp;площадки вручную или автоматически</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Если сценарий утверждён до&nbsp;11:00, ролик готов в&nbsp;тот же&nbsp;день. Срочная новость — через 3–4 часа после утверждения текста.</p>
+  </div>
+</section>
+
 
 
 <footer>
