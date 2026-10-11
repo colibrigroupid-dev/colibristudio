@@ -569,12 +569,12 @@
 <script>
 (function(){
   /* ---- gate ---- */
-  var HASH="1d5adb589220c388f9af5111c6e3f0dfb3e8c8fcfc5defb29e9f20c682a9b2b5";
+  var HASH2="da6e1ea24a03ae6a8788b0a7ddac002bdc874c75eff3974820addc5a34f67152";var HASH="1d5adb589220c388f9af5111c6e3f0dfb3e8c8fcfc5defb29e9f20c682a9b2b5";
   function sha(t){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(t)).then(function(b){return [].map.call(new Uint8Array(b),function(x){return x.toString(16).padStart(2,"0")}).join("")})}
   function unlock(){document.body.classList.remove("locked")}
   try{if(localStorage.getItem("matka_ok")===HASH)unlock()}catch(e){}
   function tryCode(){var v=(document.getElementById("gcode").value||"").trim().toUpperCase();
-    sha(v).then(function(hx){if(hx===HASH){try{localStorage.setItem("matka_ok",HASH)}catch(e){};unlock()}
+    sha(v).then(function(hx){if((hx===HASH||hx===HASH2)){try{localStorage.setItem("matka_ok",HASH)}catch(e){};unlock()}
       else{document.getElementById("gerr").textContent="Неверный код";}})}
   document.getElementById("gbtn").addEventListener("click",tryCode);
   document.getElementById("gcode").addEventListener("keydown",function(e){if(e.key==="Enter")tryCode()});
