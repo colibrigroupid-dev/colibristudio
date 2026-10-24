@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Нектариум · 3D-превиз боя</title>
+<style>
+  :root{--bg:#0b0906;--panel:rgba(18,14,8,.88);--gold:#e8b84a;--txt:#f3e7cc;--dim:#a8977a;--red:#e0503c;--cyan:#7fd6ff}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--txt);font:14px/1.35 -apple-system,"Helvetica Neue",Arial,sans-serif;overflow:hidden}
+  #view{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000}
+  .panel{position:fixed;background:var(--panel);border:1px solid rgba(232,184,74,.25);border-radius:10px;padding:10px 12px;backdrop-filter:blur(6px)}
+  #top{left:12px;top:12px;max-width:min(520px,calc(100vw - 24px))}
+  #top h1{font-size:15px;margin:0 0 4px;color:var(--gold);font-weight:600}
+  #phase{font-size:14px;margin:2px 0}
+  #meta{font-size:12.5px;color:var(--dim)} #meta b{color:var(--txt)}
+  #shots{right:12px;top:12px;width:320px;max-height:calc(100vh - 150px);overflow:auto;font-size:12px}
+  #shots h2{font-size:13px;margin:0 0 6px;color:var(--gold)}
+  .shot{padding:5px 6px;border-radius:6px;margin-bottom:3px;cursor:pointer;color:var(--dim)}
+  .shot.on{background:rgba(232,184,74,.16);color:var(--txt)}
+  .shot b{color:var(--gold)} .shot i{color:#ff9d8a;font-style:normal}
+  #bar{left:12px;right:12px;bottom:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  button{background:#2a2113;color:var(--txt);border:1px solid rgba(232,184,74,.35);border-radius:7px;padding:6px 10px;font:inherit;cursor:pointer}
+  button.on{background:var(--gold);color:#1a1206}
+  #t{flex:1;min-width:160px;accent-color:var(--gold)}
+  #clock{min-width:62px;text-align:right;font-variant-numeric:tabular-nums}
+  #hud{position:fixed;inset:0;pointer-events:none;display:none}
+  #hud svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+  #frozen{position:fixed;left:50%;top:16%;transform:translateX(-50%);font-size:20px;letter-spacing:.3em;color:var(--cyan);display:none;text-shadow:0 0 12px rgba(127,214,255,.6)}
+  .tag{position:fixed;transform:translate(-50%,-130%);padding:2px 7px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(18,14,8,.8);border:1px solid rgba(232,184,74,.5);color:var(--gold);white-space:nowrap;pointer-events:none}
+  .tag.red{color:#ff8a74;border-color:rgba(224,80,60,.6)} .tag.cam{color:var(--txt);border-color:rgba(243,231,204,.4);font-weight:500}
+  .tag.cam.on{background:var(--gold);color:#1a1206}
+  #cut30{font-size:12px;color:var(--dim)}
+  @media (max-width:760px){#shots{display:none}}
+</style>
+<script>try{if(localStorage.getItem("nek_ok")!=="f8f6ee9a25306976a0a9b593ca33252820c9b5c704711709493d259a088cb8a9")location.replace("../")}catch(e){location.replace("../")}</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<div id="view"></div>
+<div id="hud"><svg width="240" height="240" viewBox="-120 -120 240 240"><g id="hex" fill="none" stroke="#f5c64a" stroke-width="1.4" opacity=".85"></g><circle r="3" fill="#f5c64a"/></svg></div>
+<div id="frozen">ВРЕМЯ СТОИТ</div>
+<div id="top" class="panel">
+  <h1>«Нектариум» · бой Зои — постановка по курсу Hollywood Camera Work</h1>
+  <div id="phase">—</div>
+  <div id="meta">План: <b id="shotname">—</b> · глаза: <b id="eyemode">покой</b></div>
+  <div id="cut30"></div>
+</div>
+<div id="shots" class="panel"><h2>Шот-лист · 40 с · 12 планов</h2><div id="shotlist"></div></div>
+<div id="bar" class="panel">
+  <button id="play">▶︎ Пуск</button>
+  <input id="t" type="range" min="0" max="40" step="0.01" value="0">
+  <span id="clock">0.0 с</span>
+  <button data-cam="cut" class="on">Монтаж</button>
+  <button data-cam="top">План сверху</button>
+  <button data-cam="free">Свободная</button>
+  <button id="v30">Версия 30 с</button>
+</div>
+<div class="tag" id="tagZoi">Зои</div>
+<div class="tag red" id="tagGen">Генерал</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+// ---------- Сценарий боя: всё считается от времени t (0–40 с) ----------
+// Мир: Древо в начале координат, Зои на ветке (+z), строй летит из −z к Древу (+z).
+// Линия взаимодействия — Зои ↔ Генерал (ось z). Все камеры — с восточной стороны (+x).
+const T_FREEZE = 24.6, T_GO = 36.4, T_END = 40;
+const PHASES = [
+  [0, 'Строй летит к Древу. Зои в засаде на ветке'],
+  [5, 'Генерал ведёт клин: Клинок и Секира по флангам'],
+  [8.5, 'Глаза Зои открываются: покой → боевой режим (соты)'],
+  [11, 'Выбор целей: прицел с Генерала на крайних шершней'],
+  [13, 'Три стрелы — три шершня падают'],
+  [17, 'Генерал отвечает: братья бросают топоры'],
+  [20, 'Топор в Зои: глаза-щит, она уходит вниз и срывается в полёт'],
+  [22.5, 'Полёт к строю'],
+  [T_FREEZE, 'Остановка времени — замерли шершни и топор, движется только Зои'],
+  [26, 'Через антенны она видит каждого шершня'],
+  [28.5, 'Сквозь застывший клин — касается каждого'],
+  [33.5, 'Позади строя. Последний вдох перед тем, как время пойдёт'],
+  [T_GO, 'Время пошло: клин рушится'],
+];
+// Планы: одно движение камеры на план (или неподвижная камера). cut30 — что делать в версии 30 с.
+const SHOTS = [
+  {k:1,  a:0,    b:5,    cam:'K1', name:'Мастер: кран вниз сквозь крону, раскрывает Зои и строй', size:'общий → средне-общий', move:'кран вниз (вертикальный спуск), без панорамы', why:'раскрытие в кадре: крона на переднем плане, богатый задний план — два солнца и клин (т.4, 1:26:17; 1:10:37). Кран останавливается ниже крайней точки (т.4, 1:09:38). Начинаем с открытого кадра — Зои проступает из листвы (т.1, гл.17)', cut30:'4 с: начать на 1 с позже', en:'Crane descends vertically through sunlit leaves of a giant tree, foreground leaves sliding past, revealing a bee warrior crouched on a branch in the foreground while a wedge of hornets approaches from the distant glare of two suns; the crane stops above the branch.'},
+  {k:2,  a:5,    b:8.5,  cam:'K2', name:'Реверс на Генерала: длинный фокус, низкий ракурс', size:'средне-общий, клин сжат', move:'неподвижная', why:'внешний реверс на линии взгляда Зои, та же сторона линии. Длинный фокус сжимает строй и делает его массой, а не рядом (т.1, гл.17 — толпа). Низкий ракурс — Генерал импозантен (т.4, 0:39:46). Без повода — locked-off (т.4, 0:24:03)', cut30:'3 с', en:'Locked-off extreme telephoto shot, slightly low angle, the hornet general flies at the head of a tightly compressed wedge of a hundred hornets, his two brothers on the flanks, heat haze, menacing.'},
+  {k:3,  a:8.5,  b:11,   cam:'K3', name:'Крупно: глаза — покой → соты. Наезд под углом', size:'крупный', move:'медленный наезд под углом ~40° к линии взгляда', why:'повод №9 «решает» (т.4, гл.9). Наезд сбоку, не по линии глаз — иначе он выглядит как зум (т.4, 0:35:14)', cut30:'2,5 с', en:'Close-up through leaves, slow push-in angled about forty degrees off her eyeline, her calm eyes shift into glowing golden honeycomb facets — she decides.'},
+  {k:4,  a:11,   b:13,   cam:'POV', name:'Её глазами: прицел — Генерал, затем крайние шершни', size:'субъективная вставка, длинный фокус', move:'панорама-поиск по целям', why:'короткая вставка в точке взгляда (т.1, 7:48). Камера на линии — нейтральная, сторону не определить (т.1, 0:34:43). Панорама по целям — поиск (т.3)', cut30:'убрать (цели видны в плане 5)', en:'POV through honeycomb vision, long lens, the aim rests on the hornet general then searches across the wedge to the outer hornets.'},
+  {k:5,  a:13,   b:17,   cam:'K5', name:'Через её плечо: три стрелы, перевод фокуса на падающих', size:'через плечо, длинный фокус', move:'неподвижная, перевод фокуса с плеча на строй', why:'выстрел виден со стороны — внешний план через плечо, та же сторона (т.1, гл.11). Перевод фокуса переносит внимание на результат (т.4, 1:04:18). Длинный фокус связывает её и далёкий строй в одном кадре', cut30:'3,5 с', en:'Over-the-shoulder telephoto shot from behind her right shoulder, she draws and looses three arrows in quick succession, focus racks from her shoulder to the distant wedge as three hornets fall.'},
+  {k:6,  a:17,   b:20,   cam:'K6', name:'Реверс: Генерал в низком ракурсе, братья бросают топоры', size:'средний на Генерала', move:'неподвижная, строй накатывает на камеру', why:'ответ врага; низкий ракурс — сила (т.4, 0:39:46). Камера на восточной стороне — Генерал смотрит влево по кадру, Зои — вправо: взгляды сходятся (т.1, гл.11)', cut30:'2,5 с', en:'Low-angle locked-off medium shot, the hornet general advances toward camera and signals; the brothers on his flanks hurl spinning axes past the lens toward the tree.'},
+  {k:7,  a:20,   b:22.5, cam:'K7', name:'Зои: топор летит — глаза-щит, уход вниз', size:'средний', move:'неподвижная, героиня уходит из кадра', why:'действие внутри неподвижного кадра; топор входит справа, от строя — направление по экрану сохранено (т.1, гл.11). Выход героини из кадра — чистый стык на следующий план (т.3, трансфер)', cut30:'2,5 с', en:'Locked-off medium shot, an axe spins in from frame right, a chitin shield slides over her eyes, she drops out of frame as the axe thuds into the branch where she stood.'},
+  {k:8,  a:22.5, b:26,   cam:'K8', name:'Параллельная тележка: полёт к строю — время останавливается в кадре', size:'средне-общий', move:'параллельная тележка (сопровождение сбоку)', why:'переход «остановка времени» ставится первым и происходит внутри плана, а не на склейке (т.5, ступень 2). Листва на переднем плане даёт скорость (т.3, 0:56:49). Остановку снимаем «как будто есть», а потом добавляем замирание в посте (т.6, бревно — VFX-плита)', cut30:'3,5 с', en:'Parallel tracking shot alongside her as she dives from the tree toward the hornet wedge, leaves streaking through the foreground; midway every hornet and a spinning axe freeze in mid-air while she keeps flying.'},
+  {k:9,  a:26,   b:28.5, cam:'K9', name:'Общий сверху: застывший клин, нити антенн', size:'общий, высокий ракурс', move:'неподвижная', why:'застывший мир — неподвижная камера (т.4, 0:24:03). Высокий общий — ориентация в новом состоянии сцены (т.1, гл.22, мастер при потере ориентации)', cut30:'убрать (застывание уже видно в плане 8)', en:'High-angle locked-off wide shot, the entire hornet wedge frozen mid-air, faint glowing threads stretch from her antennae to every hornet.'},
+  {k:10, a:28.5, b:33.5, cam:'K10', name:'Сквозь клин: параллельная тележка вдоль строя', size:'средний, застывшие шершни на переднем плане', move:'параллельная тележка вдоль клина', why:'одна прямая тележка вместо облёта: ориентация не теряется (т.3, 1:21:36). Застывшие шершни на переднем плане — параллакс и скорость (т.3, гл.13–14). Она пролетает клин насквозь и уносит линию за собой — пересечение линии в кадре (т.1, 0:32:42)', cut30:'3,5 с', en:'Parallel tracking shot along the frozen wedge, frozen hornets sliding through the foreground, she weaves down its length touching each hornet and exits behind the last row.'},
+  {k:11, a:33.5, b:36,   cam:'K11', name:'Крупно: глаза-щит, последний миг', size:'крупный', move:'медленный наезд под углом', why:'повод №11 «ожидание» — ничего уже не изменить (т.4, гл.9). Камера с той же восточной стороны; после пересечения в плане 10 Зои справа, строй слева — как в последнем кадре', cut30:'2,5 с', en:'Close-up, slow angled push-in on her shielded honeycomb eyes behind the frozen wedge, a held breath before time resumes.'},
+  {k:12, a:36,   b:40,   cam:'K12', name:'Отвод и подъём: время пошло, клин рушится', size:'от среднего к общему', move:'отвод с подъёмом (кран назад)', why:'отвод снимает напряжение и показывает последствия (т.4, гл.11). Время снова идёт внутри плана. Закрытый общий в финале (т.1, гл.17). Кран не доходит до крайней точки (т.4, 1:09:38)', cut30:'3 с', en:'Slow crane pull-back and rise from her hovering figure as time resumes and the whole hornet wedge collapses and falls toward the forest, the giant tree and two suns beyond.'},
+];
+const sm = x => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
+const lerp = (a, b, u) => a + (b - a) * u;
+
+// Зои: ветка → уход вниз → полёт → сквозь клин → позади строя
+const BRANCH = new THREE.Vector3(7, 36, -9), DROP = new THREE.Vector3(6, 34.2, -10.5);
+const FRONT = new THREE.Vector3(2, 40, -22);   // перед клином в момент остановки
+const leaderZ = t => -200 + 7 * Math.min(t, T_FREEZE);
+const ROWS = 14, SP = 4;                        // клин: 14 рядов, шаг 4
+const PASS0 = new THREE.Vector3(0, 40.5, -27), PASS1 = new THREE.Vector3(0, 41, -98), REAR = new THREE.Vector3(0, 43, -110);
+function zoiPos(t, out = new THREE.Vector3()) {
+  if (t < 21.1) return out.copy(BRANCH);
+  if (t < 22.5) return out.lerpVectors(BRANCH, DROP, sm((t - 21.1) / .5));
+  if (t < 26) { const u = sm((t - 22.5) / 3.5); return out.lerpVectors(DROP, FRONT, u).add(new THREE.Vector3(0, 2.2 * Math.sin(Math.PI * u), 0)); }
+  if (t < 28.5) return out.lerpVectors(FRONT, PASS0, sm((t - 26) / 2.5));
+  if (t < 33.5) { const u = (t - 28.5) / 5; out.lerpVectors(PASS0, PASS1, u); out.x += 7 * Math.sin(u * Math.PI * 4); out.y += 1.5 * Math.sin(u * Math.PI * 6); return out; }
+  if (t < 35) return out.lerpVectors(PASS1, REAR, sm((t - 33.5) / 1.5));
+  return out.copy(REAR).add(new THREE.Vector3(0, .25 * Math.sin(t * 2), 0));
+}
+// куда она смотрит (для поворота фигуры)
+function zoiFacing(t) { return t < 33.5 ? new THREE.Vector3(0, 0, -1) : new THREE.Vector3(0, 0, 1); }
+
+// Строй: плотный клин из 100 шершней, Генерал впереди, братья — №1 (Клинок) и №2 (Секира)
+const N = 100, hornets = [];
+const rnd = (() => { let s = 11; return () => (s = (s * 16807) % 2147483647) / 2147483647; })();
+for (let i = 0; i < N; i++) {
+  const row = Math.floor((Math.sqrt(8 * i + 1) - 1) / 2), col = i - row * (row + 1) / 2;
+  const jit = i < 3 ? 0 : 1;
+  hornets.push({ ox: (col - row / 2) * SP + (rnd() - .5) * 1.8 * jit, oy: (rnd() - .5) * 4 * jit + row * .3, oz: -row * SP + (rnd() - .5) * 1.8 * jit, ph: rnd() * 6, hitT: Infinity, markT: Infinity, fallT: Infinity });
+}
+function hornetPos(i, t, out = new THREE.Vector3()) {
+  const h = hornets[i], tt = Math.min(t, T_FREEZE);
+  out.set(h.ox, 40 + h.oy + Math.sin(tt * 3 + h.ph) * .35, leaderZ(t) + h.oz);
+  const f = Math.min(h.hitT, h.fallT);
+  if (t > f) { const d = (f >= T_FREEZE && f < T_GO) ? 0 : (t < T_FREEZE || t >= T_GO ? (t >= T_GO && f < T_FREEZE ? T_FREEZE - f + (t - T_GO) : t - f) : T_FREEZE - f);
+    out.y -= 4.9 * d * d; out.x += Math.sin(h.ph) * d * 2; }
+  return out;
+}
+// Стрелы: три выстрела по цепочке целей (план 5)
+const ARROWS = [ {tf:13.6, i:5}, {tf:14.5, i:9}, {tf:15.4, i:14} ];
+const FLY = 1.1;
+ARROWS.forEach(a => hornets[a.i].hitT = a.tf + FLY);
+function arrowPos(a, t, out) {
+  const s = (t - a.tf) / FLY; if (s < 0 || s > 1) return null;
+  const from = zoiPos(a.tf).add(new THREE.Vector3(0, 2.3, -.6)), to = hornetPos(a.i, a.tf + FLY);
+  return out.lerpVectors(from, to, s).add(new THREE.Vector3(0, 2.5 * s * (1 - s), 0));
+}
+// Топоры: №1 Клинок — в ветку рядом (предупреждение), №2 Секира — в Зои, №3 — вдогонку, застывает при остановке
+const AXES = [ {tf:17.6, i:1, dur:2.8, aim:[8.6, 36.8, -9.4]}, {tf:18.4, i:2, dur:2.9, aim:[7, 38.6, -9]}, {tf:23.2, i:2, dur:2.4, aim:[3, 39.5, -19]} ];
+function axeTime(t) { return t < T_FREEZE ? t : (t < T_GO ? T_FREEZE : t - (T_GO - T_FREEZE)); }
+function axePos(x, t, out) {
+  const tt = axeTime(t), s = (tt - x.tf) / x.dur; if (s < 0 || s > 1.35) return null;
+  const from = hornetPos(x.i, x.tf), aim = new THREE.Vector3(...x.aim), dir = aim.clone().sub(from);
+  const p = out.copy(from).addScaledVector(dir, Math.min(s, 1)).add(new THREE.Vector3(0, 3 * Math.min(s, 1) * (1 - Math.min(s, 1)), 0));
+  if (s > 1) p.y -= 20 * (s - 1) * (s - 1);   // после цели — падает
+  return p;
+}
+// Касания: шершень помечен, когда она проходит рядом (план 10); при T_GO помеченные рушатся
+{
+  const p = new THREE.Vector3(), q = new THREE.Vector3();
+  hornets.forEach((h, i) => {
+    if (h.hitT < Infinity) return;
+    hornetPos(i, T_FREEZE, p); let best = 1e9, bt = 28.5;
+    for (let t = 28.5; t <= 33.5; t += .02) { const d = zoiPos(t, q).distanceToSquared(p); if (d < best) { best = d; bt = t; } }
+    h.markT = Math.max(28.6, Math.min(33.4, bt));
+    h.fallT = T_GO + rnd() * .9;
+  });
+}
+
+// ---------- Камеры режиссёрского монтажа ----------
+// Ключевые кадры: каждая камера — одно движение между началом и концом или неподвижная.
+const v1 = new THREE.Vector3(), v2 = new THREE.Vector3(), v3 = new THREE.Vector3();
+const head = (t, o) => zoiPos(t, o).add(new THREE.Vector3(0, 2.9, 0));
+function shotAt(t) { return SHOTS.find(s => t >= s.a && t < s.b) || SHOTS[SHOTS.length - 1]; }
+function shotCamera(s, t) {           // → {p, l, fov}
+  const u = (t - s.a) / (s.b - s.a);
+  switch (s.cam) {
+    case 'K1': { const e = sm(u); return { p: [lerp(17, 11.5, e), lerp(66, 40.2, e), lerp(5, -1, e)], l: [2, lerp(30, 38, e), -70], fov: 40 }; }
+    case 'K2': { const L = hornetPos(0, 6.75, v2); return { p: [26, 37, -12], l: [L.x, L.y + 1.6, L.z], fov: 6 }; }
+    case 'K3': { const z = head(t, v1), d = lerp(5.6, 3.6, sm(u)); return { p: [z.x + d * .64, z.y + .05, z.z - d * .77], l: [z.x, z.y, z.z], fov: 28 }; }
+    case 'POV': { const z = head(t, v1), tgt = u < .4 ? hornetPos(0, t, v2) : hornetPos(u < .7 ? 5 : 9, t, v2);
+      const prev = u < .4 ? tgt : hornetPos(u < .7 ? 0 : 5, t, v3), k = u < .4 ? 1 : sm(((u < .7 ? u - .4 : u - .7)) / .15);
+      return { p: [z.x, z.y, z.z - 1.3], l: [lerp(prev.x, tgt.x, k), lerp(prev.y, tgt.y, k), lerp(prev.z, tgt.z, k)], fov: 9 }; }
+    case 'K5': { const h = head(t, v1), C = hornetPos(9, 14.5, v2), back = h.clone().sub(C).setY(0).normalize(), side = new THREE.Vector3(-back.z, 0, back.x);
+      if (side.x < 0) side.negate();   // сдвиг на восток (+x): Зои слева в кадре, строй справа
+      const p = h.clone().addScaledVector(back, 16).addScaledVector(side, 1.7).add(new THREE.Vector3(0, .4, 0));
+      return { p: p.toArray(), l: [C.x, C.y, C.z], fov: 9 }; }
+    case 'K6': { const L0 = hornetPos(0, 17, v2); return { p: [L0.x + 11, L0.y - 3.5, L0.z + 34], l: [L0.x, L0.y + .5, L0.z + 10], fov: 30 }; }
+    case 'K7': { const b = BRANCH; return { p: [b.x + 7.5, b.y + 2.4, b.z - 4.5], l: [b.x, b.y + 1.9, b.z - .4], fov: 34 }; }
+    case 'K8': { const z = zoiPos(t, v1); return { p: [z.x + 13, z.y + 1.8, z.z + 1.5], l: [z.x, z.y + 1.6, z.z - 1], fov: 38 }; }
+    case 'K9': { return { p: [52, 92, -30], l: [0, 40, -62], fov: 42 }; }
+    case 'K10': { const z = zoiPos(t, v1); return { p: [36, z.y + 8, z.z + 2], l: [z.x, z.y + 1.5, z.z], fov: 22 }; }
+    case 'K11': { const z = head(t, v1), d = lerp(5.6, 3.6, sm(u)); return { p: [z.x + d * .64, z.y + .05, z.z + d * .77], l: [z.x, z.y, z.z], fov: 28 }; }
+    case 'K12': { const z = zoiPos(t, v1), d = lerp(7, 60, sm(u)); return { p: [z.x + d * .62, z.y + 2 + d * .38, z.z - d * .62], l: [lerp(z.x, 0, sm(u) * .7), lerp(z.y + 1.5, 30, sm(u)), lerp(z.z, -40, sm(u))], fov: 44 }; }
+  }
+}
+function cutCamera(t) {
+  const s = shotAt(t), c = shotCamera(s, t);
+  camera.position.set(...c.p); camera.lookAt(...c.l); camera.fov = c.fov; camera.updateProjectionMatrix();
+  return s;
+}
+
+// ---------- Интерфейс и сцена ----------
+const $ = id => document.getElementById(id);
+const view = $('view');
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+view.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x2b2418);
+scene.fog = new THREE.Fog(0x2b2418, 160, 520);
+const camera = new THREE.PerspectiveCamera(40, 16 / 9, .1, 2500);
+const controls = new OrbitControls(camera, renderer.domElement);
+let mode = 'cut';
+function resize() {
+  const full = mode !== 'cut', w = full ? innerWidth : Math.min(innerWidth, innerHeight * 16 / 9), h = full ? innerHeight : w * 9 / 16;
+  renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize);
+
+scene.add(new THREE.HemisphereLight(0xffe6b0, 0x2a3a20, 1.1));
+const sun = new THREE.DirectionalLight(0xffd27a, 1.7); sun.position.set(-80, 120, -160); scene.add(sun);
+[[-120, 110, -420, 32, 0xffd36a], [60, 80, -440, 15, 0xff6a3a]].forEach(([x, y, z, r, c]) => {
+  const m = new THREE.Mesh(new THREE.SphereGeometry(r, 24, 16), new THREE.MeshBasicMaterial({ color: c, fog: false })); m.position.set(x, y, z); scene.add(m);
+});
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(1200, 1200), new THREE.MeshLambertMaterial({ color: 0x2f4a22 }));
+ground.rotation.x = -Math.PI / 2; scene.add(ground);
+const forestMat = new THREE.MeshLambertMaterial({ color: 0x3b5f2a });
+for (let k = 0; k < 180; k++) {
+  const a = rnd() * Math.PI * 2, r = 60 + rnd() * 340, h = 10 + rnd() * 26;
+  const c = new THREE.Mesh(new THREE.ConeGeometry(6 + rnd() * 8, h, 7), forestMat); c.position.set(Math.cos(a) * r, h / 2, Math.sin(a) * r - 60); scene.add(c);
+}
+const bark = new THREE.MeshLambertMaterial({ color: 0x5a3d22 });
+const trunk = new THREE.Mesh(new THREE.CylinderGeometry(3.2, 5.5, 46, 14), bark); trunk.position.y = 23; scene.add(trunk);
+const branch = new THREE.Mesh(new THREE.CylinderGeometry(.5, 1, 11, 8), bark);
+branch.position.set(4.5, 35.2, -6); branch.rotation.set(0.6, 0, -1.1); scene.add(branch);
+const leafMat = new THREE.MeshLambertMaterial({ color: 0x4d7a2c, transparent: true, opacity: .55, depthWrite: false });
+// крона — с западной стороны и сверху: восточная сторона (+x), где стоят камеры, открыта
+for (let k = 0; k < 40; k++) {
+  const s = new THREE.Mesh(new THREE.IcosahedronGeometry(4 + rnd() * 5, 1), leafMat);
+  const a = Math.PI * (.5 + rnd()), r = 4 + rnd() * 15, top = rnd() < .3;
+  s.position.set(top ? (rnd() - .5) * 18 : Math.cos(a) * r, top ? 50 + rnd() * 8 : 38 + rnd() * 14, Math.sin(a) * r); scene.add(s);
+}
+// мелкая листва — передний план: на спуске крана (план 1) и на пути полёта (план 8)
+const leaf = (x, y, z, r) => { const s = new THREE.Mesh(new THREE.IcosahedronGeometry(r, 1), leafMat); s.position.set(x, y, z); scene.add(s); };
+[[17, 60, 4, 2.4], [15.5, 55, 6, 2], [18.5, 50, 3, 1.8], [16, 46, 6.5, 1.5]].forEach(a => leaf(...a));
+for (let k = 0; k < 8; k++) leaf(10 + rnd() * 2.5, 35 + rnd() * 6, -15 - k * 1.5, 1.1 + rnd() * .7);
+
+// Зои: болванка, пока не загрузилась модель
+const gold = new THREE.MeshStandardMaterial({ color: 0xd9a43a, metalness: .3, roughness: .5 });
+const zoi = new THREE.Group(); scene.add(zoi);
+const dummy = new THREE.Group(); zoi.add(dummy);
+{ const b = new THREE.Mesh(new THREE.CapsuleGeometry(.28, .9, 6, 12), gold); b.position.y = .95; dummy.add(b);
+  const h = new THREE.Mesh(new THREE.SphereGeometry(.2, 16, 12), gold); h.position.y = 1.72; dummy.add(h); }
+const wingMat = new THREE.MeshBasicMaterial({ color: 0xfff2c0, transparent: true, opacity: .35, side: THREE.DoubleSide, depthWrite: false });
+const wings = [-1, 1].map(sx => { const w = new THREE.Mesh(new THREE.PlaneGeometry(1.4, .5), wingMat); w.position.set(sx * .75, 1.35, .15); zoi.add(w); return w; });
+zoi.scale.setScalar(1.6);
+const gltf = new GLTFLoader();
+function fitModel(root, height, faceBack) {
+  root.updateMatrixWorld(true);
+  const b = new THREE.Box3().setFromObject(root, true), sz = b.getSize(new THREE.Vector3()), c = b.getCenter(new THREE.Vector3());
+  const k = height / sz.y; root.scale.setScalar(k);
+  if (faceBack) root.rotation.y = Math.PI;
+  // центр модели в ноль; при развороте на 180° смещение по x и z меняет знак (иначе модель уезжает от своей точки)
+  root.position.set((faceBack ? 1 : -1) * c.x * k, -b.min.y * k, (faceBack ? 1 : -1) * c.z * k);
+  const g = new THREE.Group(); g.add(root); return g;
+}
+gltf.load(encodeURI('модели/зои-v1-фигура.glb'), g => { dummy.visible = false; wings.forEach(w => w.visible = false); zoi.add(fitModel(g.scene, 2.0, true)); }, undefined, e => console.warn('Зои GLB не загрузилась', e));
+
+// Шершни: инстансы + Генерал (модель) + братья (вырезки)
+const hGeo = new THREE.SphereGeometry(.6, 10, 8); hGeo.scale(1, .8, 2.2);
+const hMesh = new THREE.InstancedMesh(hGeo, new THREE.MeshLambertMaterial({ color: 0xffffff }), N); hMesh.frustumCulled = false; scene.add(hMesh);   // рамка инстансов не пересчитывается — без этого строй пропадает из кадра
+const leader = new THREE.Group(); scene.add(leader);
+const leaderDummy = new THREE.Mesh(new THREE.SphereGeometry(1, 12, 10), new THREE.MeshLambertMaterial({ color: 0xb01e10 })); leaderDummy.scale.set(1, .8, 2.2); leader.add(leaderDummy);
+gltf.load(encodeURI('модели/генерал-v1.glb'), g => { leaderDummy.visible = false; const m = fitModel(g.scene, 4.5, false); m.position.y = -2.25; leader.add(m); }, undefined, e => console.warn('Генерал GLB не загрузился', e));
+const texL = new THREE.TextureLoader();
+function cutout(path, h) {
+  const tx = texL.load(encodeURI(path)); tx.colorSpace = THREE.SRGBColorSpace;
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: tx, transparent: true, depthWrite: false })); s.center.set(.5, .35);
+  const fit = () => { if (tx.image) s.scale.set(h * tx.image.width / tx.image.height, h, 1); };
+  tx.onUpdate = fit; s.onBeforeRender = () => { if (s.scale.x === 1 && tx.image) fit(); };
+  scene.add(s); return s;
+}
+const brothers = [cutout('вырезки/2-клинок.png', 4.2), cutout('вырезки/3-секира.png', 4.4)];
+const cOk = new THREE.Color(0xff7a1a), cMark = new THREE.Color(0x7fd6ff), cHit = new THREE.Color(0x444444);
+
+const arrowMeshes = ARROWS.map(() => { const m = new THREE.Mesh(new THREE.CylinderGeometry(.06, .06, 2.2, 6), new THREE.MeshBasicMaterial({ color: 0xffe9a8 })); scene.add(m); return m; });
+const axeMeshes = AXES.map(() => { const m = new THREE.Mesh(new THREE.BoxGeometry(1.2, .25, .9), new THREE.MeshBasicMaterial({ color: 0xe0503c })); scene.add(m); return m; });
+const linkGeo = new THREE.BufferGeometry(); linkGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(N * 6), 3));
+scene.add(new THREE.LineSegments(linkGeo, new THREE.LineBasicMaterial({ color: 0x7fd6ff, transparent: true, opacity: .5 })));
+
+// План сверху: линия взаимодействия, сторона камер, метки камер
+const planG = new THREE.Group(); scene.add(planG);
+const sideFill = new THREE.Mesh(new THREE.PlaneGeometry(120, 260), new THREE.MeshBasicMaterial({ color: 0xe8b84a, transparent: true, opacity: .06, depthWrite: false }));
+sideFill.rotation.x = -Math.PI / 2; sideFill.position.set(60, 46, -60); planG.add(sideFill);
+const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(), new THREE.Vector3()]);
+const lineOfAction = new THREE.Line(lineGeo, new THREE.LineDashedMaterial({ color: 0xe0503c, dashSize: 3, gapSize: 2 })); planG.add(lineOfAction);
+const camTags = SHOTS.map(s => { const el = document.createElement('div'); el.className = 'tag cam'; el.textContent = s.k; document.body.appendChild(el); return el; });
+const camDots = SHOTS.map(() => { const m = new THREE.Mesh(new THREE.ConeGeometry(1.4, 3, 4), new THREE.MeshBasicMaterial({ color: 0xf3e7cc })); planG.add(m); return m; });
+const pathLine = new THREE.Line(new THREE.BufferGeometry().setFromPoints([...Array(161)].map((_, k) => zoiPos(k / 4).clone())), new THREE.LineDashedMaterial({ color: 0xe8b84a, dashSize: 1.5, gapSize: 1 }));
+pathLine.computeLineDistances(); planG.add(pathLine);
+
+const slider = $('t'), clock = $('clock'), playBtn = $('play');
+let t = 0, playing = false, last = performance.now(), v30 = false;
+$('shotlist').innerHTML = SHOTS.map((s, k) => `<div class="shot" data-k="${k}"><b>${s.k}. ${s.a}–${s.b} с · ${s.cam}</b> · ${s.size}<br>${s.name}<br><span>${s.move}</span><br><span>${s.why}</span><br><i>30 с: ${s.cut30}</i></div>`).join('');
+document.querySelectorAll('.shot').forEach(el => el.onclick = () => { t = SHOTS[+el.dataset.k].a + .01; setMode('cut'); });
+playBtn.onclick = () => { playing = !playing; if (t >= T_END) t = 0; playBtn.textContent = playing ? '❚❚ Пауза' : '▶︎ Пуск'; };
+slider.oninput = () => { t = +slider.value; };
+$('v30').onclick = () => { v30 = !v30; $('v30').classList.toggle('on', v30); $('cut30').textContent = v30 ? 'Версия 30 с: при проигрывании пропускаются планы 4 и 9' : ''; };
+function setMode(m) {
+  mode = m; document.querySelectorAll('[data-cam]').forEach(b => b.classList.toggle('on', b.dataset.cam === m));
+  controls.enabled = m === 'free'; resize();
+  if (m === 'top') { camera.position.set(30, 330, -70); camera.lookAt(30, 0, -70); camera.fov = 42; camera.up.set(0, 0, -1); camera.lookAt(30, 0, -70); camera.updateProjectionMatrix(); }
+  else camera.up.set(0, 1, 0);
+  if (m === 'free') { camera.position.set(120, 80, 60); controls.target.set(0, 35, -50); camera.fov = 40; camera.updateProjectionMatrix(); controls.update(); }
+}
+document.querySelectorAll('[data-cam]').forEach(b => b.onclick = () => setMode(b.dataset.cam));
+{ const g = $('hex'); let s = ''; const R = 20; for (let q = -3; q <= 3; q++) for (let r = -3; r <= 3; r++) { if (Math.abs(q + r) > 3) continue;
+  const x = R * 1.5 * q, y = R * Math.sqrt(3) * (r + q / 2), pts = [...Array(6)].map((_, k) => `${(x + R * .95 * Math.cos(k * Math.PI / 3)).toFixed(1)},${(y + R * .95 * Math.sin(k * Math.PI / 3)).toFixed(1)}`).join(' ');
+  s += `<polygon points="${pts}"/>`; } g.innerHTML = s; }
+function placeTag(el, p, dy) {
+  const r = renderer.domElement.getBoundingClientRect(), v = p.clone().add(new THREE.Vector3(0, dy, 0)).project(camera);
+  const on = v.z < 1 && Math.abs(v.x) < 1.05 && Math.abs(v.y) < 1.05;
+  el.style.display = on ? 'block' : 'none';
+  if (on) { el.style.left = r.left + (v.x + 1) / 2 * r.width + 'px'; el.style.top = r.top + (1 - v.y) / 2 * r.height + 'px'; }
+}
+function eyeMode(t) {
+  if (t < 9.3) return 'покой';
+  if (t >= 20.9 && t < 22.5) return 'ЩИТ';
+  if (t >= T_FREEZE && t < T_GO + 1) return 'ЩИТ + соты';
+  if (t >= T_GO + 1) return 'покой — гнев отпущен';
+  return 'боевой — соты, зрачок-щель';
+}
+
+const m4 = new THREE.Matrix4(), q4 = new THREE.Quaternion(), sc = new THREE.Vector3(1, 1, 1), hp = new THREE.Vector3(), ap = new THREE.Vector3();
+function update(t, now) {
+  const frozen = t >= T_FREEZE && t < T_GO;
+  zoiPos(t, zoi.position);
+  const f = zoiFacing(t); zoi.lookAt(zoi.position.x - f.x, zoi.position.y, zoi.position.z - f.z);
+  const flap = (t > 21.1 ? 1 : .12) * Math.sin(now / 18); wings[0].rotation.y = .3 + flap; wings[1].rotation.y = -.3 - flap;
+  for (let i = 0; i < N; i++) {
+    const h = hornets[i]; hornetPos(i, t, hp);
+    const fT = Math.min(h.hitT, h.fallT), fallen = t > fT && !(frozen && fT >= T_FREEZE);
+    q4.setFromEuler(new THREE.Euler(fallen ? Math.min(3, (t - fT) * 3) : 0, 0, 0));
+    m4.compose(hp, q4, i < 3 ? new THREE.Vector3(0, 0, 0) : sc); hMesh.setMatrixAt(i, m4);
+    hMesh.setColorAt(i, t > h.hitT ? cHit : (t > h.markT ? cMark : cOk));
+    if (i === 0) leader.position.copy(hp);
+    if (i === 1 || i === 2) brothers[i - 1].position.copy(hp);
+    const arr = linkGeo.attributes.position.array, show = frozen && t > 26 && (t < 28.5 || (t > h.markT - 1 && t < h.markT + .2));
+    arr.set(show ? [zoi.position.x, zoi.position.y + 3.6, zoi.position.z, hp.x, hp.y, hp.z] : [0, 0, 0, 0, 0, 0], i * 6);
+  }
+  hMesh.instanceMatrix.needsUpdate = true; hMesh.instanceColor.needsUpdate = true; linkGeo.attributes.position.needsUpdate = true;
+  ARROWS.forEach((a, k) => { const p = arrowPos(a, t, ap); arrowMeshes[k].visible = !!p; if (p) { arrowMeshes[k].position.copy(p); arrowMeshes[k].lookAt(hornetPos(a.i, a.tf + FLY, v2)); arrowMeshes[k].rotateX(Math.PI / 2); } });
+  AXES.forEach((x, k) => { const p = axePos(x, t, ap); axeMeshes[k].visible = !!p; if (p) { axeMeshes[k].position.copy(p); axeMeshes[k].rotation.set(axeTime(t) * 9, 0, 0); } });
+  return frozen;
+}
+
+function frame(now) {
+  const dt = Math.min(.05, (now - last) / 1000); last = now;
+  if (playing) { t += dt; if (v30) { if (t >= 11 && t < 13) t = 13; if (t >= 26 && t < 28.5) t = 28.5; } if (t >= T_END) { t = T_END; playing = false; playBtn.textContent = '▶︎ Пуск'; } }
+  slider.value = t; clock.textContent = t.toFixed(1) + ' с';
+  const frozen = update(t, now);
+  let s = null;
+  planG.visible = mode === 'top';
+  if (mode === 'cut') s = cutCamera(t); else if (mode === 'free') controls.update();
+  if (mode === 'top') {
+    const z = zoiPos(t, v1), L = hornetPos(0, t, v2), d = L.clone().sub(z).setY(0).normalize();
+    lineGeo.setFromPoints([z.clone().addScaledVector(d, -60).setY(46), L.clone().addScaledVector(d, 60).setY(46)]); lineOfAction.computeLineDistances();
+    const cur = shotAt(t);
+    SHOTS.forEach((sh, k) => { const c = shotCamera(sh, sh.a + .01); camDots[k].position.set(c.p[0], 46, c.p[2]); camDots[k].material.color.set(sh === cur ? 0xe8b84a : 0xf3e7cc); placeTag(camTags[k], camDots[k].position, 2); camTags[k].classList.toggle('on', sh === cur); });
+  } else camTags.forEach(el => el.style.display = 'none');
+  const isPov = s && s.cam === 'POV';
+  $('hud').style.display = isPov ? 'block' : 'none';
+  $('frozen').style.display = frozen ? 'block' : 'none';
+  scene.background.set(frozen ? 0x1d2a33 : 0x2b2418); scene.fog.color.copy(scene.background);
+  let ph = PHASES[0][1]; for (const p of PHASES) if (t >= p[0]) ph = p[1];
+  $('phase').textContent = ph;
+  const cur = shotAt(t); $('shotname').textContent = `${cur.k} · ${cur.name}`; $('eyemode').textContent = eyeMode(t);
+  document.querySelectorAll('.shot').forEach((el, k) => el.classList.toggle('on', SHOTS[k] === cur));
+  if (mode !== 'cut') { placeTag($('tagZoi'), zoi.position, 5); placeTag($('tagGen'), leader.position, 4); }
+  else { $('tagZoi').style.display = $('tagGen').style.display = 'none'; }
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+resize();
+requestAnimationFrame(frame);
+// для проверки: прогон всех 40 с без анимационного цикла
+window.__hcw = { setT: v => { t = v; }, setMode, get t() { return t; }, SHOTS,
+  run(step = 1 / 24) { let n = 0; for (let x = 0; x <= T_END + 1e-6; x += step) { update(x, x * 1000); cutCamera(x); renderer.render(scene, camera); n++; } return n; } };
+</script>
+</body>
+</html>
