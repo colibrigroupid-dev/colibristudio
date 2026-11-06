@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#16110B">
+<title>Закрытая страница</title>
+<style>
+:root{--fon:#16110B;--tekst:#F2E8D2;--med:#F2B83B;--oshibka:#FF9C7A}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--fon);color:var(--tekst);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px}
+.zamok{min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:14px;max-width:420px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-left,0px))}
+h1{margin:0;font-size:30px;line-height:1.1}
+label{font-size:15px}
+input{width:100%;min-height:52px;padding:12px 14px;font:inherit;background:#2A2118;color:var(--tekst);border:1px solid #6B5840;border-radius:4px;text-transform:uppercase;letter-spacing:.04em}
+input:focus{outline:3px solid var(--med);outline-offset:1px}
+button{min-height:52px;font:inherit;font-weight:700;background:var(--med);color:#16110B;border:0;border-radius:4px;cursor:pointer}
+button:disabled{opacity:.6}
+.oshibka{color:var(--oshibka);min-height:1.4em;margin:0}
+#tablo{display:none}
+.vkladki{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;gap:2px;background:#16110B;padding:6px max(8px,env(safe-area-inset-left,0px)) 6px;padding-top:max(6px,env(safe-area-inset-top,0px))}
+.vkladki button{flex:1;min-height:44px;background:#2A2118;color:#F2E8D2;font-size:15px;font-weight:600;border-radius:4px}
+.vkladki button[aria-pressed=true]{background:var(--med);color:#16110B}
+.panel{position:absolute;top:calc(56px + env(safe-area-inset-top,0px));left:0;right:0;bottom:0;overflow:hidden;background:#fff}
+.panel[hidden]{display:none}
+.panel iframe{display:block;width:100%;height:100%;border:0}
+body.otkryto{overflow:hidden}
+</style>
+</head>
+<body>
+<form class="zamok" id="forma" autocomplete="off">
+  <h1>Закрытая страница</h1>
+  <label for="kod">Введите код доступа</label>
+  <input id="kod" name="kod" autocapitalize="characters" autocorrect="off" spellcheck="false" required>
+  <button type="submit" id="vojti">Открыть</button>
+  <p class="oshibka" id="oshibka" role="alert"></p>
+</form>
+<div id="tablo">
+  <nav class="vkladki" aria-label="Разделы">
+    <button type="button" data-p="otchet" aria-pressed="true">Отчёт</button>
+    <button type="button" data-p="prototip" aria-pressed="false">Сайт</button>
+    <button type="button" data-p="reklama" aria-pressed="false">Реклама</button>
+    <button type="button" id="vyjti" style="flex:0 0 auto;padding-inline:12px">Выйти</button>
+  </nav>
+  <div class="panel" id="p-otchet"><iframe title="Отчёт"></iframe></div>
+  <div class="panel" id="p-prototip" hidden><iframe title="Прототип сайта"></iframe></div>
+  <div class="panel" id="p-reklama" hidden><iframe title="Реклама"></iframe></div>
+</div>
+<script>
+(function(){
+  var forma=document.getElementById('forma'),oshibka=document.getElementById('oshibka'),vojti=document.getElementById('vojti'),pole=document.getElementById('kod');
+  function iz64(s){return Uint8Array.from(atob(s),function(c){return c.charCodeAt(0)})}
+  function chitat(){try{return localStorage.getItem('dz_kod')||''}catch(e){return ''}}
+  function pisat(k){try{localStorage.setItem('dz_kod',k)}catch(e){}}
+  function zabyt(){try{localStorage.removeItem('dz_kod')}catch(e){}}
+  function pokazat(d){
+    var t=document.getElementById('tablo');
+    document.querySelector('#p-otchet iframe').srcdoc=d.otchet;
+    document.querySelector('#p-prototip iframe').srcdoc=d.prototip;
+    document.querySelector('#p-reklama iframe').srcdoc=d.reklama;
+    forma.style.display='none';t.style.display='block';document.body.classList.add('otkryto');
+    document.title='Материалы';
+    document.querySelector('.vkladki').addEventListener('click',function(e){
+      var b=e.target.closest('[data-p]');if(!b)return;
+      document.querySelectorAll('.vkladki [data-p]').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+      document.querySelectorAll('.panel').forEach(function(p){p.hidden=p.id!=='p-'+b.dataset.p});
+    });
+  }
+  async function poluchit(put,tip){
+    var ctl=new AbortController(),t=setTimeout(function(){ctl.abort()},60000);
+    try{var r=await fetch(put,{cache:'no-store',signal:ctl.signal});if(!r.ok)throw new Error('zagruzka');return await r[tip]()}
+    finally{clearTimeout(t)}
+  }
+  async function otkryt(kod){
+    var par=await poluchit('parametry.json','json');
+    var shifr=await poluchit('materialy.bin','arrayBuffer');
+    var baza=await crypto.subtle.importKey('raw',new TextEncoder().encode(kod),'PBKDF2',false,['deriveKey']);
+    var kluch=await crypto.subtle.deriveKey({name:'PBKDF2',salt:iz64(par.sol),iterations:par.iter,hash:'SHA-256'},baza,{name:'AES-GCM',length:256},false,['decrypt']);
+    var otkr=await crypto.subtle.decrypt({name:'AES-GCM',iv:iz64(par.iv)},kluch,shifr);
+    return JSON.parse(new TextDecoder().decode(otkr));
+  }
+  async function vhod(kod){
+    if(!window.isSecureContext||!window.crypto||!crypto.subtle){oshibka.textContent='Этот браузер не умеет открывать материалы. Откройте ссылку в Chrome или Safari.';return}
+    oshibka.textContent='';vojti.disabled=true;vojti.textContent='Открываем…';
+    try{var d=await otkryt(kod);pisat(kod);pokazat(d)}
+    catch(err){
+      if(err&&err.name==='OperationError'){zabyt();pole.value='';oshibka.textContent='Код не подошёл. Проверьте и введите ещё раз.'}
+      else{pole.value=kod;oshibka.textContent='Не удалось загрузить материалы. Проверьте соединение и повторите.'}
+    }
+    finally{vojti.disabled=false;vojti.textContent='Открыть'}
+  }
+  forma.addEventListener('submit',function(e){e.preventDefault();vhod(pole.value.trim().toUpperCase())});
+  document.getElementById('vyjti').addEventListener('click',function(){zabyt();location.reload()});
+  var s=chitat();
+  if(s){vhod(s)}
+})();
+</script>
+</body>
+</html>
