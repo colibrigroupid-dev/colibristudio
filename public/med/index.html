@@ -53,7 +53,9 @@ body.otkryto{overflow:hidden}
     <button type="button" data-p="reklama">Реклама</button>
     <button type="button" data-p="roliki">Ролики</button>
     <button type="button" data-p="etiketka">Этикетка</button>
-    <button type="button" data-p="raskhody">Расходы</button>
+    <button type="button" data-p="dogovor">Договор</button>
+    <button type="button" data-p="dengi">Деньги</button>
+    <button type="button" data-p="buhgalteriya">Бухгалтерия</button>
     <button type="button" data-p="polka">Полки</button>
     <button type="button" id="vyjti">Выйти</button>
   </nav>
@@ -62,8 +64,8 @@ body.otkryto{overflow:hidden}
 </div>
 <script>
 (function(){
-  var RAZDELY=["obzor","otchet","prototip","reklama","roliki","etiketka","raskhody","polka"];
-  var NAZV={obzor:"Обзор",otchet:"Жантак",prototip:"Сайт",reklama:"Реклама",roliki:"Ролики",etiketka:"Этикетка",raskhody:"Расходы",polka:"Полки"};
+  var RAZDELY=["obzor","otchet","prototip","reklama","roliki","etiketka","dogovor","dengi","buhgalteriya","polka"];
+  var NAZV={obzor:"Обзор",otchet:"Жантак",prototip:"Сайт",reklama:"Реклама",roliki:"Ролики",etiketka:"Этикетка",dogovor:"Договор",dengi:"Деньги",buhgalteriya:"Бухгалтерия",polka:"Полки"};
   var forma=document.getElementById('forma'),oshibka=document.getElementById('oshibka'),vojti=document.getElementById('vojti'),pole=document.getElementById('kod');
   var kluch=null,faily=null,versiya=0,kodV='',gotovo={},est={},tekushchij=null,ochered=0;
   function $(id){return document.getElementById(id)}
