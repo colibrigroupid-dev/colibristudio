@@ -54,6 +54,8 @@ body.otkryto{overflow:hidden}
     <button type="button" data-p="reklama">Реклама</button>
     <button type="button" data-p="roliki">Ролики</button>
     <button type="button" data-p="etiketka">Этикетка</button>
+    <button type="button" data-p="pasport">Паспорт</button>
+    <button type="button" data-p="syomka">Съёмка</button>
     <button type="button" data-p="dogovor">Договор</button>
     <button type="button" data-p="dengi">Деньги</button>
     <button type="button" data-p="buhgalteriya">Бухгалтерия</button>
@@ -65,8 +67,8 @@ body.otkryto{overflow:hidden}
 </div>
 <script>
 (function(){
-  var RAZDELY=["obzor","karta","otchet","prototip","reklama","roliki","etiketka","dogovor","dengi","buhgalteriya","polka"];
-  var NAZV={obzor:"Обзор",karta:"Карта",otchet:"Жантак",prototip:"Сайт",reklama:"Реклама",roliki:"Ролики",etiketka:"Этикетка",dogovor:"Договор",dengi:"Деньги",buhgalteriya:"Бухгалтерия",polka:"Полки"};
+  var RAZDELY=["obzor","karta","otchet","prototip","reklama","roliki","etiketka","pasport","syomka","dogovor","dengi","buhgalteriya","polka"];
+  var NAZV={obzor:"Обзор",karta:"Карта",otchet:"Жантак",prototip:"Сайт",reklama:"Реклама",roliki:"Ролики",etiketka:"Этикетка",pasport:"Паспорт",syomka:"Съёмка",dogovor:"Договор",dengi:"Деньги",buhgalteriya:"Бухгалтерия",polka:"Полки"};
   var forma=document.getElementById('forma'),oshibka=document.getElementById('oshibka'),vojti=document.getElementById('vojti'),pole=document.getElementById('kod');
   var kluch=null,faily=null,versiya=0,kodV='',gotovo={},est={},tekushchij=null,ochered=0;
   function $(id){return document.getElementById(id)}
