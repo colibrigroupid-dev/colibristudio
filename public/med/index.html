@@ -48,6 +48,7 @@ body.otkryto{overflow:hidden}
 <div id="tablo" hidden>
   <nav class="vkladki" aria-label="Разделы">
     <button type="button" data-p="obzor">Обзор</button>
+    <button type="button" data-p="karta">Карта</button>
     <button type="button" data-p="otchet">Жантак</button>
     <button type="button" data-p="prototip">Сайт</button>
     <button type="button" data-p="reklama">Реклама</button>
@@ -64,8 +65,8 @@ body.otkryto{overflow:hidden}
 </div>
 <script>
 (function(){
-  var RAZDELY=["obzor","otchet","prototip","reklama","roliki","etiketka","dogovor","dengi","buhgalteriya","polka"];
-  var NAZV={obzor:"Обзор",otchet:"Жантак",prototip:"Сайт",reklama:"Реклама",roliki:"Ролики",etiketka:"Этикетка",dogovor:"Договор",dengi:"Деньги",buhgalteriya:"Бухгалтерия",polka:"Полки"};
+  var RAZDELY=["obzor","karta","otchet","prototip","reklama","roliki","etiketka","dogovor","dengi","buhgalteriya","polka"];
+  var NAZV={obzor:"Обзор",karta:"Карта",otchet:"Жантак",prototip:"Сайт",reklama:"Реклама",roliki:"Ролики",etiketka:"Этикетка",dogovor:"Договор",dengi:"Деньги",buhgalteriya:"Бухгалтерия",polka:"Полки"};
   var forma=document.getElementById('forma'),oshibka=document.getElementById('oshibka'),vojti=document.getElementById('vojti'),pole=document.getElementById('kod');
   var kluch=null,faily=null,versiya=0,kodV='',gotovo={},est={},tekushchij=null,ochered=0;
   function $(id){return document.getElementById(id)}
