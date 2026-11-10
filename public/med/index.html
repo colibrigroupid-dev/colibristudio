@@ -60,6 +60,7 @@ body.otkryto{overflow:hidden}
     <button type="button" data-p="obzor">Обзор</button>
     <button type="button" data-p="karta">Карта</button>
     <button type="button" data-p="otchet">Жантак</button>
+    <button type="button" data-p="mir">Жантак в мире</button>
     <button type="button" data-p="prototip">Сайт</button>
     <button type="button" data-p="reklama">Реклама</button>
     <button type="button" data-p="roliki">Ролики</button>
@@ -82,7 +83,7 @@ body.otkryto{overflow:hidden}
 </div>
 <script>
 (function(){
-  var RAZDELY=["obzor","karta","otchet","prototip","reklama","roliki","etiketka","pasport","syomka","dogovor","dengi","buhgalteriya","polka"];
+  var RAZDELY=["obzor","karta","otchet","mir","prototip","reklama","roliki","etiketka","pasport","syomka","dogovor","dengi","buhgalteriya","polka"];
   var NAZV={obzor:"Обзор",karta:"Карта",otchet:"Жантак",prototip:"Сайт",reklama:"Реклама",roliki:"Ролики",etiketka:"Этикетка",pasport:"Паспорт",syomka:"Съёмка",dogovor:"Договор",dengi:"Деньги",buhgalteriya:"Бухгалтерия",polka:"Полки"};
   var forma=document.getElementById('forma'),oshibka=document.getElementById('oshibka'),vojti=document.getElementById('vojti'),pole=document.getElementById('kod');
   var kluch=null,faily=null,versiya=0,kodV='',manifest={},tekFajl=null,tekUrl=null,gotovo={},est={},tekushchij=null,ochered=0;
@@ -131,7 +132,7 @@ body.otkryto{overflow:hidden}
     }
   }
   async function pokazat(imya){
-    if(RAZDELY.indexOf(imya)<0)imya='obzor';
+    if(RAZDELY.indexOf(imya)<0||(faily&&!faily[imya+'.html']&&!(imya==='roliki'&&faily['roliki.json'])))imya='obzor';
     tekushchij=imya;var moya=++ochered;
     document.querySelectorAll('.vkladki [data-p]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.p===imya?'true':'false');if(b.dataset.p===imya)b.scrollIntoView({block:'nearest',inline:'nearest'})});
     document.querySelectorAll('.panel').forEach(function(p){p.hidden=p.id!=='p-'+imya});
@@ -185,6 +186,8 @@ body.otkryto{overflow:hidden}
     var sp=await crypto.subtle.decrypt({name:'AES-GCM',iv:iz64(par.iv)},k,iz64(par.spisok));
     faily=JSON.parse(new TextDecoder().decode(sp));kluch=k;versiya=par.v||0;
     try{manifest=faily['fajly.json']?JSON.parse(await tekst('fajly.json')):{}}catch(e){manifest={}}
+    // Вкладки только тех разделов, что есть в этой сборке
+    document.querySelectorAll('.vkladki [data-p]').forEach(function(b){var p=b.dataset.p;b.hidden=!(faily[p+'.html']||(p==='roliki'&&faily['roliki.json']))});
   }
   async function vhod(kod){
     if(!window.isSecureContext||!window.crypto||!crypto.subtle){oshibka.textContent='Этот браузер не умеет открывать материалы. Откройте ссылку в Chrome или Safari.';return}
