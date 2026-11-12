@@ -1,0 +1,16 @@
+{
+  "name": "Шебер",
+  "short_name": "Шебер",
+  "description": "Бытовые и ремонтные работы в Алматы: цена до выезда, оплата с удержанием до приёмки.",
+  "lang": "ru",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f6f9",
+  "theme_color": "#2b2f5e",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
